@@ -5,6 +5,12 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import ChiSiamo from "./pages/ChiSiamo.tsx";
+import Contatti from "./pages/Contatti.tsx";
+import Espropriazioni from "./pages/practice/Espropriazioni.tsx";
+import AppaltiPubblici from "./pages/practice/AppaltiPubblici.tsx";
+import ConcorsiPubblici from "./pages/practice/ConcorsiPubblici.tsx";
+import UrbanisticaEdilizia from "./pages/practice/UrbanisticaEdilizia.tsx";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +22,12 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/espropriazioni" element={<Espropriazioni />} />
+          <Route path="/appalti-pubblici" element={<AppaltiPubblici />} />
+          <Route path="/concorsi-pubblici" element={<ConcorsiPubblici />} />
+          <Route path="/urbanistica-edilizia" element={<UrbanisticaEdilizia />} />
+          <Route path="/chi-siamo" element={<ChiSiamo />} />
+          <Route path="/contatti" element={<Contatti />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
