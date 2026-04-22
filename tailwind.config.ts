@@ -7,8 +7,8 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "1.5rem",
-      screens: { "2xl": "1200px" },
+      padding: "1.75rem",
+      screens: { "2xl": "1320px" },
     },
     extend: {
       fontFamily: {
@@ -16,10 +16,10 @@ export default {
         sans: ["Public Sans", "Inter", "system-ui", "sans-serif"],
       },
       fontSize: {
-        "display-2xl": ["clamp(3rem, 6vw, 5rem)", { lineHeight: "1.02", letterSpacing: "-0.025em" }],
-        "display-xl": ["clamp(2.25rem, 4.5vw, 3.5rem)", { lineHeight: "1.08", letterSpacing: "-0.02em" }],
-        "display-lg": ["clamp(1.75rem, 3vw, 2.5rem)", { lineHeight: "1.15", letterSpacing: "-0.015em" }],
-        "display-md": ["1.5rem", { lineHeight: "1.3" }],
+        "display-2xl": ["clamp(3.5rem, 7vw, 6rem)", { lineHeight: "1.02", letterSpacing: "-0.025em" }],
+        "display-xl": ["clamp(2.5rem, 5vw, 4.25rem)", { lineHeight: "1.08", letterSpacing: "-0.02em" }],
+        "display-lg": ["clamp(2rem, 3.5vw, 3rem)", { lineHeight: "1.15", letterSpacing: "-0.015em" }],
+        "display-md": ["clamp(1.5rem, 2vw, 1.875rem)", { lineHeight: "1.3" }],
         "label-sm": ["0.75rem", { lineHeight: "1.2", letterSpacing: "0.16em" }],
       },
       colors: {
