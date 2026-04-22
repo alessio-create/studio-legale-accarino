@@ -55,6 +55,17 @@ export default function UrbanisticaEdilizia() {
           { q: "Quali sono i tempi di un ricorso urbanistico?", a: "Per il merito si attendono in media 12–24 mesi. È spesso possibile chiedere la sospensione cautelare del provvedimento impugnato, decisa entro 30–60 giorni." },
           { q: "Lavorate con tecnici di fiducia?", a: "Sì, lo Studio collabora con architetti, ingegneri e geometri di comprovata esperienza per le valutazioni tecniche necessarie alla strategia processuale." },
         ]}
+        outcomes={[
+          { value: "Sanatoria", label: "Recupero edilizio", caseType: "Abuso minore" },
+          { value: "Annullamento", label: "Diniego permesso", caseType: "Costruzione residenz." },
+          { value: "Sospensione", label: "Ordine demolizione", caseType: "Tutela cautelare" },
+          { value: "Var. urbanistica", label: "Cambio destinazione", caseType: "Area produttiva" },
+        ]}
+        signatureQuote={{
+          quote:
+            "Tra il diritto di costruire e il dovere di tutelare il territorio c'è uno spazio tecnico stretto: in quello spazio si vince o si perde una causa urbanistica.",
+          attribution: "Studio Legale Accarino",
+        }}
       />
     </Layout>
   );
