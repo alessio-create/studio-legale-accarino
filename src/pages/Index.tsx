@@ -227,18 +227,12 @@ export default function Index() {
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6 divide-y lg:divide-y-0 lg:divide-x divide-background/10">
             {results.map((r, i) => (
-              <div
+              <ResultCard
                 key={r.label + i}
-                className={`px-2 lg:px-6 ${i === 0 ? "lg:pl-0" : ""} pt-6 lg:pt-0`}
-              >
-                <p className="font-serif text-3xl lg:text-4xl text-gold leading-none">
-                  {r.value}
-                </p>
-                <p className="mt-3 text-sm text-background font-serif">{r.label}</p>
-                <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-background/60">
-                  {r.caseType}
-                </p>
-              </div>
+                result={r}
+                index={i}
+                isFirst={i === 0}
+              />
             ))}
           </div>
         </div>
