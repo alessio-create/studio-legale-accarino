@@ -12,6 +12,7 @@ import { Layout } from "@/components/site/Layout";
 import { Eyebrow } from "@/components/site/Eyebrow";
 import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
+import ResultCard, { type ResultDetail } from "@/components/site/ResultCard";
 
 /**
  * Practice areas grouped Pitta-style: each "family" lists its sub-services.
@@ -49,11 +50,60 @@ const practiceFamilies = [
   },
 ];
 
-const results = [
-  { value: "+€1,2M", label: "Indennità ottenuta", caseType: "Espropriazione PA" },
-  { value: "Annullamento", label: "Aggiudicazione illegittima", caseType: "Appalto Pubblico" },
-  { value: "Reintegro", label: "Candidata esclusa", caseType: "Concorso Pubblico" },
-  { value: "Sanatoria", label: "Recupero edilizio", caseType: "Urbanistica" },
+const results: ResultDetail[] = [
+  {
+    value: "+€1,2M",
+    label: "Indennità ottenuta",
+    caseType: "Espropriazione PA",
+    detail: {
+      title: "Opposizione alla stima rideterminata",
+      summary:
+        "Procedura espropriativa per opera pubblica con indennità inizialmente sottostimata.",
+      procedure: "Ricorso Corte d'Appello con CTU di parte e perizia tecnica.",
+      duration: "18 mesi dal deposito ricorso",
+      outcome: "Indennità ricalcolata: +€1,2M rispetto alla prima offerta.",
+    },
+  },
+  {
+    value: "Annullamento",
+    label: "Aggiudicazione illegittima",
+    caseType: "Appalto Pubblico",
+    detail: {
+      title: "Sospensiva e annullamento gara da €4M",
+      summary:
+        "Esclusione per vizio formale in gara d'appalto per servizi alla PA.",
+      procedure: "Ricorso TAR con istanza cautelare ex art. 55 c.p.a.",
+      duration: "28 giorni alla sospensiva, 7 mesi al merito",
+      outcome: "Aggiudicazione annullata, gara riaffidata al ricorrente.",
+    },
+  },
+  {
+    value: "Reintegro",
+    label: "Candidata esclusa",
+    caseType: "Concorso Pubblico",
+    detail: {
+      title: "Ricorso collettivo su graduatoria concorso PA",
+      summary:
+        "Concorso pubblico con criteri di valutazione applicati in modo non uniforme.",
+      procedure: "Ricorso TAR collettivo (15 ricorrenti) con motivi aggiunti.",
+      duration: "11 mesi alla sentenza",
+      outcome: "Graduatoria annullata, prova ripetuta, candidata reintegrata.",
+    },
+  },
+  {
+    value: "Sanatoria",
+    label: "Recupero edilizio",
+    caseType: "Urbanistica",
+    detail: {
+      title: "Sanatoria edilizia con vincolo paesaggistico",
+      summary:
+        "Immobile in zona vincolata oggetto di ordinanza di demolizione.",
+      procedure:
+        "Istanza di accertamento di conformità + ricorso TAR su diniego e parere Soprintendenza.",
+      duration: "14 mesi complessivi",
+      outcome: "Diniego annullato, sanatoria rilasciata, demolizione revocata.",
+    },
+  },
 ];
 
 const testimonials = [
@@ -177,18 +227,12 @@ export default function Index() {
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6 divide-y lg:divide-y-0 lg:divide-x divide-background/10">
             {results.map((r, i) => (
-              <div
+              <ResultCard
                 key={r.label + i}
-                className={`px-2 lg:px-6 ${i === 0 ? "lg:pl-0" : ""} pt-6 lg:pt-0`}
-              >
-                <p className="font-serif text-3xl lg:text-4xl text-gold leading-none">
-                  {r.value}
-                </p>
-                <p className="mt-3 text-sm text-background font-serif">{r.label}</p>
-                <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-background/60">
-                  {r.caseType}
-                </p>
-              </div>
+                result={r}
+                index={i}
+                isFirst={i === 0}
+              />
             ))}
           </div>
         </div>
