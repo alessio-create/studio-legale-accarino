@@ -111,20 +111,7 @@ export default function Index() {
         <div className="absolute inset-0 bg-gradient-to-b from-primary-deep/85 via-primary/55 to-primary" />
         <div className="absolute inset-0 bg-noise opacity-40" />
 
-        {/* Top meta line */}
-        <div className="absolute top-28 left-0 right-0">
-          <div className="editorial-container flex items-center justify-between">
-            <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.22em] text-background/80">
-              <span className="w-8 h-px bg-gold" />
-              <span>Studio Legale Accarino · Salerno</span>
-            </div>
-            <span className="hidden md:inline text-[11px] uppercase tracking-[0.22em] text-background/60">
-              Diritto Amministrativo · Est. 1974
-            </span>
-          </div>
-        </div>
-
-        <div className="relative z-10 editorial-container pb-24 lg:pb-32">
+        <div className="relative z-10 editorial-container pt-40 pb-24 lg:pt-48 lg:pb-32">
           <div className="max-w-5xl">
             <p className="font-serif italic text-gold text-2xl mb-8 animate-fade-up">
               Cinquant'anni al servizio della giustizia amministrativa.
