@@ -1,20 +1,26 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Logo } from "./Logo";
 
-const mainLinks = [
-  { to: "/", label: "Home" },
+const services = [
   { to: "/espropriazioni", label: "Espropriazioni" },
-  { to: "/appalti-pubblici", label: "Appalti" },
-  { to: "/concorsi-pubblici", label: "Concorsi" },
-  { to: "/urbanistica-edilizia", label: "Urbanistica" },
-  { to: "/chi-siamo", label: "Lo Studio" },
+  { to: "/appalti-pubblici", label: "Appalti Pubblici" },
+  { to: "/concorsi-pubblici", label: "Concorsi Pubblici" },
+  { to: "/urbanistica-edilizia", label: "Urbanistica ed Edilizia" },
+];
+
+const mainLinks = [
+  { to: "/chi-siamo", label: "Chi Sono" },
+  { to: "/blog", label: "Blog" },
+  { to: "/contatti", label: "Contatti" },
 ];
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -26,6 +32,8 @@ export const Navbar = () => {
 
   useEffect(() => {
     setOpen(false);
+    setServicesOpen(false);
+    setMobileServicesOpen(false);
   }, [pathname]);
 
   return (
@@ -41,6 +49,40 @@ export const Navbar = () => {
           <Logo />
 
           <nav className="hidden lg:flex items-center gap-9">
+            <div
+              className="relative"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              <button
+                className="nav-link inline-flex items-center gap-1.5"
+                data-active={services.some((s) => s.to === pathname) ? "true" : undefined}
+                onClick={() => setServicesOpen((s) => !s)}
+                aria-haspopup="true"
+                aria-expanded={servicesOpen}
+              >
+                Servizi
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesOpen ? "rotate-180" : ""}`} />
+              </button>
+              {servicesOpen && (
+                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-4">
+                  <div className="min-w-[260px] bg-background border hairline shadow-lg animate-fade-up">
+                    <ul className="py-2">
+                      {services.map((s) => (
+                        <li key={s.to}>
+                          <Link
+                            to={s.to}
+                            className="block px-5 py-3 text-sm text-foreground hover:bg-muted hover:text-gold transition-colors"
+                          >
+                            {s.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+            </div>
             {mainLinks.map((l) => (
               <NavLink
                 key={l.to}
@@ -77,6 +119,27 @@ export const Navbar = () => {
       {open && (
         <div className="lg:hidden bg-background border-t hairline animate-fade-up">
           <div className="editorial-container py-6 flex flex-col gap-5">
+            <div>
+              <button
+                className="nav-link inline-flex items-center gap-1.5 w-full"
+                onClick={() => setMobileServicesOpen((s) => !s)}
+                aria-expanded={mobileServicesOpen}
+              >
+                Servizi
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`} />
+              </button>
+              {mobileServicesOpen && (
+                <ul className="mt-3 ml-3 border-l hairline pl-4 flex flex-col gap-3">
+                  {services.map((s) => (
+                    <li key={s.to}>
+                      <Link to={s.to} className="block text-sm text-foreground hover:text-gold transition-colors">
+                        {s.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
             {mainLinks.map((l) => (
               <Link key={l.to} to={l.to} className="nav-link">
                 {l.label}
