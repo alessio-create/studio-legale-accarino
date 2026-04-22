@@ -6,10 +6,13 @@ import { Footer } from "./Footer";
 export const Layout = ({ children }: { children: ReactNode }) => {
   const { pathname } = useLocation();
   useEffect(() => window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }), [pathname]);
+  // Home page hero is full-bleed under the transparent navbar; other pages
+  // need top padding equal to navbar height so content does not get hidden.
+  const isHome = pathname === "/";
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      <main className="flex-1 pt-20">{children}</main>
+      <main className={`flex-1 ${isHome ? "" : "pt-20 lg:pt-[116px]"}`}>{children}</main>
       <Footer />
     </div>
   );
