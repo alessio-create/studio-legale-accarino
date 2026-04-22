@@ -49,6 +49,40 @@ export const Navbar = () => {
           <Logo />
 
           <nav className="hidden lg:flex items-center gap-9">
+            <div
+              className="relative"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              <button
+                className="nav-link inline-flex items-center gap-1.5"
+                data-active={services.some((s) => s.to === pathname) ? "true" : undefined}
+                onClick={() => setServicesOpen((s) => !s)}
+                aria-haspopup="true"
+                aria-expanded={servicesOpen}
+              >
+                Servizi
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesOpen ? "rotate-180" : ""}`} />
+              </button>
+              {servicesOpen && (
+                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-4">
+                  <div className="min-w-[260px] bg-background border hairline shadow-lg animate-fade-up">
+                    <ul className="py-2">
+                      {services.map((s) => (
+                        <li key={s.to}>
+                          <Link
+                            to={s.to}
+                            className="block px-5 py-3 text-sm text-foreground hover:bg-muted hover:text-gold transition-colors"
+                          >
+                            {s.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+            </div>
             {mainLinks.map((l) => (
               <NavLink
                 key={l.to}
