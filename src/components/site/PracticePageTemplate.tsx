@@ -1,12 +1,13 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Check, LucideIcon } from "lucide-react";
+import { ArrowRight, Check, LucideIcon, Phone, Quote } from "lucide-react";
 import { Eyebrow } from "./Eyebrow";
 import { CTAButton } from "./CTAButton";
 import { FAQ, FAQItem } from "./FAQ";
 
 export interface PracticeStat { value: string; label: string }
 export interface PracticeStep { num: string; title: string; description: string }
+export interface PracticeOutcome { value: string; label: string; caseType: string }
 
 interface Props {
   number: string;
@@ -21,11 +22,14 @@ interface Props {
   stats: PracticeStat[];
   faq: FAQItem[];
   intro: ReactNode;
+  outcomes?: PracticeOutcome[];
+  signatureQuote?: { quote: string; attribution?: string };
 }
 
 export const PracticePageTemplate = ({
   number, eyebrow, title, lead, heroImage, icon: Icon,
   whoFor, services, process, stats, faq, intro,
+  outcomes, signatureQuote,
 }: Props) => {
   return (
     <>
