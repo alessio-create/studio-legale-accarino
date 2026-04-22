@@ -529,7 +529,7 @@ export default function Index() {
       </section>
 
       {/* TERRITORIO */}
-      <section className="section-y bg-surface-container-low border-y hairline">
+      <section className="section-y bg-background">
         <div className="editorial-container grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6">
             <div className="gold-corner p-3">
