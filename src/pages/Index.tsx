@@ -348,6 +348,90 @@ export default function Index() {
         </div>
       </section>
 
+      {/* APPALTI SIGNATURE BAND */}
+      <section className="relative bg-primary-deep text-primary-foreground overflow-hidden">
+        <img
+          src={office}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover opacity-15"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-deep via-primary-deep/95 to-primary-deep/70" />
+        <div className="absolute inset-0 bg-noise opacity-30" />
+        <div className="relative editorial-container py-20 lg:py-28">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-3 px-4 py-2 border border-gold/40">
+                <span className="w-2 h-2 bg-gold animate-pulse" />
+                <span className="text-[10px] uppercase tracking-[0.22em] text-gold font-semibold">
+                  Servizio di Punta · Appalti Pubblici
+                </span>
+              </div>
+              <h2 className="mt-8 serif-display text-display-xl text-background text-balance leading-[1.05]">
+                Esclusi da una gara?<br />
+                <span className="italic text-gold">Hai 30 giorni</span> per ribaltarla.
+              </h2>
+              <p className="mt-8 text-lg text-background/75 leading-relaxed max-w-2xl">
+                Quando una PMI viene esclusa o l'aggiudicazione di un appalto è viziata,
+                il tempo è il primo avversario. Il rito speciale appalti prevede tempi
+                accelerati: cautelare entro 30 giorni, sentenza di merito entro 9 mesi.
+                Lo Studio offre risposta entro 48 ore e patrocinio davanti a TAR e
+                Consiglio di Stato in tutta Italia.
+              </p>
+              <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-2xl">
+                {[
+                  { v: "30gg", l: "Termini di ricorso" },
+                  { v: "48h", l: "Prima analisi" },
+                  { v: "TAR · CdS", l: "Tutte le sedi" },
+                ].map((s) => (
+                  <div key={s.l} className="border-l border-gold/30 pl-4">
+                    <p className="font-serif text-2xl text-gold leading-none">{s.v}</p>
+                    <p className="mt-2 text-[10px] uppercase tracking-[0.2em] text-background/60 leading-snug">
+                      {s.l}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <CTAButton to="/appalti-pubblici" variant="gold">
+                  Servizio Appalti Pubblici
+                </CTAButton>
+                <Link
+                  to="/contatti"
+                  className="inline-flex items-center gap-3 px-6 py-4 text-label-sm uppercase tracking-[0.16em] text-background border border-background/20 hover:border-gold hover:text-gold transition-colors"
+                >
+                  Consulenza urgente
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+            <div className="hidden lg:block lg:col-span-5">
+              <div className="relative">
+                <div className="absolute -top-4 -left-4 w-20 h-20 border border-gold/40 border-r-0 border-b-0" />
+                <div className="absolute -bottom-4 -right-4 w-20 h-20 border border-gold/40 border-l-0 border-t-0" />
+                <div className="bg-primary p-10 border border-gold/30">
+                  <Quote className="w-10 h-10 text-gold mb-6" strokeWidth={1.25} />
+                  <p className="font-serif text-xl text-background leading-relaxed text-pretty">
+                    "L'esperienza maturata su entrambi i lati del tavolo —
+                    assistendo sia stazioni appaltanti sia operatori economici —
+                    consente una visione strategica che fa la differenza nel contenzioso."
+                  </p>
+                  <div className="mt-8 pt-6 border-t border-gold/20">
+                    <p className="text-sm text-gold font-semibold tracking-wide">
+                      STUDIO LEGALE ACCARINO
+                    </p>
+                    <p className="text-xs text-background/60 mt-1">
+                      Difesa imprese e PA dal 1974
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* APPROACH */}
       <section className="section-y">
         <div className="editorial-container">
