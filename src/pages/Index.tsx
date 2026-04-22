@@ -1,53 +1,82 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  ArrowRight, Award, Building2, ChevronRight, Gavel,
-  Landmark, Scale, ShieldCheck, Users,
+  ArrowRight, ArrowUpRight, Award, Building2, ChevronLeft, ChevronRight, Gavel,
+  Landmark, Quote, Scale, ShieldCheck, Star, Users,
 } from "lucide-react";
 import heroColumns from "@/assets/hero-columns.jpg";
 import salernoImg from "@/assets/salerno.jpg";
 import lawBooks from "@/assets/law-books.jpg";
+import office from "@/assets/office.jpg";
 import { Layout } from "@/components/site/Layout";
 import { Eyebrow } from "@/components/site/Eyebrow";
 import { CTAButton } from "@/components/site/CTAButton";
-import { PracticeCard } from "@/components/site/PracticeCard";
 import { FAQ } from "@/components/site/FAQ";
 
-const practices = [
+/**
+ * Practice areas grouped Pitta-style: each "family" lists its sub-services.
+ */
+const practiceFamilies = [
   {
-    number: "01",
-    title: "Espropriazioni e Occupazioni Illegittime",
-    description:
-      "Difesa dei proprietari nelle procedure espropriative, opposizione alla stima, contenzioso TAR e Consiglio di Stato.",
-    icon: Landmark,
+    family: "Diritto del Territorio",
     href: "/espropriazioni",
-    topics: ["Opposizione alla stima", "Occupazioni d'urgenza", "TSAP"],
+    icon: Landmark,
+    blurb:
+      "Difesa dei proprietari di fronte al potere espropriativo e al governo del territorio.",
+    items: [
+      { label: "Opposizione alla stima dell'indennità", to: "/espropriazioni" },
+      { label: "Occupazioni illegittime e d'urgenza", to: "/espropriazioni" },
+      { label: "Permessi a costruire e SCIA", to: "/urbanistica-edilizia" },
+      { label: "Varianti urbanistiche e PUC", to: "/urbanistica-edilizia" },
+      { label: "Abusi edilizi e sanatorie", to: "/urbanistica-edilizia" },
+      { label: "Vincoli e Soprintendenze", to: "/urbanistica-edilizia" },
+    ],
   },
   {
-    number: "02",
-    title: "Appalti Pubblici",
-    description:
-      "Consulenza e contenzioso per imprese: ricorsi TAR su esclusioni, aggiudicazioni illegittime, varianti contrattuali.",
-    icon: Building2,
+    family: "Imprese e Pubblica Amministrazione",
     href: "/appalti-pubblici",
-    topics: ["Ricorsi al TAR", "Sospensive cautelari", "Codice degli Appalti"],
+    icon: Building2,
+    blurb:
+      "Tutela degli operatori economici e dei candidati nei rapporti con la PA.",
+    items: [
+      { label: "Ricorsi TAR su esclusioni", to: "/appalti-pubblici" },
+      { label: "Sospensive cautelari", to: "/appalti-pubblici" },
+      { label: "Verifica anomalia offerte", to: "/appalti-pubblici" },
+      { label: "Contenzioso esecutivo e varianti", to: "/appalti-pubblici" },
+      { label: "Impugnazione graduatorie concorsi", to: "/concorsi-pubblici" },
+      { label: "Ricorsi collettivi pubblico impiego", to: "/concorsi-pubblici" },
+    ],
+  },
+];
+
+const results = [
+  { value: "+€1,2M", label: "Indennità ottenuta", caseType: "Espropriazione PA" },
+  { value: "Annullamento", label: "Aggiudicazione illegittima", caseType: "Appalto Pubblico" },
+  { value: "Reintegro", label: "Candidata esclusa", caseType: "Concorso Pubblico" },
+  { value: "Sanatoria", label: "Recupero edilizio", caseType: "Urbanistica" },
+];
+
+const testimonials = [
+  {
+    quote:
+      "Lo Studio ha gestito la nostra opposizione alla stima con rigore eccezionale. La perizia dei tecnici di parte e la strategia processuale ci hanno permesso di triplicare l'indennità inizialmente offerta. Comunicazione costante e tempi certi.",
+    author: "G. Romano",
+    role: "Proprietaria, Provincia di Salerno",
+    date: "03/2026",
   },
   {
-    number: "03",
-    title: "Concorsi Pubblici",
-    description:
-      "Tutela dei candidati esclusi o penalizzati: ricorsi individuali e collettivi, impugnazione graduatorie.",
-    icon: Users,
-    href: "/concorsi-pubblici",
-    topics: ["Ricorsi collettivi", "Impugnazione bandi", "Pubblico impiego"],
+    quote:
+      "Esclusi da una gara da 4 milioni per un vizio formale. In meno di 30 giorni il TAR ha sospeso l'aggiudicazione e l'appalto è stato riaffidato. Esperienza, riservatezza e nessuna improvvisazione: esattamente ciò che serve nei contenziosi pubblici.",
+    author: "M. De Luca",
+    role: "Amministratore PMI Edile",
+    date: "01/2026",
   },
   {
-    number: "04",
-    title: "Urbanistica ed Edilizia",
-    description:
-      "Permessi a costruire, varianti, vincoli, abusi edilizi e contenzioso amministrativo in materia urbanistica.",
-    icon: Scale,
-    href: "/urbanistica-edilizia",
-    topics: ["PUC e varianti", "Permessi a costruire", "Sanatorie"],
+    quote:
+      "Mi sono rivolta allo Studio dopo l'esclusione da un concorso pubblico. Hanno costruito un ricorso collettivo con altri 14 candidati: graduatoria annullata e nuova prova ammessa. Approccio umano e tecnicamente impeccabile.",
+    author: "F. Esposito",
+    role: "Funzionario PA",
+    date: "11/2025",
   },
 ];
 
