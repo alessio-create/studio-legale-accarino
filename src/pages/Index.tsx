@@ -459,6 +459,75 @@ export default function Index() {
         </div>
       </section>
 
+      {/* TESTIMONIALS */}
+      <section className="section-y bg-surface-container-low border-y hairline">
+        <div className="editorial-container">
+          <div className="grid lg:grid-cols-12 gap-12 items-start">
+            <div className="lg:col-span-4">
+              <Eyebrow>Voci dei clienti</Eyebrow>
+              <h2 className="mt-6 serif-display text-display-lg text-balance">
+                Cosa dicono di noi.
+              </h2>
+              <p className="mt-6 text-muted-foreground leading-relaxed">
+                Testimonianze raccolte tra clienti privati, imprese e funzionari
+                pubblici che si sono affidati allo Studio negli ultimi anni.
+              </p>
+              <div className="mt-8 flex items-center gap-4">
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-gold text-gold" />
+                  ))}
+                </div>
+                <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                  Valutazione media clienti
+                </span>
+              </div>
+            </div>
+
+            <div className="lg:col-span-8">
+              <div className="relative bg-background border hairline p-10 lg:p-14 min-h-[340px] flex flex-col">
+                <Quote className="w-10 h-10 text-gold/40 absolute top-8 right-8" strokeWidth={1} />
+                <p className="font-serif text-xl lg:text-2xl text-primary leading-relaxed text-pretty flex-1">
+                  "{t.quote}"
+                </p>
+                <div className="mt-10 pt-6 border-t hairline flex items-end justify-between flex-wrap gap-6">
+                  <div>
+                    <p className="font-serif text-lg text-primary">{t.author}</p>
+                    <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground mt-1">
+                      {t.role}
+                    </p>
+                    <p className="text-[11px] text-gold-deep mt-2 font-semibold">
+                      {t.date}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs text-muted-foreground tabular-nums">
+                      {String(activeTestimonial + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
+                    </span>
+                    <div className="flex gap-2">
+                      <button
+                        aria-label="Testimonianza precedente"
+                        onClick={prevTestimonial}
+                        className="w-10 h-10 border hairline flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </button>
+                      <button
+                        aria-label="Testimonianza successiva"
+                        onClick={nextTestimonial}
+                        className="w-10 h-10 border hairline flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* TERRITORIO */}
       <section className="section-y bg-surface-container-low border-y hairline">
         <div className="editorial-container grid lg:grid-cols-12 gap-12 items-center">
