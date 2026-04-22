@@ -12,6 +12,7 @@ import { Layout } from "@/components/site/Layout";
 import { Eyebrow } from "@/components/site/Eyebrow";
 import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
+import ResultCard, { type ResultDetail } from "@/components/site/ResultCard";
 
 /**
  * Practice areas grouped Pitta-style: each "family" lists its sub-services.
@@ -49,11 +50,60 @@ const practiceFamilies = [
   },
 ];
 
-const results = [
-  { value: "+€1,2M", label: "Indennità ottenuta", caseType: "Espropriazione PA" },
-  { value: "Annullamento", label: "Aggiudicazione illegittima", caseType: "Appalto Pubblico" },
-  { value: "Reintegro", label: "Candidata esclusa", caseType: "Concorso Pubblico" },
-  { value: "Sanatoria", label: "Recupero edilizio", caseType: "Urbanistica" },
+const results: ResultDetail[] = [
+  {
+    value: "+€1,2M",
+    label: "Indennità ottenuta",
+    caseType: "Espropriazione PA",
+    detail: {
+      title: "Opposizione alla stima rideterminata",
+      summary:
+        "Procedura espropriativa per opera pubblica con indennità inizialmente sottostimata.",
+      procedure: "Ricorso Corte d'Appello con CTU di parte e perizia tecnica.",
+      duration: "18 mesi dal deposito ricorso",
+      outcome: "Indennità ricalcolata: +€1,2M rispetto alla prima offerta.",
+    },
+  },
+  {
+    value: "Annullamento",
+    label: "Aggiudicazione illegittima",
+    caseType: "Appalto Pubblico",
+    detail: {
+      title: "Sospensiva e annullamento gara da €4M",
+      summary:
+        "Esclusione per vizio formale in gara d'appalto per servizi alla PA.",
+      procedure: "Ricorso TAR con istanza cautelare ex art. 55 c.p.a.",
+      duration: "28 giorni alla sospensiva, 7 mesi al merito",
+      outcome: "Aggiudicazione annullata, gara riaffidata al ricorrente.",
+    },
+  },
+  {
+    value: "Reintegro",
+    label: "Candidata esclusa",
+    caseType: "Concorso Pubblico",
+    detail: {
+      title: "Ricorso collettivo su graduatoria concorso PA",
+      summary:
+        "Concorso pubblico con criteri di valutazione applicati in modo non uniforme.",
+      procedure: "Ricorso TAR collettivo (15 ricorrenti) con motivi aggiunti.",
+      duration: "11 mesi alla sentenza",
+      outcome: "Graduatoria annullata, prova ripetuta, candidata reintegrata.",
+    },
+  },
+  {
+    value: "Sanatoria",
+    label: "Recupero edilizio",
+    caseType: "Urbanistica",
+    detail: {
+      title: "Sanatoria edilizia con vincolo paesaggistico",
+      summary:
+        "Immobile in zona vincolata oggetto di ordinanza di demolizione.",
+      procedure:
+        "Istanza di accertamento di conformità + ricorso TAR su diniego e parere Soprintendenza.",
+      duration: "14 mesi complessivi",
+      outcome: "Diniego annullato, sanatoria rilasciata, demolizione revocata.",
+    },
+  },
 ];
 
 const testimonials = [
