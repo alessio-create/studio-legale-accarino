@@ -76,6 +76,32 @@ export const PracticePageTemplate = ({
         </div>
       </section>
 
+      {/* Outcomes strip (optional) */}
+      {outcomes && outcomes.length > 0 && (
+        <section className="bg-primary text-primary-foreground border-y border-gold/30 relative overflow-hidden">
+          <div className="absolute inset-0 bg-noise opacity-25" />
+          <div className="relative editorial-container py-10">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="w-8 h-px bg-gold" />
+              <span className="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold">
+                Esiti rappresentativi
+              </span>
+            </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6 divide-y lg:divide-y-0 lg:divide-x divide-background/10">
+              {outcomes.map((o, i) => (
+                <div key={o.label + i} className={`px-2 lg:px-6 ${i === 0 ? "lg:pl-0" : ""} pt-6 lg:pt-0`}>
+                  <p className="font-serif text-2xl lg:text-3xl text-gold leading-none">{o.value}</p>
+                  <p className="mt-3 text-sm text-background font-serif">{o.label}</p>
+                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-background/60">
+                    {o.caseType}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Intro & For Whom */}
       <section className="section-y">
         <div className="editorial-container grid lg:grid-cols-12 gap-16">
@@ -153,6 +179,23 @@ export const PracticePageTemplate = ({
           </div>
         </div>
       </section>
+
+      {/* Signature quote (optional) */}
+      {signatureQuote && (
+        <section className="bg-surface-container-low border-y hairline">
+          <div className="editorial-container py-20 lg:py-24 max-w-4xl">
+            <Quote className="w-12 h-12 text-gold/50 mb-8" strokeWidth={1} />
+            <blockquote className="font-serif text-2xl lg:text-3xl text-primary leading-relaxed text-pretty">
+              "{signatureQuote.quote}"
+            </blockquote>
+            {signatureQuote.attribution && (
+              <p className="mt-8 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
+                — {signatureQuote.attribution}
+              </p>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* Stats */}
       <section className="bg-primary text-primary-foreground py-20 relative overflow-hidden">
