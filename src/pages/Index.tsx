@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight, ArrowUpRight, Award, Building2, ChevronLeft, ChevronRight, Gavel,
-  Landmark, Quote, Scale, ShieldCheck, Star, Users,
+  Landmark, Quote, ShieldCheck, Star,
 } from "lucide-react";
 import heroColumns from "@/assets/hero-columns.jpg";
 import salernoImg from "@/assets/salerno.jpg";
