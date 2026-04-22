@@ -77,7 +77,7 @@ export const Navbar = () => {
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-background/95 backdrop-blur-md border-b hairline shadow-[0_1px_0_0_hsl(var(--primary)/0.04)]"
-          : "bg-transparent border-b border-transparent"
+          : "bg-transparent border-b border-transparent [&_.nav-link]:text-background"
       }`}
       onMouseLeave={() => setMegaOpen(false)}
     >
@@ -105,7 +105,9 @@ export const Navbar = () => {
 
       <div className="editorial-container">
         <div className="flex items-center justify-between h-20">
-          <Logo />
+          <div className={scrolled ? "" : "[&_*]:text-background"}>
+            <Logo />
+          </div>
 
           <nav className="hidden lg:flex items-center gap-9">
             <button
@@ -136,7 +138,11 @@ export const Navbar = () => {
           <div className="hidden lg:block">
             <Link
               to="/contatti"
-              className="group inline-flex items-center gap-3 bg-primary text-primary-foreground px-6 py-3 text-label-sm font-semibold uppercase tracking-[0.16em] shadow-inset-gold hover:bg-primary-glow transition-all"
+              className={`group inline-flex items-center gap-3 px-6 py-3 text-label-sm font-semibold uppercase tracking-[0.16em] shadow-inset-gold transition-all ${
+                scrolled
+                  ? "bg-primary text-primary-foreground hover:bg-primary-glow"
+                  : "bg-background/10 text-background border border-gold/40 hover:bg-gold hover:text-primary"
+              }`}
             >
               Consulenza
               <span className="w-4 h-px bg-gold transition-all group-hover:w-6" />
@@ -145,7 +151,7 @@ export const Navbar = () => {
 
           <button
             aria-label="Menu"
-            className={scrolled ? "lg:hidden text-primary" : "lg:hidden text-primary"}
+            className={`lg:hidden ${scrolled ? "text-primary" : "text-background"}`}
             onClick={() => setOpen((s) => !s)}
           >
             {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
