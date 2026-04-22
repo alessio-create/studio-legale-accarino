@@ -48,13 +48,13 @@ export const PracticePageTemplate = ({
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <CTAButton to="/contatti">Prenota una consulenza</CTAButton>
-              <Link
-                to="#servizi"
-                className="inline-flex items-center gap-3 px-6 py-4 text-label-sm uppercase tracking-[0.16em] text-primary hover:text-gold-deep transition-colors"
+              <a
+                href="tel:+390891234567"
+                className="inline-flex items-center gap-3 px-6 py-4 text-label-sm uppercase tracking-[0.16em] text-primary hover:text-gold-deep transition-colors border border-primary/20 hover:border-gold"
               >
-                Scopri i servizi
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+                <Phone className="w-4 h-4 text-gold-deep" strokeWidth={2} />
+                089 123 4567
+              </a>
             </div>
           </div>
           <div className="lg:col-span-5">
