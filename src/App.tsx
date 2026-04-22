@@ -11,6 +11,7 @@ import Espropriazioni from "./pages/practice/Espropriazioni.tsx";
 import AppaltiPubblici from "./pages/practice/AppaltiPubblici.tsx";
 import ConcorsiPubblici from "./pages/practice/ConcorsiPubblici.tsx";
 import UrbanisticaEdilizia from "./pages/practice/UrbanisticaEdilizia.tsx";
+import Blog from "./pages/Blog.tsx";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/urbanistica-edilizia" element={<UrbanisticaEdilizia />} />
           <Route path="/chi-siamo" element={<ChiSiamo />} />
           <Route path="/contatti" element={<Contatti />} />
+          <Route path="/blog" element={<Blog />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
