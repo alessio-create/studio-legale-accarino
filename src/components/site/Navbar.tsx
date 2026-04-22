@@ -59,6 +59,10 @@ export const Navbar = () => {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const { pathname } = useLocation();
 
+  // Only the homepage has a dark, full-bleed hero behind a transparent navbar.
+  // On every other route the navbar always sits over the parchment background.
+  const overDarkHero = pathname === "/" && !scrolled;
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
@@ -75,16 +79,16 @@ export const Navbar = () => {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-background/95 backdrop-blur-md border-b hairline shadow-[0_1px_0_0_hsl(var(--primary)/0.04)]"
-          : "bg-transparent border-b border-transparent [&_.nav-link]:text-background"
+        overDarkHero
+          ? "bg-transparent border-b border-transparent [&_.nav-link]:text-background"
+          : "bg-background/95 backdrop-blur-md border-b hairline shadow-[0_1px_0_0_hsl(var(--primary)/0.04)]"
       }`}
       onMouseLeave={() => setMegaOpen(false)}
     >
       {/* Top utility bar */}
-      <div className={`hidden lg:block border-b transition-colors ${scrolled ? "border-primary/10" : "border-background/15"}`}>
+      <div className={`hidden lg:block border-b transition-colors ${overDarkHero ? "border-background/15" : "border-primary/10"}`}>
         <div className="editorial-container flex items-center justify-between h-9 text-[11px] uppercase tracking-[0.2em]">
-          <div className={`flex items-center gap-6 ${scrolled ? "text-muted-foreground" : "text-background/70"}`}>
+          <div className={`flex items-center gap-6 ${overDarkHero ? "text-background/70" : "text-muted-foreground"}`}>
             <span className="flex items-center gap-2">
               <span className="w-1 h-1 bg-gold" />
               Salerno · Cava de' Tirreni
@@ -94,7 +98,7 @@ export const Navbar = () => {
           <a
             href={PHONE_HREF}
             className={`flex items-center gap-2 font-semibold transition-colors ${
-              scrolled ? "text-primary hover:text-gold-deep" : "text-background hover:text-gold"
+              overDarkHero ? "text-background hover:text-gold" : "text-primary hover:text-gold-deep"
             }`}
           >
             <Phone className="w-3 h-3 text-gold" strokeWidth={2.5} />
@@ -105,7 +109,7 @@ export const Navbar = () => {
 
       <div className="editorial-container">
         <div className="flex items-center justify-between h-20">
-          <div className={scrolled ? "" : "[&_*]:text-background"}>
+          <div className={overDarkHero ? "[&_*]:text-background" : ""}>
             <Logo />
           </div>
 
@@ -139,9 +143,9 @@ export const Navbar = () => {
             <Link
               to="/contatti"
               className={`group inline-flex items-center gap-3 px-6 py-3 text-label-sm font-semibold uppercase tracking-[0.16em] shadow-inset-gold transition-all ${
-                scrolled
-                  ? "bg-primary text-primary-foreground hover:bg-primary-glow"
-                  : "bg-background/10 text-background border border-gold/40 hover:bg-gold hover:text-primary"
+                overDarkHero
+                  ? "bg-background/10 text-background border border-gold/40 hover:bg-gold hover:text-primary"
+                  : "bg-primary text-primary-foreground hover:bg-primary-glow"
               }`}
             >
               Consulenza
@@ -151,7 +155,7 @@ export const Navbar = () => {
 
           <button
             aria-label="Menu"
-            className={`lg:hidden ${scrolled ? "text-primary" : "text-background"}`}
+            className={`lg:hidden ${overDarkHero ? "text-background" : "text-primary"}`}
             onClick={() => setOpen((s) => !s)}
           >
             {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
