@@ -90,6 +90,13 @@ const credentials = [
 ];
 
 export default function Index() {
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const t = testimonials[activeTestimonial];
+  const nextTestimonial = () =>
+    setActiveTestimonial((i) => (i + 1) % testimonials.length);
+  const prevTestimonial = () =>
+    setActiveTestimonial((i) => (i - 1 + testimonials.length) % testimonials.length);
+
   return (
     <Layout>
       {/* HERO */}
