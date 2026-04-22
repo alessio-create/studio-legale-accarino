@@ -134,17 +134,27 @@ export default function Index() {
 
         {/* bottom credential strip */}
         <div className="absolute bottom-0 inset-x-0 border-t border-background/15 bg-primary-deep/60 backdrop-blur-sm">
-          <div className="editorial-container py-5 flex items-center gap-8 overflow-x-auto">
+          <div className="editorial-container py-5 flex items-center gap-8">
             <span className="text-[10px] uppercase tracking-[0.22em] text-gold flex-shrink-0">
               Hanno scelto lo Studio
             </span>
-            <div className="flex items-center gap-10 text-[12px] tracking-[0.14em] uppercase text-background/60 whitespace-nowrap">
-              {credentials.map((c) => (
-                <span key={c} className="flex items-center gap-3">
-                  <span className="w-1 h-1 bg-gold/60" />
-                  {c}
-                </span>
-              ))}
+            <div
+              className="relative flex-1 overflow-hidden"
+              style={{
+                maskImage:
+                  "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
+                WebkitMaskImage:
+                  "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
+              }}
+            >
+              <div className="flex w-max animate-ticker items-center gap-10 text-[12px] tracking-[0.14em] uppercase text-background/60 whitespace-nowrap">
+                {[...credentials, ...credentials].map((c, i) => (
+                  <span key={`${c}-${i}`} className="flex items-center gap-3 pr-10">
+                    <span className="w-1 h-1 bg-gold/60" />
+                    {c}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
