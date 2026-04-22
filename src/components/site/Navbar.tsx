@@ -1,20 +1,26 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Logo } from "./Logo";
 
-const mainLinks = [
-  { to: "/", label: "Home" },
+const services = [
   { to: "/espropriazioni", label: "Espropriazioni" },
-  { to: "/appalti-pubblici", label: "Appalti" },
-  { to: "/concorsi-pubblici", label: "Concorsi" },
-  { to: "/urbanistica-edilizia", label: "Urbanistica" },
-  { to: "/chi-siamo", label: "Lo Studio" },
+  { to: "/appalti-pubblici", label: "Appalti Pubblici" },
+  { to: "/concorsi-pubblici", label: "Concorsi Pubblici" },
+  { to: "/urbanistica-edilizia", label: "Urbanistica ed Edilizia" },
+];
+
+const mainLinks = [
+  { to: "/chi-siamo", label: "Chi Sono" },
+  { to: "/blog", label: "Blog" },
+  { to: "/contatti", label: "Contatti" },
 ];
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -26,6 +32,8 @@ export const Navbar = () => {
 
   useEffect(() => {
     setOpen(false);
+    setServicesOpen(false);
+    setMobileServicesOpen(false);
   }, [pathname]);
 
   return (
