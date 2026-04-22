@@ -1,53 +1,82 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  ArrowRight, Award, Building2, ChevronRight, Gavel,
-  Landmark, Scale, ShieldCheck, Users,
+  ArrowRight, ArrowUpRight, Award, Building2, ChevronLeft, ChevronRight, Gavel,
+  Landmark, Quote, ShieldCheck, Star,
 } from "lucide-react";
 import heroColumns from "@/assets/hero-columns.jpg";
 import salernoImg from "@/assets/salerno.jpg";
 import lawBooks from "@/assets/law-books.jpg";
+import office from "@/assets/office.jpg";
 import { Layout } from "@/components/site/Layout";
 import { Eyebrow } from "@/components/site/Eyebrow";
 import { CTAButton } from "@/components/site/CTAButton";
-import { PracticeCard } from "@/components/site/PracticeCard";
 import { FAQ } from "@/components/site/FAQ";
 
-const practices = [
+/**
+ * Practice areas grouped Pitta-style: each "family" lists its sub-services.
+ */
+const practiceFamilies = [
   {
-    number: "01",
-    title: "Espropriazioni e Occupazioni Illegittime",
-    description:
-      "Difesa dei proprietari nelle procedure espropriative, opposizione alla stima, contenzioso TAR e Consiglio di Stato.",
-    icon: Landmark,
+    family: "Diritto del Territorio",
     href: "/espropriazioni",
-    topics: ["Opposizione alla stima", "Occupazioni d'urgenza", "TSAP"],
+    icon: Landmark,
+    blurb:
+      "Difesa dei proprietari di fronte al potere espropriativo e al governo del territorio.",
+    items: [
+      { label: "Opposizione alla stima dell'indennità", to: "/espropriazioni" },
+      { label: "Occupazioni illegittime e d'urgenza", to: "/espropriazioni" },
+      { label: "Permessi a costruire e SCIA", to: "/urbanistica-edilizia" },
+      { label: "Varianti urbanistiche e PUC", to: "/urbanistica-edilizia" },
+      { label: "Abusi edilizi e sanatorie", to: "/urbanistica-edilizia" },
+      { label: "Vincoli e Soprintendenze", to: "/urbanistica-edilizia" },
+    ],
   },
   {
-    number: "02",
-    title: "Appalti Pubblici",
-    description:
-      "Consulenza e contenzioso per imprese: ricorsi TAR su esclusioni, aggiudicazioni illegittime, varianti contrattuali.",
-    icon: Building2,
+    family: "Imprese e Pubblica Amministrazione",
     href: "/appalti-pubblici",
-    topics: ["Ricorsi al TAR", "Sospensive cautelari", "Codice degli Appalti"],
+    icon: Building2,
+    blurb:
+      "Tutela degli operatori economici e dei candidati nei rapporti con la PA.",
+    items: [
+      { label: "Ricorsi TAR su esclusioni", to: "/appalti-pubblici" },
+      { label: "Sospensive cautelari", to: "/appalti-pubblici" },
+      { label: "Verifica anomalia offerte", to: "/appalti-pubblici" },
+      { label: "Contenzioso esecutivo e varianti", to: "/appalti-pubblici" },
+      { label: "Impugnazione graduatorie concorsi", to: "/concorsi-pubblici" },
+      { label: "Ricorsi collettivi pubblico impiego", to: "/concorsi-pubblici" },
+    ],
+  },
+];
+
+const results = [
+  { value: "+€1,2M", label: "Indennità ottenuta", caseType: "Espropriazione PA" },
+  { value: "Annullamento", label: "Aggiudicazione illegittima", caseType: "Appalto Pubblico" },
+  { value: "Reintegro", label: "Candidata esclusa", caseType: "Concorso Pubblico" },
+  { value: "Sanatoria", label: "Recupero edilizio", caseType: "Urbanistica" },
+];
+
+const testimonials = [
+  {
+    quote:
+      "Lo Studio ha gestito la nostra opposizione alla stima con rigore eccezionale. La perizia dei tecnici di parte e la strategia processuale ci hanno permesso di triplicare l'indennità inizialmente offerta. Comunicazione costante e tempi certi.",
+    author: "G. Romano",
+    role: "Proprietaria, Provincia di Salerno",
+    date: "03/2026",
   },
   {
-    number: "03",
-    title: "Concorsi Pubblici",
-    description:
-      "Tutela dei candidati esclusi o penalizzati: ricorsi individuali e collettivi, impugnazione graduatorie.",
-    icon: Users,
-    href: "/concorsi-pubblici",
-    topics: ["Ricorsi collettivi", "Impugnazione bandi", "Pubblico impiego"],
+    quote:
+      "Esclusi da una gara da 4 milioni per un vizio formale. In meno di 30 giorni il TAR ha sospeso l'aggiudicazione e l'appalto è stato riaffidato. Esperienza, riservatezza e nessuna improvvisazione: esattamente ciò che serve nei contenziosi pubblici.",
+    author: "M. De Luca",
+    role: "Amministratore PMI Edile",
+    date: "01/2026",
   },
   {
-    number: "04",
-    title: "Urbanistica ed Edilizia",
-    description:
-      "Permessi a costruire, varianti, vincoli, abusi edilizi e contenzioso amministrativo in materia urbanistica.",
-    icon: Scale,
-    href: "/urbanistica-edilizia",
-    topics: ["PUC e varianti", "Permessi a costruire", "Sanatorie"],
+    quote:
+      "Mi sono rivolta allo Studio dopo l'esclusione da un concorso pubblico. Hanno costruito un ricorso collettivo con altri 14 candidati: graduatoria annullata e nuova prova ammessa. Approccio umano e tecnicamente impeccabile.",
+    author: "F. Esposito",
+    role: "Funzionario PA",
+    date: "11/2025",
   },
 ];
 
@@ -61,6 +90,13 @@ const credentials = [
 ];
 
 export default function Index() {
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const t = testimonials[activeTestimonial];
+  const nextTestimonial = () =>
+    setActiveTestimonial((i) => (i + 1) % testimonials.length);
+  const prevTestimonial = () =>
+    setActiveTestimonial((i) => (i - 1 + testimonials.length) % testimonials.length);
+
   return (
     <Layout>
       {/* HERO */}
@@ -127,6 +163,40 @@ export default function Index() {
         </div>
       </section>
 
+      {/* RESULTS STRIP */}
+      <section className="bg-primary text-primary-foreground border-y border-gold/30 relative overflow-hidden">
+        <div className="absolute inset-0 bg-noise opacity-25" />
+        <div className="editorial-container relative py-10 lg:py-12">
+          <div className="flex items-center justify-between flex-wrap gap-6 mb-8">
+            <div className="flex items-center gap-4">
+              <span className="w-8 h-px bg-gold" />
+              <span className="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold">
+                Esiti rappresentativi
+              </span>
+            </div>
+            <span className="text-xs italic text-background/50 max-w-md">
+              Esempi illustrativi del tipo di esito ottenibile. Casi anonimizzati nel rispetto del segreto professionale.
+            </span>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6 divide-y lg:divide-y-0 lg:divide-x divide-background/10">
+            {results.map((r, i) => (
+              <div
+                key={r.label + i}
+                className={`px-2 lg:px-6 ${i === 0 ? "lg:pl-0" : ""} pt-6 lg:pt-0`}
+              >
+                <p className="font-serif text-3xl lg:text-4xl text-gold leading-none">
+                  {r.value}
+                </p>
+                <p className="mt-3 text-sm text-background font-serif">{r.label}</p>
+                <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-background/60">
+                  {r.caseType}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* INTRO MANIFESTO */}
       <section className="section-y border-b hairline">
         <div className="editorial-container grid lg:grid-cols-12 gap-12 lg:gap-20">
@@ -166,15 +236,19 @@ export default function Index() {
         </div>
       </section>
 
-      {/* PRACTICE AREAS */}
+      {/* PRACTICE AREAS — grouped families (Pitta-style) */}
       <section className="section-y bg-surface-container-low">
         <div className="editorial-container">
           <div className="flex items-end justify-between flex-wrap gap-8 mb-16">
             <div className="max-w-2xl">
               <Eyebrow>Aree di pratica</Eyebrow>
               <h2 className="mt-6 serif-display text-display-xl text-balance">
-                Quattro verticali, una sola promessa: precisione.
+                Vi accompagniamo passo dopo passo, dall'analisi fino alla decisione.
               </h2>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
+                Due grandi famiglie di competenze, otto specializzazioni operative.
+                Scopri come possiamo difendere i tuoi diritti davanti alla Pubblica Amministrazione.
+              </p>
             </div>
             <Link
               to="/contatti"
@@ -184,10 +258,47 @@ export default function Index() {
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-            {practices.map((p) => (
-              <PracticeCard key={p.title} {...p} />
-            ))}
+          <div className="grid lg:grid-cols-2 gap-px bg-primary/10 border hairline">
+            {practiceFamilies.map((fam) => {
+              const Icon = fam.icon;
+              return (
+                <div key={fam.family} className="bg-background p-10 lg:p-12 flex flex-col">
+                  <div className="flex items-center gap-4 mb-6">
+                    <span className="w-12 h-12 border hairline flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-gold-deep" strokeWidth={1.5} />
+                    </span>
+                    <h3 className="font-serif text-2xl text-primary leading-tight">
+                      {fam.family}
+                    </h3>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed mb-8">
+                    {fam.blurb}
+                  </p>
+                  <ul className="space-y-1 mb-8 flex-1">
+                    {fam.items.map((item, idx) => (
+                      <li key={item.label + idx}>
+                        <Link
+                          to={item.to}
+                          className="group flex items-center justify-between gap-4 py-2.5 border-b border-primary/5 hover:border-gold/40 transition-colors"
+                        >
+                          <span className="text-sm font-serif text-primary">
+                            {item.label}
+                          </span>
+                          <ArrowUpRight className="w-3.5 h-3.5 text-gold-deep opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    to={fam.href}
+                    className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-primary font-semibold hover:text-gold-deep transition-colors"
+                  >
+                    Approfondisci l'area
+                    <ArrowRight className="w-4 h-4 text-gold-deep" />
+                  </Link>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -237,6 +348,90 @@ export default function Index() {
         </div>
       </section>
 
+      {/* APPALTI SIGNATURE BAND */}
+      <section className="relative bg-primary-deep text-primary-foreground overflow-hidden">
+        <img
+          src={office}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover opacity-15"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-deep via-primary-deep/95 to-primary-deep/70" />
+        <div className="absolute inset-0 bg-noise opacity-30" />
+        <div className="relative editorial-container py-20 lg:py-28">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-3 px-4 py-2 border border-gold/40">
+                <span className="w-2 h-2 bg-gold animate-pulse" />
+                <span className="text-[10px] uppercase tracking-[0.22em] text-gold font-semibold">
+                  Servizio di Punta · Appalti Pubblici
+                </span>
+              </div>
+              <h2 className="mt-8 serif-display text-display-xl text-background text-balance leading-[1.05]">
+                Esclusi da una gara?<br />
+                <span className="italic text-gold">Hai 30 giorni</span> per ribaltarla.
+              </h2>
+              <p className="mt-8 text-lg text-background/75 leading-relaxed max-w-2xl">
+                Quando una PMI viene esclusa o l'aggiudicazione di un appalto è viziata,
+                il tempo è il primo avversario. Il rito speciale appalti prevede tempi
+                accelerati: cautelare entro 30 giorni, sentenza di merito entro 9 mesi.
+                Lo Studio offre risposta entro 48 ore e patrocinio davanti a TAR e
+                Consiglio di Stato in tutta Italia.
+              </p>
+              <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-2xl">
+                {[
+                  { v: "30gg", l: "Termini di ricorso" },
+                  { v: "48h", l: "Prima analisi" },
+                  { v: "TAR · CdS", l: "Tutte le sedi" },
+                ].map((s) => (
+                  <div key={s.l} className="border-l border-gold/30 pl-4">
+                    <p className="font-serif text-2xl text-gold leading-none">{s.v}</p>
+                    <p className="mt-2 text-[10px] uppercase tracking-[0.2em] text-background/60 leading-snug">
+                      {s.l}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <CTAButton to="/appalti-pubblici" variant="gold">
+                  Servizio Appalti Pubblici
+                </CTAButton>
+                <Link
+                  to="/contatti"
+                  className="inline-flex items-center gap-3 px-6 py-4 text-label-sm uppercase tracking-[0.16em] text-background border border-background/20 hover:border-gold hover:text-gold transition-colors"
+                >
+                  Consulenza urgente
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+            <div className="hidden lg:block lg:col-span-5">
+              <div className="relative">
+                <div className="absolute -top-4 -left-4 w-20 h-20 border border-gold/40 border-r-0 border-b-0" />
+                <div className="absolute -bottom-4 -right-4 w-20 h-20 border border-gold/40 border-l-0 border-t-0" />
+                <div className="bg-primary p-10 border border-gold/30">
+                  <Quote className="w-10 h-10 text-gold mb-6" strokeWidth={1.25} />
+                  <p className="font-serif text-xl text-background leading-relaxed text-pretty">
+                    "L'esperienza maturata su entrambi i lati del tavolo —
+                    assistendo sia stazioni appaltanti sia operatori economici —
+                    consente una visione strategica che fa la differenza nel contenzioso."
+                  </p>
+                  <div className="mt-8 pt-6 border-t border-gold/20">
+                    <p className="text-sm text-gold font-semibold tracking-wide">
+                      STUDIO LEGALE ACCARINO
+                    </p>
+                    <p className="text-xs text-background/60 mt-1">
+                      Difesa imprese e PA dal 1974
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* APPROACH */}
       <section className="section-y">
         <div className="editorial-container">
@@ -264,8 +459,77 @@ export default function Index() {
         </div>
       </section>
 
-      {/* TERRITORIO */}
+      {/* TESTIMONIALS */}
       <section className="section-y bg-surface-container-low border-y hairline">
+        <div className="editorial-container">
+          <div className="grid lg:grid-cols-12 gap-12 items-start">
+            <div className="lg:col-span-4">
+              <Eyebrow>Voci dei clienti</Eyebrow>
+              <h2 className="mt-6 serif-display text-display-lg text-balance">
+                Cosa dicono di noi.
+              </h2>
+              <p className="mt-6 text-muted-foreground leading-relaxed">
+                Testimonianze raccolte tra clienti privati, imprese e funzionari
+                pubblici che si sono affidati allo Studio negli ultimi anni.
+              </p>
+              <div className="mt-8 flex items-center gap-4">
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-gold text-gold" />
+                  ))}
+                </div>
+                <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                  Valutazione media clienti
+                </span>
+              </div>
+            </div>
+
+            <div className="lg:col-span-8">
+              <div className="relative bg-background border hairline p-10 lg:p-14 min-h-[340px] flex flex-col">
+                <Quote className="w-10 h-10 text-gold/40 absolute top-8 right-8" strokeWidth={1} />
+                <p className="font-serif text-xl lg:text-2xl text-primary leading-relaxed text-pretty flex-1">
+                  "{t.quote}"
+                </p>
+                <div className="mt-10 pt-6 border-t hairline flex items-end justify-between flex-wrap gap-6">
+                  <div>
+                    <p className="font-serif text-lg text-primary">{t.author}</p>
+                    <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground mt-1">
+                      {t.role}
+                    </p>
+                    <p className="text-[11px] text-gold-deep mt-2 font-semibold">
+                      {t.date}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs text-muted-foreground tabular-nums">
+                      {String(activeTestimonial + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
+                    </span>
+                    <div className="flex gap-2">
+                      <button
+                        aria-label="Testimonianza precedente"
+                        onClick={prevTestimonial}
+                        className="w-10 h-10 border hairline flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </button>
+                      <button
+                        aria-label="Testimonianza successiva"
+                        onClick={nextTestimonial}
+                        className="w-10 h-10 border hairline flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TERRITORIO */}
+      <section className="section-y bg-background">
         <div className="editorial-container grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6">
             <div className="gold-corner p-3">

@@ -1,12 +1,13 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Check, LucideIcon } from "lucide-react";
+import { ArrowRight, Check, LucideIcon, Phone, Quote } from "lucide-react";
 import { Eyebrow } from "./Eyebrow";
 import { CTAButton } from "./CTAButton";
 import { FAQ, FAQItem } from "./FAQ";
 
 export interface PracticeStat { value: string; label: string }
 export interface PracticeStep { num: string; title: string; description: string }
+export interface PracticeOutcome { value: string; label: string; caseType: string }
 
 interface Props {
   number: string;
@@ -21,11 +22,14 @@ interface Props {
   stats: PracticeStat[];
   faq: FAQItem[];
   intro: ReactNode;
+  outcomes?: PracticeOutcome[];
+  signatureQuote?: { quote: string; attribution?: string };
 }
 
 export const PracticePageTemplate = ({
   number, eyebrow, title, lead, heroImage, icon: Icon,
   whoFor, services, process, stats, faq, intro,
+  outcomes, signatureQuote,
 }: Props) => {
   return (
     <>
@@ -44,13 +48,13 @@ export const PracticePageTemplate = ({
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <CTAButton to="/contatti">Prenota una consulenza</CTAButton>
-              <Link
-                to="#servizi"
-                className="inline-flex items-center gap-3 px-6 py-4 text-label-sm uppercase tracking-[0.16em] text-primary hover:text-gold-deep transition-colors"
+              <a
+                href="tel:+390891234567"
+                className="inline-flex items-center gap-3 px-6 py-4 text-label-sm uppercase tracking-[0.16em] text-primary hover:text-gold-deep transition-colors border border-primary/20 hover:border-gold"
               >
-                Scopri i servizi
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+                <Phone className="w-4 h-4 text-gold-deep" strokeWidth={2} />
+                089 123 4567
+              </a>
             </div>
           </div>
           <div className="lg:col-span-5">
@@ -71,6 +75,32 @@ export const PracticePageTemplate = ({
           </div>
         </div>
       </section>
+
+      {/* Outcomes strip (optional) */}
+      {outcomes && outcomes.length > 0 && (
+        <section className="bg-primary text-primary-foreground border-y border-gold/30 relative overflow-hidden">
+          <div className="absolute inset-0 bg-noise opacity-25" />
+          <div className="relative editorial-container py-10">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="w-8 h-px bg-gold" />
+              <span className="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold">
+                Esiti rappresentativi
+              </span>
+            </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6 divide-y lg:divide-y-0 lg:divide-x divide-background/10">
+              {outcomes.map((o, i) => (
+                <div key={o.label + i} className={`px-2 lg:px-6 ${i === 0 ? "lg:pl-0" : ""} pt-6 lg:pt-0`}>
+                  <p className="font-serif text-2xl lg:text-3xl text-gold leading-none">{o.value}</p>
+                  <p className="mt-3 text-sm text-background font-serif">{o.label}</p>
+                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-background/60">
+                    {o.caseType}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Intro & For Whom */}
       <section className="section-y">
@@ -149,6 +179,23 @@ export const PracticePageTemplate = ({
           </div>
         </div>
       </section>
+
+      {/* Signature quote (optional) */}
+      {signatureQuote && (
+        <section className="bg-surface-container-low border-y hairline">
+          <div className="editorial-container py-20 lg:py-24 max-w-4xl">
+            <Quote className="w-12 h-12 text-gold/50 mb-8" strokeWidth={1} />
+            <blockquote className="font-serif text-2xl lg:text-3xl text-primary leading-relaxed text-pretty">
+              "{signatureQuote.quote}"
+            </blockquote>
+            {signatureQuote.attribution && (
+              <p className="mt-8 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
+                — {signatureQuote.attribution}
+              </p>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* Stats */}
       <section className="bg-primary text-primary-foreground py-20 relative overflow-hidden">

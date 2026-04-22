@@ -55,6 +55,17 @@ export default function AppaltiPubblici() {
           { q: "Il TAR può annullare la gara già aggiudicata?", a: "Sì. In presenza di vizi rilevanti il TAR può disporre l'annullamento dell'aggiudicazione, l'aggiudicazione al ricorrente o, in casi più gravi, l'annullamento dell'intera gara con nuova procedura." },
           { q: "Offrite assistenza preventiva sui bandi?", a: "Sì. Per imprese clienti in retainer offriamo l'analisi preventiva dei bandi più rilevanti, l'assistenza nella predisposizione dell'offerta e il monitoraggio costante del contenzioso del settore." },
         ]}
+        outcomes={[
+          { value: "Annullamento", label: "Aggiudicazione illegittima", caseType: "Gara €4M servizi" },
+          { value: "Sospensione", label: "Cautelare in 28gg", caseType: "Esclusione PMI" },
+          { value: "Riaffidamento", label: "Appalto riassegnato", caseType: "Vizio commissione" },
+          { value: "Risarcimento", label: "Danno da perdita chance", caseType: "Operatore escluso" },
+        ]}
+        signatureQuote={{
+          quote:
+            "Nel contenzioso appalti il tempo è il primo avversario: 30 giorni per ricorrere, 30 per la cautelare. Ogni giorno di ritardo è una posizione persa.",
+          attribution: "Studio Legale Accarino",
+        }}
       />
     </Layout>
   );

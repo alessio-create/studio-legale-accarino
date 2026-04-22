@@ -55,6 +55,17 @@ export default function ConcorsiPubblici() {
           { q: "Se perdo, devo pagare le spese della PA?", a: "In caso di soccombenza il giudice può condannare alle spese, ma per i ricorsi in materia concorsuale spesso si applica la compensazione. Una valutazione preliminare aiuta a stimare il rischio." },
           { q: "Si può davvero vincere contro la PA?", a: "Sì. Statisticamente i ricorsi su vizi sostanziali (violazione di legge, eccesso di potere) hanno percentuali di successo significative. Una valutazione preliminare seria stima la fondatezza del caso." },
         ]}
+        outcomes={[
+          { value: "Reintegro", label: "Candidata in graduatoria", caseType: "Concorso ASL" },
+          { value: "Annullato", label: "Bando illegittimo", caseType: "Concorso scuola" },
+          { value: "15 ricorrenti", label: "Ricorso collettivo vinto", caseType: "Esclusioni in serie" },
+          { value: "Riconv. graduatoria", label: "Nuova prova ammessa", caseType: "Vizio commissione" },
+        ]}
+        signatureQuote={{
+          quote:
+            "Un concorso pubblico è una promessa di trasparenza. Quando viene tradita, la difesa del singolo candidato è anche difesa dell'imparzialità della Pubblica Amministrazione.",
+          attribution: "Studio Legale Accarino",
+        }}
       />
     </Layout>
   );

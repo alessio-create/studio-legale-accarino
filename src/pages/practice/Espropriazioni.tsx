@@ -71,6 +71,17 @@ export default function Espropriazioni() {
           { q: "Posso bloccare i lavori dell'ente espropriante?", a: "In presenza di gravi vizi è possibile chiedere al TAR la sospensione cautelare del decreto. La concessione richiede dimostrazione di danno grave e irreparabile e fumus boni iuris." },
           { q: "Quanto costa promuovere un'opposizione?", a: "Per l'opposizione alla stima i costi partono da €3.000–€5.000; per il contenzioso pieno (TAR + eventuale CdS) da €8.000–€15.000. Forniamo sempre un preventivo scritto in sede di consulenza." },
         ]}
+        outcomes={[
+          { value: "+€1,2M", label: "Indennità rivalutata", caseType: "Terreno agricolo" },
+          { value: "Restituzione", label: "Bene + risarcimento", caseType: "Occupazione illegittima" },
+          { value: "Annullato", label: "Decreto di esproprio", caseType: "Vizi procedurali" },
+          { value: "+180%", label: "Aumento medio indennità", caseType: "Casi rappresentativi" },
+        ]}
+        signatureQuote={{
+          quote:
+            "L'indennità di esproprio non è un'offerta ma un diritto: deve riflettere il valore reale del bene, non quello che la Pubblica Amministrazione vuole pagare.",
+          attribution: "Studio Legale Accarino",
+        }}
       />
     </Layout>
   );
