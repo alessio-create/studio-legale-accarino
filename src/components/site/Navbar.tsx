@@ -119,6 +119,27 @@ export const Navbar = () => {
       {open && (
         <div className="lg:hidden bg-background border-t hairline animate-fade-up">
           <div className="editorial-container py-6 flex flex-col gap-5">
+            <div>
+              <button
+                className="nav-link inline-flex items-center gap-1.5 w-full"
+                onClick={() => setMobileServicesOpen((s) => !s)}
+                aria-expanded={mobileServicesOpen}
+              >
+                Servizi
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`} />
+              </button>
+              {mobileServicesOpen && (
+                <ul className="mt-3 ml-3 border-l hairline pl-4 flex flex-col gap-3">
+                  {services.map((s) => (
+                    <li key={s.to}>
+                      <Link to={s.to} className="block text-sm text-foreground hover:text-gold transition-colors">
+                        {s.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
             {mainLinks.map((l) => (
               <Link key={l.to} to={l.to} className="nav-link">
                 {l.label}
