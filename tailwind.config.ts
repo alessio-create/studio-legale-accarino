@@ -12,8 +12,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ["Noto Serif", "Source Serif Pro", "Georgia", "serif"],
-        sans: ["Public Sans", "Inter", "system-ui", "sans-serif"],
+        serif: ["Libre Baskerville", "Georgia", "serif"],
+        sans: ["Source Sans 3", "Source Sans Pro", "Inter", "system-ui", "sans-serif"],
       },
       fontSize: {
         "display-2xl": ["clamp(3.5rem, 7vw, 6rem)", { lineHeight: "1.02", letterSpacing: "-0.025em" }],
@@ -39,6 +39,26 @@ export default {
           foreground: "hsl(var(--gold-foreground))",
           soft: "hsl(var(--gold-soft))",
           deep: "hsl(var(--gold-deep))",
+        },
+        brand: {
+          blue: {
+            DEFAULT: "hsl(var(--brand-blue))",
+            900: "hsl(var(--brand-blue-900))",
+            700: "hsl(var(--brand-blue-700))",
+            500: "hsl(var(--brand-blue-500))",
+            300: "hsl(var(--brand-blue-300))",
+            100: "hsl(var(--brand-blue-100))",
+            50:  "hsl(var(--brand-blue-50))",
+          },
+          yellow: {
+            DEFAULT: "hsl(var(--brand-yellow))",
+            500: "hsl(var(--brand-yellow-500))",
+            400: "hsl(var(--brand-yellow-400))",
+            300: "hsl(var(--brand-yellow-300))",
+            200: "hsl(var(--brand-yellow-200))",
+            100: "hsl(var(--brand-yellow-100))",
+            50:  "hsl(var(--brand-yellow-50))",
+          },
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
