@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  ArrowRight, ArrowUpRight, Award, Building2, ChevronLeft, ChevronRight, Gavel,
+  ArrowRight, ArrowUpRight, Award, Building2, Calendar, ChevronLeft, ChevronRight, Gavel,
   Landmark, Quote, ShieldCheck, Star, Scale, Users,
 } from "lucide-react";
 import heroCourthouse from "@/assets/hero-courthouse.jpg";
@@ -182,6 +182,88 @@ const credentials = [
   "Ordine Avvocati Salerno",
 ];
 
+/**
+ * Headline statistics shown in the strip below the hero.
+ */
+const heroStats = [
+  { value: "50+", label: "Anni di esperienza", caption: "Dal 1974 al servizio del diritto pubblico" },
+  { value: "04", label: "Aree di specializzazione", caption: "Espropri · Urbanistica · Appalti · Concorsi" },
+  { value: "1.200+", label: "Cause patrocinate", caption: "TAR, Consiglio di Stato, Cassazione" },
+  { value: "9", label: "Professionisti dedicati", caption: "Team multidisciplinare su due sedi" },
+];
+
+/**
+ * Featured editorial articles — link to /blog.
+ */
+const featuredArticles = [
+  {
+    category: "Espropriazioni",
+    date: "12 Marzo 2026",
+    readTime: "6 min",
+    title: "Indennità di esproprio: come contestare la stima dell'Agenzia delle Entrate.",
+    excerpt:
+      "Una guida operativa ai criteri di valutazione e agli strumenti di opposizione davanti alla Corte d'Appello.",
+  },
+  {
+    category: "Appalti Pubblici",
+    date: "28 Febbraio 2026",
+    readTime: "4 min",
+    title: "Rito appalti: i 30 giorni che decidono la sorte di una gara.",
+    excerpt:
+      "Termini, sospensiva cautelare e strategie processuali nel contenzioso accelerato davanti al TAR.",
+  },
+  {
+    category: "Urbanistica",
+    date: "14 Febbraio 2026",
+    readTime: "5 min",
+    title: "Sanatorie edilizie in zone vincolate: cosa cambia con la riforma.",
+    excerpt:
+      "L'accertamento di conformità e il parere della Soprintendenza alla luce della giurisprudenza più recente.",
+  },
+];
+
+/**
+ * Procedures grouped by audience for the sticky-label section.
+ */
+const procedureGroups = [
+  {
+    audience: "Per gli Enti",
+    intro:
+      "Assistenza alle Pubbliche Amministrazioni e alle stazioni appaltanti nella prevenzione e gestione del contenzioso.",
+    items: [
+      "Pareri di legittimità su atti amministrativi",
+      "Difesa in giudizio davanti al TAR",
+      "Procedimenti espropriativi e ablatori",
+      "Gare d'appalto e procedure di affidamento",
+      "Contenzioso esecutivo e varianti contrattuali",
+      "Procedimenti disciplinari e responsabilità erariale",
+      "Concorsi pubblici e selezioni del personale",
+      "Provvedimenti urbanistici e pianificazione",
+      "Recupero crediti e azioni di rivalsa",
+      "Formazione del personale e compliance",
+    ],
+  },
+  {
+    audience: "Per le Persone",
+    intro:
+      "Tutela di privati cittadini, professionisti e imprese nei rapporti conflittuali con la Pubblica Amministrazione.",
+    items: [
+      "Opposizione alla stima dell'indennità di esproprio",
+      "Occupazioni illegittime e d'urgenza",
+      "Retrocessione totale o parziale dei beni",
+      "Permessi a costruire, SCIA e DIA",
+      "Vincoli paesaggistici e Soprintendenze",
+      "Abusi edilizi e procedure di sanatoria",
+      "Ricorsi su esclusioni in gara d'appalto",
+      "Sospensive cautelari ex art. 55 c.p.a.",
+      "Impugnazione graduatorie e prove concorsuali",
+      "Ricorsi collettivi nel pubblico impiego",
+      "Diniego di accesso agli atti",
+      "Sanzioni amministrative e ricorsi gerarchici",
+    ],
+  },
+];
+
 export default function Index() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const t = testimonials[activeTestimonial];
@@ -251,6 +333,31 @@ export default function Index() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* STATS STRIP — headline credentials immediately after hero */}
+      <section className="bg-background border-b hairline">
+        <div className="editorial-container py-16 lg:py-20">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 lg:gap-y-0 gap-x-8 lg:divide-x divide-primary/10">
+            {heroStats.map((s, i) => (
+              <div
+                key={s.label}
+                className={`flex flex-col ${i === 0 ? "lg:pl-0" : "lg:pl-10"} lg:pr-10`}
+              >
+                <span aria-hidden className="w-8 h-px bg-gold mb-6" />
+                <p className="font-serif text-gold-deep leading-none tracking-tight" style={{ fontSize: "clamp(2.5rem, 4vw, 3.75rem)" }}>
+                  {s.value}
+                </p>
+                <p className="mt-5 font-serif text-base text-primary leading-snug">
+                  {s.label}
+                </p>
+                <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground leading-relaxed">
+                  {s.caption}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -417,6 +524,60 @@ export default function Index() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* PROCEDURES — sticky audience label · numbered list */}
+      <section className="bg-surface-container-low border-y hairline">
+        <div className="editorial-container py-20 lg:py-28">
+          <div className="max-w-3xl mb-16 lg:mb-20">
+            <Eyebrow>Cosa facciamo per voi</Eyebrow>
+            <h2 className="mt-6 serif-display text-display-xl text-balance">
+              Le procedure che gestiamo, divise per chi ne ha bisogno.
+            </h2>
+            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+              Una mappa operativa dei servizi: dalla consulenza preventiva al
+              contenzioso davanti alle Magistrature Superiori, distinta tra Pubbliche
+              Amministrazioni e soggetti privati.
+            </p>
+          </div>
+
+          {procedureGroups.map((group, gi) => (
+            <div
+              key={group.audience}
+              className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 ${gi > 0 ? "mt-24 lg:mt-32" : ""}`}
+            >
+              <div className="lg:col-span-3">
+                <div className="lg:sticky lg:top-32">
+                  <span aria-hidden className="block w-8 h-px bg-gold mb-6" />
+                  <p className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">
+                    {group.audience}
+                  </p>
+                  <p className="mt-6 text-sm text-muted-foreground leading-relaxed max-w-[260px]">
+                    {group.intro}
+                  </p>
+                </div>
+              </div>
+
+              <div className="lg:col-span-9">
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+                  {group.items.map((item, idx) => (
+                    <li
+                      key={item}
+                      className="group flex items-start justify-between gap-6 py-6 border-t hairline first:border-t-0 md:[&:nth-child(2)]:border-t-0"
+                    >
+                      <span className="font-serif text-lg text-primary leading-snug text-pretty pr-4 group-hover:text-gold-deep transition-colors">
+                        {item}
+                      </span>
+                      <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground pt-1 flex-shrink-0">
+                        {String(idx + 1).padStart(2, "0")}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -687,6 +848,74 @@ export default function Index() {
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+
+      {/* FEATURED ARTICLES — static editorial grid linking to /blog */}
+      <section className="section-y bg-background border-t hairline">
+        <div className="editorial-container">
+          <div className="flex items-end justify-between flex-wrap gap-8 mb-14">
+            <div className="max-w-2xl">
+              <Eyebrow>Dal nostro blog</Eyebrow>
+              <h2 className="mt-6 serif-display text-display-xl text-balance">
+                Approfondimenti, sentenze, novità normative.
+              </h2>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
+                Una selezione di letture firmate dai professionisti dello Studio
+                per restare aggiornati sull'evoluzione del diritto amministrativo.
+              </p>
+            </div>
+            <Link
+              to="/blog"
+              className="hidden md:inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-primary hover:text-gold-deep transition-colors font-semibold"
+            >
+              Tutti gli articoli <ArrowRight className="w-4 h-4 text-gold-deep" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-primary/10 border hairline">
+            {featuredArticles.map((a) => (
+              <Link
+                key={a.title}
+                to="/blog"
+                className="group bg-background p-10 lg:p-12 flex flex-col hover:bg-surface-container-low transition-colors"
+              >
+                <div className="flex items-center justify-between mb-8">
+                  <span className="text-[10px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
+                    {a.category}
+                  </span>
+                  <span className="flex items-center gap-2 text-[11px] text-muted-foreground tabular-nums">
+                    <Calendar className="w-3 h-3" strokeWidth={1.5} />
+                    {a.date}
+                  </span>
+                </div>
+
+                <h3 className="font-serif text-2xl text-primary leading-snug text-balance group-hover:text-gold-deep transition-colors">
+                  {a.title}
+                </h3>
+                <p className="mt-5 text-sm text-muted-foreground leading-relaxed flex-1">
+                  {a.excerpt}
+                </p>
+
+                <div className="mt-10 pt-6 border-t hairline flex items-center justify-between">
+                  <span className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                    {a.readTime} di lettura
+                  </span>
+                  <ArrowUpRight
+                    className="w-4 h-4 text-gold-deep group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                    strokeWidth={1.5}
+                  />
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <Link
+            to="/blog"
+            className="md:hidden mt-10 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-primary font-semibold"
+          >
+            Tutti gli articoli <ArrowRight className="w-4 h-4 text-gold-deep" />
+          </Link>
         </div>
       </section>
 
