@@ -7,50 +7,70 @@
 
 @layer base {
   :root {
-    /* Surfaces (parchment / off-white) */
-    --background: 40 20% 98%;          /* #fbf9fb-ish parchment */
-    --foreground: 222 30% 11%;         /* near-navy text */
+    /* — Brand: Studio Legale Accarino 2026 —
+       Primary: Deep Blue #14213D · Accent: Bright Yellow #FDA311 */
 
-    --surface: 40 20% 98%;
-    --surface-dim: 240 3% 86%;
-    --surface-container: 270 6% 94%;
-    --surface-container-low: 280 8% 96%;
-    --surface-container-high: 270 4% 91%;
+    /* Surfaces (Neutral White brand) */
+    --background: 0 0% 100%;            /* #FFFFFF */
+    --foreground: 220 51% 16%;          /* Deep Blue #14213D */
+
+    --surface: 0 0% 100%;
+    --surface-dim: 0 0% 88%;            /* #E0E0E0 */
+    --surface-container: 0 0% 96%;
+    --surface-container-low: 0 0% 98%;
+    --surface-container-high: 0 0% 94%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 30% 11%;
+    --card-foreground: 220 51% 16%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 30% 11%;
+    --popover-foreground: 220 51% 16%;
 
-    /* Primary — Deep Navy */
-    --primary: 217 50% 12%;            /* #0b1c34 deep navy */
-    --primary-foreground: 40 20% 98%;
-    --primary-glow: 217 35% 22%;
-    --primary-deep: 220 60% 8%;
+    /* Primary — Deep Blue #14213D */
+    --primary: 220 51% 16%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 222 57% 33%;        /* #244584 */
+    --primary-deep: 220 60% 10%;
 
-    /* Secondary — Gold / Champagne */
-    --gold: 41 65% 56%;                /* #c5a059 prestige gold */
-    --gold-foreground: 222 30% 11%;
-    --gold-soft: 41 50% 88%;
-    --gold-deep: 38 75% 35%;
+    /* Brand Blue scale */
+    --brand-blue: 220 51% 16%;          /* #14213D */
+    --brand-blue-900: 220 51% 16%;      /* #14213D */
+    --brand-blue-700: 222 57% 33%;      /* #244584 */
+    --brand-blue-500: 217 67% 48%;      /* #2762CE */
+    --brand-blue-300: 211 82% 60%;      /* #4594EC */
+    --brand-blue-100: 208 87% 78%;      /* #99CDF7 */
+    --brand-blue-50:  210 88% 93%;      /* #DDEDFC */
 
-    /* Slate (body text alt) */
-    --secondary: 220 15% 96%;
-    --secondary-foreground: 222 30% 11%;
+    /* Accent — Bright Yellow #FDA311 (replaces previous "gold") */
+    --gold: 38 98% 53%;                 /* #FDA311 */
+    --gold-foreground: 220 51% 16%;
+    --gold-soft: 33 100% 95%;           /* #FFF3E3 */
+    --gold-deep: 33 99% 50%;            /* deepened brand yellow for text */
 
-    --muted: 270 8% 94%;
-    --muted-foreground: 222 12% 32%;   /* slate gray */
+    --brand-yellow: 38 98% 53%;         /* #FDA311 */
+    --brand-yellow-500: 33 99% 62%;     /* #FEA93E */
+    --brand-yellow-400: 30 99% 68%;     /* #FEB15E */
+    --brand-yellow-300: 28 99% 75%;     /* #FEBC7F */
+    --brand-yellow-200: 30 100% 87%;    /* #FFDFBD */
+    --brand-yellow-100: 33 100% 95%;    /* #FFF3E3 */
+    --brand-yellow-50:  33 100% 97%;
 
-    --accent: 41 50% 92%;               /* gold tinted */
-    --accent-foreground: 222 30% 11%;
+    /* Neutrals */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 220 51% 16%;
 
-    --destructive: 0 70% 42%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 36%;       /* #5D5D5D */
+
+    --accent: 33 100% 95%;              /* yellow-tinted #FFF3E3 */
+    --accent-foreground: 220 51% 16%;
+
+    --destructive: 0 70% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 222 15% 88%;
-    --input: 222 20% 22%;
-    --ring: 41 65% 56%;
+    --border: 0 0% 88%;                 /* #E0E0E0 brand grey */
+    --input: 220 51% 16%;
+    --ring: 38 98% 53%;                 /* Bright Yellow */
 
     --radius: 0;
 
@@ -59,15 +79,15 @@
     --section-y: 160px;
 
     /* Gradients & shadows */
-    --gradient-navy: linear-gradient(180deg, hsl(220 60% 8%) 0%, hsl(217 50% 12%) 100%);
+    --gradient-navy: linear-gradient(180deg, hsl(220 60% 10%) 0%, hsl(220 51% 16%) 100%);
     --gradient-gold-line: linear-gradient(90deg, transparent, hsl(var(--gold)) 50%, transparent);
-    --shadow-elegant: 0 24px 60px -30px hsl(217 50% 12% / 0.18);
-    --shadow-lift: 0 12px 36px -16px hsl(217 50% 12% / 0.12);
+    --shadow-elegant: 0 24px 60px -30px hsl(220 51% 16% / 0.20);
+    --shadow-lift: 0 12px 36px -16px hsl(220 51% 16% / 0.14);
     --shadow-inset-gold: inset 0 0 0 1px hsl(var(--gold) / 0.5);
 
     /* Type tokens */
-    --font-serif: "Noto Serif", "Source Serif Pro", Georgia, serif;
-    --font-sans: "Public Sans", "Inter", system-ui, -apple-system, sans-serif;
+    --font-serif: "Libre Baskerville", Georgia, serif;
+    --font-sans: "Source Sans 3", "Source Sans Pro", "Inter", system-ui, -apple-system, sans-serif;
 
     --transition-elegant: all 350ms cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -82,16 +102,16 @@
   }
 
   .dark {
-    --background: 222 40% 6%;
-    --foreground: 40 20% 96%;
-    --card: 222 40% 8%;
-    --card-foreground: 40 20% 96%;
-    --primary: 41 65% 60%;
-    --primary-foreground: 222 40% 6%;
-    --muted: 222 25% 14%;
-    --muted-foreground: 220 10% 65%;
-    --border: 222 25% 18%;
-    --input: 222 25% 18%;
+    --background: 220 51% 8%;
+    --foreground: 0 0% 100%;
+    --card: 220 51% 12%;
+    --card-foreground: 0 0% 100%;
+    --primary: 38 98% 53%;
+    --primary-foreground: 220 51% 8%;
+    --muted: 220 30% 16%;
+    --muted-foreground: 0 0% 75%;
+    --border: 220 30% 22%;
+    --input: 220 30% 22%;
   }
 }
 
