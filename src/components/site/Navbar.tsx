@@ -59,9 +59,8 @@ export const Navbar = () => {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const { pathname } = useLocation();
 
-  // Hero is now light/white on every route — navbar always uses the light variant.
-  // We keep a transparent state at the top of the homepage for a cleaner overlay.
-  const overDarkHero = false;
+  // Homepage hero is now dark — overlay nav with light text at the top of "/".
+  const overDarkHero = pathname === "/" && !scrolled;
   const transparentTop = pathname === "/" && !scrolled;
 
   useEffect(() => {
