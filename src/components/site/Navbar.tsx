@@ -59,9 +59,10 @@ export const Navbar = () => {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const { pathname } = useLocation();
 
-  // Only the homepage has a dark, full-bleed hero behind a transparent navbar.
-  // On every other route the navbar always sits over the parchment background.
-  const overDarkHero = pathname === "/" && !scrolled;
+  // Hero is now light/white on every route — navbar always uses the light variant.
+  // We keep a transparent state at the top of the homepage for a cleaner overlay.
+  const overDarkHero = false;
+  const transparentTop = pathname === "/" && !scrolled;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -79,8 +80,8 @@ export const Navbar = () => {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        overDarkHero
-          ? "bg-transparent border-b border-transparent [&_.nav-link]:text-background"
+        transparentTop
+          ? "bg-transparent border-b border-transparent"
           : "bg-background/95 backdrop-blur-md border-b hairline shadow-[0_1px_0_0_hsl(var(--primary)/0.04)]"
       }`}
       onMouseLeave={() => setMegaOpen(false)}

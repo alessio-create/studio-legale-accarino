@@ -150,31 +150,31 @@ export default function Index() {
   return (
     <Layout>
       {/* HERO */}
-      <section className="relative min-h-[92vh] flex items-end overflow-hidden bg-primary text-primary-foreground">
+      <section className="relative min-h-[92vh] flex items-end overflow-hidden bg-background text-primary">
         <img
           src={heroColumns}
           alt="Colonne neoclassiche di un palazzo di giustizia"
-          className="absolute inset-0 w-full h-full object-cover opacity-55"
+          className="absolute inset-0 w-full h-full object-cover opacity-15"
           width={1920}
           height={1280}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary-deep/85 via-primary/55 to-primary" />
-        <div className="absolute inset-0 bg-noise opacity-40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/85 to-background" />
+        <div className="absolute inset-0 bg-noise opacity-30" />
 
         <div className="relative z-10 editorial-container pt-40 pb-24 lg:pt-48 lg:pb-32">
           <div className="max-w-5xl">
-            <p className="font-serif italic text-gold text-2xl mb-8 animate-fade-up">
+            <p className="font-serif italic text-gold-deep text-2xl mb-8 animate-fade-up">
               Cinquant'anni al servizio della giustizia amministrativa.
             </p>
-            <h1 className="serif-display text-[clamp(2.75rem,7vw,6rem)] text-background text-balance leading-[1.02] animate-fade-up">
+            <h1 className="serif-display text-[clamp(2.75rem,7vw,6rem)] text-primary text-balance leading-[1.02] animate-fade-up">
               La forza della tradizione,<br />
-              <span className="italic font-normal">la precisione</span> del diritto moderno.
+              <span className="italic font-normal text-gold-deep">la precisione</span> del diritto moderno.
             </h1>
             <div className="mt-12 flex flex-col md:flex-row md:items-center gap-8 animate-fade-up">
               <CTAButton to="/contatti" variant="gold">Prenota una consulenza</CTAButton>
-              <div className="flex items-center gap-4 text-sm text-background/80">
-                <span className="font-serif italic text-gold text-3xl">50+</span>
-                <span className="uppercase tracking-[0.18em] text-[11px] leading-snug">
+              <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <span className="font-serif italic text-gold-deep text-3xl">50+</span>
+                <span className="uppercase tracking-[0.18em] text-[11px] leading-snug text-primary/70">
                   Anni di esperienza<br />in diritto amministrativo
                 </span>
               </div>
@@ -183,9 +183,9 @@ export default function Index() {
         </div>
 
         {/* bottom credential strip */}
-        <div className="absolute bottom-0 inset-x-0 border-t border-background/15 bg-primary-deep/60 backdrop-blur-sm">
+        <div className="absolute bottom-0 inset-x-0 border-t hairline bg-background/80 backdrop-blur-sm">
           <div className="editorial-container py-5 flex items-center gap-8">
-            <span className="text-[10px] uppercase tracking-[0.22em] text-gold flex-shrink-0">
+            <span className="text-[10px] uppercase tracking-[0.22em] text-gold-deep font-semibold flex-shrink-0">
               Hanno scelto lo Studio
             </span>
             <div
@@ -197,10 +197,10 @@ export default function Index() {
                   "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
               }}
             >
-              <div className="flex w-max animate-ticker items-center gap-10 text-[12px] tracking-[0.14em] uppercase text-background/60 whitespace-nowrap">
+              <div className="flex w-max animate-ticker items-center gap-10 text-[12px] tracking-[0.14em] uppercase text-muted-foreground whitespace-nowrap">
                 {[...credentials, ...credentials].map((c, i) => (
                   <span key={`${c}-${i}`} className="flex items-center gap-3 pr-10">
-                    <span className="w-1 h-1 bg-gold/60" />
+                    <span className="w-1 h-1 bg-gold" />
                     {c}
                   </span>
                 ))}
