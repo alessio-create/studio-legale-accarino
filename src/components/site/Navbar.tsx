@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, Phone, Landmark, Building2, Users, Scale, ArrowUpRight } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, Landmark, Building2, Users, Scale, ArrowUpRight, ArrowRight } from "lucide-react";
 import { Logo } from "./Logo";
 
 const serviceGroups = [
@@ -44,7 +44,9 @@ const serviceGroups = [
 const allServiceRoutes = serviceGroups.flatMap((g) => g.items.map((i) => i.to));
 
 const mainLinks = [
-  { to: "/chi-siamo", label: "Chi Sono" },
+  { to: "/chi-siamo", label: "Lo Studio" },
+  { to: "/team", label: "Il Team" },
+  { to: "/casi-di-successo", label: "Casi di Successo" },
   { to: "/blog", label: "Blog" },
   { to: "/contatti", label: "Contatti" },
 ];
