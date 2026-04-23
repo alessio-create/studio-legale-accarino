@@ -215,19 +215,19 @@ export default function Index() {
       {/* RESULTS STRIP */}
       <section className="bg-primary text-primary-foreground border-y border-gold/30 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise opacity-25" />
-        <div className="editorial-container relative py-10 lg:py-12">
-          <div className="flex items-center justify-between flex-wrap gap-6 mb-8">
+        <div className="editorial-container relative py-14 lg:py-20">
+          <div className="flex items-start justify-between flex-wrap gap-6 mb-12">
             <div className="flex items-center gap-4">
               <span className="w-8 h-px bg-gold" />
               <span className="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold">
                 Esiti rappresentativi
               </span>
             </div>
-            <span className="text-xs italic text-background/50 max-w-md">
+            <span className="text-xs italic text-background/50 max-w-sm leading-relaxed">
               Esempi illustrativi del tipo di esito ottenibile. Casi anonimizzati nel rispetto del segreto professionale.
             </span>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6 divide-y lg:divide-y-0 lg:divide-x divide-background/10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8 divide-y lg:divide-y-0 lg:divide-x divide-background/10">
             {results.map((r, i) => (
               <ResultCard
                 key={r.label + i}
