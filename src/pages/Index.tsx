@@ -347,13 +347,22 @@ export default function Index() {
         <div className="editorial-container py-16 lg:py-20">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 lg:gap-y-0 gap-x-8 lg:divide-x divide-primary/10">
             {heroStats.map((s, i) => (
-              <div
+              <Reveal
                 key={s.label}
+                delay={i * 90}
                 className={`flex flex-col ${i === 0 ? "lg:pl-0" : "lg:pl-10"} lg:pr-10`}
               >
                 <span aria-hidden className="w-8 h-px bg-gold mb-6" />
-                <p className="font-serif text-gold-deep leading-none tracking-tight" style={{ fontSize: "clamp(2.5rem, 4vw, 3.75rem)" }}>
-                  {s.value}
+                <p
+                  className="font-serif text-gold-deep leading-none tracking-tight tabular-nums"
+                  style={{ fontSize: "clamp(2.5rem, 4vw, 3.75rem)" }}
+                >
+                  <CountUp
+                    to={s.to}
+                    suffix={s.suffix}
+                    pad={s.pad}
+                    thousands={s.thousands}
+                  />
                 </p>
                 <p className="mt-5 font-serif text-base text-primary leading-snug">
                   {s.label}
@@ -361,7 +370,7 @@ export default function Index() {
                 <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground leading-relaxed">
                   {s.caption}
                 </p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
