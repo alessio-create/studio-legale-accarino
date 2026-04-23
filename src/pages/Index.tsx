@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  ArrowRight, ArrowUpRight, Award, Building2, ChevronLeft, ChevronRight, Gavel,
+  ArrowRight, ArrowUpRight, Award, Building2, Calendar, ChevronLeft, ChevronRight, Gavel,
   Landmark, Quote, ShieldCheck, Star, Scale, Users,
 } from "lucide-react";
 import heroCourthouse from "@/assets/hero-courthouse.jpg";
