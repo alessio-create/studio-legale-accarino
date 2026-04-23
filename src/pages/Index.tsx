@@ -65,7 +65,7 @@ const results: ResultDetail[] = [
     },
   },
   {
-    value: "Annullamento",
+    value: "Annullato",
     label: "Aggiudicazione illegittima",
     caseType: "Appalto Pubblico",
     detail: {
@@ -78,7 +78,7 @@ const results: ResultDetail[] = [
     },
   },
   {
-    value: "Reintegro",
+    value: "Reintegrata",
     label: "Candidata esclusa",
     caseType: "Concorso Pubblico",
     detail: {
@@ -91,7 +91,7 @@ const results: ResultDetail[] = [
     },
   },
   {
-    value: "Sanatoria",
+    value: "Sanata",
     label: "Recupero edilizio",
     caseType: "Urbanistica",
     detail: {
