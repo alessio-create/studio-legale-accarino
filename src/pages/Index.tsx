@@ -522,10 +522,14 @@ export default function Index() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-primary/10 border hairline">
-            {specializations.map((s) => (
-              <div key={s.title} className="bg-background">
+            {specializations.map((s, i) => (
+              <Reveal
+                key={s.title}
+                delay={i * 120}
+                className="bg-background"
+              >
                 <PracticeCard {...s} />
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -693,6 +697,9 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      {/* MAXIM TICKER — heritage interlude between Heritage and Appalti band */}
+      <MaximTicker />
 
       {/* APPALTI SIGNATURE BAND */}
       <section className="relative bg-primary-deep text-primary-foreground overflow-hidden">
