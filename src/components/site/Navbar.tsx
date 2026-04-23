@@ -110,7 +110,7 @@ export const Navbar = () => {
       </div>
 
       <div className="editorial-container">
-        <div className="flex items-center justify-between h-16 lg:h-[84px]">
+        <div className="flex items-center justify-between h-16 lg:h-[68px]">
           <Logo inverted={overDarkHero} />
 
           <nav className="hidden lg:flex items-center gap-8">

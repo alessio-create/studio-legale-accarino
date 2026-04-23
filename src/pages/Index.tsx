@@ -377,9 +377,8 @@ export default function Index() {
       </section>
 
       {/* PROCEDURES — sticky audience label · numbered list */}
-      <section className="relative bg-surface-container-low border-y hairline overflow-hidden">
-        <div aria-hidden className="absolute inset-0 bg-monogram-dark pointer-events-none" />
-        <div className="relative editorial-container py-20 lg:py-28">
+      <section className="bg-surface-container-low border-y hairline">
+        <div className="editorial-container py-20 lg:py-28">
           <div className="max-w-3xl mb-16 lg:mb-20">
             <Eyebrow>Cosa facciamo per voi</Eyebrow>
             <h2 className="mt-6 serif-display text-display-xl text-balance">
@@ -667,9 +666,7 @@ export default function Index() {
               height={1100}
             />
           </div>
-          <div className="relative bg-primary text-primary-foreground p-12 lg:p-20 flex flex-col justify-center overflow-hidden">
-            <div aria-hidden className="absolute inset-0 bg-monogram-light pointer-events-none" />
-            <div className="relative">
+          <div className="bg-primary text-primary-foreground p-12 lg:p-20 flex flex-col justify-center">
             <Eyebrow>
               <span className="text-gold">Heritage</span>
             </Eyebrow>
@@ -696,7 +693,6 @@ export default function Index() {
                   </div>
                 </div>
               ))}
-            </div>
             </div>
           </div>
         </div>

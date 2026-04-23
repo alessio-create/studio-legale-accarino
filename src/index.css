@@ -281,22 +281,6 @@
     background-size: 24px 24px;
   }
 
-  /* ── Brand monogram pattern ─────────────────────────────────────────────
-     Repeating diagonal grid of the Accarino "A" monogram. Subtle by default;
-     use the dark/light variants depending on surface. */
-  .bg-monogram-light {
-    /* Gold "A" on transparent — for use on dark navy surfaces */
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'><g opacity='0.08' fill='none' stroke='%23FDA311' stroke-width='1'><path d='M31.03 27.97L30.59 27.1L22.1 10.17L18.88 16.6L18.8 16.77L17.26 19.84L16.96 20.44L10.13 34.06H11.41L13.09 30.71L14.26 28.38H21.55H24.62L26.83 32.79L27.47 34.06H34.08L31.03 27.97ZM29.31 27.09H25.26L20.08 16.75L22.11 12.71L29.32 27.09H29.31ZM14.89 27.09L17.26 22.37L19.63 27.09H14.9H14.89ZM20.9 27.09L17.9 21.1L19.44 18.03L23.98 27.09H20.91H20.9ZM28.11 32.78L25.9 28.37H29.95L32.16 32.78H28.11Z'/></g></svg>");
-    background-size: 90px 90px;
-    background-repeat: repeat;
-  }
-  .bg-monogram-dark {
-    /* Navy "A" on transparent — for use on light parchment surfaces */
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'><g opacity='0.05' fill='none' stroke='%2314213D' stroke-width='1'><path d='M31.03 27.97L30.59 27.1L22.1 10.17L18.88 16.6L18.8 16.77L17.26 19.84L16.96 20.44L10.13 34.06H11.41L13.09 30.71L14.26 28.38H21.55H24.62L26.83 32.79L27.47 34.06H34.08L31.03 27.97ZM29.31 27.09H25.26L20.08 16.75L22.11 12.71L29.32 27.09H29.31ZM14.89 27.09L17.26 22.37L19.63 27.09H14.9H14.89ZM20.9 27.09L17.9 21.1L19.44 18.03L23.98 27.09H20.91H20.9ZM28.11 32.78L25.9 28.37H29.95L32.16 32.78H28.11Z'/></g></svg>");
-    background-size: 90px 90px;
-    background-repeat: repeat;
-  }
-
   .animate-fade-up {
     animation: fade-up 800ms cubic-bezier(0.4, 0, 0.2, 1) both;
   }

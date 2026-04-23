@@ -24,7 +24,6 @@ export function MaximTicker() {
       aria-label="Massime di diritto e fonti normative"
       className="bg-primary-deep text-background border-y border-gold/20 relative overflow-hidden"
     >
-      <div className="absolute inset-0 bg-monogram-light" />
       <div className="absolute inset-0 bg-noise opacity-20" />
       <div
         className="relative flex overflow-hidden py-6"
