@@ -97,11 +97,11 @@ export default function ResultCard({
           />
         </span>
 
-        <p className="font-serif text-3xl lg:text-4xl text-gold leading-none transition-transform duration-300 group-hover:-translate-y-0.5">
+        <p className="font-serif text-[clamp(1.5rem,2.4vw,2.25rem)] text-gold leading-[1.05] tracking-tight break-words hyphens-auto transition-transform duration-300 group-hover:-translate-y-0.5">
           {result.value}
         </p>
-        <p className="mt-3 text-sm text-background font-serif">{result.label}</p>
-        <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-background/60">
+        <p className="mt-3 text-sm text-background font-serif break-words">{result.label}</p>
+        <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-background/60 break-words">
           {result.caseType}
         </p>
         <p className="mt-3 text-[10px] uppercase tracking-[0.18em] text-gold/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
