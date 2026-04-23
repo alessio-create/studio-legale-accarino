@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight, ArrowUpRight, Award, Building2, ChevronLeft, ChevronRight, Gavel,
-  Landmark, Quote, ShieldCheck, Star,
+  Landmark, Quote, ShieldCheck, Star, Scale, Users,
 } from "lucide-react";
 import heroCourthouse from "@/assets/hero-courthouse.jpg";
 import salernoImg from "@/assets/salerno.jpg";
@@ -13,6 +13,49 @@ import { Eyebrow } from "@/components/site/Eyebrow";
 import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
 import ResultCard, { type ResultDetail } from "@/components/site/ResultCard";
+import { PracticeCard } from "@/components/site/PracticeCard";
+
+/**
+ * Four core specializations — one card per practice detail page.
+ */
+const specializations = [
+  {
+    number: "01",
+    title: "Espropriazioni",
+    description:
+      "Difesa dei proprietari nelle procedure ablative: opposizione alla stima, occupazioni illegittime, retrocessione dei beni.",
+    icon: Landmark,
+    href: "/espropriazioni",
+    topics: ["Indennità di esproprio", "Occupazioni d'urgenza", "Retrocessione"],
+  },
+  {
+    number: "02",
+    title: "Urbanistica ed Edilizia",
+    description:
+      "Permessi a costruire, varianti, vincoli paesaggistici, abusi edilizi e procedimenti di sanatoria.",
+    icon: Scale,
+    href: "/urbanistica-edilizia",
+    topics: ["Permessi e SCIA", "Vincoli e Soprintendenze", "Sanatorie"],
+  },
+  {
+    number: "03",
+    title: "Appalti Pubblici",
+    description:
+      "Contenzioso davanti al TAR e al Consiglio di Stato: esclusioni, sospensive cautelari, anomalia delle offerte.",
+    icon: Building2,
+    href: "/appalti-pubblici",
+    topics: ["Ricorsi TAR", "Sospensive cautelari", "Esecuzione del contratto"],
+  },
+  {
+    number: "04",
+    title: "Concorsi Pubblici",
+    description:
+      "Tutela dei candidati nelle selezioni pubbliche: impugnazione di graduatorie, prove e criteri di valutazione.",
+    icon: Users,
+    href: "/concorsi-pubblici",
+    topics: ["Graduatorie", "Ricorsi collettivi", "Prove e valutazioni"],
+  },
+];
 
 /**
  * Practice areas grouped Pitta-style: each "family" lists its sub-services.
