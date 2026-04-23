@@ -14,6 +14,9 @@ import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
 import ResultCard, { type ResultDetail } from "@/components/site/ResultCard";
 import { PracticeCard } from "@/components/site/PracticeCard";
+import { Reveal } from "@/components/site/Reveal";
+import { CountUp } from "@/components/site/CountUp";
+import { MaximTicker } from "@/components/site/MaximTicker";
 
 /**
  * Four core specializations — one card per practice detail page.
@@ -184,12 +187,14 @@ const credentials = [
 
 /**
  * Headline statistics shown in the strip below the hero.
+ * `to` is the numeric target for the count-up animation; `prefix`/`suffix`/`pad`/`thousands`
+ * control how the number is rendered.
  */
 const heroStats = [
-  { value: "50+", label: "Anni di esperienza", caption: "Dal 1974 al servizio del diritto pubblico" },
-  { value: "04", label: "Aree di specializzazione", caption: "Espropri · Urbanistica · Appalti · Concorsi" },
-  { value: "1.200+", label: "Cause patrocinate", caption: "TAR, Consiglio di Stato, Cassazione" },
-  { value: "9", label: "Professionisti dedicati", caption: "Team multidisciplinare su due sedi" },
+  { to: 50, suffix: "+", thousands: false, label: "Anni di esperienza", caption: "Dal 1974 al servizio del diritto pubblico" },
+  { to: 4, suffix: "", pad: 2, label: "Aree di specializzazione", caption: "Espropri · Urbanistica · Appalti · Concorsi" },
+  { to: 1200, suffix: "+", thousands: true, label: "Cause patrocinate", caption: "TAR, Consiglio di Stato, Cassazione" },
+  { to: 9, suffix: "", label: "Professionisti dedicati", caption: "Team multidisciplinare su due sedi" },
 ];
 
 /**
