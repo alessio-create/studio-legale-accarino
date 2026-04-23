@@ -177,9 +177,9 @@ export const Navbar = () => {
           <div className="editorial-container py-12">
             <div className="grid grid-cols-12 gap-10">
               <div className="col-span-3">
-                <span className="eyebrow">Servizi</span>
+                <span className="eyebrow">Specializzazioni</span>
                 <h3 className="mt-6 font-serif text-2xl text-primary leading-snug">
-                  Quattro aree di pratica, una sola promessa di precisione.
+                  Quattro aree di specializzazione, una sola promessa di precisione.
                 </h3>
                 <Link
                   to="/contatti"
@@ -257,7 +257,7 @@ export const Navbar = () => {
                 onClick={() => setMobileServicesOpen((s) => !s)}
                 aria-expanded={mobileServicesOpen}
               >
-                Servizi
+                Specializzazioni
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`} />
               </button>
               {mobileServicesOpen && (
