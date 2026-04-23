@@ -182,6 +182,88 @@ const credentials = [
   "Ordine Avvocati Salerno",
 ];
 
+/**
+ * Headline statistics shown in the strip below the hero.
+ */
+const heroStats = [
+  { value: "50+", label: "Anni di esperienza", caption: "Dal 1974 al servizio del diritto pubblico" },
+  { value: "04", label: "Aree di specializzazione", caption: "Espropri · Urbanistica · Appalti · Concorsi" },
+  { value: "1.200+", label: "Cause patrocinate", caption: "TAR, Consiglio di Stato, Cassazione" },
+  { value: "9", label: "Professionisti dedicati", caption: "Team multidisciplinare su due sedi" },
+];
+
+/**
+ * Featured editorial articles — link to /blog.
+ */
+const featuredArticles = [
+  {
+    category: "Espropriazioni",
+    date: "12 Marzo 2026",
+    readTime: "6 min",
+    title: "Indennità di esproprio: come contestare la stima dell'Agenzia delle Entrate.",
+    excerpt:
+      "Una guida operativa ai criteri di valutazione e agli strumenti di opposizione davanti alla Corte d'Appello.",
+  },
+  {
+    category: "Appalti Pubblici",
+    date: "28 Febbraio 2026",
+    readTime: "4 min",
+    title: "Rito appalti: i 30 giorni che decidono la sorte di una gara.",
+    excerpt:
+      "Termini, sospensiva cautelare e strategie processuali nel contenzioso accelerato davanti al TAR.",
+  },
+  {
+    category: "Urbanistica",
+    date: "14 Febbraio 2026",
+    readTime: "5 min",
+    title: "Sanatorie edilizie in zone vincolate: cosa cambia con la riforma.",
+    excerpt:
+      "L'accertamento di conformità e il parere della Soprintendenza alla luce della giurisprudenza più recente.",
+  },
+];
+
+/**
+ * Procedures grouped by audience for the sticky-label section.
+ */
+const procedureGroups = [
+  {
+    audience: "Per gli Enti",
+    intro:
+      "Assistenza alle Pubbliche Amministrazioni e alle stazioni appaltanti nella prevenzione e gestione del contenzioso.",
+    items: [
+      "Pareri di legittimità su atti amministrativi",
+      "Difesa in giudizio davanti al TAR",
+      "Procedimenti espropriativi e ablatori",
+      "Gare d'appalto e procedure di affidamento",
+      "Contenzioso esecutivo e varianti contrattuali",
+      "Procedimenti disciplinari e responsabilità erariale",
+      "Concorsi pubblici e selezioni del personale",
+      "Provvedimenti urbanistici e pianificazione",
+      "Recupero crediti e azioni di rivalsa",
+      "Formazione del personale e compliance",
+    ],
+  },
+  {
+    audience: "Per le Persone",
+    intro:
+      "Tutela di privati cittadini, professionisti e imprese nei rapporti conflittuali con la Pubblica Amministrazione.",
+    items: [
+      "Opposizione alla stima dell'indennità di esproprio",
+      "Occupazioni illegittime e d'urgenza",
+      "Retrocessione totale o parziale dei beni",
+      "Permessi a costruire, SCIA e DIA",
+      "Vincoli paesaggistici e Soprintendenze",
+      "Abusi edilizi e procedure di sanatoria",
+      "Ricorsi su esclusioni in gara d'appalto",
+      "Sospensive cautelari ex art. 55 c.p.a.",
+      "Impugnazione graduatorie e prove concorsuali",
+      "Ricorsi collettivi nel pubblico impiego",
+      "Diniego di accesso agli atti",
+      "Sanzioni amministrative e ricorsi gerarchici",
+    ],
+  },
+];
+
 export default function Index() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const t = testimonials[activeTestimonial];
