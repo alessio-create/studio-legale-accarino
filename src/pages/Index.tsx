@@ -324,6 +324,37 @@ export default function Index() {
 
       {/* PRACTICE AREAS — grouped families (Pitta-style) */}
       <section className="section-y bg-surface-container-low">
+        {/* SPECIALIZZAZIONI — 4 core practice areas */}
+        <div className="editorial-container mb-20 lg:mb-28">
+          <div className="flex items-end justify-between flex-wrap gap-8 mb-14">
+            <div className="max-w-2xl">
+              <Eyebrow>Specializzazioni</Eyebrow>
+              <h2 className="mt-6 serif-display text-display-xl text-balance">
+                Quattro aree di specializzazione, una sola promessa di precisione.
+              </h2>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
+                Lo Studio concentra mezzo secolo di esperienza in quattro ambiti
+                del diritto amministrativo. Esplora ciascuna area per scoprire
+                competenze, casistica e procedure.
+              </p>
+            </div>
+            <Link
+              to="/contatti"
+              className="hidden md:inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-primary hover:text-gold-deep transition-colors font-semibold"
+            >
+              Parla con un avvocato <ArrowRight className="w-4 h-4 text-gold-deep" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-primary/10 border hairline">
+            {specializations.map((s) => (
+              <div key={s.title} className="bg-background">
+                <PracticeCard {...s} />
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="editorial-container">
           <div className="flex items-end justify-between flex-wrap gap-8 mb-16">
             <div className="max-w-2xl">
