@@ -196,6 +196,18 @@
     letter-spacing: -0.02em;
   }
 
+  /* Editorial drop-cap — first letter of a lead paragraph */
+  .drop-cap::first-letter {
+    font-family: var(--font-serif);
+    float: left;
+    font-size: 4.25em;
+    line-height: 0.85;
+    padding: 0.08em 0.12em 0 0;
+    margin-right: 0.05em;
+    color: hsl(var(--gold-deep));
+    font-weight: 500;
+  }
+
   .nav-link {
     position: relative;
     font-family: var(--font-sans);
