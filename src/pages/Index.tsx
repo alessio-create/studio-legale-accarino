@@ -14,6 +14,9 @@ import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
 import ResultCard, { type ResultDetail } from "@/components/site/ResultCard";
 import { PracticeCard } from "@/components/site/PracticeCard";
+import { Reveal } from "@/components/site/Reveal";
+import { CountUp } from "@/components/site/CountUp";
+import { MaximTicker } from "@/components/site/MaximTicker";
 
 /**
  * Four core specializations — one card per practice detail page.
@@ -184,12 +187,14 @@ const credentials = [
 
 /**
  * Headline statistics shown in the strip below the hero.
+ * `to` is the numeric target for the count-up animation; `prefix`/`suffix`/`pad`/`thousands`
+ * control how the number is rendered.
  */
 const heroStats = [
-  { value: "50+", label: "Anni di esperienza", caption: "Dal 1974 al servizio del diritto pubblico" },
-  { value: "04", label: "Aree di specializzazione", caption: "Espropri · Urbanistica · Appalti · Concorsi" },
-  { value: "1.200+", label: "Cause patrocinate", caption: "TAR, Consiglio di Stato, Cassazione" },
-  { value: "9", label: "Professionisti dedicati", caption: "Team multidisciplinare su due sedi" },
+  { to: 50, suffix: "+", thousands: false, label: "Anni di esperienza", caption: "Dal 1974 al servizio del diritto pubblico" },
+  { to: 4, suffix: "", pad: 2, label: "Aree di specializzazione", caption: "Espropri · Urbanistica · Appalti · Concorsi" },
+  { to: 1200, suffix: "+", thousands: true, label: "Cause patrocinate", caption: "TAR, Consiglio di Stato, Cassazione" },
+  { to: 9, suffix: "", label: "Professionisti dedicati", caption: "Team multidisciplinare su due sedi" },
 ];
 
 /**
@@ -342,13 +347,22 @@ export default function Index() {
         <div className="editorial-container py-16 lg:py-20">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 lg:gap-y-0 gap-x-8 lg:divide-x divide-primary/10">
             {heroStats.map((s, i) => (
-              <div
+              <Reveal
                 key={s.label}
+                delay={i * 90}
                 className={`flex flex-col ${i === 0 ? "lg:pl-0" : "lg:pl-10"} lg:pr-10`}
               >
                 <span aria-hidden className="w-8 h-px bg-gold mb-6" />
-                <p className="font-serif text-gold-deep leading-none tracking-tight" style={{ fontSize: "clamp(2.5rem, 4vw, 3.75rem)" }}>
-                  {s.value}
+                <p
+                  className="font-serif text-gold-deep leading-none tracking-tight tabular-nums"
+                  style={{ fontSize: "clamp(2.5rem, 4vw, 3.75rem)" }}
+                >
+                  <CountUp
+                    to={s.to}
+                    suffix={s.suffix}
+                    pad={s.pad}
+                    thousands={s.thousands}
+                  />
                 </p>
                 <p className="mt-5 font-serif text-base text-primary leading-snug">
                   {s.label}
@@ -356,7 +370,7 @@ export default function Index() {
                 <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground leading-relaxed">
                   {s.caption}
                 </p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -508,10 +522,14 @@ export default function Index() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-primary/10 border hairline">
-            {specializations.map((s) => (
-              <div key={s.title} className="bg-background">
+            {specializations.map((s, i) => (
+              <Reveal
+                key={s.title}
+                delay={i * 120}
+                className="bg-background"
+              >
                 <PracticeCard {...s} />
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -679,6 +697,9 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      {/* MAXIM TICKER — heritage interlude between Heritage and Appalti band */}
+      <MaximTicker />
 
       {/* APPALTI SIGNATURE BAND */}
       <section className="relative bg-primary-deep text-primary-foreground overflow-hidden">
