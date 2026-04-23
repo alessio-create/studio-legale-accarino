@@ -459,40 +459,95 @@ export default function Index() {
       </section>
 
       {/* INTRO MANIFESTO */}
-      <section className="section-y border-b hairline">
-        <div className="editorial-container grid lg:grid-cols-12 gap-12 lg:gap-20">
+      <section className="section-y border-b hairline relative overflow-hidden">
+        {/* Decorative oversized year — editorial backdrop */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-8 right-0 lg:right-[4%] serif-display text-primary/[0.04] leading-none select-none hidden md:block"
+          style={{ fontSize: "clamp(14rem, 26vw, 28rem)" }}
+        >
+          1974
+        </div>
+
+        <div className="editorial-container grid lg:grid-cols-12 gap-12 lg:gap-20 relative">
+          {/* LEFT — sticky title block */}
           <div className="lg:col-span-5">
-            <Eyebrow>Lo Studio</Eyebrow>
-            <h2 className="mt-6 serif-display text-display-xl text-balance">
-              Diritto Amministrativo a Salerno dal 1974.
-            </h2>
-          </div>
-          <div className="lg:col-span-7 lg:col-start-6 space-y-6 text-lg text-muted-foreground leading-relaxed">
-            <p className="font-serif text-2xl text-primary leading-relaxed text-pretty">
-              Fondato dall'Avv. Francesco Accarino, lo Studio è punto di riferimento nel
-              Sud Italia per la difesa di privati, imprese e Pubbliche Amministrazioni
-              nei conflitti con il potere pubblico.
-            </p>
-            <p>
-              Due sedi — Salerno e Cava de' Tirreni — un team di avvocati specializzati
-              e una rete di partner di caratura nazionale, dal diritto europeo al
-              contenzioso bancario. Una struttura concepita per assistere il cliente
-              dal primo atto fino alla Cassazione e al Consiglio di Stato.
-            </p>
-            <div className="pt-8 grid grid-cols-3 gap-8 border-t hairline">
-              {[
-                { v: "1974", l: "Fondazione" },
-                { v: "9", l: "Professionisti" },
-                { v: "2", l: "Sedi operative" },
-              ].map((s) => (
-                <div key={s.l}>
-                  <p className="font-serif text-3xl text-primary">{s.v}</p>
-                  <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                    {s.l}
-                  </p>
-                </div>
-              ))}
+            <div className="lg:sticky lg:top-32">
+              <Reveal>
+                <Eyebrow>Lo Studio</Eyebrow>
+              </Reveal>
+              <Reveal delay={80}>
+                <h2 className="mt-6 serif-display text-display-xl text-balance">
+                  Diritto Amministrativo
+                  <span className="block italic text-gold/90 font-normal">
+                    a Salerno dal 1974.
+                  </span>
+                </h2>
+              </Reveal>
+              <Reveal delay={160} variant="hairline">
+                <div className="mt-10 h-px w-24 bg-gold" />
+              </Reveal>
+              <Reveal delay={220}>
+                <p className="mt-6 text-sm uppercase tracking-[0.22em] text-muted-foreground">
+                  Cinquant'anni di diritto pubblico
+                </p>
+              </Reveal>
             </div>
+          </div>
+
+          {/* RIGHT — editorial copy with drop cap */}
+          <div className="lg:col-span-7 lg:col-start-6 space-y-8 text-lg text-muted-foreground leading-relaxed">
+            <Reveal delay={120}>
+              <p className="font-serif text-2xl text-primary leading-relaxed text-pretty drop-cap">
+                Fondato dall'Avv. Francesco Accarino, lo Studio è punto di riferimento
+                nel Sud Italia per la difesa di privati, imprese e Pubbliche
+                Amministrazioni nei conflitti con il potere pubblico.
+              </p>
+            </Reveal>
+
+            {/* Pull quote / manifesto motto */}
+            <Reveal delay={200}>
+              <blockquote className="relative pl-6 border-l-2 border-gold py-2 my-4">
+                <p className="font-serif italic text-xl text-primary/90 leading-snug text-balance">
+                  «Difendere il cittadino davanti alla Pubblica Amministrazione
+                  è un mestiere di tecnica, pazienza e coraggio.»
+                </p>
+                <footer className="mt-3 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                  Avv. Francesco Accarino — Fondatore
+                </footer>
+              </blockquote>
+            </Reveal>
+
+            <Reveal delay={260}>
+              <p>
+                Due sedi — Salerno e Cava de' Tirreni — un team di avvocati
+                specializzati e una rete di partner di caratura nazionale, dal diritto
+                europeo al contenzioso bancario. Una struttura concepita per
+                assistere il cliente dal primo atto fino alla Cassazione e al
+                Consiglio di Stato.
+              </p>
+            </Reveal>
+
+            {/* Stats — animated, 4 columns with hairline separators */}
+            <Reveal delay={340} variant="hairline">
+              <div className="pt-10 mt-4 grid grid-cols-2 sm:grid-cols-4 border-t hairline divide-x divide-border/60">
+                {[
+                  { to: 1974, label: "Fondazione", thousands: false, suffix: "" },
+                  { to: 9, label: "Professionisti", thousands: false, suffix: "" },
+                  { to: 2, label: "Sedi operative", thousands: false, suffix: "" },
+                  { to: 4, label: "Aree di pratica", thousands: false, suffix: "" },
+                ].map((s, i) => (
+                  <div key={s.label} className={i === 0 ? "pr-6 pt-6" : "px-6 pt-6"}>
+                    <p className="font-serif text-4xl text-primary leading-none">
+                      <CountUp to={s.to} thousands={s.thousands} suffix={s.suffix} />
+                    </p>
+                    <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                      {s.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
