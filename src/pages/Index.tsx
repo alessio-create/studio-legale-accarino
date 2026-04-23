@@ -527,6 +527,60 @@ export default function Index() {
         </div>
       </section>
 
+      {/* PROCEDURES — sticky audience label · numbered list */}
+      <section className="bg-surface-container-low border-y hairline">
+        <div className="editorial-container py-20 lg:py-28">
+          <div className="max-w-3xl mb-16 lg:mb-20">
+            <Eyebrow>Cosa facciamo per voi</Eyebrow>
+            <h2 className="mt-6 serif-display text-display-xl text-balance">
+              Le procedure che gestiamo, divise per chi ne ha bisogno.
+            </h2>
+            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+              Una mappa operativa dei servizi: dalla consulenza preventiva al
+              contenzioso davanti alle Magistrature Superiori, distinta tra Pubbliche
+              Amministrazioni e soggetti privati.
+            </p>
+          </div>
+
+          {procedureGroups.map((group, gi) => (
+            <div
+              key={group.audience}
+              className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 ${gi > 0 ? "mt-24 lg:mt-32" : ""}`}
+            >
+              <div className="lg:col-span-3">
+                <div className="lg:sticky lg:top-32">
+                  <span aria-hidden className="block w-8 h-px bg-gold mb-6" />
+                  <p className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">
+                    {group.audience}
+                  </p>
+                  <p className="mt-6 text-sm text-muted-foreground leading-relaxed max-w-[260px]">
+                    {group.intro}
+                  </p>
+                </div>
+              </div>
+
+              <div className="lg:col-span-9">
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+                  {group.items.map((item, idx) => (
+                    <li
+                      key={item}
+                      className="group flex items-start justify-between gap-6 py-6 border-t hairline first:border-t-0 md:[&:nth-child(2)]:border-t-0"
+                    >
+                      <span className="font-serif text-lg text-primary leading-snug text-pretty pr-4 group-hover:text-gold-deep transition-colors">
+                        {item}
+                      </span>
+                      <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground pt-1 flex-shrink-0">
+                        {String(idx + 1).padStart(2, "0")}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* HISTORY / IMAGE BREAK */}
       <section className="relative">
         <div className="grid lg:grid-cols-2">
