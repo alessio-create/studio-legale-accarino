@@ -59,9 +59,8 @@ export const Navbar = () => {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const { pathname } = useLocation();
 
-  // Hero is now light/white on every route — navbar always uses the light variant.
-  // We keep a transparent state at the top of the homepage for a cleaner overlay.
-  const overDarkHero = false;
+  // Homepage hero is now dark — overlay nav with light text at the top of "/".
+  const overDarkHero = pathname === "/" && !scrolled;
   const transparentTop = pathname === "/" && !scrolled;
 
   useEffect(() => {
@@ -88,7 +87,7 @@ export const Navbar = () => {
     >
       {/* Top utility bar */}
       <div className={`hidden lg:block border-b transition-colors ${overDarkHero ? "border-background/15" : "border-primary/10"}`}>
-        <div className="editorial-container flex items-center justify-between h-9 text-[11px] uppercase tracking-[0.2em]">
+        <div className="editorial-container flex items-center justify-between h-8 text-[10px] uppercase tracking-[0.22em]">
           <div className={`flex items-center gap-6 ${overDarkHero ? "text-background/70" : "text-muted-foreground"}`}>
             <span className="flex items-center gap-2">
               <span className="w-1 h-1 bg-gold" />
@@ -109,14 +108,14 @@ export const Navbar = () => {
       </div>
 
       <div className="editorial-container">
-        <div className="flex items-center justify-between h-20">
-          <div className={overDarkHero ? "[&_*]:text-background" : ""}>
+        <div className="flex items-center justify-between h-16 lg:h-[68px]">
+          <div className={overDarkHero ? "[&_*]:!text-background" : ""}>
             <Logo />
           </div>
 
-          <nav className="hidden lg:flex items-center gap-9">
+          <nav className="hidden lg:flex items-center gap-8">
             <button
-              className="nav-link inline-flex items-center gap-1.5"
+              className={`nav-link inline-flex items-center gap-1.5 ${overDarkHero ? "!text-background hover:!text-gold" : ""}`}
               data-active={allServiceRoutes.includes(pathname) ? "true" : undefined}
               onClick={() => setMegaOpen((s) => !s)}
               onMouseEnter={() => setMegaOpen(true)}
@@ -131,7 +130,7 @@ export const Navbar = () => {
                 key={l.to}
                 to={l.to}
                 end={l.to === "/"}
-                className={() => "nav-link"}
+                className={() => `nav-link ${overDarkHero ? "!text-background hover:!text-gold" : ""}`}
                 data-active={pathname === l.to ? "true" : undefined}
                 onMouseEnter={() => setMegaOpen(false)}
               >
@@ -143,14 +142,14 @@ export const Navbar = () => {
           <div className="hidden lg:block">
             <Link
               to="/contatti"
-              className={`group inline-flex items-center gap-3 px-6 py-3 text-label-sm font-semibold uppercase tracking-[0.16em] shadow-inset-gold transition-all ${
+              className={`group inline-flex items-center gap-3 px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] transition-all ${
                 overDarkHero
-                  ? "bg-background/10 text-background border border-gold/40 hover:bg-gold hover:text-primary"
-                  : "bg-primary text-primary-foreground hover:bg-primary-glow"
+                  ? "bg-gold text-primary hover:bg-background hover:text-primary"
+                  : "bg-primary text-primary-foreground hover:bg-primary-glow shadow-inset-gold"
               }`}
             >
               Consulenza
-              <span className="w-4 h-px bg-gold transition-all group-hover:w-6" />
+              <span className={`w-3 h-px transition-all group-hover:w-5 ${overDarkHero ? "bg-primary" : "bg-gold"}`} />
             </Link>
           </div>
 
