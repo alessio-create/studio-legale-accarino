@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight, ArrowUpRight, Award, Building2, ChevronLeft, ChevronRight, Gavel,
-  Landmark, Quote, ShieldCheck, Star,
+  Landmark, Quote, ShieldCheck, Star, Scale, Users,
 } from "lucide-react";
 import heroCourthouse from "@/assets/hero-courthouse.jpg";
 import salernoImg from "@/assets/salerno.jpg";
@@ -13,6 +13,49 @@ import { Eyebrow } from "@/components/site/Eyebrow";
 import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
 import ResultCard, { type ResultDetail } from "@/components/site/ResultCard";
+import { PracticeCard } from "@/components/site/PracticeCard";
+
+/**
+ * Four core specializations — one card per practice detail page.
+ */
+const specializations = [
+  {
+    number: "01",
+    title: "Espropriazioni",
+    description:
+      "Difesa dei proprietari nelle procedure ablative: opposizione alla stima, occupazioni illegittime, retrocessione dei beni.",
+    icon: Landmark,
+    href: "/espropriazioni",
+    topics: ["Indennità di esproprio", "Occupazioni d'urgenza", "Retrocessione"],
+  },
+  {
+    number: "02",
+    title: "Urbanistica ed Edilizia",
+    description:
+      "Permessi a costruire, varianti, vincoli paesaggistici, abusi edilizi e procedimenti di sanatoria.",
+    icon: Scale,
+    href: "/urbanistica-edilizia",
+    topics: ["Permessi e SCIA", "Vincoli e Soprintendenze", "Sanatorie"],
+  },
+  {
+    number: "03",
+    title: "Appalti Pubblici",
+    description:
+      "Contenzioso davanti al TAR e al Consiglio di Stato: esclusioni, sospensive cautelari, anomalia delle offerte.",
+    icon: Building2,
+    href: "/appalti-pubblici",
+    topics: ["Ricorsi TAR", "Sospensive cautelari", "Esecuzione del contratto"],
+  },
+  {
+    number: "04",
+    title: "Concorsi Pubblici",
+    description:
+      "Tutela dei candidati nelle selezioni pubbliche: impugnazione di graduatorie, prove e criteri di valutazione.",
+    icon: Users,
+    href: "/concorsi-pubblici",
+    topics: ["Graduatorie", "Ricorsi collettivi", "Prove e valutazioni"],
+  },
+];
 
 /**
  * Practice areas grouped Pitta-style: each "family" lists its sub-services.
@@ -281,6 +324,37 @@ export default function Index() {
 
       {/* PRACTICE AREAS — grouped families (Pitta-style) */}
       <section className="section-y bg-surface-container-low">
+        {/* SPECIALIZZAZIONI — 4 core practice areas */}
+        <div className="editorial-container mb-20 lg:mb-28">
+          <div className="flex items-end justify-between flex-wrap gap-8 mb-14">
+            <div className="max-w-2xl">
+              <Eyebrow>Specializzazioni</Eyebrow>
+              <h2 className="mt-6 serif-display text-display-xl text-balance">
+                Quattro aree di specializzazione, una sola promessa di precisione.
+              </h2>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
+                Lo Studio concentra mezzo secolo di esperienza in quattro ambiti
+                del diritto amministrativo. Esplora ciascuna area per scoprire
+                competenze, casistica e procedure.
+              </p>
+            </div>
+            <Link
+              to="/contatti"
+              className="hidden md:inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-primary hover:text-gold-deep transition-colors font-semibold"
+            >
+              Parla con un avvocato <ArrowRight className="w-4 h-4 text-gold-deep" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-primary/10 border hairline">
+            {specializations.map((s) => (
+              <div key={s.title} className="bg-background">
+                <PracticeCard {...s} />
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="editorial-container">
           <div className="flex items-end justify-between flex-wrap gap-8 mb-16">
             <div className="max-w-2xl">
