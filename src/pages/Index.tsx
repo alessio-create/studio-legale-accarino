@@ -851,6 +851,74 @@ export default function Index() {
         </div>
       </section>
 
+      {/* FEATURED ARTICLES — static editorial grid linking to /blog */}
+      <section className="section-y bg-background border-t hairline">
+        <div className="editorial-container">
+          <div className="flex items-end justify-between flex-wrap gap-8 mb-14">
+            <div className="max-w-2xl">
+              <Eyebrow>Dal nostro blog</Eyebrow>
+              <h2 className="mt-6 serif-display text-display-xl text-balance">
+                Approfondimenti, sentenze, novità normative.
+              </h2>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
+                Una selezione di letture firmate dai professionisti dello Studio
+                per restare aggiornati sull'evoluzione del diritto amministrativo.
+              </p>
+            </div>
+            <Link
+              to="/blog"
+              className="hidden md:inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-primary hover:text-gold-deep transition-colors font-semibold"
+            >
+              Tutti gli articoli <ArrowRight className="w-4 h-4 text-gold-deep" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-primary/10 border hairline">
+            {featuredArticles.map((a) => (
+              <Link
+                key={a.title}
+                to="/blog"
+                className="group bg-background p-10 lg:p-12 flex flex-col hover:bg-surface-container-low transition-colors"
+              >
+                <div className="flex items-center justify-between mb-8">
+                  <span className="text-[10px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
+                    {a.category}
+                  </span>
+                  <span className="flex items-center gap-2 text-[11px] text-muted-foreground tabular-nums">
+                    <Calendar className="w-3 h-3" strokeWidth={1.5} />
+                    {a.date}
+                  </span>
+                </div>
+
+                <h3 className="font-serif text-2xl text-primary leading-snug text-balance group-hover:text-gold-deep transition-colors">
+                  {a.title}
+                </h3>
+                <p className="mt-5 text-sm text-muted-foreground leading-relaxed flex-1">
+                  {a.excerpt}
+                </p>
+
+                <div className="mt-10 pt-6 border-t hairline flex items-center justify-between">
+                  <span className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                    {a.readTime} di lettura
+                  </span>
+                  <ArrowUpRight
+                    className="w-4 h-4 text-gold-deep group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                    strokeWidth={1.5}
+                  />
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <Link
+            to="/blog"
+            className="md:hidden mt-10 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-primary font-semibold"
+          >
+            Tutti gli articoli <ArrowRight className="w-4 h-4 text-gold-deep" />
+          </Link>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="section-y">
         <div className="editorial-container grid lg:grid-cols-12 gap-12">
