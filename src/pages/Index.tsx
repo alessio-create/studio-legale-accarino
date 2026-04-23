@@ -295,7 +295,7 @@ export default function Index() {
               <span className="text-background/80">Studio Legale Accarino · dal 1974</span>
             </p>
             <h1 className="serif-display text-[clamp(2.75rem,6.5vw,5.5rem)] text-background text-balance leading-[1.04] animate-fade-up">
-              Tuteliamo i tuoi diritti con <span className="italic font-normal text-gold">competenza</span> e dedizione.
+              Tuteliamo i tuoi diritti con <span className="italic font-normal text-gold">competenza</span>.
             </h1>
             <div className="mt-12 flex flex-col md:flex-row md:items-center gap-8 animate-fade-up">
               <CTAButton to="/contatti" variant="gold">Prenota una consulenza</CTAButton>
