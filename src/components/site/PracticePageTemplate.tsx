@@ -104,18 +104,17 @@ export const PracticePageTemplate = ({
         <section className="bg-primary text-primary-foreground border-y border-gold/30 relative overflow-hidden">
           <div className="absolute inset-0 bg-noise opacity-25" />
           <div className="relative editorial-container py-10">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="w-8 h-px bg-gold" />
-              <span className="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold">
-                Esiti rappresentativi
+            <div className="mb-8">
+              <span className="text-[11px] uppercase tracking-[0.28em] text-gold font-semibold">
+                Risultati che parlano per noi
               </span>
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6 divide-y lg:divide-y-0 lg:divide-x divide-background/10">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8">
               {outcomes.map((o, i) => (
-                <div key={o.label + i} className={`px-2 lg:px-6 ${i === 0 ? "lg:pl-0" : ""} pt-6 lg:pt-0`}>
+                <div key={o.label + i}>
                   <p className="font-serif text-2xl lg:text-3xl text-gold leading-none">{o.value}</p>
-                  <p className="mt-3 text-sm text-background font-serif">{o.label}</p>
-                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-background/60">
+                  <p className="mt-4 text-sm text-background font-serif">{o.label}</p>
+                  <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-background/55">
                     {o.caseType}
                   </p>
                 </div>
