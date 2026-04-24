@@ -134,9 +134,15 @@ export const Footer = () => (
         <p className="text-xs text-background/50">
           © {new Date().getFullYear()} Studio Legale Accarino · P.IVA 01234567890
         </p>
-        <p className="text-[10px] uppercase tracking-[0.2em] text-background/50">
-          Salerno · Cava de' Tirreni
-        </p>
+        <div className="flex items-center gap-5 text-[10px] uppercase tracking-[0.2em] text-background/50">
+          <a href="#" className="hover:text-gold transition-colors">
+            Privacy Policy
+          </a>
+          <span aria-hidden="true">·</span>
+          <a href="#" className="hover:text-gold transition-colors">
+            Cookie Policy
+          </a>
+        </div>
       </div>
     </div>
   </footer>
