@@ -215,7 +215,7 @@ export default function Index() {
       />
 
       {/* HERO */}
-      <section className="relative min-h-[88vh] flex items-end overflow-hidden bg-primary-deep text-primary-foreground">
+      <section className="relative min-h-[92vh] flex items-stretch overflow-hidden bg-primary-deep text-primary-foreground">
         <img
           src={heroCourthouse}
           alt="Interno di un palazzo di giustizia neoclassico illuminato da luce dorata"
@@ -224,33 +224,58 @@ export default function Index() {
           height={1280}
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-deep/95 via-primary-deep/70 to-primary-deep/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-deep/95 via-primary-deep/75 to-primary-deep/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/55 to-primary-deep/15" />
         <div className="absolute inset-0 bg-noise opacity-20" />
 
-        <div className="relative z-10 editorial-container pt-36 pb-20 lg:pt-44 lg:pb-28">
-          <div className="max-w-4xl">
-            <p className="eyebrow !text-gold mb-8 animate-fade-up">
-              <span className="text-background/80">Studio Legale Accarino · dal 1974</span>
-            </p>
-            <h1 className="serif-display text-[clamp(2.5rem,6vw,5rem)] text-background text-balance leading-[1.05] animate-fade-up">
-              Tuteliamo i tuoi diritti con <span className="text-gold">competenza</span>.
-            </h1>
-            <p className="mt-8 text-lg lg:text-xl text-background/80 leading-relaxed max-w-2xl animate-fade-up text-pretty">
-              Diritto amministrativo a Salerno: espropriazioni, appalti, urbanistica e
-              concorsi pubblici. Ti rispondiamo entro 48 ore con un primo orientamento
-              su tempi, opzioni e costi.
-            </p>
-            <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-6 animate-fade-up">
-              <CTAButton to="/contatti" variant="gold">Prenota una consulenza</CTAButton>
-              <Link
-                to="/contatti"
-                className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-background/80 hover:text-gold transition-colors font-semibold border-b border-background/30 hover:border-gold pb-2"
-              >
-                Oppure scrivici
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+        {/* Decorative oversized year — editorial backdrop, mirrors the manifesto section */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute bottom-24 lg:bottom-28 right-[-2vw] hidden md:block serif-display text-background/[0.05] leading-none select-none tabular-nums tracking-tight"
+          style={{ fontSize: "clamp(14rem, 28vw, 32rem)" }}
+        >
+          1974
+        </div>
+
+        <div className="relative z-10 editorial-container w-full pt-32 pb-24 lg:pt-40 lg:pb-32 flex flex-col justify-end">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-end">
+            {/* Left rail — editorial meta */}
+            <div className="hidden lg:flex lg:col-span-1 flex-col items-start gap-4 pb-2">
+              <span aria-hidden className="block w-px h-24 bg-gold/60" />
+              <span className="[writing-mode:vertical-rl] rotate-180 text-[10px] uppercase tracking-[0.32em] text-background/50 font-semibold">
+                Est. 1974
+              </span>
             </div>
+
+            {/* Main editorial block */}
+            <div className="lg:col-span-11 max-w-[60rem]">
+              <div className="flex items-center gap-4 mb-8 animate-fade-up">
+                <span aria-hidden className="block w-10 h-px bg-gold" />
+                <span className="text-[10px] uppercase tracking-[0.32em] text-gold font-semibold">
+                  Studio Legale Accarino · Salerno
+                </span>
+              </div>
+              <h1 className="serif-display text-[clamp(2.5rem,5.2vw,4.75rem)] text-background text-balance leading-[1.04] tracking-[-0.015em] animate-fade-up">
+                Tuteliamo i tuoi diritti con{" "}
+                <span className="text-gold">competenza</span>.
+              </h1>
+              <p className="mt-10 text-base lg:text-lg text-background/75 leading-[1.65] max-w-xl animate-fade-up text-pretty">
+                Diritto amministrativo dal 1974: espropriazioni, appalti, urbanistica e
+                concorsi pubblici. Ti rispondiamo entro 48 ore con un primo orientamento
+                su tempi, opzioni e costi.
+              </p>
+              <div className="mt-12 flex flex-col sm:flex-row sm:items-center gap-x-10 gap-y-6 animate-fade-up">
+                <CTAButton to="/contatti" variant="gold">Prenota una consulenza</CTAButton>
+                <Link
+                  to="/contatti"
+                  className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-background/80 hover:text-gold transition-colors font-semibold"
+                >
+                  Oppure scrivici
+                  <ArrowRight className="w-4 h-4 text-gold" />
+                </Link>
+              </div>
+            </div>
+
           </div>
         </div>
 
