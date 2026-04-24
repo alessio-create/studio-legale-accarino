@@ -440,10 +440,6 @@ export default function Index() {
                     aria-hidden
                     className="absolute inset-x-0 bottom-0 h-px bg-gold/40 transition-colors duration-500 group-hover:bg-gold"
                   />
-                  <span className="absolute top-5 left-5 inline-flex items-center gap-2 bg-background/85 backdrop-blur-sm px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
-                    <span aria-hidden className="w-3 h-px bg-gold" />
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
                 </div>
 
                 <div className="pt-7">
