@@ -264,44 +264,72 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
                 <article
                   key={s.id}
                   id={s.id}
-                  className="scroll-mt-32"
+                  className="scroll-mt-32 relative"
                 >
+                  {/* Oversized ghost numeral — museum catalog cue */}
+                  <span
+                    aria-hidden
+                    className="ghost-numeral hidden md:block absolute -left-20 -top-10 text-[8rem] lg:text-[10rem]"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+
                   <Reveal>
-                    <div className="flex items-center gap-3 mb-6">
-                      <span className="font-serif italic text-gold-deep text-lg">
-                        {String(i + 1).padStart(2, "0")}
+                    <div className="flex items-center gap-4 mb-6">
+                      <span className="text-[10px] uppercase tracking-[0.28em] text-gold-deep font-semibold tabular-nums">
+                        Cap. {String(i + 1).padStart(2, "0")} / {String(procedure.sections.length).padStart(2, "0")}
                       </span>
-                      <span aria-hidden className="h-px w-10 bg-gold" />
+                      <span aria-hidden className="h-px flex-1 max-w-[80px] bg-gold/60" />
                     </div>
-                    <h2 className="serif-display text-display-lg text-primary text-balance leading-[1.05]">
+                    <h2 className="serif-display text-display-lg text-primary text-balance leading-[1.04]">
                       {s.title}
                     </h2>
                   </Reveal>
 
                   <Reveal delay={120}>
                     <div className="mt-8 space-y-5">
-                      {s.paragraphs.map((p, pi) => (
-                        <p
-                          key={pi}
-                          className="text-lg text-muted-foreground leading-relaxed text-pretty"
-                        >
-                          {p}
-                        </p>
-                      ))}
+                      {s.paragraphs.map((p, pi) => {
+                        // Promote the second paragraph of every other section to a
+                        // pull-quote for editorial cadence.
+                        const isPullQuote = i % 2 === 1 && pi === 1 && s.paragraphs.length > 1;
+                        if (isPullQuote) {
+                          return (
+                            <blockquote
+                              key={pi}
+                              className="pull-quote my-10 font-serif text-2xl lg:text-[1.6rem] text-primary leading-snug text-balance"
+                            >
+                              {p}
+                            </blockquote>
+                          );
+                        }
+                        return (
+                          <p
+                            key={pi}
+                            className="text-lg text-muted-foreground leading-relaxed text-pretty"
+                          >
+                            {p}
+                          </p>
+                        );
+                      })}
                     </div>
                   </Reveal>
 
                   {/* Side image — alternates left/right at md+ for editorial rhythm */}
                   <Reveal delay={200} className="mt-12">
-                    <figure className="relative gold-corner p-2.5">
+                    <figure className="relative gold-corner-frame p-2.5">
+                      <div className="overflow-hidden">
                       <img
                         src={s.image}
                         alt={s.title}
                         loading="lazy"
-                        className="w-full h-[260px] lg:h-[340px] object-cover"
+                          className="w-full h-[260px] lg:h-[340px] object-cover transition-transform duration-[1400ms] ease-out hover:scale-[1.03]"
                         width={1024}
                         height={640}
                       />
+                      </div>
+                      <figcaption className="absolute left-4 bottom-4 bg-background/95 backdrop-blur px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
+                        Fig. {String(i + 1).padStart(2, "0")}
+                      </figcaption>
                     </figure>
                   </Reveal>
 
