@@ -30,6 +30,7 @@ export default function AppaltiPubblici() {
         number="02"
         eyebrow="Area di pratica"
         title="Appalti Pubblici e Contenzioso Gare"
+        practiceArea="Appalti Pubblici"
         lead="Esclusa o non aggiudicataria di una gara? Difendiamo le imprese nei ricorsi al TAR per esclusioni illegittime, vizi procedurali e violazioni del Codice degli Appalti."
         heroImage={office}
         icon={Building2}
