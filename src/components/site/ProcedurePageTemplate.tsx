@@ -446,34 +446,55 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
       {/* ─────────── FINAL CTA ─────────── */}
       <section className="relative bg-primary text-primary-foreground border-y border-gold/30 overflow-hidden">
         <div className="absolute inset-0 bg-noise opacity-25" />
-        <div className="relative editorial-container py-24 lg:py-32 text-center max-w-3xl mx-auto">
+        {/* Decorative ghost glyph */}
+        <span
+          aria-hidden
+          className="ghost-numeral absolute -top-12 -right-6 text-[18rem] lg:text-[24rem] opacity-30"
+        >
+          §
+        </span>
+
+        <div className="relative editorial-container py-24 lg:py-32 max-w-4xl mx-auto text-center">
           <Reveal>
-            <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-gold font-semibold">
-              <span aria-hidden className="w-6 h-px bg-gold" />
+            <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-gold font-semibold">
+              <span aria-hidden className="w-8 h-px bg-gold" />
               Per la tua situazione
-              <span aria-hidden className="w-6 h-px bg-gold" />
+              <span aria-hidden className="w-8 h-px bg-gold" />
             </span>
           </Reveal>
+
           <Reveal delay={120}>
-            <Quote className="mx-auto mt-10 w-10 h-10 text-gold/60" strokeWidth={1} />
-            <h2 className="mt-6 serif-display text-display-xl text-background text-balance">
+            <Quote className="mx-auto mt-10 w-8 h-8 text-gold/70" strokeWidth={1} />
+            <h2 className="mt-6 serif-display text-display-xl text-background text-balance leading-[1.05]">
               Ogni caso è diverso. La tua difesa parte da una conversazione.
             </h2>
-            <p className="mt-6 text-lg text-background/75 leading-relaxed">
+            <p className="mt-7 text-lg text-background/75 leading-relaxed max-w-2xl mx-auto">
               Prenota una prima consulenza riservata: rispondiamo entro 48 ore
               con una valutazione preliminare del tuo caso.
             </p>
           </Reveal>
+
           <Reveal delay={240}>
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <div className="mt-12 flex flex-wrap justify-center gap-4">
               <CTAButton to="/contatti">Richiedi consulenza</CTAButton>
               <a
                 href="tel:+390891234567"
-                className="inline-flex items-center gap-3 px-6 py-4 text-[11px] uppercase tracking-[0.18em] text-background hover:text-gold transition-colors border border-background/20 hover:border-gold"
+                className="inline-flex items-center gap-3 px-6 py-4 text-[11px] uppercase tracking-[0.2em] text-background hover:text-gold transition-colors border border-background/20 hover:border-gold"
               >
                 <Phone className="w-4 h-4 text-gold" />
                 089 123 4567
               </a>
+            </div>
+          </Reveal>
+
+          {/* Studio signature line */}
+          <Reveal delay={360}>
+            <div className="mt-16 pt-8 border-t border-background/15 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[10px] uppercase tracking-[0.24em] text-background/50">
+              <span>Studio Legale Accarino</span>
+              <span aria-hidden className="w-1 h-1 rounded-full bg-gold/60" />
+              <span>Salerno · Roma</span>
+              <span aria-hidden className="w-1 h-1 rounded-full bg-gold/60" />
+              <span>dal 1978</span>
             </div>
           </Reveal>
         </div>
