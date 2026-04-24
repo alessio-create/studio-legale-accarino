@@ -694,20 +694,45 @@ export default function Index() {
             <aside className="lg:col-span-3">
               <PracticeSideNav
                 eyebrow="Salta a una sezione"
-                items={practiceFamilies.map<SideNavItem>((fam, gi) => ({
+                items={filteredFamilies.map<SideNavItem>(({ fam, items }, gi) => ({
                   id: fam.slug,
                   kicker: String(gi + 1).padStart(2, "0"),
                   label: fam.family,
-                  children: fam.items.map((item, idx) => ({
-                    id: `${fam.slug}-proc-${idx + 1}`,
-                    label: item.label,
-                  })),
+                  children: items.map((item) => {
+                    // Use original index so anchor ids stay stable
+                    const originalIdx = fam.items.indexOf(item);
+                    return {
+                      id: `${fam.slug}-proc-${originalIdx + 1}`,
+                      label: item.label,
+                    };
+                  }),
                 }))}
               />
             </aside>
 
             <div className="lg:col-span-9 space-y-20 lg:space-y-28">
-              {practiceFamilies.map((fam, gi) => {
+              {filteredFamilies.length === 0 && (
+                <div className="border hairline bg-background p-12 lg:p-16 text-center">
+                  <p className="font-serif text-2xl text-primary">
+                    Nessuna procedura corrisponde a "{practiceQuery}".
+                  </p>
+                  <p className="mt-3 text-muted-foreground">
+                    Prova con un altro termine — oppure{" "}
+                    <Link to="/contatti" className="text-gold-deep underline underline-offset-4 hover:text-primary transition-colors">
+                      raccontaci il tuo caso
+                    </Link>.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setPracticeQuery("")}
+                    className="mt-8 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-primary hover:text-gold-deep transition-colors font-semibold border-b hairline pb-2"
+                  >
+                    Cancella la ricerca
+                    <X className="w-4 h-4 text-gold-deep" strokeWidth={1.5} />
+                  </button>
+                </div>
+              )}
+              {filteredFamilies.map(({ fam, items }, gi) => {
                 const Icon = fam.icon;
                 return (
                   <section
@@ -723,7 +748,8 @@ export default function Index() {
                         <div className="flex items-center gap-4">
                           <span aria-hidden className="block w-8 h-px bg-gold" />
                           <p className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">
-                            {String(gi + 1).padStart(2, "0")} · {fam.family}
+                            {String(gi + 1).padStart(2, "0")} ·{" "}
+                            <Highlight text={fam.family} query={practiceQuery} />
                           </p>
                         </div>
                       </Reveal>
@@ -738,7 +764,7 @@ export default function Index() {
                         <div className="md:col-span-11">
                           <Reveal delay={120}>
                             <p className="text-[17px] text-muted-foreground leading-relaxed max-w-2xl">
-                              {fam.blurb}
+                              <Highlight text={fam.blurb} query={practiceQuery} />
                             </p>
                           </Reveal>
                           <Reveal delay={180}>
@@ -756,27 +782,30 @@ export default function Index() {
 
                     {/* Numbered procedure list */}
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
-                      {fam.items.map((item, idx) => (
-                        <li
-                          key={item.label + idx}
-                          id={`${fam.slug}-proc-${idx + 1}`}
-                          className="scroll-mt-24 border-t hairline first:border-t-0 md:[&:nth-child(2)]:border-t-0"
-                        >
-                          <Reveal delay={idx * 60}>
-                            <Link
-                              to={item.to}
-                              className="group flex items-start justify-between gap-6 py-6"
-                            >
-                              <span className="font-serif text-lg text-primary leading-snug text-pretty pr-4 group-hover:text-gold-deep transition-colors">
-                                {item.label}
-                              </span>
-                              <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground pt-1.5 flex-shrink-0">
-                                {String(idx + 1).padStart(2, "0")}
-                              </span>
-                            </Link>
-                          </Reveal>
-                        </li>
-                      ))}
+                      {items.map((item, idx) => {
+                        const originalIdx = fam.items.indexOf(item);
+                        return (
+                          <li
+                            key={item.label + originalIdx}
+                            id={`${fam.slug}-proc-${originalIdx + 1}`}
+                            className="scroll-mt-24 border-t hairline first:border-t-0 md:[&:nth-child(2)]:border-t-0"
+                          >
+                            <Reveal delay={idx * 60}>
+                              <Link
+                                to={item.to}
+                                className="group flex items-start justify-between gap-6 py-6"
+                              >
+                                <span className="font-serif text-lg text-primary leading-snug text-pretty pr-4 group-hover:text-gold-deep transition-colors">
+                                  <Highlight text={item.label} query={practiceQuery} />
+                                </span>
+                                <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground pt-1.5 flex-shrink-0">
+                                  {String(originalIdx + 1).padStart(2, "0")}
+                                </span>
+                              </Link>
+                            </Reveal>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </section>
                 );
