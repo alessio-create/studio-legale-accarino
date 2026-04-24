@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown, Phone, Landmark, Building2, Users, Scale, ArrowUpRight, ArrowRight } from "lucide-react";
 import { Logo } from "./Logo";
-import { LiveReviewsTicker } from "./LiveReviewsTicker";
 
 const serviceGroups = [
   {
@@ -95,12 +94,6 @@ export const Navbar = () => {
               Diritto Amministrativo
             </span>
             <span className="hidden xl:inline flex-shrink-0">Sedi · Salerno &amp; Cava de&apos; Tirreni</span>
-            {/* Live reviews ticker — quietly placed in the utility bar */}
-            <span aria-hidden className={`hidden xl:inline-block h-3 w-px ${overDarkHero ? "bg-background/20" : "bg-border"}`} />
-            <LiveReviewsTicker
-              variant="compact"
-              className={`hidden xl:flex min-w-0 max-w-[40ch] ${overDarkHero ? "text-background/80" : ""}`}
-            />
           </div>
           <a
             href={PHONE_HREF}
