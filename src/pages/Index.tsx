@@ -243,7 +243,7 @@ export default function Index() {
         <div className="relative z-10 editorial-container pt-40 pb-24 lg:pt-48 lg:pb-32">
           <div className="max-w-4xl">
             <p className="eyebrow !text-gold mb-8 animate-fade-up">
-              <span className="text-background/80">Studio Legale Accarino · dal 1974</span>
+              <span className="text-background/80">Studio Legale · Salerno &amp; Cava de&apos; Tirreni</span>
             </p>
             <h1 className="serif-display text-[clamp(2.75rem,6.5vw,5.5rem)] text-background text-balance leading-[1.04] animate-fade-up">
               Tuteliamo i tuoi diritti con <span className="text-gold">competenza</span>.
