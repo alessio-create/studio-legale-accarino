@@ -11,7 +11,7 @@ export type ResultDetail = {
   value: string;
   label: string;
   caseType: string;
-  detail: {
+  detail?: {
     title: string;
     summary: string;
     procedure: string;
@@ -35,6 +35,7 @@ export default function ResultCard({
   const [progress, setProgress] = useState(0);
   const rafRef = useRef<number | null>(null);
   const startRef = useRef<number | null>(null);
+  const hasDetail = Boolean(result.detail);
 
   const cancelHold = () => {
     if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
@@ -44,6 +45,7 @@ export default function ResultCard({
   };
 
   const startHold = () => {
+    if (!hasDetail) return;
     cancelHold();
     startRef.current = performance.now();
     const tick = (t: number) => {
@@ -75,6 +77,7 @@ export default function ResultCard({
         onTouchCancel={cancelHold}
         onContextMenu={(e) => e.preventDefault()}
         onKeyDown={(e) => {
+          if (!hasDetail) return;
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
             setOpen(true);
@@ -82,9 +85,15 @@ export default function ResultCard({
         }}
         className={`group relative text-left w-full px-2 lg:px-6 ${
           isFirst ? "lg:pl-0" : ""
-        } pt-6 lg:pt-0 select-none cursor-pointer animate-fade-up focus:outline-none`}
+        } pt-6 lg:pt-0 select-none animate-fade-up focus:outline-none ${
+          hasDetail ? "cursor-pointer" : "cursor-default"
+        }`}
         style={{ animationDelay: `${index * 120}ms` }}
-        aria-label={`${result.value} — ${result.label}. Tieni premuto per i dettagli.`}
+        aria-label={
+          hasDetail
+            ? `${result.value} — ${result.label}. Tieni premuto per i dettagli.`
+            : `${result.value} — ${result.label}`
+        }
       >
         {/* Hold progress bar */}
         <span
@@ -113,11 +122,14 @@ export default function ResultCard({
         <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-background/50">
           {result.caseType}
         </p>
-        <p className="mt-5 text-[10px] uppercase tracking-[0.18em] text-gold/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          ◍ Tieni premuto
-        </p>
+        {hasDetail && (
+          <p className="mt-5 text-[10px] uppercase tracking-[0.18em] text-gold/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            ◍ Tieni premuto
+          </p>
+        )}
       </button>
 
+      {hasDetail && (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-w-lg bg-primary text-primary-foreground border-gold/30">
           <DialogHeader>
@@ -125,10 +137,10 @@ export default function ResultCard({
               {result.caseType}
             </p>
             <DialogTitle className="font-serif text-3xl text-gold leading-tight">
-              {result.detail.title}
+              {result.detail!.title}
             </DialogTitle>
             <DialogDescription className="text-background/70 font-serif italic pt-2">
-              {result.detail.summary}
+              {result.detail!.summary}
             </DialogDescription>
           </DialogHeader>
           <dl className="mt-4 space-y-4 text-sm">
@@ -137,7 +149,7 @@ export default function ResultCard({
                 Procedura
               </dt>
               <dd className="col-span-2 text-background">
-                {result.detail.procedure}
+                {result.detail!.procedure}
               </dd>
             </div>
             <div className="grid grid-cols-3 gap-4 border-t border-background/10 pt-4">
@@ -145,7 +157,7 @@ export default function ResultCard({
                 Durata
               </dt>
               <dd className="col-span-2 text-background">
-                {result.detail.duration}
+                {result.detail!.duration}
               </dd>
             </div>
             <div className="grid grid-cols-3 gap-4 border-t border-background/10 pt-4">
@@ -153,7 +165,7 @@ export default function ResultCard({
                 Esito
               </dt>
               <dd className="col-span-2 text-gold font-serif">
-                {result.detail.outcome}
+                {result.detail!.outcome}
               </dd>
             </div>
           </dl>
@@ -162,6 +174,7 @@ export default function ResultCard({
           </p>
         </DialogContent>
       </Dialog>
+      )}
     </>
   );
 }
