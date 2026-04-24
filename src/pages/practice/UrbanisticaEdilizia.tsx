@@ -1,11 +1,31 @@
 import { Scale } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { PracticePageTemplate } from "@/components/site/PracticePageTemplate";
+import { Seo, serviceJsonLd, faqJsonLd } from "@/components/site/Seo";
 import office from "@/assets/office.jpg";
 
 export default function UrbanisticaEdilizia() {
+  const faq = [
+    { q: "Posso impugnare il permesso di costruire del mio vicino?", a: "Sì, in qualità di soggetto interessato hai 60 giorni dalla piena conoscenza per impugnare al TAR il permesso di un terzo che ti arrechi pregiudizio." },
+    { q: "Cosa fare in caso di ordine di demolizione?", a: "L'ordine di demolizione può essere impugnato entro 60 giorni. È fondamentale verificare la sussistenza dei presupposti, la corretta motivazione e la possibilità di sanatoria." },
+    { q: "Quali sono i tempi di un ricorso urbanistico?", a: "Per il merito si attendono in media 12–24 mesi. È spesso possibile chiedere la sospensione cautelare del provvedimento impugnato, decisa entro 30–60 giorni." },
+    { q: "Lavorate con tecnici di fiducia?", a: "Sì, lo Studio collabora con architetti, ingegneri e geometri di comprovata esperienza per le valutazioni tecniche necessarie alla strategia processuale." },
+  ];
   return (
     <Layout>
+      <Seo
+        title="Avvocato Urbanistica ed Edilizia a Salerno · Permessi e Sanatorie"
+        description="Permessi a costruire, varianti, vincoli, abusi: assistenza completa nei rapporti con Comuni, Soprintendenze e Regione in Campania. Risposta in 48h."
+        path="/urbanistica-edilizia"
+        jsonLd={[
+          serviceJsonLd({
+            name: "Urbanistica ed Edilizia",
+            description: "Permessi a costruire, varianti urbanistiche, vincoli paesaggistici, abusi edilizi e sanatorie. Contenzioso TAR e Consiglio di Stato.",
+            path: "/urbanistica-edilizia",
+          }),
+          faqJsonLd(faq),
+        ]}
+      />
       <PracticePageTemplate
         number="04"
         eyebrow="Area di pratica"
@@ -49,12 +69,7 @@ export default function UrbanisticaEdilizia() {
           { value: "Soprintendenza", label: "Vincoli" },
           { value: "Sanatorie", label: "Procedure" },
         ]}
-        faq={[
-          { q: "Posso impugnare il permesso di costruire del mio vicino?", a: "Sì, in qualità di soggetto interessato hai 60 giorni dalla piena conoscenza per impugnare al TAR il permesso di un terzo che ti arrechi pregiudizio." },
-          { q: "Cosa fare in caso di ordine di demolizione?", a: "L'ordine di demolizione può essere impugnato entro 60 giorni. È fondamentale verificare la sussistenza dei presupposti, la corretta motivazione e la possibilità di sanatoria." },
-          { q: "Quali sono i tempi di un ricorso urbanistico?", a: "Per il merito si attendono in media 12–24 mesi. È spesso possibile chiedere la sospensione cautelare del provvedimento impugnato, decisa entro 30–60 giorni." },
-          { q: "Lavorate con tecnici di fiducia?", a: "Sì, lo Studio collabora con architetti, ingegneri e geometri di comprovata esperienza per le valutazioni tecniche necessarie alla strategia processuale." },
-        ]}
+        faq={faq}
         outcomes={[
           { value: "Sanatoria", label: "Recupero edilizio", caseType: "Abuso minore" },
           { value: "Annullamento", label: "Diniego permesso", caseType: "Costruzione residenz." },

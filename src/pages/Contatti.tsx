@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Mail, MapPin, Phone, Clock } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { Eyebrow } from "@/components/site/Eyebrow";
+import { Seo, orgJsonLd } from "@/components/site/Seo";
 import { useToast } from "@/hooks/use-toast";
 
 const sedi = [
@@ -49,6 +50,12 @@ export default function Contatti() {
 
   return (
     <Layout>
+      <Seo
+        title="Contatti · Studio Legale a Salerno"
+        description="Prenota una consulenza riservata. Ti rispondiamo entro 48 ore con un primo orientamento concreto su tempi, opzioni e costi. Sedi a Salerno e Cava de' Tirreni."
+        path="/contatti"
+        jsonLd={orgJsonLd}
+      />
       {/* Hero */}
       <section className="bg-surface-container-low border-b hairline">
         <div className="editorial-container py-24 lg:py-32 max-w-4xl">

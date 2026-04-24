@@ -1,11 +1,31 @@
 import { Landmark } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { PracticePageTemplate } from "@/components/site/PracticePageTemplate";
+import { Seo, serviceJsonLd, faqJsonLd } from "@/components/site/Seo";
 import lawBooks from "@/assets/law-books.jpg";
 
 export default function Espropriazioni() {
+  const faq = [
+    { q: "L'indennità offerta dall'ente è davvero congrua?", a: "Nella maggior parte dei casi le indennità inizialmente proposte risultano inferiori al valore di mercato. Una stima tecnica indipendente è il primo passo per valutare l'opportunità di un'opposizione." },
+    { q: "Quanto tempo ho per opporsi?", a: "I termini variano in base all'atto: per l'opposizione alla stima sono 30 giorni dalla notifica del decreto; per il ricorso al TAR contro la dichiarazione di pubblica utilità 60 giorni. È essenziale non perdere questi termini." },
+    { q: "Posso bloccare i lavori dell'ente espropriante?", a: "In presenza di gravi vizi è possibile chiedere al TAR la sospensione cautelare del decreto. La concessione richiede dimostrazione di danno grave e irreparabile e fumus boni iuris." },
+    { q: "Quanto costa promuovere un'opposizione?", a: "Per l'opposizione alla stima i costi partono da €3.000–€5.000; per il contenzioso pieno (TAR + eventuale CdS) da €8.000–€15.000. Forniamo sempre un preventivo scritto in sede di consulenza." },
+  ];
   return (
     <Layout>
+      <Seo
+        title="Avvocato Espropriazioni a Salerno · Opposizione alla Stima"
+        description="Hai ricevuto un decreto di esproprio o un'occupazione d'urgenza? Studio Legale a Salerno specializzato in opposizione alla stima e contenzioso TAR. Risposta in 48h."
+        path="/espropriazioni"
+        jsonLd={[
+          serviceJsonLd({
+            name: "Espropriazioni e Occupazioni Illegittime",
+            description: "Difesa dei proprietari nelle procedure ablative, opposizione alla stima dell'indennità, occupazioni illegittime, contenzioso TAR e Consiglio di Stato.",
+            path: "/espropriazioni",
+          }),
+          faqJsonLd(faq),
+        ]}
+      />
       <PracticePageTemplate
         number="01"
         eyebrow="Area di pratica"
@@ -65,12 +85,7 @@ export default function Espropriazioni() {
           { value: "TSAP", label: "Patrocinio" },
           { value: "48h", label: "Prima valutazione" },
         ]}
-        faq={[
-          { q: "L'indennità offerta dall'ente è davvero congrua?", a: "Nella maggior parte dei casi le indennità inizialmente proposte risultano inferiori al valore di mercato. Una stima tecnica indipendente è il primo passo per valutare l'opportunità di un'opposizione." },
-          { q: "Quanto tempo ho per opporsi?", a: "I termini variano in base all'atto: per l'opposizione alla stima sono 30 giorni dalla notifica del decreto; per il ricorso al TAR contro la dichiarazione di pubblica utilità 60 giorni. È essenziale non perdere questi termini." },
-          { q: "Posso bloccare i lavori dell'ente espropriante?", a: "In presenza di gravi vizi è possibile chiedere al TAR la sospensione cautelare del decreto. La concessione richiede dimostrazione di danno grave e irreparabile e fumus boni iuris." },
-          { q: "Quanto costa promuovere un'opposizione?", a: "Per l'opposizione alla stima i costi partono da €3.000–€5.000; per il contenzioso pieno (TAR + eventuale CdS) da €8.000–€15.000. Forniamo sempre un preventivo scritto in sede di consulenza." },
-        ]}
+        faq={faq}
         outcomes={[
           { value: "+€1,2M", label: "Indennità rivalutata", caseType: "Terreno agricolo" },
           { value: "Restituzione", label: "Bene + risarcimento", caseType: "Occupazione illegittima" },
