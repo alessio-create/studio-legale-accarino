@@ -721,6 +721,40 @@ export default function Index() {
         </div>
       </section>
 
+      {/* EDITORIAL INTERLUDE — reveal + hairline draw between Aree and Heritage */}
+      <section
+        aria-hidden="true"
+        className="bg-surface-container-low border-t hairline overflow-hidden"
+      >
+        <div className="editorial-container py-20 lg:py-28">
+          <div className="grid lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-3">
+              <Reveal variant="hairline">
+                <span className="block w-full h-px bg-gold-deep/60" />
+              </Reveal>
+              <Reveal delay={120}>
+                <p className="mt-6 text-[11px] uppercase tracking-[0.24em] text-gold-deep font-semibold">
+                  Cinquant'anni · 1974 — oggi
+                </p>
+              </Reveal>
+            </div>
+            <div className="lg:col-span-9">
+              <Reveal delay={80}>
+                <p className="serif-display text-2xl md:text-3xl text-primary leading-snug text-balance max-w-3xl">
+                  Dietro ogni procedura,{" "}
+                  <span className="italic text-gold-deep">
+                    una storia di precisione lunga mezzo secolo.
+                  </span>
+                </p>
+              </Reveal>
+              <Reveal variant="hairline" delay={260} className="block mt-10">
+                <span className="block w-full h-px bg-primary/15" />
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* HISTORY / IMAGE BREAK */}
       <section className="relative">
         <div className="grid lg:grid-cols-2">
