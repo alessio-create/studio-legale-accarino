@@ -1,6 +1,16 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, Check, Clock, Phone, Quote, Scale } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BookOpen,
+  Check,
+  Clock,
+  Landmark,
+  Phone,
+  Quote,
+  Scale,
+} from "lucide-react";
 import { ProceduresLayout } from "./ProceduresLayout";
 import { CTAButton } from "./CTAButton";
 import { Reveal } from "./Reveal";
@@ -8,6 +18,7 @@ import { FAQ } from "./FAQ";
 import { Seo, faqJsonLd, serviceJsonLd } from "./Seo";
 import { SectionHeader } from "./SectionHeader";
 import { MobileTOC } from "./MobileTOC";
+import { ReadingProgress } from "./ReadingProgress";
 import { useActiveSection } from "@/hooks/use-active-section";
 import {
   Procedure,
@@ -62,80 +73,131 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
         ]}
       />
 
-      {/* ─────────── HERO ─────────── */}
+      <ReadingProgress />
+
+      {/* ─────────── HERO — editorial monograph cover ─────────── */}
       <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
+        {/* Background ornament: parchment glow + faint grid */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.04]"
+          className="pointer-events-none absolute inset-0 opacity-[0.05]"
           style={{
             background:
-              "radial-gradient(60% 80% at 0% 0%, hsl(var(--gold)) 0%, transparent 60%)",
+              "radial-gradient(70% 90% at 0% 0%, hsl(var(--gold)) 0%, transparent 55%)",
           }}
         />
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-noise opacity-40" />
+
         <div className="relative editorial-container pt-20 lg:pt-28 pb-14 lg:pb-20">
+          {/* Breadcrumb / kicker */}
           <Reveal>
-            <p className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
+            <p className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.24em] font-semibold">
               <span aria-hidden className="w-8 h-px bg-gold" />
               <Link
-                to="/"
+                to="/procedure"
                 className="text-muted-foreground hover:text-gold-deep transition-colors"
               >
                 Procedure
               </Link>
-              <span aria-hidden className="w-3 h-px bg-gold/50" />
-              <span>{procedure.audience}</span>
-              <span aria-hidden className="w-3 h-px bg-gold/50" />
-              <span className="text-primary/70">
-                {procedure.practiceArea}
-              </span>
+              <span aria-hidden className="w-2 h-px bg-gold/50" />
+              <span className="text-gold-deep">{procedure.audience}</span>
+              <span aria-hidden className="w-2 h-px bg-gold/50" />
+              <span className="text-primary/60">{procedure.practiceArea}</span>
             </p>
           </Reveal>
 
-          <Reveal delay={120}>
-            <h1 className="mt-8 serif-display text-display-2xl text-primary text-balance leading-[1.04] max-w-4xl">
-              {procedure.title}
-            </h1>
-          </Reveal>
+          {/* Headline cluster with ghost numeral */}
+          <div className="relative mt-10">
+            <span
+              aria-hidden
+              className="ghost-numeral hidden md:block absolute -top-10 right-0 text-[10rem] lg:text-[14rem]"
+            >
+              §
+            </span>
 
-          <Reveal delay={220}>
-            <p className="mt-8 text-xl text-muted-foreground leading-relaxed max-w-2xl text-pretty">
-              {procedure.lead}
-            </p>
-          </Reveal>
+            <Reveal delay={120}>
+              <p className="text-[10px] uppercase tracking-[0.32em] text-gold-deep font-semibold mb-5">
+                Procedura · Monografia
+              </p>
+            </Reveal>
 
-          <Reveal delay={320}>
-            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-              <span className="inline-flex items-center gap-2">
-                <Clock className="w-3.5 h-3.5 text-gold-deep" />
-                {procedure.readingTime} min di lettura
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <Scale className="w-3.5 h-3.5 text-gold-deep" />
-                Diritto amministrativo
-              </span>
+            <Reveal delay={180}>
+              <h1 className="serif-display text-display-2xl text-primary text-balance leading-[1.02] max-w-4xl">
+                {procedure.title}
+              </h1>
+            </Reveal>
+
+            <Reveal delay={280}>
+              <span
+                aria-hidden
+                className="block mt-8 h-px w-24 editorial-rule"
+              />
+            </Reveal>
+
+            <Reveal delay={340}>
+              <p className="mt-8 text-xl text-muted-foreground leading-relaxed max-w-2xl text-pretty">
+                {procedure.lead}
+              </p>
+            </Reveal>
+          </div>
+
+          {/* Meta dock — datasheet-style */}
+          <Reveal delay={420}>
+            <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-px bg-primary/10 border hairline max-w-3xl">
+              <HeroMeta
+                icon={<Clock className="w-3.5 h-3.5" />}
+                label="Lettura"
+                value={`${procedure.readingTime} min`}
+              />
+              <HeroMeta
+                icon={<Scale className="w-3.5 h-3.5" />}
+                label="Materia"
+                value="Amministrativo"
+              />
+              <HeroMeta
+                icon={<Landmark className="w-3.5 h-3.5" />}
+                label="Foro"
+                value="TAR · CdS"
+              />
+              <HeroMeta
+                icon={<BookOpen className="w-3.5 h-3.5" />}
+                label="Sezioni"
+                value={String(procedure.sections.length).padStart(2, "0")}
+              />
             </div>
           </Reveal>
         </div>
 
-        {/* Hero image strip */}
-        <Reveal delay={400} className="editorial-container pb-16 lg:pb-24">
-          <div className="relative gold-corner p-3">
-            <img
-              src={procedure.heroImage}
-              alt={procedure.title}
-              className="w-full h-[320px] md:h-[420px] lg:h-[520px] object-cover"
-              width={1600}
-              height={900}
-            />
+        {/* Hero image — clipped reveal + ornamental frame */}
+        <Reveal delay={500} className="editorial-container pb-16 lg:pb-24">
+          <figure className="relative gold-corner-frame p-3">
+            <div className="overflow-hidden">
+              <img
+                src={procedure.heroImage}
+                alt={procedure.title}
+                className="w-full h-[320px] md:h-[440px] lg:h-[560px] object-cover animate-image-reveal"
+                width={1600}
+                height={900}
+              />
+            </div>
             <span
               aria-hidden
               className="pointer-events-none absolute inset-3"
               style={{
                 background:
-                  "linear-gradient(180deg, hsl(var(--primary) / 0.05) 0%, hsl(var(--primary) / 0.45) 100%)",
+                  "linear-gradient(180deg, hsl(var(--primary) / 0.0) 50%, hsl(var(--primary) / 0.55) 100%)",
               }}
             />
-          </div>
+            {/* Caption tab — magazine plate style */}
+            <figcaption className="absolute left-6 bottom-6 right-6 flex items-end justify-between gap-6">
+              <span className="bg-background/95 backdrop-blur px-4 py-2 text-[10px] uppercase tracking-[0.24em] text-gold-deep font-semibold">
+                Tav. I · {procedure.practiceArea}
+              </span>
+              <span className="hidden md:inline-block bg-primary/85 backdrop-blur text-background px-4 py-2 text-[10px] uppercase tracking-[0.22em] font-semibold">
+                Studio Legale Accarino
+              </span>
+            </figcaption>
+          </figure>
         </Reveal>
       </section>
 
@@ -202,44 +264,72 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
                 <article
                   key={s.id}
                   id={s.id}
-                  className="scroll-mt-32"
+                  className="scroll-mt-32 relative"
                 >
+                  {/* Oversized ghost numeral — museum catalog cue */}
+                  <span
+                    aria-hidden
+                    className="ghost-numeral hidden md:block absolute -left-20 -top-10 text-[8rem] lg:text-[10rem]"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+
                   <Reveal>
-                    <div className="flex items-center gap-3 mb-6">
-                      <span className="font-serif italic text-gold-deep text-lg">
-                        {String(i + 1).padStart(2, "0")}
+                    <div className="flex items-center gap-4 mb-6">
+                      <span className="text-[10px] uppercase tracking-[0.28em] text-gold-deep font-semibold tabular-nums">
+                        Cap. {String(i + 1).padStart(2, "0")} / {String(procedure.sections.length).padStart(2, "0")}
                       </span>
-                      <span aria-hidden className="h-px w-10 bg-gold" />
+                      <span aria-hidden className="h-px flex-1 max-w-[80px] bg-gold/60" />
                     </div>
-                    <h2 className="serif-display text-display-lg text-primary text-balance leading-[1.05]">
+                    <h2 className="serif-display text-display-lg text-primary text-balance leading-[1.04]">
                       {s.title}
                     </h2>
                   </Reveal>
 
                   <Reveal delay={120}>
                     <div className="mt-8 space-y-5">
-                      {s.paragraphs.map((p, pi) => (
-                        <p
-                          key={pi}
-                          className="text-lg text-muted-foreground leading-relaxed text-pretty"
-                        >
-                          {p}
-                        </p>
-                      ))}
+                      {s.paragraphs.map((p, pi) => {
+                        // Promote the second paragraph of every other section to a
+                        // pull-quote for editorial cadence.
+                        const isPullQuote = i % 2 === 1 && pi === 1 && s.paragraphs.length > 1;
+                        if (isPullQuote) {
+                          return (
+                            <blockquote
+                              key={pi}
+                              className="pull-quote my-10 font-serif text-2xl lg:text-[1.6rem] text-primary leading-snug text-balance"
+                            >
+                              {p}
+                            </blockquote>
+                          );
+                        }
+                        return (
+                          <p
+                            key={pi}
+                            className="text-lg text-muted-foreground leading-relaxed text-pretty"
+                          >
+                            {p}
+                          </p>
+                        );
+                      })}
                     </div>
                   </Reveal>
 
                   {/* Side image — alternates left/right at md+ for editorial rhythm */}
                   <Reveal delay={200} className="mt-12">
-                    <figure className="relative gold-corner p-2.5">
+                    <figure className="relative gold-corner-frame p-2.5">
+                      <div className="overflow-hidden">
                       <img
                         src={s.image}
                         alt={s.title}
                         loading="lazy"
-                        className="w-full h-[260px] lg:h-[340px] object-cover"
+                          className="w-full h-[260px] lg:h-[340px] object-cover transition-transform duration-[1400ms] ease-out hover:scale-[1.03]"
                         width={1024}
                         height={640}
                       />
+                      </div>
+                      <figcaption className="absolute left-4 bottom-4 bg-background/95 backdrop-blur px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
+                        Fig. {String(i + 1).padStart(2, "0")}
+                      </figcaption>
                     </figure>
                   </Reveal>
 
@@ -356,34 +446,55 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
       {/* ─────────── FINAL CTA ─────────── */}
       <section className="relative bg-primary text-primary-foreground border-y border-gold/30 overflow-hidden">
         <div className="absolute inset-0 bg-noise opacity-25" />
-        <div className="relative editorial-container py-24 lg:py-32 text-center max-w-3xl mx-auto">
+        {/* Decorative ghost glyph */}
+        <span
+          aria-hidden
+          className="ghost-numeral absolute -top-12 -right-6 text-[18rem] lg:text-[24rem] opacity-30"
+        >
+          §
+        </span>
+
+        <div className="relative editorial-container py-24 lg:py-32 max-w-4xl mx-auto text-center">
           <Reveal>
-            <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-gold font-semibold">
-              <span aria-hidden className="w-6 h-px bg-gold" />
+            <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-gold font-semibold">
+              <span aria-hidden className="w-8 h-px bg-gold" />
               Per la tua situazione
-              <span aria-hidden className="w-6 h-px bg-gold" />
+              <span aria-hidden className="w-8 h-px bg-gold" />
             </span>
           </Reveal>
+
           <Reveal delay={120}>
-            <Quote className="mx-auto mt-10 w-10 h-10 text-gold/60" strokeWidth={1} />
-            <h2 className="mt-6 serif-display text-display-xl text-background text-balance">
+            <Quote className="mx-auto mt-10 w-8 h-8 text-gold/70" strokeWidth={1} />
+            <h2 className="mt-6 serif-display text-display-xl text-background text-balance leading-[1.05]">
               Ogni caso è diverso. La tua difesa parte da una conversazione.
             </h2>
-            <p className="mt-6 text-lg text-background/75 leading-relaxed">
+            <p className="mt-7 text-lg text-background/75 leading-relaxed max-w-2xl mx-auto">
               Prenota una prima consulenza riservata: rispondiamo entro 48 ore
               con una valutazione preliminare del tuo caso.
             </p>
           </Reveal>
+
           <Reveal delay={240}>
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <div className="mt-12 flex flex-wrap justify-center gap-4">
               <CTAButton to="/contatti">Richiedi consulenza</CTAButton>
               <a
                 href="tel:+390891234567"
-                className="inline-flex items-center gap-3 px-6 py-4 text-[11px] uppercase tracking-[0.18em] text-background hover:text-gold transition-colors border border-background/20 hover:border-gold"
+                className="inline-flex items-center gap-3 px-6 py-4 text-[11px] uppercase tracking-[0.2em] text-background hover:text-gold transition-colors border border-background/20 hover:border-gold"
               >
                 <Phone className="w-4 h-4 text-gold" />
                 089 123 4567
               </a>
+            </div>
+          </Reveal>
+
+          {/* Studio signature line */}
+          <Reveal delay={360}>
+            <div className="mt-16 pt-8 border-t border-background/15 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[10px] uppercase tracking-[0.24em] text-background/50">
+              <span>Studio Legale Accarino</span>
+              <span aria-hidden className="w-1 h-1 rounded-full bg-gold/60" />
+              <span>Salerno · Roma</span>
+              <span aria-hidden className="w-1 h-1 rounded-full bg-gold/60" />
+              <span>dal 1978</span>
             </div>
           </Reveal>
         </div>
@@ -451,6 +562,28 @@ function MetaItem({ label, value }: { label: string; value: string }) {
         {label}
       </p>
       <p className="text-sm text-primary leading-relaxed">{value}</p>
+    </div>
+  );
+}
+
+function HeroMeta({
+  icon,
+  label,
+  value,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="bg-background px-5 py-4">
+      <div className="flex items-center gap-2 text-gold-deep mb-2">
+        {icon}
+        <span className="text-[9px] uppercase tracking-[0.24em] font-semibold">
+          {label}
+        </span>
+      </div>
+      <p className="font-serif text-base text-primary leading-tight">{value}</p>
     </div>
   );
 }
