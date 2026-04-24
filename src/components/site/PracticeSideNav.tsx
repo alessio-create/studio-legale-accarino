@@ -15,6 +15,8 @@ type Props = {
   /** Eyebrow label rendered above the list. */
   eyebrow?: string;
   className?: string;
+  /** Called after a side-nav anchor is activated (post-scroll). */
+  onActivate?: (id: string) => void;
 };
 
 /**
@@ -22,7 +24,7 @@ type Props = {
  * and procedure subsections. Highlights the active anchor via scroll-spy.
  * Hidden on small screens — the page content already lists the same items.
  */
-export function PracticeSideNav({ items, eyebrow = "In questa sezione", className }: Props) {
+export function PracticeSideNav({ items, eyebrow = "In questa sezione", className, onActivate }: Props) {
   const allIds = items.flatMap((i) => [i.id, ...(i.children?.map((c) => c.id) ?? [])]);
   // Tighter band so the active label flips as the family header reaches the
   // upper third of the viewport — feels more responsive while scrolling.
@@ -35,6 +37,7 @@ export function PracticeSideNav({ items, eyebrow = "In questa sezione", classNam
     const top = el.getBoundingClientRect().top + window.scrollY - 96; // navbar offset
     window.scrollTo({ top, behavior: "smooth" });
     history.replaceState(null, "", `#${id}`);
+    onActivate?.(id);
   };
 
   return (

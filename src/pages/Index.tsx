@@ -19,6 +19,7 @@ import { CountUp } from "@/components/site/CountUp";
 import { MaximTicker } from "@/components/site/MaximTicker";
 import { PracticeSideNav, type SideNavItem } from "@/components/site/PracticeSideNav";
 import { Highlight } from "@/components/site/Highlight";
+import { useHashTarget } from "@/hooks/use-hash-target";
 
 /**
  * Four core specializations — one card per practice detail page.
@@ -302,6 +303,10 @@ export default function Index() {
     })
     .filter((x): x is { fam: typeof practiceFamilies[number]; items: typeof practiceFamilies[number]["items"]; familyMatches: boolean } => x !== null);
   const totalMatches = filteredFamilies.reduce((n, g) => n + g.items.length, 0);
+
+  // Deep-link target highlight: reads location.hash, scrolls into view and
+  // briefly pulses the matching family or procedure.
+  const { targetedId, flash } = useHashTarget();
 
   return (
     <Layout>
@@ -694,6 +699,7 @@ export default function Index() {
             <aside className="hidden lg:block lg:col-span-3">
               <PracticeSideNav
                 eyebrow="Salta a una sezione"
+                onActivate={flash}
                 items={filteredFamilies.map<SideNavItem>(({ fam, items }, gi) => ({
                   id: fam.slug,
                   kicker: String(gi + 1).padStart(2, "0"),
@@ -738,8 +744,13 @@ export default function Index() {
                   <section
                     key={fam.family}
                     id={fam.slug}
-                    className={`scroll-mt-24 ${
+                    data-targeted={targetedId === fam.slug ? "true" : undefined}
+                    className={`scroll-mt-24 transition-colors duration-700 ${
                       gi > 0 ? "pt-16 lg:pt-28 border-t hairline" : ""
+                    } ${
+                      targetedId === fam.slug
+                        ? "relative before:absolute before:-inset-x-4 before:-inset-y-6 before:-z-10 before:bg-gold/[0.07] before:border before:border-gold/40 before:transition-opacity before:duration-700 before:animate-fade-in"
+                        : ""
                     }`}
                   >
                     {/* Family header */}
@@ -782,16 +793,23 @@ export default function Index() {
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 border-t hairline md:border-t-0">
                       {items.map((item, idx) => {
                         const originalIdx = fam.items.indexOf(item);
+                        const procId = `${fam.slug}-proc-${originalIdx + 1}`;
+                        const isTargeted = targetedId === procId;
                         return (
                           <li
                             key={item.label + originalIdx}
-                            id={`${fam.slug}-proc-${originalIdx + 1}`}
-                            className="scroll-mt-24 border-b md:border-b-0 md:border-t hairline md:first:border-t-0 md:[&:nth-child(2)]:border-t-0"
+                            id={procId}
+                            data-targeted={isTargeted ? "true" : undefined}
+                            className={`scroll-mt-24 border-b md:border-b-0 md:border-t hairline md:first:border-t-0 md:[&:nth-child(2)]:border-t-0 transition-colors duration-700 ${
+                              isTargeted ? "bg-gold/[0.08]" : ""
+                            }`}
                           >
                             <Reveal delay={idx * 60}>
                               <Link
                                 to={item.to}
-                                className="group flex items-start justify-between gap-4 sm:gap-6 py-5 sm:py-6 px-2 -mx-2 min-h-[60px] active:bg-surface-container-low transition-colors rounded-sm"
+                                className={`group flex items-start justify-between gap-4 sm:gap-6 py-5 sm:py-6 px-2 -mx-2 min-h-[60px] active:bg-surface-container-low transition-colors rounded-sm ${
+                                  isTargeted ? "ring-1 ring-gold/60 ring-offset-2 ring-offset-background" : ""
+                                }`}
                               >
                                 <span className="font-serif text-base sm:text-lg text-primary leading-snug text-pretty pr-2 group-hover:text-gold-deep transition-colors">
                                   <Highlight text={item.label} query={practiceQuery} />
