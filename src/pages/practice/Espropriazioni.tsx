@@ -30,6 +30,7 @@ export default function Espropriazioni() {
         number="01"
         eyebrow="Area di pratica"
         title="Espropriazioni e Occupazioni Illegittime"
+        practiceArea="Espropriazioni"
         lead="Hai ricevuto un decreto di esproprio o un'occupazione d'urgenza? Da oltre 40 anni difendiamo i proprietari nelle controversie con la Pubblica Amministrazione."
         heroImage={lawBooks}
         icon={Landmark}
