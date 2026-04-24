@@ -192,6 +192,64 @@ const results: ResultDetail[] = [
   },
 ];
 
+/** CASE STUDIES — three editorial long-form anonymised proceedings. */
+const caseStudies: CaseStudy[] = [
+  {
+    year: "2024",
+    area: "Espropriazioni · Cilento",
+    title: "Indennità triplicata per terreno agricolo a vocazione edificatoria",
+    outcome: "+€1,2M sull'offerta iniziale",
+    excerpt:
+      "Famiglia proprietaria di terreno agricolo soggetto a procedura espropriativa per opera viaria pubblica, con indennità inizialmente liquidata a valore agricolo.",
+    image: practiceEspropriazioni,
+    detail: {
+      metric: { value: "+€1,2M", label: "Recupero rispetto alla prima stima" },
+      challenge:
+        "L'Ente espropriante aveva quantificato l'indennità sulla base del valore agricolo del fondo, ignorando la vocazione edificatoria emergente dal PUC vigente e dalla destinazione urbanistica delle aree limitrofe.",
+      strategy:
+        "Opposizione alla stima davanti alla Corte d'Appello competente, con CTU di parte e perizia tecnica giurata che ha ricostruito il valore di mercato sulla base di comparabili omogenei. Coordinamento con tributarista per gli aspetti fiscali.",
+      result:
+        "Indennità rideterminata in sede giudiziale con un incremento di oltre €1,2M rispetto alla prima offerta. Riconoscimento integrale degli interessi e delle spese di lite.",
+    },
+  },
+  {
+    year: "2023",
+    area: "Appalti Pubblici · Campania",
+    title: "Sospensiva monocratica e annullamento di gara da €4M",
+    outcome: "Aggiudicazione riaffidata al ricorrente",
+    excerpt:
+      "PMI esclusa per presunto vizio formale dell'offerta tecnica in una procedura aperta per servizi alla Pubblica Amministrazione del valore di circa €4M.",
+    image: practiceAppalti,
+    detail: {
+      metric: { value: "28 giorni", label: "Dal ricorso alla sospensiva" },
+      challenge:
+        "Esclusione comunicata a ridosso dell'aggiudicazione provvisoria, con motivazione fondata su un asserito difetto di sottoscrizione di un allegato tecnico. Tempi tecnici di reazione strettissimi.",
+      strategy:
+        "Ricorso TAR con istanza cautelare ex art. 55 c.p.a. e contestuale richiesta di misure monocratiche. Memoria centrata sul principio di tassatività delle cause di esclusione e sull'eccesso di potere per disparità di trattamento.",
+      result:
+        "Sospensiva monocratica concessa in 28 giorni, confermata in sede collegiale. Sentenza di merito favorevole entro 7 mesi: aggiudicazione annullata e gara riaffidata al ricorrente.",
+    },
+  },
+  {
+    year: "2024",
+    area: "Urbanistica · Costiera",
+    title: "Sanatoria edilizia in zona soggetta a vincolo paesaggistico",
+    outcome: "Demolizione revocata, immobile sanato",
+    excerpt:
+      "Immobile residenziale in area sottoposta a vincolo paesaggistico, oggetto di ordinanza di demolizione a seguito di difformità rilevate dall'Ufficio Tecnico comunale.",
+    image: practiceUrbanistica,
+    detail: {
+      metric: { value: "14 mesi", label: "Dall'istanza alla sanatoria definitiva" },
+      challenge:
+        "Procedimento sanzionatorio già in stadio avanzato, parere preliminare negativo della Soprintendenza e termini di demolizione spontanea in scadenza. Coesistenza di profili amministrativi e penali.",
+      strategy:
+        "Istanza di accertamento di conformità ex art. 36 D.P.R. 380/2001, accompagnata da relazione paesaggistica integrativa. Ricorso TAR avverso il diniego comunale e il parere della Soprintendenza, con richiesta di sospensiva.",
+      result:
+        "Diniego e parere negativo annullati in sede giurisdizionale. Rilascio del titolo in sanatoria, revoca dell'ordinanza di demolizione e archiviazione del procedimento sanzionatorio.",
+    },
+  },
+];
+
 /** Hero stats kept as part of the hero introduction. */
 const heroStats = [
   { to: 50, suffix: "+", thousands: false, label: "Anni di esperienza", caption: "Dal 1974 al servizio del diritto pubblico" },
