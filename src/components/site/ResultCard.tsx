@@ -100,21 +100,20 @@ export default function ResultCard({
         <p
           className="font-serif text-gold leading-[1.02] tracking-tight transition-transform duration-300 group-hover:-translate-y-0.5"
           style={{
-            fontSize: "clamp(1.5rem, 2vw, 2rem)",
+            fontSize: "clamp(1.75rem, 2.4vw, 2.5rem)",
             wordBreak: "normal",
             overflowWrap: "break-word",
           }}
         >
           {result.value}
         </p>
-        <span aria-hidden className="mt-4 block w-8 h-px bg-gold/40 group-hover:bg-gold transition-colors" />
-        <p className="mt-3 text-[15px] text-background font-serif leading-snug">
+        <p className="mt-5 text-base text-background font-serif leading-snug">
           {result.label}
         </p>
-        <p className="mt-2 text-[10px] uppercase tracking-[0.2em] text-background/55">
+        <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-background/50">
           {result.caseType}
         </p>
-        <p className="mt-4 text-[10px] uppercase tracking-[0.18em] text-gold/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <p className="mt-5 text-[10px] uppercase tracking-[0.18em] text-gold/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           ◍ Tieni premuto
         </p>
       </button>
