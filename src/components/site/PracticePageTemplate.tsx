@@ -4,6 +4,7 @@ import { CTAButton } from "./CTAButton";
 import { FAQ, FAQItem } from "./FAQ";
 import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "./Reveal";
+import ResultCard from "./ResultCard";
 
 export interface PracticeStat { value: string; label: string }
 export interface PracticeStep { num: string; title: string; description: string }
@@ -103,21 +104,25 @@ export const PracticePageTemplate = ({
       {outcomes && outcomes.length > 0 && (
         <section className="bg-primary text-primary-foreground border-y border-gold/30 relative overflow-hidden">
           <div className="absolute inset-0 bg-noise opacity-25" />
-          <div className="relative editorial-container py-10">
-            <div className="mb-8">
-              <span className="text-[11px] uppercase tracking-[0.28em] text-gold font-semibold">
-                Risultati che parlano per noi
+          <div className="relative editorial-container py-14 lg:py-20">
+            <div className="flex items-start justify-between flex-wrap gap-6 mb-14">
+              <div>
+                <span className="text-[11px] uppercase tracking-[0.28em] text-gold font-semibold">
+                  Risultati che parlano per noi
+                </span>
+              </div>
+              <span className="text-xs text-background/50 max-w-sm leading-relaxed lg:text-right">
+                Esempi illustrativi del tipo di esito ottenibile. Casi anonimizzati nel rispetto del segreto professionale.
               </span>
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-14 gap-x-10">
               {outcomes.map((o, i) => (
-                <div key={o.label + i}>
-                  <p className="font-serif text-2xl lg:text-3xl text-gold leading-none">{o.value}</p>
-                  <p className="mt-4 text-sm text-background font-serif">{o.label}</p>
-                  <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-background/55">
-                    {o.caseType}
-                  </p>
-                </div>
+                <ResultCard
+                  key={o.label + i}
+                  result={o}
+                  index={i}
+                  isFirst={i === 0}
+                />
               ))}
             </div>
           </div>
