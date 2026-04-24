@@ -1,5 +1,5 @@
 import { Layout } from "@/components/site/Layout";
-import { Eyebrow } from "@/components/site/Eyebrow";
+import { PageHero } from "@/components/site/PageHero";
 import { Seo } from "@/components/site/Seo";
 
 const Blog = () => (
@@ -10,16 +10,24 @@ const Blog = () => (
       path="/blog"
       noIndex
     />
-    <section className="editorial-container py-32">
-      <Eyebrow>Insights & Aggiornamenti</Eyebrow>
-      <h1 className="font-serif text-5xl md:text-6xl text-primary leading-tight mt-6 max-w-3xl">
-        Blog dello Studio
-      </h1>
-      <p className="text-lg text-muted-foreground mt-6 max-w-2xl leading-relaxed">
-        Approfondimenti, sentenze commentate e guide pratiche su espropriazioni,
-        appalti pubblici, concorsi e urbanistica. Sezione in arrivo.
-      </p>
-      <div className="mt-12 h-px w-24 bg-gold" />
+    <PageHero
+      eyebrow="Insights & Aggiornamenti"
+      eyebrowSuffix="In arrivo"
+      title="Blog dello Studio."
+      lead="Approfondimenti, sentenze commentate e guide pratiche su espropriazioni, appalti pubblici, concorsi e urbanistica. Sezione in arrivo."
+    />
+    <section className="bg-background border-b hairline">
+      <div className="editorial-container py-20 lg:py-28 max-w-3xl">
+        <p className="font-serif text-2xl text-primary leading-snug">
+          Stiamo curando una selezione di articoli firmati dai professionisti
+          dello Studio.
+        </p>
+        <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+          Ogni contributo affronta un tema concreto del diritto amministrativo —
+          una sentenza recente, una novità normativa, una procedura — con il
+          taglio operativo che caratterizza lo Studio.
+        </p>
+      </div>
     </section>
   </Layout>
 );
