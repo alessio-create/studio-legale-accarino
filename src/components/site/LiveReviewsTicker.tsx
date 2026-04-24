@@ -123,9 +123,9 @@ export const LiveReviewsTicker = ({
         <span className="relative flex items-center justify-center w-2.5 h-2.5">
           <span
             aria-hidden
-            className="absolute inline-flex w-full h-full rounded-full bg-emerald-500/40 animate-live-pulse"
+            className="absolute inline-flex w-full h-full rounded-full bg-live/40 animate-live-pulse"
           />
-          <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-emerald-500" />
+          <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-live" />
         </span>
         <span className="text-gold-deep font-semibold">Live</span>
         <span aria-hidden className="h-3 w-px bg-border" />
@@ -154,11 +154,11 @@ export const LiveReviewsTicker = ({
           <span className="relative flex items-center justify-center w-2.5 h-2.5">
             <span
               aria-hidden
-              className="absolute inline-flex w-full h-full rounded-full bg-emerald-500/40 animate-live-pulse"
+              className="absolute inline-flex w-full h-full rounded-full bg-live/40 animate-live-pulse"
             />
-            <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-live" />
           </span>
-          <span className="text-[10px] uppercase tracking-[0.22em] text-emerald-600 font-semibold">
+          <span className="text-[10px] uppercase tracking-[0.22em] text-live font-semibold">
             Recensioni live
           </span>
         </div>
