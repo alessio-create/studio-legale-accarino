@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight, ArrowUpRight, Award, Building2, Calendar, ChevronLeft, ChevronRight, Gavel,
-  Landmark, Quote, ShieldCheck, Star, Scale, Users,
+  Landmark, Quote, ShieldCheck, Star, Scale, Users, Phone, Mail, Clock, Lock,
 } from "lucide-react";
 import heroCourthouse from "@/assets/hero-courthouse.jpg";
 import salernoImg from "@/assets/salerno.jpg";
@@ -1038,20 +1038,125 @@ export default function Index() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="bg-primary text-primary-foreground py-24 relative overflow-hidden">
+      <section className="relative bg-primary text-primary-foreground overflow-hidden">
+        {/* Texture & decorative backdrop */}
         <div className="absolute inset-0 bg-noise opacity-30" />
-        <div className="editorial-container relative grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7">
-            <Eyebrow>
-              <span className="text-gold">Iniziamo</span>
-            </Eyebrow>
-            <h2 className="mt-6 serif-display text-display-xl text-background text-balance">
-              Una consulenza riservata per il tuo caso, entro 48 ore.
-            </h2>
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-10 right-0 hidden lg:block serif-display text-[18rem] leading-none text-background/[0.04] select-none"
+        >
+          1974
+        </div>
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent"
+        />
+
+        <div className="relative editorial-container py-24 lg:py-32">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Left: editorial copy */}
+            <div className="lg:col-span-7">
+              <Reveal>
+                <Eyebrow>
+                  <span className="text-gold">Iniziamo</span>
+                </Eyebrow>
+              </Reveal>
+              <Reveal delay={80}>
+                <h2 className="mt-8 serif-display text-display-xl text-background text-balance leading-[1.05]">
+                  Una <span className="italic text-gold">consulenza riservata</span> per il tuo caso, entro 48 ore.
+                </h2>
+              </Reveal>
+              <Reveal delay={160}>
+                <p className="mt-8 text-lg text-background/70 leading-relaxed max-w-xl">
+                  Raccontaci la tua situazione: un avvocato dello Studio leggerà gli atti,
+                  individuerà i termini ancora utili e ti proporrà la strategia più efficace —
+                  con un preventivo trasparente, prima di qualsiasi impegno.
+                </p>
+              </Reveal>
+
+              {/* Reassurance points */}
+              <Reveal delay={240}>
+                <ul className="mt-12 grid sm:grid-cols-3 gap-px bg-background/10 border-y border-background/10">
+                  {[
+                    { i: Clock, t: "Risposta in 48h", s: "Anche nei weekend per urgenze" },
+                    { i: Lock, t: "Riservatezza totale", s: "Segreto professionale" },
+                    { i: ShieldCheck, t: "Preventivo chiaro", s: "Nessun costo nascosto" },
+                  ].map(({ i: Icon, t, s }) => (
+                    <li key={t} className="bg-primary p-6">
+                      <Icon className="w-5 h-5 text-gold" strokeWidth={1.5} />
+                      <p className="mt-4 font-serif text-base text-background">{t}</p>
+                      <p className="mt-1 text-xs text-background/60 leading-relaxed">{s}</p>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            </div>
+
+            {/* Right: action card */}
+            <div className="lg:col-span-5 lg:pl-8 lg:border-l lg:border-background/10">
+              <Reveal delay={120}>
+                <div className="flex items-center gap-3">
+                  <span aria-hidden className="block w-8 h-px bg-gold" />
+                  <span className="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold">
+                    Contattaci ora
+                  </span>
+                </div>
+
+                <div className="mt-8 space-y-6">
+                  <CTAButton to="/contatti" variant="gold">
+                    Prenota la consulenza
+                  </CTAButton>
+                  <p className="text-xs text-background/50 leading-relaxed max-w-xs">
+                    Compila il modulo riservato: ti ricontattiamo entro 24 ore lavorative
+                    con un primo riscontro qualificato.
+                  </p>
+                </div>
+
+                {/* Direct channels */}
+                <div className="mt-12 pt-10 border-t border-background/10 space-y-6">
+                  <p className="text-[11px] uppercase tracking-[0.22em] text-background/50 font-semibold">
+                    Oppure scrivici direttamente
+                  </p>
+                  <a
+                    href="tel:+390898889999"
+                    className="group flex items-start gap-4 -m-2 p-2 transition-colors hover:bg-background/5"
+                  >
+                    <Phone className="w-4 h-4 text-gold mt-1 flex-shrink-0" strokeWidth={1.5} />
+                    <div className="min-w-0">
+                      <p className="font-serif text-lg text-background group-hover:text-gold transition-colors">
+                        +39 089 888 9999
+                      </p>
+                      <p className="text-xs text-background/55 mt-1">Lun–Ven · 9:00 – 19:00</p>
+                    </div>
+                  </a>
+                  <a
+                    href="mailto:studio@example.it"
+                    className="group flex items-start gap-4 -m-2 p-2 transition-colors hover:bg-background/5"
+                  >
+                    <Mail className="w-4 h-4 text-gold mt-1 flex-shrink-0" strokeWidth={1.5} />
+                    <div className="min-w-0">
+                      <p className="font-serif text-lg text-background group-hover:text-gold transition-colors break-all">
+                        studio@example.it
+                      </p>
+                      <p className="text-xs text-background/55 mt-1">Risposta entro 48 ore</p>
+                    </div>
+                  </a>
+                </div>
+              </Reveal>
+            </div>
           </div>
-          <div className="lg:col-span-5 flex lg:justify-end">
-            <CTAButton to="/contatti" variant="gold">Prenota la consulenza</CTAButton>
-          </div>
+
+          {/* Bottom hairline meta strip */}
+          <Reveal delay={200}>
+            <div className="mt-20 pt-8 border-t border-background/10 flex flex-wrap items-center justify-between gap-6">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-background/50 font-semibold">
+                Salerno · Roma — Patrocinio in tutta Italia
+              </p>
+              <p className="text-[11px] tracking-[0.18em] text-background/40 tabular-nums">
+                Dal 1974 · Cassazionisti · TAR · Consiglio di Stato
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
     </Layout>
