@@ -229,7 +229,7 @@ export const Navbar = () => {
                 />
               </div>
 
-              <div className="col-span-6 grid grid-cols-2 gap-x-10 gap-y-8">
+              <div className="col-span-9 grid grid-cols-2 gap-x-10 gap-y-8">
                 {serviceGroups.map((group, gi) => (
                   <div
                     key={group.heading}
@@ -292,24 +292,6 @@ export const Navbar = () => {
                     </ul>
                   </div>
                 ))}
-              </div>
-
-              {/* Live reviews panel — third column */}
-              <div
-                className="col-span-3 animate-mega-item-in"
-                style={{ animationDelay: "260ms" }}
-              >
-                <p className="text-[10px] uppercase tracking-[0.22em] text-gold-deep font-semibold mb-5">
-                  Cosa dicono di noi
-                </p>
-                <LiveReviewsTicker variant="stack" />
-                <Link
-                  to="/chi-siamo"
-                  className="group mt-4 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Tutte le testimonianze
-                  <ArrowUpRight className="w-3 h-3 text-gold-deep transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Link>
               </div>
             </div>
           </div>
