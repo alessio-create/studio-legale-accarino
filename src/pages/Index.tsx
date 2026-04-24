@@ -589,68 +589,104 @@ export default function Index() {
           </div>
         </div>
 
+        {/* AREE DI PRATICA — sticky label · numbered procedures */}
         <div className="editorial-container">
-          <div className="flex items-end justify-between flex-wrap gap-8 mb-16">
-            <div className="max-w-2xl">
-              <Eyebrow>Aree di pratica</Eyebrow>
-              <h2 className="mt-6 serif-display text-display-xl text-balance">
-                Vi accompagniamo passo dopo passo, dall'analisi fino alla decisione.
-              </h2>
-              <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
-                Due grandi famiglie di competenze, otto specializzazioni operative.
-                Scopri come possiamo difendere i tuoi diritti davanti alla Pubblica Amministrazione.
-              </p>
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-20 lg:mb-24">
+            <div className="lg:col-span-8">
+              <Reveal>
+                <Eyebrow>Aree di pratica</Eyebrow>
+              </Reveal>
+              <Reveal delay={80}>
+                <h2 className="mt-6 serif-display text-display-xl text-balance leading-[1.05]">
+                  Vi accompagniamo passo dopo passo,{" "}
+                  <span className="italic text-gold-deep">dall'analisi fino alla decisione.</span>
+                </h2>
+              </Reveal>
+              <Reveal delay={160}>
+                <p className="mt-8 text-lg text-muted-foreground leading-relaxed max-w-2xl">
+                  Due grandi famiglie di competenze, dodici procedure operative.
+                  Una mappa pensata per chi cerca subito la risposta giusta — distinta
+                  tra Enti pubblici e soggetti privati.
+                </p>
+              </Reveal>
             </div>
-            <Link
-              to="/contatti"
-              className="hidden md:inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-primary hover:text-gold-deep transition-colors font-semibold"
-            >
-              Tutte le aree <ChevronRight className="w-4 h-4" />
-            </Link>
+            <div className="lg:col-span-4 flex lg:justify-end lg:items-end">
+              <Reveal delay={200}>
+                <Link
+                  to="/contatti"
+                  className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-primary hover:text-gold-deep transition-colors font-semibold border-b hairline pb-2"
+                >
+                  Parla con un avvocato
+                  <ArrowRight className="w-4 h-4 text-gold-deep" />
+                </Link>
+              </Reveal>
+            </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-px bg-primary/10 border hairline">
-            {practiceFamilies.map((fam) => {
-              const Icon = fam.icon;
-              return (
-                <div key={fam.family} className="bg-background p-10 lg:p-12 flex flex-col">
-                  <div className="flex items-center gap-4 mb-6">
-                    <span className="w-12 h-12 border hairline flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-gold-deep" strokeWidth={1.5} />
-                    </span>
-                    <h3 className="font-serif text-2xl text-primary leading-tight">
-                      {fam.family}
-                    </h3>
-                  </div>
-                  <p className="text-muted-foreground leading-relaxed mb-8">
-                    {fam.blurb}
-                  </p>
-                  <ul className="space-y-1 mb-8 flex-1">
+          {practiceFamilies.map((fam, gi) => {
+            const Icon = fam.icon;
+            return (
+              <div
+                key={fam.family}
+                className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 ${
+                  gi > 0 ? "mt-20 lg:mt-28 pt-20 lg:pt-28 border-t hairline" : ""
+                }`}
+              >
+                {/* Sticky audience / family label */}
+                <div className="lg:col-span-4">
+                  <Reveal>
+                    <div className="lg:sticky lg:top-32">
+                      <span aria-hidden className="block w-8 h-px bg-gold mb-6" />
+                      <p className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">
+                        {String(gi + 1).padStart(2, "0")} · {fam.family}
+                      </p>
+                      <div className="mt-8 flex items-center gap-4">
+                        <span className="w-12 h-12 border hairline flex items-center justify-center bg-background">
+                          <Icon className="w-5 h-5 text-gold-deep" strokeWidth={1.5} />
+                        </span>
+                      </div>
+                      <p className="mt-8 text-[15px] text-muted-foreground leading-relaxed max-w-[300px]">
+                        {fam.blurb}
+                      </p>
+                      <Link
+                        to={fam.href}
+                        className="mt-10 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-primary font-semibold hover:text-gold-deep transition-colors"
+                      >
+                        Approfondisci l'area
+                        <ArrowUpRight className="w-4 h-4 text-gold-deep" />
+                      </Link>
+                    </div>
+                  </Reveal>
+                </div>
+
+                {/* Numbered procedure list */}
+                <div className="lg:col-span-8">
+                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
                     {fam.items.map((item, idx) => (
-                      <li key={item.label + idx}>
-                        <Link
-                          to={item.to}
-                          className="group flex items-center justify-between gap-4 py-2.5 border-b border-primary/5 hover:border-gold/40 transition-colors"
-                        >
-                          <span className="text-sm font-serif text-primary">
-                            {item.label}
-                          </span>
-                          <ArrowUpRight className="w-3.5 h-3.5 text-gold-deep opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
-                        </Link>
+                      <li
+                        key={item.label + idx}
+                        className="border-t hairline first:border-t-0 md:[&:nth-child(2)]:border-t-0"
+                      >
+                        <Reveal delay={idx * 60}>
+                          <Link
+                            to={item.to}
+                            className="group flex items-start justify-between gap-6 py-6"
+                          >
+                            <span className="font-serif text-lg text-primary leading-snug text-pretty pr-4 group-hover:text-gold-deep transition-colors">
+                              {item.label}
+                            </span>
+                            <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground pt-1.5 flex-shrink-0">
+                              {String(idx + 1).padStart(2, "0")}
+                            </span>
+                          </Link>
+                        </Reveal>
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    to={fam.href}
-                    className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-primary font-semibold hover:text-gold-deep transition-colors"
-                  >
-                    Approfondisci l'area
-                    <ArrowRight className="w-4 h-4 text-gold-deep" />
-                  </Link>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
