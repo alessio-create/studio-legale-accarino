@@ -153,7 +153,7 @@ export const Navbar = () => {
                   : "bg-primary text-primary-foreground hover:bg-primary-glow shadow-inset-gold"
               }`}
             >
-              Consulenza
+              Parla con un avvocato
               <ArrowRight
                 className={`w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1 ${
                   overDarkHero ? "text-primary" : "text-gold"
@@ -211,7 +211,7 @@ export const Navbar = () => {
                   to="/contatti"
                   className="mt-6 group inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-primary font-semibold hover:text-gold-deep transition-colors"
                 >
-                  Prenota consulenza
+                  Parla con un avvocato
                   <ArrowUpRight className="w-3.5 h-3.5 text-gold-deep transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
 
@@ -350,7 +350,7 @@ export const Navbar = () => {
               to="/contatti"
               className="mt-2 inline-flex items-center justify-center bg-primary text-primary-foreground px-6 py-3 text-label-sm uppercase tracking-[0.16em] shadow-inset-gold"
             >
-              Prenota Consulenza
+              Parla con un avvocato
             </Link>
           </div>
         </div>
