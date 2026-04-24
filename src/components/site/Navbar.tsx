@@ -46,7 +46,6 @@ const allServiceRoutes = serviceGroups.flatMap((g) => g.items.map((i) => i.to));
 
 const mainLinks = [
   { to: "/chi-siamo", label: "Lo Studio" },
-  { to: "/team", label: "Il Team" },
   { to: "/procedure", label: "Procedure" },
   { to: "/casi-di-successo", label: "Casi di Successo" },
   { to: "/blog", label: "Blog" },
