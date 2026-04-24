@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 import {
   ArrowRight, ArrowUpRight, Building2, Calendar, Landmark, Scale, Users,
+  Quote,
 } from "lucide-react";
 import heroCourthouse from "@/assets/hero-courthouse.jpg";
 import practiceEspropriazioni from "@/assets/practice-espropriazioni.jpg";
 import practiceUrbanistica from "@/assets/practice-urbanistica.jpg";
 import practiceAppalti from "@/assets/practice-appalti.jpg";
 import practiceConcorsi from "@/assets/practice-concorsi.jpg";
+import lawyer1 from "@/assets/lawyer-1.jpg";
+import lawyer2 from "@/assets/lawyer-2.jpg";
+import lawyer3 from "@/assets/lawyer-3.jpg";
 import { Layout } from "@/components/site/Layout";
 import { Eyebrow } from "@/components/site/Eyebrow";
 import { CTAButton } from "@/components/site/CTAButton";
@@ -105,6 +109,50 @@ const procedureGroups = [
       "Diniego di accesso agli atti",
       "Sanzioni amministrative e ricorsi gerarchici",
     ],
+  },
+];
+
+/** TEAM — three named professionals (placeholder portraits). */
+const team = [
+  {
+    name: "Avv. Giorgio Accarino",
+    role: "Founding Partner",
+    focus: "Espropriazioni · Urbanistica",
+    image: lawyer1,
+  },
+  {
+    name: "Avv. Chiara Accarino",
+    role: "Senior Partner",
+    focus: "Appalti · Contenzioso TAR",
+    image: lawyer2,
+  },
+  {
+    name: "Avv. Marco De Luca",
+    role: "Associate",
+    focus: "Concorsi · Pubblico impiego",
+    image: lawyer3,
+  },
+];
+
+/** REVIEWS — anonymised editorial testimonials. */
+const reviews = [
+  {
+    quote:
+      "Hanno trasformato un diniego che credevamo definitivo in un'aggiudicazione. Tempismo chirurgico in fase cautelare.",
+    author: "Amministratore Delegato",
+    context: "PMI edile · Salerno",
+  },
+  {
+    quote:
+      "Lo Studio segue la nostra Stazione Appaltante da anni: pareri puntuali, difese costruite su misura, zero approssimazione.",
+    author: "Dirigente Area Tecnica",
+    context: "Ente pubblico · Campania",
+  },
+  {
+    quote:
+      "Ci hanno restituito un'indennità di esproprio quasi triplicata rispetto alla prima offerta. Trasparenza in ogni fase.",
+    author: "Famiglia proprietaria",
+    context: "Procedura ablativa · Cilento",
   },
 ];
 
@@ -348,6 +396,131 @@ export default function Index() {
                 <p className="mt-3 text-[11px] uppercase tracking-[0.2em] text-muted-foreground leading-relaxed max-w-[18ch]">
                   {s.caption}
                 </p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───── VOCI & VOLTI — reviews + team, stacked editorial ───── */}
+      <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
+        {/* Subtle gold ambient wash, mirroring the stats band */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.035]"
+          style={{
+            background:
+              "radial-gradient(70% 60% at 50% 100%, hsl(var(--gold)) 0%, transparent 65%)",
+          }}
+        />
+
+        <div className="relative editorial-container py-20 lg:py-28">
+          {/* — Reviews — */}
+          <div className="mx-auto max-w-2xl text-center mb-14 lg:mb-20">
+            <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-gold-deep font-semibold">
+              <span aria-hidden className="w-6 h-px bg-gold" />
+              Voci dei nostri assistiti
+              <span aria-hidden className="w-6 h-px bg-gold" />
+            </span>
+            <h2 className="mt-6 serif-display text-display-lg text-balance text-primary">
+              La fiducia si misura nel tempo, non nelle promesse.
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-primary/10 border hairline mb-24 lg:mb-32">
+            {reviews.map((r, i) => (
+              <Reveal
+                key={r.author}
+                delay={i * 110}
+                className="bg-background p-10 lg:p-12 flex flex-col h-full relative"
+              >
+                <Quote
+                  aria-hidden
+                  className="w-7 h-7 text-gold-deep stroke-[1.25] mb-6 opacity-80"
+                />
+                <blockquote className="font-serif text-lg lg:text-[1.35rem] leading-snug text-primary text-balance flex-1">
+                  &ldquo;{r.quote}&rdquo;
+                </blockquote>
+                <div className="mt-8 pt-6 border-t hairline">
+                  <p className="text-[11px] uppercase tracking-[0.2em] text-gold-deep font-semibold">
+                    {r.author}
+                  </p>
+                  <p className="mt-2 text-xs text-muted-foreground">
+                    {r.context}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* — Team — */}
+          <div className="mx-auto max-w-2xl text-center mb-14 lg:mb-20">
+            <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-gold-deep font-semibold">
+              <span aria-hidden className="w-6 h-px bg-gold" />
+              I volti dello Studio
+              <span aria-hidden className="w-6 h-px bg-gold" />
+            </span>
+            <h2 className="mt-6 serif-display text-display-lg text-balance text-primary">
+              Tre generazioni, una sola idea di rigore.
+            </h2>
+            <p className="mt-6 text-base text-muted-foreground leading-relaxed">
+              Ogni pratica è seguita personalmente da uno dei professionisti dello
+              Studio: nessun delegato, nessun passaggio anonimo.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+            {team.map((m, i) => (
+              <Reveal
+                key={m.name}
+                delay={i * 130}
+                className="group flex flex-col"
+              >
+                <div className="relative overflow-hidden bg-primary/5 aspect-[4/5]">
+                  <img
+                    src={m.image}
+                    alt={`Ritratto di ${m.name}`}
+                    loading="lazy"
+                    width={1024}
+                    height={1280}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
+                  />
+                  {/* tonal wash to harmonise with the page palette */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, hsl(var(--primary) / 0) 55%, hsl(var(--primary) / 0.55) 100%)",
+                    }}
+                  />
+                  {/* gold hairline at the base */}
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 bottom-0 h-px bg-gold/40 transition-colors duration-500 group-hover:bg-gold"
+                  />
+                  {/* eyebrow chip */}
+                  <span className="absolute top-5 left-5 inline-flex items-center gap-2 bg-background/85 backdrop-blur-sm px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
+                    <span aria-hidden className="w-3 h-px bg-gold" />
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+
+                <div className="pt-7">
+                  <h3 className="font-serif text-2xl text-primary leading-tight">
+                    {m.name}
+                  </h3>
+                  <p className="mt-2 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
+                    {m.role}
+                  </p>
+                  <span
+                    aria-hidden
+                    className="block mt-5 w-10 h-px bg-gold/60 transition-all duration-500 group-hover:w-16 group-hover:bg-gold"
+                  />
+                  <p className="mt-5 text-sm text-muted-foreground leading-relaxed">
+                    {m.focus}
+                  </p>
+                </div>
               </Reveal>
             ))}
           </div>
