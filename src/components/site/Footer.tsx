@@ -29,7 +29,7 @@ export const Footer = () => (
     </div>
 
     <div className="editorial-container pt-16 lg:pt-20 pb-10">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6">
         <div className="md:col-span-4">
           <Logo inverted />
           <p className="mt-6 text-sm text-background/70 leading-relaxed max-w-xs">
@@ -66,7 +66,7 @@ export const Footer = () => (
           <h4 className="text-[11px] uppercase tracking-[0.2em] text-gold mb-6">
             Aree di pratica
           </h4>
-          <ul className="space-y-3 text-sm text-background/80">
+          <ul className="space-y-2 text-sm text-background/80">
             <li>
               <Link to="/espropriazioni" className="hover:text-gold transition-colors inline-flex items-center gap-2 group">
                 <span className="w-1 h-1 bg-gold/50 group-hover:bg-gold transition-colors" />
@@ -96,7 +96,7 @@ export const Footer = () => (
 
         <div className="md:col-span-2">
           <h4 className="text-[11px] uppercase tracking-[0.2em] text-gold mb-6">Studio</h4>
-          <ul className="space-y-3 text-sm text-background/80">
+          <ul className="space-y-2 text-sm text-background/80">
             <li><Link to="/chi-siamo" className="hover:text-gold transition-colors">Chi Sono</Link></li>
             <li><Link to="/blog" className="hover:text-gold transition-colors">Blog</Link></li>
             <li><Link to="/contatti" className="hover:text-gold transition-colors">Contatti</Link></li>
