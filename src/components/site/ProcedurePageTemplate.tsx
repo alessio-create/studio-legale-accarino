@@ -18,7 +18,6 @@ import { FAQ } from "./FAQ";
 import { Seo, faqJsonLd, serviceJsonLd } from "./Seo";
 import { SectionHeader } from "./SectionHeader";
 import { MobileTOC } from "./MobileTOC";
-import { ReadingProgress } from "./ReadingProgress";
 import { useActiveSection } from "@/hooks/use-active-section";
 import {
   Procedure,
@@ -72,8 +71,6 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
           faqJsonLd(procedure.faq),
         ]}
       />
-
-      <ReadingProgress />
 
       {/* ─────────── HERO — editorial monograph cover ─────────── */}
       <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
