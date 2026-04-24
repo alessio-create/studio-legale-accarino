@@ -13,7 +13,7 @@ export const Footer = () => (
           </p>
           <h3 className="serif-display text-3xl lg:text-4xl text-background text-balance">
             Hai un caso urgente?{" "}
-            <span className="text-gold">Parliamone.</span>
+            <span className="italic text-gold">Parliamone.</span>
           </h3>
         </div>
         <div className="lg:col-span-4 flex lg:justify-end">
