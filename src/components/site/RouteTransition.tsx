@@ -30,7 +30,8 @@ export const RouteTransition = () => {
     const hide = window.setTimeout(() => setVisible(false), TOTAL_MS);
 
     // Bring the user to the top of the new page once the curtain is up.
-    window.scrollTo({ top: 0, behavior: "auto" });
+    // SmoothScroll also handles this via Lenis, but we keep a hard fallback.
+    window.scrollTo(0, 0);
 
     return () => {
       window.clearTimeout(fadeOut);
