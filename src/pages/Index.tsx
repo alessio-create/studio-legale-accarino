@@ -281,6 +281,28 @@ export default function Index() {
   const prevTestimonial = () =>
     setActiveTestimonial((i) => (i - 1 + testimonials.length) % testimonials.length);
 
+  // Filter state for "Aree di pratica" search
+  const [practiceQuery, setPracticeQuery] = useState("");
+  const normalizedQ = practiceQuery.trim().toLowerCase();
+  const filteredFamilies = practiceFamilies
+    .map((fam) => {
+      if (!normalizedQ) return { fam, items: fam.items, familyMatches: false };
+      const familyMatches =
+        fam.family.toLowerCase().includes(normalizedQ) ||
+        fam.blurb.toLowerCase().includes(normalizedQ);
+      const matchedItems = fam.items.filter((it) =>
+        it.label.toLowerCase().includes(normalizedQ)
+      );
+      // Keep family if its name/blurb matches (then show all items) OR
+      // if at least one procedure matches (then show only matched ones)
+      if (familyMatches) return { fam, items: fam.items, familyMatches };
+      if (matchedItems.length > 0)
+        return { fam, items: matchedItems, familyMatches };
+      return null;
+    })
+    .filter((x): x is { fam: typeof practiceFamilies[number]; items: typeof practiceFamilies[number]["items"]; familyMatches: boolean } => x !== null);
+  const totalMatches = filteredFamilies.reduce((n, g) => n + g.items.length, 0);
+
   return (
     <Layout>
       {/* HERO */}
