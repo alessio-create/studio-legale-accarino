@@ -19,6 +19,7 @@ import { CountUp } from "@/components/site/CountUp";
 import { MaximTicker } from "@/components/site/MaximTicker";
 import { PracticeSideNav, type SideNavItem } from "@/components/site/PracticeSideNav";
 import { Highlight } from "@/components/site/Highlight";
+import { useHashTarget } from "@/hooks/use-hash-target";
 
 /**
  * Four core specializations — one card per practice detail page.
