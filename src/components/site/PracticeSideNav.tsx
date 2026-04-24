@@ -6,6 +6,8 @@ export type SideNavItem = {
   label: string;
   /** Short kicker number, e.g. "01" */
   kicker?: string;
+  /** Optional nested anchors (procedures inside a family). */
+  children?: SideNavItem[];
 };
 
 type Props = {
@@ -21,7 +23,8 @@ type Props = {
  * Hidden on small screens — the page content already lists the same items.
  */
 export function PracticeSideNav({ items, eyebrow = "In questa sezione", className }: Props) {
-  const active = useActiveSection(items.map((i) => i.id));
+  const allIds = items.flatMap((i) => [i.id, ...(i.children?.map((c) => c.id) ?? [])]);
+  const active = useActiveSection(allIds);
 
   const handleJump = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
@@ -45,7 +48,9 @@ export function PracticeSideNav({ items, eyebrow = "In questa sezione", classNam
       </p>
       <ul className="space-y-1 border-l hairline">
         {items.map((item) => {
-          const isActive = active === item.id;
+          const isActive =
+            active === item.id ||
+            (item.children?.some((c) => c.id === active) ?? false);
           return (
             <li key={item.id}>
               <a
@@ -77,6 +82,29 @@ export function PracticeSideNav({ items, eyebrow = "In questa sezione", classNam
                   {item.label}
                 </span>
               </a>
+              {item.children && isActive && (
+                <ul className="ml-5 mt-1 mb-2 space-y-0.5 border-l hairline">
+                  {item.children.map((child) => {
+                    const childActive = active === child.id;
+                    return (
+                      <li key={child.id}>
+                        <a
+                          href={`#${child.id}`}
+                          onClick={(e) => handleJump(e, child.id)}
+                          className={cn(
+                            "block pl-4 pr-2 py-1.5 -ml-px border-l-2 text-xs transition-colors",
+                            childActive
+                              ? "border-gold-deep text-primary"
+                              : "border-transparent text-muted-foreground hover:text-primary hover:border-gold/40"
+                          )}
+                        >
+                          {child.label}
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
             </li>
           );
         })}
