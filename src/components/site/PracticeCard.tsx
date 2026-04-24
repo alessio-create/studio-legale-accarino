@@ -5,14 +5,14 @@ interface Props {
   number: string;
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon?: LucideIcon;
   href: string;
   topics?: string[];
   image?: string;
   imageAlt?: string;
 }
 
-export const PracticeCard = ({ number, title, description, icon: Icon, href, topics, image, imageAlt }: Props) => (
+export const PracticeCard = ({ number, title, description, href, topics, image, imageAlt }: Props) => (
   <Link to={href} className="practice-card group flex flex-col h-full">
     {image && (
       <div className="practice-card-media relative -mx-10 -mt-10 mb-8 overflow-hidden">
@@ -50,11 +50,10 @@ export const PracticeCard = ({ number, title, description, icon: Icon, href, top
       </div>
     )}
 
-    <div className="flex items-start justify-between mb-10">
+    <div className="mb-10">
       <span className="text-[11px] tracking-[0.2em] uppercase text-gold-deep font-semibold">
         {number}
       </span>
-      <Icon className="w-7 h-7 text-gold-deep stroke-[1.25]" />
     </div>
 
     <h3 className="font-serif text-2xl text-primary leading-tight mb-4">{title}</h3>
