@@ -68,6 +68,10 @@
     --destructive: 0 70% 45%;
     --destructive-foreground: 0 0% 100%;
 
+    /* Live / status — used for "real-time" UI signals (live review pulse). */
+    --live: 152 71% 38%;                /* emerald-equivalent in brand HSL */
+    --live-soft: 152 71% 38% / 0.18;
+
     --border: 0 0% 88%;                 /* #E0E0E0 brand grey */
     --input: 220 51% 16%;
     --ring: 38 98% 53%;                 /* Bright Yellow */
