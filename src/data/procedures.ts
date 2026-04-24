@@ -881,7 +881,7 @@ export const procedures: Procedure[] = [
       },
     ],
     faq: [
-      { q: "In quali casi si concede la cautelare?", o: "", a: "Quando coesistono fumus e periculum. La giurisprudenza è particolarmente sensibile in materia di gare, edilizia e provvedimenti che incidono su diritti fondamentali." },
+      { q: "In quali casi si concede la cautelare?", a: "Quando coesistono fumus e periculum. La giurisprudenza è particolarmente sensibile in materia di gare, edilizia e provvedimenti che incidono su diritti fondamentali." },
       { q: "L'ordinanza è impugnabile?", a: "Sì, davanti al Consiglio di Stato entro 30 giorni dalla notifica. L'appello cautelare consente una revisione completa della decisione." },
       { q: "Cosa accade dopo la cautelare?", a: "Il giudizio prosegue per il merito. La cautelare ha effetti fino alla sentenza di primo grado, che ne determina la conferma o la revoca." },
     ],
