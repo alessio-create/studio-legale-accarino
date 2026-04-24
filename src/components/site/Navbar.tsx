@@ -317,7 +317,7 @@ export const Navbar = () => {
       )}
 
       {open && (
-        <div className="lg:hidden bg-background border-t hairline animate-fade-up max-h-[calc(100vh-5rem)] overflow-y-auto">
+        <div className="lg:hidden bg-background border-t hairline animate-mega-in origin-top max-h-[calc(100vh-5rem)] overflow-y-auto">
           <div className="editorial-container py-6 flex flex-col gap-5">
             <a
               href={PHONE_HREF}
