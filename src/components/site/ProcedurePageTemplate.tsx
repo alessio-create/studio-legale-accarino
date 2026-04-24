@@ -73,80 +73,131 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
         ]}
       />
 
-      {/* ─────────── HERO ─────────── */}
+      <ReadingProgress />
+
+      {/* ─────────── HERO — editorial monograph cover ─────────── */}
       <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
+        {/* Background ornament: parchment glow + faint grid */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.04]"
+          className="pointer-events-none absolute inset-0 opacity-[0.05]"
           style={{
             background:
-              "radial-gradient(60% 80% at 0% 0%, hsl(var(--gold)) 0%, transparent 60%)",
+              "radial-gradient(70% 90% at 0% 0%, hsl(var(--gold)) 0%, transparent 55%)",
           }}
         />
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-noise opacity-40" />
+
         <div className="relative editorial-container pt-20 lg:pt-28 pb-14 lg:pb-20">
+          {/* Breadcrumb / kicker */}
           <Reveal>
-            <p className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
+            <p className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.24em] font-semibold">
               <span aria-hidden className="w-8 h-px bg-gold" />
               <Link
-                to="/"
+                to="/procedure"
                 className="text-muted-foreground hover:text-gold-deep transition-colors"
               >
                 Procedure
               </Link>
-              <span aria-hidden className="w-3 h-px bg-gold/50" />
-              <span>{procedure.audience}</span>
-              <span aria-hidden className="w-3 h-px bg-gold/50" />
-              <span className="text-primary/70">
-                {procedure.practiceArea}
-              </span>
+              <span aria-hidden className="w-2 h-px bg-gold/50" />
+              <span className="text-gold-deep">{procedure.audience}</span>
+              <span aria-hidden className="w-2 h-px bg-gold/50" />
+              <span className="text-primary/60">{procedure.practiceArea}</span>
             </p>
           </Reveal>
 
-          <Reveal delay={120}>
-            <h1 className="mt-8 serif-display text-display-2xl text-primary text-balance leading-[1.04] max-w-4xl">
-              {procedure.title}
-            </h1>
-          </Reveal>
+          {/* Headline cluster with ghost numeral */}
+          <div className="relative mt-10">
+            <span
+              aria-hidden
+              className="ghost-numeral hidden md:block absolute -top-10 right-0 text-[10rem] lg:text-[14rem]"
+            >
+              §
+            </span>
 
-          <Reveal delay={220}>
-            <p className="mt-8 text-xl text-muted-foreground leading-relaxed max-w-2xl text-pretty">
-              {procedure.lead}
-            </p>
-          </Reveal>
+            <Reveal delay={120}>
+              <p className="text-[10px] uppercase tracking-[0.32em] text-gold-deep font-semibold mb-5">
+                Procedura · Monografia
+              </p>
+            </Reveal>
 
-          <Reveal delay={320}>
-            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-              <span className="inline-flex items-center gap-2">
-                <Clock className="w-3.5 h-3.5 text-gold-deep" />
-                {procedure.readingTime} min di lettura
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <Scale className="w-3.5 h-3.5 text-gold-deep" />
-                Diritto amministrativo
-              </span>
+            <Reveal delay={180}>
+              <h1 className="serif-display text-display-2xl text-primary text-balance leading-[1.02] max-w-4xl">
+                {procedure.title}
+              </h1>
+            </Reveal>
+
+            <Reveal delay={280}>
+              <span
+                aria-hidden
+                className="block mt-8 h-px w-24 editorial-rule"
+              />
+            </Reveal>
+
+            <Reveal delay={340}>
+              <p className="mt-8 text-xl text-muted-foreground leading-relaxed max-w-2xl text-pretty">
+                {procedure.lead}
+              </p>
+            </Reveal>
+          </div>
+
+          {/* Meta dock — datasheet-style */}
+          <Reveal delay={420}>
+            <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-px bg-primary/10 border hairline max-w-3xl">
+              <HeroMeta
+                icon={<Clock className="w-3.5 h-3.5" />}
+                label="Lettura"
+                value={`${procedure.readingTime} min`}
+              />
+              <HeroMeta
+                icon={<Scale className="w-3.5 h-3.5" />}
+                label="Materia"
+                value="Amministrativo"
+              />
+              <HeroMeta
+                icon={<Landmark className="w-3.5 h-3.5" />}
+                label="Foro"
+                value="TAR · CdS"
+              />
+              <HeroMeta
+                icon={<BookOpen className="w-3.5 h-3.5" />}
+                label="Sezioni"
+                value={String(procedure.sections.length).padStart(2, "0")}
+              />
             </div>
           </Reveal>
         </div>
 
-        {/* Hero image strip */}
-        <Reveal delay={400} className="editorial-container pb-16 lg:pb-24">
-          <div className="relative gold-corner p-3">
-            <img
-              src={procedure.heroImage}
-              alt={procedure.title}
-              className="w-full h-[320px] md:h-[420px] lg:h-[520px] object-cover"
-              width={1600}
-              height={900}
-            />
+        {/* Hero image — clipped reveal + ornamental frame */}
+        <Reveal delay={500} className="editorial-container pb-16 lg:pb-24">
+          <figure className="relative gold-corner-frame p-3">
+            <div className="overflow-hidden">
+              <img
+                src={procedure.heroImage}
+                alt={procedure.title}
+                className="w-full h-[320px] md:h-[440px] lg:h-[560px] object-cover animate-image-reveal"
+                width={1600}
+                height={900}
+              />
+            </div>
             <span
               aria-hidden
               className="pointer-events-none absolute inset-3"
               style={{
                 background:
-                  "linear-gradient(180deg, hsl(var(--primary) / 0.05) 0%, hsl(var(--primary) / 0.45) 100%)",
+                  "linear-gradient(180deg, hsl(var(--primary) / 0.0) 50%, hsl(var(--primary) / 0.55) 100%)",
               }}
             />
-          </div>
+            {/* Caption tab — magazine plate style */}
+            <figcaption className="absolute left-6 bottom-6 right-6 flex items-end justify-between gap-6">
+              <span className="bg-background/95 backdrop-blur px-4 py-2 text-[10px] uppercase tracking-[0.24em] text-gold-deep font-semibold">
+                Tav. I · {procedure.practiceArea}
+              </span>
+              <span className="hidden md:inline-block bg-primary/85 backdrop-blur text-background px-4 py-2 text-[10px] uppercase tracking-[0.22em] font-semibold">
+                Studio Legale Accarino
+              </span>
+            </figcaption>
+          </figure>
         </Reveal>
       </section>
 
