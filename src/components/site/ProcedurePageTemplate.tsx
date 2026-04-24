@@ -63,24 +63,35 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
 
       {/* ─────────── HERO ─────────── */}
       <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
-        <div className="editorial-container pt-16 lg:pt-24 pb-14 lg:pb-20">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.04]"
+          style={{
+            background:
+              "radial-gradient(60% 80% at 0% 0%, hsl(var(--gold)) 0%, transparent 60%)",
+          }}
+        />
+        <div className="relative editorial-container pt-20 lg:pt-28 pb-14 lg:pb-20">
           <Reveal>
-            <div className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold mb-8">
+            <p className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
+              <span aria-hidden className="w-8 h-px bg-gold" />
               <Link
                 to="/"
                 className="text-muted-foreground hover:text-gold-deep transition-colors"
               >
                 Procedure
               </Link>
-              <span aria-hidden className="text-primary/30">/</span>
+              <span aria-hidden className="w-3 h-px bg-gold/50" />
               <span>{procedure.audience}</span>
-              <span aria-hidden className="w-6 h-px bg-gold ml-2" />
-              <span className="text-primary">{procedure.practiceArea}</span>
-            </div>
+              <span aria-hidden className="w-3 h-px bg-gold/50" />
+              <span className="text-primary/70">
+                {procedure.practiceArea}
+              </span>
+            </p>
           </Reveal>
 
           <Reveal delay={120}>
-            <h1 className="serif-display text-display-2xl text-primary text-balance max-w-4xl">
+            <h1 className="mt-8 serif-display text-display-2xl text-primary text-balance leading-[1.04] max-w-4xl">
               {procedure.title}
             </h1>
           </Reveal>
