@@ -248,19 +248,16 @@ export default function Index() {
             </div>
 
             {/* Main editorial block */}
-            <div className="lg:col-span-9 max-w-4xl">
+            <div className="lg:col-span-11 max-w-[60rem]">
               <div className="flex items-center gap-4 mb-8 animate-fade-up">
                 <span aria-hidden className="block w-10 h-px bg-gold" />
                 <span className="text-[10px] uppercase tracking-[0.32em] text-gold font-semibold">
                   Studio Legale Accarino · Salerno
                 </span>
               </div>
-              <h1 className="serif-display text-[clamp(2.25rem,5.4vw,4.75rem)] text-background text-balance leading-[1.02] tracking-[-0.01em] animate-fade-up">
-                Tuteliamo i tuoi diritti
-                <span className="block mt-2">
-                  con <span className="text-gold italic font-normal">competenza</span>
-                  <span className="text-gold">.</span>
-                </span>
+              <h1 className="serif-display text-[clamp(2.5rem,5.2vw,4.75rem)] text-background text-balance leading-[1.04] tracking-[-0.015em] animate-fade-up">
+                Tuteliamo i tuoi diritti con{" "}
+                <span className="text-gold">competenza</span>.
               </h1>
               <p className="mt-10 text-base lg:text-lg text-background/75 leading-[1.65] max-w-xl animate-fade-up text-pretty">
                 Diritto amministrativo dal 1974: espropriazioni, appalti, urbanistica e
@@ -279,13 +276,6 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Right meta — hairline indicator block */}
-            <div className="hidden lg:flex lg:col-span-2 flex-col items-end gap-3 pb-2 text-right">
-              <span aria-hidden className="block w-12 h-px bg-gold" />
-              <p className="font-serif text-[11px] uppercase tracking-[0.22em] text-background/55 leading-relaxed">
-                Cinquant'anni<br />di diritto pubblico
-              </p>
-            </div>
           </div>
         </div>
 
