@@ -17,6 +17,8 @@ import ProcedurePage from "./pages/ProcedurePage.tsx";
 import Procedures from "./pages/Procedures.tsx";
 import { procedures } from "./data/procedures";
 import { RouteTransition } from "./components/site/RouteTransition";
+import { SmoothScroll } from "./components/site/SmoothScroll";
+import { ScrollProgress } from "./components/site/ScrollProgress";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +29,8 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <SmoothScroll />
+          <ScrollProgress />
           <RouteTransition />
           <Routes>
             <Route path="/" element={<Index />} />
