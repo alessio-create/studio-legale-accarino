@@ -571,16 +571,25 @@ export default function Index() {
       {/* ───────────── WHAT WE CAN DO FOR YOU ───────────── */}
       <section className="bg-background border-y hairline">
         <div className="editorial-container py-20 lg:py-28">
-          <div className="max-w-3xl mb-16 lg:mb-20">
-            <Eyebrow>Cosa facciamo per voi</Eyebrow>
-            <h2 className="mt-6 serif-display text-display-xl text-balance">
-              Le procedure che gestiamo, divise per chi ne ha bisogno.
-            </h2>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              Una mappa operativa dei servizi: dalla consulenza preventiva al
-              contenzioso davanti alle Magistrature Superiori, distinta tra Pubbliche
-              Amministrazioni e soggetti privati.
-            </p>
+          <div className="flex items-end justify-between flex-wrap gap-8 mb-16 lg:mb-20">
+            <div className="max-w-3xl">
+              <Eyebrow>Cosa facciamo per voi</Eyebrow>
+              <h2 className="mt-6 serif-display text-display-xl text-balance">
+                Le procedure che gestiamo, divise per chi ne ha bisogno.
+              </h2>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                Una mappa operativa dei servizi: dalla consulenza preventiva al
+                contenzioso davanti alle Magistrature Superiori, distinta tra Pubbliche
+                Amministrazioni e soggetti privati.
+              </p>
+            </div>
+            <Link
+              to="/procedure"
+              className="hidden md:inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-primary hover:text-gold-deep transition-colors font-semibold"
+            >
+              Indice completo
+              <ArrowRight className="w-4 h-4 text-gold-deep" />
+            </Link>
           </div>
 
           {procedureGroups.map((group, gi) => (
