@@ -1301,6 +1301,9 @@ export default function Index() {
         </div>
       </section>
 
+      {/* DOVE SIAMO — physical-presence proof block */}
+      <WhereWeAre />
+
       {/* FAQ */}
       <section className="section-y">
         <div className="editorial-container grid lg:grid-cols-12 gap-12">
