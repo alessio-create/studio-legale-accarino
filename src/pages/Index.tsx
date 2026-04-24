@@ -17,6 +17,7 @@ import { PracticeCard } from "@/components/site/PracticeCard";
 import { Reveal } from "@/components/site/Reveal";
 import { CountUp } from "@/components/site/CountUp";
 import { MaximTicker } from "@/components/site/MaximTicker";
+import { PracticeSideNav, type SideNavItem } from "@/components/site/PracticeSideNav";
 
 /**
  * Four core specializations — one card per practice detail page.
