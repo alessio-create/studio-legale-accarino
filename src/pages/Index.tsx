@@ -116,21 +116,21 @@ const procedureGroups = [
 /** TEAM — three named professionals (placeholder portraits). */
 const team = [
   {
-    name: "Avv. Giorgio Accarino",
-    role: "Founding Partner",
-    focus: "Espropriazioni · Urbanistica",
+    name: "[Placeholder]",
+    role: "[PLACEHOLDER]",
+    focus: "[Placeholder]",
     image: lawyer1,
   },
   {
-    name: "Avv. Chiara Accarino",
-    role: "Senior Partner",
-    focus: "Appalti · Contenzioso TAR",
+    name: "[Placeholder]",
+    role: "[PLACEHOLDER]",
+    focus: "[Placeholder]",
     image: lawyer2,
   },
   {
-    name: "Avv. Marco De Luca",
-    role: "Associate",
-    focus: "Concorsi · Pubblico impiego",
+    name: "[Placeholder]",
+    role: "[PLACEHOLDER]",
+    focus: "[Placeholder]",
     image: lawyer3,
   },
 ];
