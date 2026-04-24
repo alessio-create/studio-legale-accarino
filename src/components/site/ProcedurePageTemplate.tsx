@@ -431,7 +431,7 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
           </div>
         </section>
       )}
-    </Layout>
+    </ProceduresLayout>
   );
 };
 
