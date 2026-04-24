@@ -1085,3 +1085,37 @@ export const procedureTitleToSlug: Record<string, string> = procedures.reduce(
   },
   {} as Record<string, string>,
 );
+
+/** Groups procedures by audience → practice area, preserving original order.
+ *  Used by the procedures index page and the sidebar navigation to render a
+ *  consistent two-level taxonomy across the site. */
+export type GroupedProcedures = Array<{
+  audience: Audience;
+  groups: Array<{
+    practiceArea: Procedure["practiceArea"];
+    items: Procedure[];
+  }>;
+}>;
+
+export function getGroupedProcedures(): GroupedProcedures {
+  const audiences: Audience[] = ["Per gli Enti", "Per le Persone"];
+  return audiences.map((audience) => {
+    const inAudience = procedures.filter((p) => p.audience === audience);
+    const areaOrder: Procedure["practiceArea"][] = [];
+    const byArea = new Map<Procedure["practiceArea"], Procedure[]>();
+    for (const p of inAudience) {
+      if (!byArea.has(p.practiceArea)) {
+        byArea.set(p.practiceArea, []);
+        areaOrder.push(p.practiceArea);
+      }
+      byArea.get(p.practiceArea)!.push(p);
+    }
+    return {
+      audience,
+      groups: areaOrder.map((practiceArea) => ({
+        practiceArea,
+        items: byArea.get(practiceArea)!,
+      })),
+    };
+  });
+}
