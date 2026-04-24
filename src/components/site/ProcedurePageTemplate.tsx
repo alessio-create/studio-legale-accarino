@@ -7,6 +7,7 @@ import { Reveal } from "./Reveal";
 import { FAQ } from "./FAQ";
 import { Seo, faqJsonLd, serviceJsonLd } from "./Seo";
 import { SectionHeader } from "./SectionHeader";
+import { MobileTOC } from "./MobileTOC";
 import { useActiveSection } from "@/hooks/use-active-section";
 import {
   Procedure,
@@ -141,6 +142,12 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
       {/* ─────────── BODY: meta · sections · TOC ─────────── */}
       <section className="bg-background">
         <div className="editorial-container py-20 lg:py-28">
+          <MobileTOC
+            sections={procedure.sections.map((s) => ({
+              id: s.id,
+              title: s.title,
+            }))}
+          />
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
             {/* ── Left meta rail (sticky, animated in) ── */}
             <Reveal
