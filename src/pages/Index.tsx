@@ -15,6 +15,7 @@ import { Eyebrow } from "@/components/site/Eyebrow";
 import { CTAButton } from "@/components/site/CTAButton";
 import ResultCard, { type ResultDetail } from "@/components/site/ResultCard";
 import { PracticeCard } from "@/components/site/PracticeCard";
+import { CaseStudyCard, type CaseStudy } from "@/components/site/CaseStudyCard";
 import { Reveal } from "@/components/site/Reveal";
 import { CountUp } from "@/components/site/CountUp";
 import { MaximTicker } from "@/components/site/MaximTicker";
