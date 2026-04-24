@@ -89,17 +89,17 @@ export const Navbar = () => {
     >
       {/* Top utility bar */}
       <div className={`hidden lg:block border-b transition-colors ${overDarkHero ? "border-background/15" : "border-primary/10"}`}>
-        <div className="editorial-container flex items-center justify-between h-8 text-[10px] uppercase tracking-[0.22em]">
+        <div className="editorial-container flex items-center justify-between h-9 text-[10px] uppercase tracking-[0.24em]">
           <div className={`flex items-center gap-6 ${overDarkHero ? "text-background/70" : "text-muted-foreground"}`}>
-            <span className="flex items-center gap-2">
+            <span className="flex items-center gap-2.5">
               <span className="w-1 h-1 bg-gold" />
-              Salerno · Cava de' Tirreni
+              Diritto Amministrativo
             </span>
-            <span className="hidden xl:inline">Diritto Amministrativo · Est. 1974</span>
+            <span className="hidden xl:inline">Sedi · Salerno &amp; Cava de&apos; Tirreni</span>
           </div>
           <a
             href={PHONE_HREF}
-            className={`flex items-center gap-2 font-semibold transition-colors ${
+            className={`flex items-center gap-2.5 font-semibold transition-colors ${
               overDarkHero ? "text-background hover:text-gold" : "text-primary hover:text-gold-deep"
             }`}
           >
@@ -110,10 +110,10 @@ export const Navbar = () => {
       </div>
 
       <div className="editorial-container">
-        <div className="flex items-center justify-between h-16 lg:h-[68px]">
+        <div className="flex items-center justify-between h-20 lg:h-[88px]">
           <Logo inverted={overDarkHero} />
 
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-10">
             <button
               className={`nav-link inline-flex items-center gap-1.5 ${overDarkHero ? "!text-background hover:!text-gold" : ""}`}
               data-active={allServiceRoutes.includes(pathname) ? "true" : undefined}
@@ -142,7 +142,7 @@ export const Navbar = () => {
           <div className="hidden lg:block">
             <Link
               to="/contatti"
-              className={`group inline-flex items-center gap-2.5 px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] transition-all ${
+              className={`group inline-flex items-center gap-2.5 px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] transition-all ${
                 overDarkHero
                   ? "bg-gold text-primary hover:bg-background hover:text-primary"
                   : "bg-primary text-primary-foreground hover:bg-primary-glow shadow-inset-gold"
