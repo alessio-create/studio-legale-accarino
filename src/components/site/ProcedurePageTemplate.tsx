@@ -2,11 +2,11 @@ import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, Check, Clock, Phone, Quote, Scale } from "lucide-react";
 import { Layout } from "./Layout";
-import { Eyebrow } from "./Eyebrow";
 import { CTAButton } from "./CTAButton";
 import { Reveal } from "./Reveal";
 import { FAQ } from "./FAQ";
 import { Seo, faqJsonLd, serviceJsonLd } from "./Seo";
+import { SectionHeader } from "./SectionHeader";
 import { useActiveSection } from "@/hooks/use-active-section";
 import {
   Procedure,
@@ -63,24 +63,35 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
 
       {/* ─────────── HERO ─────────── */}
       <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
-        <div className="editorial-container pt-16 lg:pt-24 pb-14 lg:pb-20">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.04]"
+          style={{
+            background:
+              "radial-gradient(60% 80% at 0% 0%, hsl(var(--gold)) 0%, transparent 60%)",
+          }}
+        />
+        <div className="relative editorial-container pt-20 lg:pt-28 pb-14 lg:pb-20">
           <Reveal>
-            <div className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold mb-8">
+            <p className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
+              <span aria-hidden className="w-8 h-px bg-gold" />
               <Link
                 to="/"
                 className="text-muted-foreground hover:text-gold-deep transition-colors"
               >
                 Procedure
               </Link>
-              <span aria-hidden className="text-primary/30">/</span>
+              <span aria-hidden className="w-3 h-px bg-gold/50" />
               <span>{procedure.audience}</span>
-              <span aria-hidden className="w-6 h-px bg-gold ml-2" />
-              <span className="text-primary">{procedure.practiceArea}</span>
-            </div>
+              <span aria-hidden className="w-3 h-px bg-gold/50" />
+              <span className="text-primary/70">
+                {procedure.practiceArea}
+              </span>
+            </p>
           </Reveal>
 
           <Reveal delay={120}>
-            <h1 className="serif-display text-display-2xl text-primary text-balance max-w-4xl">
+            <h1 className="mt-8 serif-display text-display-2xl text-primary text-balance leading-[1.04] max-w-4xl">
               {procedure.title}
             </h1>
           </Reveal>
@@ -317,14 +328,12 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
       <section className="bg-surface-container-low border-y hairline">
         <div className="editorial-container py-20 lg:py-28 grid lg:grid-cols-12 gap-12">
           <Reveal className="lg:col-span-4">
-            <Eyebrow>Domande frequenti</Eyebrow>
-            <h2 className="mt-6 serif-display text-display-lg text-balance">
-              Le domande più comuni su questa procedura
-            </h2>
-            <p className="mt-6 text-muted-foreground leading-relaxed">
-              Hai un quesito specifico? Una consulenza riservata di 15 minuti
-              chiarisce subito i termini del tuo caso.
-            </p>
+            <SectionHeader
+              eyebrow="Domande frequenti"
+              title="Le domande più comuni su questa procedura."
+              intro="Hai un quesito specifico? Una consulenza riservata di 15 minuti chiarisce subito i termini del tuo caso."
+              compact
+            />
             <div className="mt-8">
               <CTAButton to="/contatti" variant="ghost">
                 Parla con un avvocato
@@ -379,10 +388,11 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
           <div className="editorial-container py-20 lg:py-28">
             <div className="flex items-end justify-between flex-wrap gap-8 mb-14">
               <div className="max-w-2xl">
-                <Eyebrow>Procedure correlate</Eyebrow>
-                <h2 className="mt-6 serif-display text-display-lg text-balance">
-                  Altre procedure {procedure.audience.toLowerCase()}
-                </h2>
+                <SectionHeader
+                  eyebrow="Procedure correlate"
+                  title={`Altre procedure ${procedure.audience.toLowerCase()}.`}
+                  compact
+                />
               </div>
               <Link
                 to="/#area-imprese-pa-proc-6"
