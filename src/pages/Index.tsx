@@ -1,104 +1,80 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  ArrowRight, ArrowUpRight, Award, Building2, Calendar, ChevronLeft, ChevronRight, Gavel,
-  Landmark, Quote, ShieldCheck, Star, Scale, Users, Phone, Mail, Clock, Lock, Search, X,
+  ArrowRight, ArrowUpRight, Building2, ChevronDown, ChevronLeft, ChevronRight,
+  Landmark, Quote, ShieldCheck, Star, Scale, Users, Phone, Mail, Clock, Lock,
+  BookOpen, CheckCircle2, ExternalLink,
 } from "lucide-react";
 import heroCourthouse from "@/assets/hero-courthouse.jpg";
-import salernoImg from "@/assets/salerno.jpg";
-import lawBooks from "@/assets/law-books.jpg";
 import office from "@/assets/office.jpg";
 import { Layout } from "@/components/site/Layout";
 import { Eyebrow } from "@/components/site/Eyebrow";
 import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
 import ResultCard, { type ResultDetail } from "@/components/site/ResultCard";
-import { PracticeCard } from "@/components/site/PracticeCard";
 import { Reveal } from "@/components/site/Reveal";
-import { CountUp } from "@/components/site/CountUp";
-import { MaximTicker } from "@/components/site/MaximTicker";
-import { PracticeSideNav, type SideNavItem } from "@/components/site/PracticeSideNav";
-import { Highlight } from "@/components/site/Highlight";
-import { WhereWeAre } from "@/components/site/WhereWeAre";
 import { Seo, orgJsonLd, faqJsonLd } from "@/components/site/Seo";
-import { useHashTarget } from "@/hooks/use-hash-target";
 
 /**
- * Four core specializations — one card per practice detail page.
+ * Unified practice areas: 4 cards with expandable detail listing the
+ * concrete procedures handled in each area. Replaces the previous
+ * separate "Cosa facciamo per voi" + "Aree di pratica" sections.
  */
-const specializations = [
+const practiceAreas = [
   {
     number: "01",
     title: "Espropriazioni",
-    description:
-      "Difesa dei proprietari nelle procedure ablative: opposizione alla stima, occupazioni illegittime, retrocessione dei beni.",
     icon: Landmark,
     href: "/espropriazioni",
-    topics: ["Indennità di esproprio", "Occupazioni d'urgenza", "Retrocessione"],
+    summary:
+      "Difesa dei proprietari nelle procedure ablative: opposizione alla stima, occupazioni illegittime, retrocessione dei beni.",
+    procedures: [
+      "Opposizione alla stima dell'indennità",
+      "Occupazioni illegittime e d'urgenza",
+      "Retrocessione totale o parziale dei beni",
+      "Risarcimento per occupazione acquisitiva",
+    ],
   },
   {
     number: "02",
     title: "Urbanistica ed Edilizia",
-    description:
-      "Permessi a costruire, varianti, vincoli paesaggistici, abusi edilizi e procedimenti di sanatoria.",
     icon: Scale,
     href: "/urbanistica-edilizia",
-    topics: ["Permessi e SCIA", "Vincoli e Soprintendenze", "Sanatorie"],
+    summary:
+      "Permessi a costruire, varianti, vincoli paesaggistici, abusi edilizi e procedimenti di sanatoria.",
+    procedures: [
+      "Permessi a costruire, SCIA e DIA",
+      "Vincoli paesaggistici e Soprintendenze",
+      "Abusi edilizi e procedure di sanatoria",
+      "Varianti urbanistiche e PUC",
+    ],
   },
   {
     number: "03",
     title: "Appalti Pubblici",
-    description:
-      "Contenzioso davanti al TAR e al Consiglio di Stato: esclusioni, sospensive cautelari, anomalia delle offerte.",
     icon: Building2,
     href: "/appalti-pubblici",
-    topics: ["Ricorsi TAR", "Sospensive cautelari", "Esecuzione del contratto"],
+    summary:
+      "Contenzioso davanti al TAR e al Consiglio di Stato: esclusioni, sospensive cautelari, anomalia delle offerte.",
+    procedures: [
+      "Ricorsi TAR su esclusioni",
+      "Sospensive cautelari ex art. 55 c.p.a.",
+      "Verifica anomalia offerte",
+      "Contenzioso esecutivo e varianti",
+    ],
   },
   {
     number: "04",
     title: "Concorsi Pubblici",
-    description:
-      "Tutela dei candidati nelle selezioni pubbliche: impugnazione di graduatorie, prove e criteri di valutazione.",
     icon: Users,
     href: "/concorsi-pubblici",
-    topics: ["Graduatorie", "Ricorsi collettivi", "Prove e valutazioni"],
-  },
-];
-
-/**
- * Practice areas grouped Pitta-style: each "family" lists its sub-services.
- */
-const practiceFamilies = [
-  {
-    family: "Diritto del Territorio",
-    slug: "area-territorio",
-    href: "/espropriazioni",
-    icon: Landmark,
-    blurb:
-      "Difesa dei proprietari di fronte al potere espropriativo e al governo del territorio.",
-    items: [
-      { label: "Opposizione alla stima dell'indennità", to: "/espropriazioni" },
-      { label: "Occupazioni illegittime e d'urgenza", to: "/espropriazioni" },
-      { label: "Permessi a costruire e SCIA", to: "/urbanistica-edilizia" },
-      { label: "Varianti urbanistiche e PUC", to: "/urbanistica-edilizia" },
-      { label: "Abusi edilizi e sanatorie", to: "/urbanistica-edilizia" },
-      { label: "Vincoli e Soprintendenze", to: "/urbanistica-edilizia" },
-    ],
-  },
-  {
-    family: "Imprese e Pubblica Amministrazione",
-    slug: "area-imprese-pa",
-    href: "/appalti-pubblici",
-    icon: Building2,
-    blurb:
-      "Tutela degli operatori economici e dei candidati nei rapporti con la PA.",
-    items: [
-      { label: "Ricorsi TAR su esclusioni", to: "/appalti-pubblici" },
-      { label: "Sospensive cautelari", to: "/appalti-pubblici" },
-      { label: "Verifica anomalia offerte", to: "/appalti-pubblici" },
-      { label: "Contenzioso esecutivo e varianti", to: "/appalti-pubblici" },
-      { label: "Impugnazione graduatorie concorsi", to: "/concorsi-pubblici" },
-      { label: "Ricorsi collettivi pubblico impiego", to: "/concorsi-pubblici" },
+    summary:
+      "Tutela dei candidati nelle selezioni pubbliche: impugnazione di graduatorie, prove e criteri di valutazione.",
+    procedures: [
+      "Impugnazione graduatorie",
+      "Ricorsi collettivi pubblico impiego",
+      "Contestazione prove e valutazioni",
+      "Diniego di accesso agli atti",
     ],
   },
 ];
@@ -192,90 +168,6 @@ const credentials = [
   "Ordine Avvocati Salerno",
 ];
 
-/**
- * Headline statistics shown in the strip below the hero.
- * `to` is the numeric target for the count-up animation; `prefix`/`suffix`/`pad`/`thousands`
- * control how the number is rendered.
- */
-const heroStats = [
-  { to: 50, suffix: "+", thousands: false, label: "Anni di esperienza", caption: "Dal 1974 al servizio del diritto pubblico" },
-  { to: 4, suffix: "", pad: 2, label: "Aree di specializzazione", caption: "Espropri · Urbanistica · Appalti · Concorsi" },
-  { to: 1200, suffix: "+", thousands: true, label: "Cause patrocinate", caption: "TAR, Consiglio di Stato, Cassazione" },
-  { to: 9, suffix: "", label: "Professionisti dedicati", caption: "Team multidisciplinare su due sedi" },
-];
-
-/**
- * Featured editorial articles — link to /blog.
- */
-const featuredArticles = [
-  {
-    category: "Espropriazioni",
-    date: "12 Marzo 2026",
-    readTime: "6 min",
-    title: "Indennità di esproprio: come contestare la stima dell'Agenzia delle Entrate.",
-    excerpt:
-      "Una guida operativa ai criteri di valutazione e agli strumenti di opposizione davanti alla Corte d'Appello.",
-  },
-  {
-    category: "Appalti Pubblici",
-    date: "28 Febbraio 2026",
-    readTime: "4 min",
-    title: "Rito appalti: i 30 giorni che decidono la sorte di una gara.",
-    excerpt:
-      "Termini, sospensiva cautelare e strategie processuali nel contenzioso accelerato davanti al TAR.",
-  },
-  {
-    category: "Urbanistica",
-    date: "14 Febbraio 2026",
-    readTime: "5 min",
-    title: "Sanatorie edilizie in zone vincolate: cosa cambia con la riforma.",
-    excerpt:
-      "L'accertamento di conformità e il parere della Soprintendenza alla luce della giurisprudenza più recente.",
-  },
-];
-
-/**
- * Procedures grouped by audience for the sticky-label section.
- */
-const procedureGroups = [
-  {
-    audience: "Per gli Enti",
-    intro:
-      "Assistenza alle Pubbliche Amministrazioni e alle stazioni appaltanti nella prevenzione e gestione del contenzioso.",
-    items: [
-      "Pareri di legittimità su atti amministrativi",
-      "Difesa in giudizio davanti al TAR",
-      "Procedimenti espropriativi e ablatori",
-      "Gare d'appalto e procedure di affidamento",
-      "Contenzioso esecutivo e varianti contrattuali",
-      "Procedimenti disciplinari e responsabilità erariale",
-      "Concorsi pubblici e selezioni del personale",
-      "Provvedimenti urbanistici e pianificazione",
-      "Recupero crediti e azioni di rivalsa",
-      "Formazione del personale e compliance",
-    ],
-  },
-  {
-    audience: "Per le Persone",
-    intro:
-      "Tutela di privati cittadini, professionisti e imprese nei rapporti conflittuali con la Pubblica Amministrazione.",
-    items: [
-      "Opposizione alla stima dell'indennità di esproprio",
-      "Occupazioni illegittime e d'urgenza",
-      "Retrocessione totale o parziale dei beni",
-      "Permessi a costruire, SCIA e DIA",
-      "Vincoli paesaggistici e Soprintendenze",
-      "Abusi edilizi e procedure di sanatoria",
-      "Ricorsi su esclusioni in gara d'appalto",
-      "Sospensive cautelari ex art. 55 c.p.a.",
-      "Impugnazione graduatorie e prove concorsuali",
-      "Ricorsi collettivi nel pubblico impiego",
-      "Diniego di accesso agli atti",
-      "Sanzioni amministrative e ricorsi gerarchici",
-    ],
-  },
-];
-
 export default function Index() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const t = testimonials[activeTestimonial];
@@ -284,31 +176,18 @@ export default function Index() {
   const prevTestimonial = () =>
     setActiveTestimonial((i) => (i - 1 + testimonials.length) % testimonials.length);
 
-  // Filter state for "Aree di pratica" search
-  const [practiceQuery, setPracticeQuery] = useState("");
-  const normalizedQ = practiceQuery.trim().toLowerCase();
-  const filteredFamilies = practiceFamilies
-    .map((fam) => {
-      if (!normalizedQ) return { fam, items: fam.items, familyMatches: false };
-      const familyMatches =
-        fam.family.toLowerCase().includes(normalizedQ) ||
-        fam.blurb.toLowerCase().includes(normalizedQ);
-      const matchedItems = fam.items.filter((it) =>
-        it.label.toLowerCase().includes(normalizedQ)
-      );
-      // Keep family if its name/blurb matches (then show all items) OR
-      // if at least one procedure matches (then show only matched ones)
-      if (familyMatches) return { fam, items: fam.items, familyMatches };
-      if (matchedItems.length > 0)
-        return { fam, items: matchedItems, familyMatches };
-      return null;
-    })
-    .filter((x): x is { fam: typeof practiceFamilies[number]; items: typeof practiceFamilies[number]["items"]; familyMatches: boolean } => x !== null);
-  const totalMatches = filteredFamilies.reduce((n, g) => n + g.items.length, 0);
+  // Expanded practice card (one open at a time, first open by default)
+  const [openPractice, setOpenPractice] = useState<number | null>(0);
 
-  // Deep-link target highlight: reads location.hash, scrolls into view and
-  // briefly pulses the matching family or procedure.
-  const { targetedId, flash } = useHashTarget();
+  // E-book lead magnet form (UI-only — submit disabled, no backend yet)
+  const [ebookEmail, setEbookEmail] = useState("");
+  const [ebookSubmitted, setEbookSubmitted] = useState(false);
+  const handleEbookSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // [PLACEHOLDER] Da collegare a Lovable Cloud (tabella leads + invio PDF).
+    if (!ebookEmail.includes("@")) return;
+    setEbookSubmitted(true);
+  };
 
   return (
     <Layout>
@@ -334,8 +213,9 @@ export default function Index() {
           ]),
         ]}
       />
+
       {/* HERO */}
-      <section className="relative min-h-[92vh] flex items-end overflow-hidden bg-primary-deep text-primary-foreground">
+      <section className="relative min-h-[88vh] flex items-end overflow-hidden bg-primary-deep text-primary-foreground">
         <img
           src={heroCourthouse}
           alt="Interno di un palazzo di giustizia neoclassico illuminato da luce dorata"
@@ -344,27 +224,32 @@ export default function Index() {
           height={1280}
           fetchPriority="high"
         />
-        {/* Cinematic gradient — keeps image readable while protecting text */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary-deep/95 via-primary-deep/70 to-primary-deep/30" />
         <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/40 to-transparent" />
         <div className="absolute inset-0 bg-noise opacity-20" />
 
-        <div className="relative z-10 editorial-container pt-40 pb-24 lg:pt-48 lg:pb-32">
+        <div className="relative z-10 editorial-container pt-36 pb-20 lg:pt-44 lg:pb-28">
           <div className="max-w-4xl">
             <p className="eyebrow !text-gold mb-8 animate-fade-up">
               <span className="text-background/80">Studio Legale Accarino · dal 1974</span>
             </p>
-            <h1 className="serif-display text-[clamp(2.75rem,6.5vw,5.5rem)] text-background text-balance leading-[1.04] animate-fade-up">
-              Tuteliamo i tuoi diritti con <span className="italic font-normal text-gold">competenza</span>.
+            <h1 className="serif-display text-[clamp(2.5rem,6vw,5rem)] text-background text-balance leading-[1.05] animate-fade-up">
+              Tuteliamo i tuoi diritti con <span className="text-gold">competenza</span>.
             </h1>
-            <div className="mt-12 flex flex-col md:flex-row md:items-center gap-8 animate-fade-up">
+            <p className="mt-8 text-lg lg:text-xl text-background/80 leading-relaxed max-w-2xl animate-fade-up text-pretty">
+              Diritto amministrativo a Salerno: espropriazioni, appalti, urbanistica e
+              concorsi pubblici. Ti rispondiamo entro 48 ore con un primo orientamento
+              su tempi, opzioni e costi.
+            </p>
+            <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-6 animate-fade-up">
               <CTAButton to="/contatti" variant="gold">Prenota una consulenza</CTAButton>
-              <div className="flex items-center gap-4 text-sm">
-                <span className="font-serif italic text-gold text-3xl">50+</span>
-                <span className="uppercase tracking-[0.18em] text-[11px] leading-snug text-background/70">
-                  Anni di esperienza<br />in diritto amministrativo
-                </span>
-              </div>
+              <Link
+                to="/contatti"
+                className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-background/80 hover:text-gold transition-colors font-semibold border-b border-background/30 hover:border-gold pb-2"
+              >
+                Oppure scrivici
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </div>
@@ -372,7 +257,7 @@ export default function Index() {
         {/* bottom credential strip */}
         <div className="absolute bottom-0 inset-x-0 border-t border-background/10 bg-primary-deep/80 backdrop-blur-md z-10">
           <div className="editorial-container py-5 flex items-center gap-8">
-            <span className="text-[10px] uppercase tracking-[0.22em] text-gold font-semibold flex-shrink-0">
+            <span className="text-[10px] uppercase tracking-[0.22em] text-gold font-semibold flex-shrink-0 hidden sm:inline">
               Hanno scelto lo Studio
             </span>
             <div
@@ -397,98 +282,10 @@ export default function Index() {
         </div>
       </section>
 
-      {/* STATS STRIP — headline credentials immediately after hero */}
-      <section className="bg-background border-b hairline">
-        <div className="editorial-container py-16 lg:py-20">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 lg:gap-y-0 gap-x-8 lg:divide-x divide-primary/10">
-            {heroStats.map((s, i) => (
-              <Reveal
-                key={s.label}
-                delay={i * 90}
-                className={`flex flex-col ${i === 0 ? "lg:pl-0" : "lg:pl-10"} lg:pr-10`}
-              >
-                <span aria-hidden className="w-8 h-px bg-gold mb-6" />
-                <p
-                  className="font-serif text-gold-deep leading-none tracking-tight tabular-nums"
-                  style={{ fontSize: "clamp(2.5rem, 4vw, 3.75rem)" }}
-                >
-                  <CountUp
-                    to={s.to}
-                    suffix={s.suffix}
-                    pad={s.pad}
-                    thousands={s.thousands}
-                  />
-                </p>
-                <p className="mt-5 font-serif text-base text-primary leading-snug">
-                  {s.label}
-                </p>
-                <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground leading-relaxed">
-                  {s.caption}
-                </p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PROCEDURES — sticky audience label · numbered list */}
-      <section className="bg-surface-container-low border-y hairline">
-        <div className="editorial-container py-20 lg:py-28">
-          <div className="max-w-3xl mb-16 lg:mb-20">
-            <Eyebrow>Cosa facciamo per voi</Eyebrow>
-            <h2 className="mt-6 serif-display text-display-xl text-balance">
-              Le procedure che gestiamo, divise per chi ne ha bisogno.
-            </h2>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              Una mappa operativa dei servizi: dalla consulenza preventiva al
-              contenzioso davanti alle Magistrature Superiori, distinta tra Pubbliche
-              Amministrazioni e soggetti privati.
-            </p>
-          </div>
-
-          {procedureGroups.map((group, gi) => (
-            <div
-              key={group.audience}
-              className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 ${gi > 0 ? "mt-24 lg:mt-32" : ""}`}
-            >
-              <div className="lg:col-span-3">
-                <div className="lg:sticky lg:top-32">
-                  <span aria-hidden className="block w-8 h-px bg-gold mb-6" />
-                  <p className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">
-                    {group.audience}
-                  </p>
-                  <p className="mt-6 text-sm text-muted-foreground leading-relaxed max-w-[260px]">
-                    {group.intro}
-                  </p>
-                </div>
-              </div>
-
-              <div className="lg:col-span-9">
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
-                  {group.items.map((item, idx) => (
-                    <li
-                      key={item}
-                      className="group flex items-start justify-between gap-6 py-6 border-t hairline first:border-t-0 md:[&:nth-child(2)]:border-t-0"
-                    >
-                      <span className="font-serif text-lg text-primary leading-snug text-pretty pr-4 group-hover:text-gold-deep transition-colors">
-                        {item}
-                      </span>
-                      <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground pt-1 flex-shrink-0">
-                        {String(idx + 1).padStart(2, "0")}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* RESULTS STRIP */}
       <section className="bg-primary text-primary-foreground border-y border-gold/30 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise opacity-25" />
-        <div className="editorial-container relative py-14 lg:py-20">
+        <div className="editorial-container relative py-16 lg:py-20">
           <div className="flex items-start justify-between flex-wrap gap-6 mb-12">
             <div className="flex items-center gap-4">
               <span className="w-8 h-px bg-gold" />
@@ -496,7 +293,7 @@ export default function Index() {
                 Esiti rappresentativi
               </span>
             </div>
-            <span className="text-xs italic text-background/50 max-w-sm leading-relaxed">
+            <span className="text-xs text-background/50 max-w-sm leading-relaxed">
               Esempi illustrativi del tipo di esito ottenibile. Casi anonimizzati nel rispetto del segreto professionale.
             </span>
           </div>
@@ -513,30 +310,25 @@ export default function Index() {
         </div>
       </section>
 
-      {/* INTRO MANIFESTO */}
+      {/* LO STUDIO — manifesto */}
       <section className="section-y border-b hairline relative overflow-hidden">
-        {/* Decorative oversized year — editorial backdrop */}
         <div
           aria-hidden
           className="pointer-events-none absolute -top-8 right-0 lg:right-[4%] serif-display text-primary/[0.04] leading-none select-none hidden md:block"
-          style={{ fontSize: "clamp(14rem, 26vw, 28rem)" }}
+          style={{ fontSize: "clamp(12rem, 22vw, 24rem)" }}
         >
           1974
         </div>
 
         <div className="editorial-container grid lg:grid-cols-12 gap-12 lg:gap-20 relative">
-          {/* LEFT — sticky title block */}
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
               <Reveal>
                 <Eyebrow>Lo Studio</Eyebrow>
               </Reveal>
               <Reveal delay={80}>
-                <h2 className="mt-6 serif-display text-display-xl text-balance">
-                  Diritto Amministrativo
-                  <span className="block italic text-gold/90 font-normal">
-                    a Salerno dal 1974.
-                  </span>
+                <h2 className="mt-6 serif-display text-display-xl text-balance leading-[1.05]">
+                  Diritto amministrativo a Salerno dal 1974.
                 </h2>
               </Reveal>
               <Reveal delay={160} variant="hairline">
@@ -550,7 +342,6 @@ export default function Index() {
             </div>
           </div>
 
-          {/* RIGHT — editorial copy with drop cap */}
           <div className="lg:col-span-7 lg:col-start-6 space-y-8 text-lg text-muted-foreground leading-relaxed">
             <Reveal delay={120}>
               <p className="font-serif text-2xl text-primary leading-relaxed text-pretty drop-cap">
@@ -560,10 +351,9 @@ export default function Index() {
               </p>
             </Reveal>
 
-            {/* Pull quote / manifesto motto */}
             <Reveal delay={200}>
               <blockquote className="relative pl-6 border-l-2 border-gold py-2 my-4">
-                <p className="font-serif italic text-xl text-primary/90 leading-snug text-balance">
+                <p className="font-serif text-xl text-primary/90 leading-snug text-balance">
                   «Difendere il cittadino davanti alla Pubblica Amministrazione
                   è un mestiere di tecnica, pazienza e coraggio.»
                 </p>
@@ -582,433 +372,127 @@ export default function Index() {
                 Consiglio di Stato.
               </p>
             </Reveal>
-
-            {/* Stats — animated, 4 columns with hairline separators */}
-            <Reveal delay={340} variant="hairline">
-              <div className="pt-10 mt-4 grid grid-cols-2 sm:grid-cols-4 border-t hairline divide-x divide-border/60">
-                {[
-                  { to: 1974, label: "Fondazione", thousands: false, suffix: "" },
-                  { to: 9, label: "Professionisti", thousands: false, suffix: "" },
-                  { to: 2, label: "Sedi operative", thousands: false, suffix: "" },
-                  { to: 4, label: "Aree di pratica", thousands: false, suffix: "" },
-                ].map((s, i) => (
-                  <div key={s.label} className={i === 0 ? "pr-6 pt-6" : "px-6 pt-6"}>
-                    <p className="font-serif text-4xl text-primary leading-none">
-                      <CountUp to={s.to} thousands={s.thousands} suffix={s.suffix} />
-                    </p>
-                    <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
-                      {s.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* PRACTICE AREAS — grouped families (Pitta-style) */}
-      <section className="section-y bg-surface-container-low">
-        {/* SPECIALIZZAZIONI — 4 core practice areas */}
-        <div className="editorial-container mb-20 lg:mb-28">
-          <div className="flex items-end justify-between flex-wrap gap-8 mb-14">
-            <div className="max-w-2xl">
-              <Eyebrow>Specializzazioni</Eyebrow>
-              <h2 className="mt-6 serif-display text-display-xl text-balance">
-                Quattro aree di specializzazione, una sola promessa di precisione.
-              </h2>
-              <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
-                Lo Studio concentra mezzo secolo di esperienza in quattro ambiti
-                del diritto amministrativo. Esplora ciascuna area per scoprire
-                competenze, casistica e procedure.
-              </p>
-            </div>
-            <Link
-              to="/contatti"
-              className="hidden md:inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-primary hover:text-gold-deep transition-colors font-semibold"
-            >
-              Parla con un avvocato <ArrowRight className="w-4 h-4 text-gold-deep" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-primary/10 border hairline">
-            {specializations.map((s, i) => (
-              <Reveal
-                key={s.title}
-                delay={i * 120}
-                className="bg-background"
-              >
-                <PracticeCard {...s} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-
-        {/* AREE DI PRATICA — sticky side-nav + numbered procedures */}
-        <div id="aree-di-pratica" className="editorial-container scroll-mt-24">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-20 lg:mb-24">
-            <div className="lg:col-span-8 lg:col-start-4">
+      {/* AREE DI PRATICA — unified cards with expandable detail */}
+      <section id="aree-di-pratica" className="section-y bg-surface-container-low scroll-mt-24">
+        <div className="editorial-container">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16 lg:mb-20">
+            <div className="lg:col-span-5">
               <Reveal>
                 <Eyebrow>Aree di pratica</Eyebrow>
               </Reveal>
               <Reveal delay={80}>
                 <h2 className="mt-6 serif-display text-display-xl text-balance leading-[1.05]">
-                  Vi accompagniamo passo dopo passo,{" "}
-                  <span className="italic text-gold-deep">dall'analisi fino alla decisione.</span>
+                  Quattro aree di specializzazione, una sola promessa di precisione.
                 </h2>
               </Reveal>
-              <Reveal delay={160}>
-                <p className="mt-8 text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                  Due grandi famiglie di competenze, dodici procedure operative.
-                  Una mappa pensata per chi cerca subito la risposta giusta — distinta
-                  tra Enti pubblici e soggetti privati.
-                </p>
-              </Reveal>
-              <Reveal delay={220}>
-                <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
-                  {/* Search input */}
-                  <div className="relative flex-1 max-w-md group">
-                    <label htmlFor="practice-search" className="sr-only">
-                      Cerca tra le aree di pratica
-                    </label>
-                    <Search
-                      className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 text-gold-deep pointer-events-none"
-                      strokeWidth={1.5}
-                      aria-hidden="true"
-                    />
-                    <input
-                      id="practice-search"
-                      type="search"
-                      value={practiceQuery}
-                      onChange={(e) => setPracticeQuery(e.target.value)}
-                      placeholder="Cerca una procedura o un'area…"
-                      className="w-full bg-transparent border-0 border-b hairline pb-3 pl-7 pr-8 text-[15px] font-serif text-primary placeholder:text-muted-foreground/70 placeholder:font-sans placeholder:text-sm focus:outline-none focus:border-gold-deep transition-colors"
-                    />
-                    {practiceQuery && (
-                      <button
-                        type="button"
-                        onClick={() => setPracticeQuery("")}
-                        aria-label="Cancella ricerca"
-                        className="absolute right-0 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-gold-deep transition-colors"
-                      >
-                        <X className="w-4 h-4" strokeWidth={1.5} />
-                      </button>
-                    )}
-                  </div>
-                  <Link
-                    to="/contatti"
-                    className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-primary hover:text-gold-deep transition-colors font-semibold border-b hairline pb-2 self-start sm:self-auto"
-                  >
-                    Parla con un avvocato
-                    <ArrowRight className="w-4 h-4 text-gold-deep" />
-                  </Link>
-                </div>
-                {practiceQuery && (
-                  <p
-                    role="status"
-                    aria-live="polite"
-                    className="mt-4 text-xs uppercase tracking-[0.2em] text-muted-foreground"
-                  >
-                    {totalMatches === 0
-                      ? "Nessun risultato"
-                      : `${totalMatches} risultat${totalMatches === 1 ? "o" : "i"} su ${practiceFamilies.reduce((n, f) => n + f.items.length, 0)}`}
-                  </p>
-                )}
-              </Reveal>
             </div>
+            <Reveal delay={140} className="lg:col-span-7 lg:pt-4">
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+                Lo Studio concentra mezzo secolo di esperienza in quattro ambiti del
+                diritto amministrativo. Apri un'area per vedere le procedure che
+                gestiamo concretamente — oppure vai alla pagina dedicata.
+              </p>
+              <Link
+                to="/contatti"
+                className="mt-8 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-primary hover:text-gold-deep transition-colors font-semibold border-b hairline pb-2"
+              >
+                Parla con un avvocato
+                <ArrowRight className="w-4 h-4 text-gold-deep" />
+              </Link>
+            </Reveal>
           </div>
 
-          {/* Two-column layout: sticky side-nav + family blocks */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-            <aside className="hidden lg:block lg:col-span-3">
-              <PracticeSideNav
-                eyebrow="Salta a una sezione"
-                onActivate={flash}
-                items={filteredFamilies.map<SideNavItem>(({ fam, items }, gi) => ({
-                  id: fam.slug,
-                  kicker: String(gi + 1).padStart(2, "0"),
-                  label: fam.family,
-                  children: items.map((item) => {
-                    // Use original index so anchor ids stay stable
-                    const originalIdx = fam.items.indexOf(item);
-                    return {
-                      id: `${fam.slug}-proc-${originalIdx + 1}`,
-                      label: item.label,
-                    };
-                  }),
-                }))}
-              />
-            </aside>
-
-            <div className="lg:col-span-9 space-y-16 lg:space-y-28">
-              {filteredFamilies.length === 0 && (
-                <div className="border hairline bg-background p-8 sm:p-12 lg:p-16 text-center">
-                  <p className="font-serif text-2xl text-primary">
-                    Nessuna procedura corrisponde a "{practiceQuery}".
-                  </p>
-                  <p className="mt-3 text-muted-foreground">
-                    Prova con un altro termine — oppure{" "}
-                    <Link to="/contatti" className="text-gold-deep underline underline-offset-4 hover:text-primary transition-colors">
-                      raccontaci il tuo caso
-                    </Link>.
-                  </p>
+          {/* Practice cards with expandable procedures */}
+          <div className="border hairline divide-y hairline bg-background">
+            {practiceAreas.map((area, i) => {
+              const Icon = area.icon;
+              const isOpen = openPractice === i;
+              return (
+                <article key={area.title}>
                   <button
                     type="button"
-                    onClick={() => setPracticeQuery("")}
-                    className="mt-8 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-primary hover:text-gold-deep transition-colors font-semibold border-b hairline pb-2"
-                  >
-                    Cancella la ricerca
-                    <X className="w-4 h-4 text-gold-deep" strokeWidth={1.5} />
-                  </button>
-                </div>
-              )}
-              {filteredFamilies.map(({ fam, items }, gi) => {
-                const Icon = fam.icon;
-                return (
-                  <section
-                    key={fam.family}
-                    id={fam.slug}
-                    data-targeted={targetedId === fam.slug ? "true" : undefined}
-                    className={`scroll-mt-24 transition-colors duration-700 ${
-                      gi > 0 ? "pt-16 lg:pt-28 border-t hairline" : ""
-                    } ${
-                      targetedId === fam.slug
-                        ? "relative before:absolute before:-inset-x-4 before:-inset-y-6 before:-z-10 before:bg-gold/[0.07] before:border before:border-gold/40 before:transition-opacity before:duration-700 before:animate-fade-in"
-                        : ""
+                    onClick={() => setOpenPractice(isOpen ? null : i)}
+                    aria-expanded={isOpen}
+                    className={`w-full text-left p-6 sm:p-8 lg:p-10 transition-colors ${
+                      isOpen ? "bg-surface-container-low" : "hover:bg-surface-container-low/50"
                     }`}
                   >
-                    {/* Family header */}
-                    <header className="mb-10 lg:mb-16">
-                      <Reveal>
-                        <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
-                          <span aria-hidden className="block w-6 sm:w-8 h-px bg-gold flex-shrink-0" />
-                          <p className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold leading-relaxed">
-                            {String(gi + 1).padStart(2, "0")} ·{" "}
-                            <Highlight text={fam.family} query={practiceQuery} />
-                          </p>
-                        </div>
-                      </Reveal>
-                      <div className="mt-6 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
-                        <Reveal delay={80}>
-                          <span className="inline-flex w-12 h-12 border hairline items-center justify-center bg-background flex-shrink-0">
-                            <Icon className="w-5 h-5 text-gold-deep" strokeWidth={1.5} />
+                    <div className="flex items-start gap-5 sm:gap-8">
+                      <span
+                        className={`hidden sm:inline-flex w-12 h-12 lg:w-14 lg:h-14 border hairline items-center justify-center flex-shrink-0 transition-colors ${
+                          isOpen ? "bg-primary border-primary" : "bg-background"
+                        }`}
+                      >
+                        <Icon
+                          className={`w-5 h-5 lg:w-6 lg:h-6 transition-colors ${
+                            isOpen ? "text-gold" : "text-gold-deep"
+                          }`}
+                          strokeWidth={1.25}
+                        />
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-3 mb-3">
+                          <span className="text-[11px] tracking-[0.22em] uppercase text-gold-deep font-semibold tabular-nums">
+                            {area.number}
                           </span>
-                        </Reveal>
-                        <div className="flex-1 min-w-0">
-                          <Reveal delay={120}>
-                            <p className="text-base sm:text-[17px] text-muted-foreground leading-relaxed max-w-2xl">
-                              <Highlight text={fam.blurb} query={practiceQuery} />
-                            </p>
-                          </Reveal>
-                          <Reveal delay={180}>
-                            <Link
-                              to={fam.href}
-                              className="mt-6 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-primary font-semibold hover:text-gold-deep transition-colors min-h-[44px]"
-                            >
-                              Approfondisci l'area
-                              <ArrowUpRight className="w-4 h-4 text-gold-deep" />
-                            </Link>
-                          </Reveal>
+                          <span className="w-6 h-px bg-gold/60" aria-hidden />
                         </div>
-                      </div>
-                    </header>
-
-                    {/* Numbered procedure list */}
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 border-t hairline md:border-t-0">
-                      {items.map((item, idx) => {
-                        const originalIdx = fam.items.indexOf(item);
-                        const procId = `${fam.slug}-proc-${originalIdx + 1}`;
-                        const isTargeted = targetedId === procId;
-                        return (
-                          <li
-                            key={item.label + originalIdx}
-                            id={procId}
-                            data-targeted={isTargeted ? "true" : undefined}
-                            className={`scroll-mt-24 border-b md:border-b-0 md:border-t hairline md:first:border-t-0 md:[&:nth-child(2)]:border-t-0 transition-colors duration-700 ${
-                              isTargeted ? "bg-gold/[0.08]" : ""
-                            }`}
-                          >
-                            <Reveal delay={idx * 60}>
-                              <Link
-                                to={item.to}
-                                className={`group flex items-start justify-between gap-4 sm:gap-6 py-5 sm:py-6 px-2 -mx-2 min-h-[60px] active:bg-surface-container-low transition-colors rounded-sm ${
-                                  isTargeted ? "ring-1 ring-gold/60 ring-offset-2 ring-offset-background" : ""
-                                }`}
-                              >
-                                <span className="font-serif text-base sm:text-lg text-primary leading-snug text-pretty pr-2 group-hover:text-gold-deep transition-colors">
-                                  <Highlight text={item.label} query={practiceQuery} />
-                                </span>
-                                <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground pt-1 sm:pt-1.5 flex-shrink-0">
-                                  {String(originalIdx + 1).padStart(2, "0")}
-                                </span>
-                              </Link>
-                            </Reveal>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </section>
-                );
-              })}
-
-              {/* FAQ — answer common questions before the contact CTA */}
-              {filteredFamilies.length > 0 && (
-                <div className="pt-20 lg:pt-28 border-t hairline">
-                  <Reveal>
-                    <div className="flex items-center gap-4 mb-8">
-                      <span aria-hidden className="block w-8 h-px bg-gold" />
-                      <p className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">
-                        Domande frequenti
-                      </p>
-                    </div>
-                  </Reveal>
-                  <Reveal delay={80}>
-                    <h3 className="serif-display text-display-md text-balance leading-[1.1] max-w-3xl">
-                      Prima di scriverci,{" "}
-                      <span className="italic text-gold-deep">le risposte più richieste.</span>
-                    </h3>
-                  </Reveal>
-                  <Reveal delay={160}>
-                    <p className="mt-6 text-[15px] text-muted-foreground leading-relaxed max-w-2xl">
-                      Tempi, costi e modalità di lavoro dello Studio. Per quesiti
-                      specifici sul tuo caso, una consulenza riservata resta sempre
-                      la via più breve.
-                    </p>
-                  </Reveal>
-
-                  <div className="mt-10">
-                    <Reveal delay={220}>
-                      <FAQ
-                        items={[
-                          {
-                            q: "Quanto tempo ho per impugnare un atto della Pubblica Amministrazione?",
-                            a: "Il termine ordinario è di 60 giorni dalla notifica o piena conoscenza dell'atto. Per il rito appalti il termine si riduce a 30 giorni. In casi specifici è ancora possibile attivare il ricorso straordinario al Capo dello Stato (120 giorni) o sollecitare un intervento in autotutela.",
-                          },
-                          {
-                            q: "Quanto costa una consulenza preliminare?",
-                            a: "Il primo contatto e l'inquadramento del caso sono gratuiti. La consulenza scritta o lo studio degli atti viene preventivata in modo trasparente prima di qualsiasi attivazione: nessun costo nascosto, nessun obbligo di prosecuzione.",
-                          },
-                          {
-                            q: "In quali sedi giudiziarie patrocinate?",
-                            a: "Lo Studio difende davanti a tutti i TAR italiani, al Consiglio di Stato, alla Corte dei Conti, alla Corte di Cassazione e ai giudici ordinari per i profili risarcitori. Le due sedi (Salerno e Roma) garantiscono presenza diretta sull'asse Sud-Centro Italia.",
-                          },
-                          {
-                            q: "Posso essere assistito anche se vivo fuori regione?",
-                            a: "Sì. Gestiamo abitualmente cause in tutta Italia: la fase istruttoria si svolge a distanza con scambio sicuro di documenti, mentre udienze e adempimenti vengono curati direttamente dai nostri avvocati o tramite domiciliatari di fiducia.",
-                          },
-                          {
-                            q: "Quali sono i tempi medi di risposta?",
-                            a: "Per le richieste urgenti — termini in scadenza, sospensive, esclusioni da gara — garantiamo un primo riscontro qualificato entro 48 ore lavorative. Per casi non urgenti, la presa in carico avviene tipicamente entro 3-5 giorni.",
-                          },
-                        ]}
-                      />
-                    </Reveal>
-
-                    <Reveal delay={280}>
-                      <div className="mt-12 flex flex-wrap items-center justify-between gap-6 pt-8 border-t hairline">
-                        <p className="font-serif text-lg text-primary max-w-md text-balance">
-                          Non hai trovato risposta al tuo dubbio?
+                        <h3 className="font-serif text-2xl lg:text-3xl text-primary leading-tight">
+                          {area.title}
+                        </h3>
+                        <p className="mt-3 text-[15px] lg:text-base text-muted-foreground leading-relaxed max-w-2xl">
+                          {area.summary}
                         </p>
+                      </div>
+                      <ChevronDown
+                        className={`w-5 h-5 text-gold-deep flex-shrink-0 mt-2 transition-transform duration-300 ${
+                          isOpen ? "rotate-180" : ""
+                        }`}
+                        strokeWidth={1.5}
+                      />
+                    </div>
+                  </button>
+
+                  <div
+                    className={`grid transition-all duration-500 ease-out ${
+                      isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="px-6 sm:px-8 lg:px-10 pb-8 lg:pb-10 sm:pl-[calc(2rem+3rem+1.25rem)] lg:pl-[calc(2.5rem+3.5rem+2rem)]">
+                        <p className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold mb-5">
+                          Procedure che gestiamo
+                        </p>
+                        <ul className="grid sm:grid-cols-2 gap-x-10 gap-y-3 mb-8">
+                          {area.procedures.map((p) => (
+                            <li key={p} className="flex items-start gap-3 text-[15px] text-primary font-serif leading-snug">
+                              <CheckCircle2 className="w-4 h-4 text-gold-deep mt-1 flex-shrink-0" strokeWidth={1.5} />
+                              {p}
+                            </li>
+                          ))}
+                        </ul>
                         <Link
-                          to="/contatti"
+                          to={area.href}
                           className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-primary hover:text-gold-deep transition-colors font-semibold border-b hairline pb-2"
                         >
-                          Parla con un avvocato
-                          <ArrowRight className="w-4 h-4 text-gold-deep" />
+                          Approfondisci l'area
+                          <ArrowUpRight className="w-4 h-4 text-gold-deep" />
                         </Link>
                       </div>
-                    </Reveal>
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* EDITORIAL INTERLUDE — reveal + hairline draw between Aree and Heritage */}
-      <section
-        aria-hidden="true"
-        className="bg-surface-container-low border-t hairline overflow-hidden"
-      >
-        <div className="editorial-container py-20 lg:py-28">
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-3">
-              <Reveal variant="hairline">
-                <span className="block w-full h-px bg-gold-deep/60" />
-              </Reveal>
-              <Reveal delay={120}>
-                <p className="mt-6 text-[11px] uppercase tracking-[0.24em] text-gold-deep font-semibold">
-                  Cinquant'anni · 1974 — oggi
-                </p>
-              </Reveal>
-            </div>
-            <div className="lg:col-span-9">
-              <Reveal delay={80}>
-                <p className="serif-display text-2xl md:text-3xl text-primary leading-snug text-balance max-w-3xl">
-                  Dietro ogni procedura,{" "}
-                  <span className="italic text-gold-deep">
-                    una storia di precisione lunga mezzo secolo.
-                  </span>
-                </p>
-              </Reveal>
-              <Reveal variant="hairline" delay={260} className="block mt-10">
-                <span className="block w-full h-px bg-primary/15" />
-              </Reveal>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* HISTORY / IMAGE BREAK */}
-      <section className="relative">
-        <div className="grid lg:grid-cols-2">
-          <div className="relative h-[400px] lg:h-[640px]">
-            <img
-              src={lawBooks}
-              alt="Volumi legali rilegati in pelle nello studio"
-              className="absolute inset-0 w-full h-full object-cover"
-              loading="lazy"
-              width={1600}
-              height={1100}
-            />
-          </div>
-          <div className="bg-primary text-primary-foreground p-12 lg:p-20 flex flex-col justify-center">
-            <Eyebrow>
-              <span className="text-gold">Heritage</span>
-            </Eyebrow>
-            <h2 className="mt-8 serif-display text-display-xl text-background text-balance">
-              Una eredità di <span className="italic text-gold">cinquant'anni</span> al servizio del diritto pubblico.
-            </h2>
-            <p className="mt-8 text-lg text-background/75 leading-relaxed max-w-xl">
-              Dalle prime cause in materia espropriativa degli anni '70 fino al
-              contenzioso PNRR di oggi: lo Studio ha attraversato cinque decenni di
-              evoluzione del diritto amministrativo italiano, costruendo una casistica
-              che oggi rappresenta un patrimonio unico al servizio dei propri clienti.
-            </p>
-            <div className="mt-12 flex flex-wrap gap-10">
-              {[
-                { i: Award, t: "Cassazionisti", s: "Patrocinio innanzi alle Magistrature Superiori" },
-                { i: Gavel, t: "TAR · CdS · Corte dei Conti", s: "Esperienza diretta in tutte le giurisdizioni" },
-                { i: ShieldCheck, t: "EEAT", s: "Pubblicazioni e docenze accademiche" },
-              ].map(({ i: Icon, t, s }) => (
-                <div key={t} className="flex items-start gap-4 max-w-[220px]">
-                  <Icon className="w-5 h-5 text-gold mt-1 flex-shrink-0" strokeWidth={1.5} />
-                  <div>
-                    <p className="font-serif text-base text-background">{t}</p>
-                    <p className="text-xs text-background/60 mt-1 leading-relaxed">{s}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* MAXIM TICKER — heritage interlude between Heritage and Appalti band */}
-      <MaximTicker />
-
-      {/* APPALTI SIGNATURE BAND */}
+      {/* APPALTI SIGNATURE BAND — "Esclusi da una gara: 30 giorni per ribaltarla" */}
       <section className="relative bg-primary-deep text-primary-foreground overflow-hidden">
         <img
           src={office}
@@ -1030,7 +514,7 @@ export default function Index() {
               </div>
               <h2 className="mt-8 serif-display text-display-xl text-background text-balance leading-[1.05]">
                 Esclusi da una gara?<br />
-                <span className="italic text-gold">Hai 30 giorni</span> per ribaltarla.
+                <span className="text-gold">Hai 30 giorni</span> per ribaltarla.
               </h2>
               <p className="mt-8 text-lg text-background/75 leading-relaxed max-w-2xl">
                 Quando una PMI viene esclusa o l'aggiudicazione di un appalto è viziata,
@@ -1092,34 +576,116 @@ export default function Index() {
         </div>
       </section>
 
-      {/* APPROACH */}
-      <section className="section-y">
+      {/* E-BOOK LEAD MAGNET — replaces the Metodo section */}
+      <section className="section-y bg-background border-b hairline">
         <div className="editorial-container">
-          <div className="max-w-3xl mb-16">
-            <Eyebrow>Il metodo</Eyebrow>
-            <h2 className="mt-6 serif-display text-display-xl">
-              Un approccio strutturato, dall'analisi alla decisione.
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-primary/10 border hairline">
-            {[
-              { n: "I", t: "Analisi preliminare", d: "Studio della documentazione e valutazione di fondatezza entro 48 ore." },
-              { n: "II", t: "Strategia processuale", d: "Definizione della linea difensiva e individuazione dei vizi rilevabili." },
-              { n: "III", t: "Atti e contenzioso", d: "Predisposizione del ricorso, istanza cautelare e udienze." },
-              { n: "IV", t: "Decisione e impugnazioni", d: "Esame della sentenza, valutazione di appello al Consiglio di Stato." },
-            ].map((s) => (
-              <div key={s.n} className="bg-background p-10 lg:p-12">
-                <p className="font-serif italic text-5xl text-gold/40">{s.n}</p>
-                <h3 className="mt-8 font-serif text-xl text-primary">{s.t}</h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.d}</p>
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Visual: stylized e-book cover */}
+            <Reveal className="lg:col-span-5">
+              <div className="relative max-w-sm mx-auto lg:mx-0">
+                <div aria-hidden className="absolute -inset-6 bg-gold/[0.06] -z-10" />
+                <div className="relative aspect-[3/4] bg-primary-deep text-background p-8 lg:p-10 shadow-[0_30px_80px_-30px_hsl(var(--primary)/0.4)] flex flex-col">
+                  <div className="absolute inset-0 bg-noise opacity-25" />
+                  <div className="absolute top-0 left-0 w-1.5 h-full bg-gold" />
+                  <div className="relative">
+                    <p className="text-[10px] uppercase tracking-[0.28em] text-gold font-semibold">
+                      Guida pratica · 2026
+                    </p>
+                    <div className="mt-6 w-12 h-px bg-gold" />
+                  </div>
+                  <h3 className="relative mt-10 serif-display text-3xl lg:text-4xl text-background leading-[1.05] text-balance">
+                    Esclusi da una gara: 30 giorni per ribaltarla.
+                  </h3>
+                  <p className="relative mt-6 text-sm text-background/70 leading-relaxed">
+                    La guida operativa al rito appalti per PMI e operatori economici.
+                  </p>
+                  <div className="relative mt-auto pt-10">
+                    <div className="flex items-center justify-between pt-6 border-t border-gold/20">
+                      <p className="text-[10px] uppercase tracking-[0.22em] text-gold font-semibold">
+                        Studio Accarino
+                      </p>
+                      <BookOpen className="w-5 h-5 text-gold" strokeWidth={1.25} />
+                    </div>
+                  </div>
+                </div>
               </div>
-            ))}
+            </Reveal>
+
+            {/* Form */}
+            <Reveal delay={120} className="lg:col-span-7">
+              <Eyebrow>E-book gratuito</Eyebrow>
+              <h2 className="mt-6 serif-display text-display-lg text-balance leading-[1.08]">
+                La guida pratica per ribaltare un'esclusione in 30 giorni.
+              </h2>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
+                Termini, atti, vizi rilevabili e tempi reali del rito appalti — in un
+                unico PDF di 24 pagine, scritto dagli avvocati dello Studio per chi
+                deve decidere in fretta.
+              </p>
+
+              <ul className="mt-8 space-y-3 max-w-xl">
+                {[
+                  "I 30 giorni: cosa fare nelle prime 72 ore",
+                  "I 6 vizi formali più frequenti nelle esclusioni",
+                  "Sospensiva cautelare: quando ha senso chiederla",
+                  "Costi tipici e probabilità di esito",
+                ].map((p) => (
+                  <li key={p} className="flex items-start gap-3 text-[15px] text-primary font-serif leading-snug">
+                    <CheckCircle2 className="w-4 h-4 text-gold-deep mt-1 flex-shrink-0" strokeWidth={1.5} />
+                    {p}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Form (UI only — backend not yet connected) */}
+              <form onSubmit={handleEbookSubmit} className="mt-10 max-w-xl">
+                {ebookSubmitted ? (
+                  <div className="flex items-start gap-4 p-6 border hairline bg-surface-container-low">
+                    <CheckCircle2 className="w-5 h-5 text-gold-deep mt-0.5 flex-shrink-0" strokeWidth={1.5} />
+                    <div>
+                      <p className="font-serif text-lg text-primary">Grazie. Riceverai l'e-book a breve.</p>
+                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                        [PLACEHOLDER] L'invio email non è ancora collegato. Da attivare con
+                        Lovable Cloud (tabella leads + edge function).
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <label htmlFor="ebook-email" className="block text-[11px] uppercase tracking-[0.22em] text-primary font-semibold mb-3">
+                      Inserisci la tua email
+                    </label>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <input
+                        id="ebook-email"
+                        type="email"
+                        required
+                        value={ebookEmail}
+                        onChange={(e) => setEbookEmail(e.target.value)}
+                        placeholder="nome@studio.it"
+                        className="flex-1 bg-background border hairline px-4 py-4 text-[15px] font-serif text-primary placeholder:text-muted-foreground/70 placeholder:font-sans placeholder:text-sm focus:outline-none focus:border-gold-deep transition-colors min-h-[52px]"
+                      />
+                      <button
+                        type="submit"
+                        className="inline-flex items-center justify-center gap-3 px-7 py-4 bg-primary text-primary-foreground text-label-sm uppercase tracking-[0.16em] font-semibold hover:bg-primary-deep transition-colors min-h-[52px]"
+                      >
+                        Scarica l'e-book
+                        <ArrowRight className="w-4 h-4 text-gold" />
+                      </button>
+                    </div>
+                    <p className="mt-4 text-xs text-muted-foreground leading-relaxed">
+                      Useremo la tua email solo per inviarti l'e-book e — al massimo una volta
+                      al mese — un aggiornamento normativo. Niente spam, disiscrizione con un click.
+                    </p>
+                  </>
+                )}
+              </form>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* TESTIMONIALS — with Google badge */}
       <section className="section-y bg-surface-container-low border-y hairline">
         <div className="editorial-container">
           <div className="grid lg:grid-cols-12 gap-12 items-start">
@@ -1132,20 +698,51 @@ export default function Index() {
                 Testimonianze raccolte tra clienti privati, imprese e funzionari
                 pubblici che si sono affidati allo Studio negli ultimi anni.
               </p>
-              <div className="mt-8 flex items-center gap-4">
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-gold text-gold" />
-                  ))}
+
+              {/* Google reviews badge */}
+              <a
+                href="[PLACEHOLDER_GOOGLE_BUSINESS_PROFILE_URL]"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 group inline-flex items-stretch border hairline bg-background hover:border-gold-deep transition-colors"
+              >
+                <div className="flex items-center gap-3 px-4 py-3 border-r hairline">
+                  {/* Google "G" logo (inline SVG, brand colors) */}
+                  <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                  </svg>
+                  <div className="leading-tight">
+                    <p className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground font-semibold">
+                      Recensioni su
+                    </p>
+                    <p className="font-serif text-sm text-primary">Google</p>
+                  </div>
                 </div>
-                <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                  Valutazione media clienti
-                </span>
-              </div>
+                <div className="flex items-center gap-3 px-4 py-3">
+                  <div className="flex items-center gap-0.5">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-gold text-gold" />
+                    ))}
+                  </div>
+                  <span className="text-xs text-muted-foreground tabular-nums hidden sm:inline">
+                    Profilo verificato
+                  </span>
+                  <ExternalLink
+                    className="w-3.5 h-3.5 text-gold-deep group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                    strokeWidth={1.5}
+                  />
+                </div>
+              </a>
+              <p className="mt-3 text-[11px] text-muted-foreground/70 leading-relaxed">
+                [PLACEHOLDER] Sostituire con il link reale al Google Business Profile.
+              </p>
             </div>
 
             <div className="lg:col-span-8">
-              <div className="relative bg-background border hairline p-10 lg:p-14 min-h-[340px] flex flex-col">
+              <div className="relative bg-background border hairline p-8 sm:p-10 lg:p-14 min-h-[340px] flex flex-col">
                 <Quote className="w-10 h-10 text-gold/40 absolute top-8 right-8" strokeWidth={1} />
                 <p className="font-serif text-xl lg:text-2xl text-primary leading-relaxed text-pretty flex-1">
                   "{t.quote}"
@@ -1187,122 +784,6 @@ export default function Index() {
           </div>
         </div>
       </section>
-
-      {/* TERRITORIO */}
-      <section className="section-y bg-background">
-        <div className="editorial-container grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6">
-            <div className="gold-corner p-3">
-              <img
-                src={salernoImg}
-                alt="Veduta della costa di Salerno"
-                className="w-full h-[460px] object-cover"
-                loading="lazy"
-                width={1600}
-                height={1000}
-              />
-            </div>
-          </div>
-          <div className="lg:col-span-6 lg:pl-8">
-            <Eyebrow>Il territorio</Eyebrow>
-            <h2 className="mt-6 serif-display text-display-xl text-balance">
-              Profondamente radicati a Salerno e in Campania.
-            </h2>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              Conoscere il territorio significa conoscere le Pubbliche Amministrazioni
-              che vi operano, i Tribunali davanti ai quali si discute, i tempi reali del
-              contenzioso. Una competenza locale che trasforma la conoscenza in vantaggio
-              processuale.
-            </p>
-            <ul className="mt-8 grid sm:grid-cols-2 gap-4">
-              {[
-                "TAR Salerno",
-                "TAR Campania (Napoli)",
-                "Consiglio di Stato",
-                "Corte dei Conti — Sez. Campania",
-                "Tribunale Sup. Acque Pubbliche",
-                "Cassazione",
-              ].map((c) => (
-                <li key={c} className="flex items-center gap-3 text-primary">
-                  <span className="w-1.5 h-1.5 bg-gold" />
-                  <span className="font-serif">{c}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURED ARTICLES — static editorial grid linking to /blog */}
-      <section className="section-y bg-background border-t hairline">
-        <div className="editorial-container">
-          <div className="flex items-end justify-between flex-wrap gap-8 mb-14">
-            <div className="max-w-2xl">
-              <Eyebrow>Dal nostro blog</Eyebrow>
-              <h2 className="mt-6 serif-display text-display-xl text-balance">
-                Approfondimenti, sentenze, novità normative.
-              </h2>
-              <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
-                Una selezione di letture firmate dai professionisti dello Studio
-                per restare aggiornati sull'evoluzione del diritto amministrativo.
-              </p>
-            </div>
-            <Link
-              to="/blog"
-              className="hidden md:inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-primary hover:text-gold-deep transition-colors font-semibold"
-            >
-              Tutti gli articoli <ArrowRight className="w-4 h-4 text-gold-deep" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-primary/10 border hairline">
-            {featuredArticles.map((a) => (
-              <Link
-                key={a.title}
-                to="/blog"
-                className="group bg-background p-10 lg:p-12 flex flex-col hover:bg-surface-container-low transition-colors"
-              >
-                <div className="flex items-center justify-between mb-8">
-                  <span className="text-[10px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
-                    {a.category}
-                  </span>
-                  <span className="flex items-center gap-2 text-[11px] text-muted-foreground tabular-nums">
-                    <Calendar className="w-3 h-3" strokeWidth={1.5} />
-                    {a.date}
-                  </span>
-                </div>
-
-                <h3 className="font-serif text-2xl text-primary leading-snug text-balance group-hover:text-gold-deep transition-colors">
-                  {a.title}
-                </h3>
-                <p className="mt-5 text-sm text-muted-foreground leading-relaxed flex-1">
-                  {a.excerpt}
-                </p>
-
-                <div className="mt-10 pt-6 border-t hairline flex items-center justify-between">
-                  <span className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                    {a.readTime} di lettura
-                  </span>
-                  <ArrowUpRight
-                    className="w-4 h-4 text-gold-deep group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
-                    strokeWidth={1.5}
-                  />
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          <Link
-            to="/blog"
-            className="md:hidden mt-10 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-primary font-semibold"
-          >
-            Tutti gli articoli <ArrowRight className="w-4 h-4 text-gold-deep" />
-          </Link>
-        </div>
-      </section>
-
-      {/* DOVE SIAMO — physical-presence proof block */}
-      <WhereWeAre />
 
       {/* FAQ */}
       <section className="section-y">
@@ -1348,7 +829,6 @@ export default function Index() {
 
       {/* FINAL CTA */}
       <section className="relative bg-primary text-primary-foreground overflow-hidden">
-        {/* Texture & decorative backdrop */}
         <div className="absolute inset-0 bg-noise opacity-30" />
         <div
           aria-hidden
@@ -1363,7 +843,6 @@ export default function Index() {
 
         <div className="relative editorial-container py-24 lg:py-32">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            {/* Left: editorial copy */}
             <div className="lg:col-span-7">
               <Reveal>
                 <Eyebrow>
@@ -1372,7 +851,7 @@ export default function Index() {
               </Reveal>
               <Reveal delay={80}>
                 <h2 className="mt-8 serif-display text-display-xl text-background text-balance leading-[1.05]">
-                  Una <span className="italic text-gold">consulenza riservata</span> per il tuo caso, entro 48 ore.
+                  Una consulenza riservata per il tuo caso, entro 48 ore.
                 </h2>
               </Reveal>
               <Reveal delay={160}>
@@ -1383,7 +862,6 @@ export default function Index() {
                 </p>
               </Reveal>
 
-              {/* Reassurance points */}
               <Reveal delay={240}>
                 <ul className="mt-12 grid sm:grid-cols-3 gap-px bg-background/10 border-y border-background/10">
                   {[
@@ -1401,7 +879,6 @@ export default function Index() {
               </Reveal>
             </div>
 
-            {/* Right: action card */}
             <div className="lg:col-span-5 lg:pl-8 lg:border-l lg:border-background/10">
               <Reveal delay={120}>
                 <div className="flex items-center gap-3">
@@ -1421,31 +898,30 @@ export default function Index() {
                   </p>
                 </div>
 
-                {/* Direct channels */}
                 <div className="mt-12 pt-10 border-t border-background/10 space-y-6">
                   <p className="text-[11px] uppercase tracking-[0.22em] text-background/50 font-semibold">
                     Oppure scrivici direttamente
                   </p>
                   <a
-                    href="tel:+390898889999"
+                    href="tel:[PLACEHOLDER]"
                     className="group flex items-start gap-4 -m-2 p-2 transition-colors hover:bg-background/5"
                   >
                     <Phone className="w-4 h-4 text-gold mt-1 flex-shrink-0" strokeWidth={1.5} />
                     <div className="min-w-0">
                       <p className="font-serif text-lg text-background group-hover:text-gold transition-colors">
-                        +39 089 888 9999
+                        [PLACEHOLDER] +39 ___ _______
                       </p>
                       <p className="text-xs text-background/55 mt-1">Lun–Ven · 9:00 – 19:00</p>
                     </div>
                   </a>
                   <a
-                    href="mailto:studio@example.it"
+                    href="mailto:[PLACEHOLDER]"
                     className="group flex items-start gap-4 -m-2 p-2 transition-colors hover:bg-background/5"
                   >
                     <Mail className="w-4 h-4 text-gold mt-1 flex-shrink-0" strokeWidth={1.5} />
                     <div className="min-w-0">
                       <p className="font-serif text-lg text-background group-hover:text-gold transition-colors break-all">
-                        studio@example.it
+                        [PLACEHOLDER] studio@dominio.it
                       </p>
                       <p className="text-xs text-background/55 mt-1">Risposta entro 48 ore</p>
                     </div>
@@ -1455,11 +931,10 @@ export default function Index() {
             </div>
           </div>
 
-          {/* Bottom hairline meta strip */}
           <Reveal delay={200}>
             <div className="mt-20 pt-8 border-t border-background/10 flex flex-wrap items-center justify-between gap-6">
               <p className="text-[11px] uppercase tracking-[0.22em] text-background/50 font-semibold">
-                Salerno · Roma — Patrocinio in tutta Italia
+                Salerno · Cava de' Tirreni — Patrocinio in tutta Italia
               </p>
               <p className="text-[11px] tracking-[0.18em] text-background/40 tabular-nums">
                 Dal 1974 · Cassazionisti · TAR · Consiglio di Stato
