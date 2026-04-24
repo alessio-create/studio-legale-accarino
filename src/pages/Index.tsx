@@ -793,16 +793,23 @@ export default function Index() {
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 border-t hairline md:border-t-0">
                       {items.map((item, idx) => {
                         const originalIdx = fam.items.indexOf(item);
+                        const procId = `${fam.slug}-proc-${originalIdx + 1}`;
+                        const isTargeted = targetedId === procId;
                         return (
                           <li
                             key={item.label + originalIdx}
-                            id={`${fam.slug}-proc-${originalIdx + 1}`}
-                            className="scroll-mt-24 border-b md:border-b-0 md:border-t hairline md:first:border-t-0 md:[&:nth-child(2)]:border-t-0"
+                            id={procId}
+                            data-targeted={isTargeted ? "true" : undefined}
+                            className={`scroll-mt-24 border-b md:border-b-0 md:border-t hairline md:first:border-t-0 md:[&:nth-child(2)]:border-t-0 transition-colors duration-700 ${
+                              isTargeted ? "bg-gold/[0.08]" : ""
+                            }`}
                           >
                             <Reveal delay={idx * 60}>
                               <Link
                                 to={item.to}
-                                className="group flex items-start justify-between gap-4 sm:gap-6 py-5 sm:py-6 px-2 -mx-2 min-h-[60px] active:bg-surface-container-low transition-colors rounded-sm"
+                                className={`group flex items-start justify-between gap-4 sm:gap-6 py-5 sm:py-6 px-2 -mx-2 min-h-[60px] active:bg-surface-container-low transition-colors rounded-sm ${
+                                  isTargeted ? "ring-1 ring-gold/60 ring-offset-2 ring-offset-background" : ""
+                                }`}
                               >
                                 <span className="font-serif text-base sm:text-lg text-primary leading-snug text-pretty pr-2 group-hover:text-gold-deep transition-colors">
                                   <Highlight text={item.label} query={practiceQuery} />
