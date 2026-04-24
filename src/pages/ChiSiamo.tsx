@@ -1,7 +1,9 @@
 import { Award, BookOpen, Building, Scale } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
-import { Eyebrow } from "@/components/site/Eyebrow";
 import { CTAButton } from "@/components/site/CTAButton";
+import { PageHero } from "@/components/site/PageHero";
+import { SectionHeader } from "@/components/site/SectionHeader";
+import { Reveal } from "@/components/site/Reveal";
 import { Seo, orgJsonLd } from "@/components/site/Seo";
 import founder from "@/assets/founder.jpg";
 import office from "@/assets/office.jpg";
@@ -29,46 +31,39 @@ export default function ChiSiamo() {
         path="/chi-siamo"
         jsonLd={orgJsonLd}
       />
-      {/* Hero */}
-      <section className="bg-surface-container-low border-b hairline">
-        <div className="editorial-container py-24 lg:py-32 grid lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-7">
-            <Eyebrow>Lo Studio</Eyebrow>
-            <h1 className="mt-6 serif-display text-display-2xl text-balance">
-              Cinquant'anni al servizio del<br />
-              <span className="italic">diritto amministrativo</span>.
-            </h1>
-            <p className="mt-8 text-xl text-muted-foreground leading-relaxed max-w-2xl">
-              Fondato a Salerno nel 1974, lo Studio Legale Accarino è oggi uno dei
-              riferimenti nel Sud Italia per il contenzioso amministrativo. Una storia
-              di continuità professionale, costruita su tre principi: rigore tecnico,
-              riservatezza, risultato.
-            </p>
+      <PageHero
+        eyebrow="Lo Studio"
+        eyebrowSuffix="Dal 1974"
+        title={
+          <>
+            Cinquant'anni al servizio del{" "}
+            <span className="italic">diritto amministrativo</span>.
+          </>
+        }
+        lead="Fondato a Salerno nel 1974, lo Studio Legale Accarino è oggi uno dei riferimenti nel Sud Italia per il contenzioso amministrativo. Una storia di continuità professionale, costruita su tre principi: rigore tecnico, riservatezza, risultato."
+        aside={
+          <div className="grid grid-cols-2 gap-px bg-primary/10 border hairline">
+            {[
+              { v: "1974", l: "Anno di fondazione" },
+              { v: "9", l: "Professionisti" },
+              { v: "2", l: "Sedi operative" },
+              { v: "6", l: "Partner di rete" },
+            ].map((s) => (
+              <div key={s.l} className="bg-background p-8">
+                <p className="font-serif text-4xl text-primary">{s.v}</p>
+                <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                  {s.l}
+                </p>
+              </div>
+            ))}
           </div>
-          <aside className="lg:col-span-5">
-            <div className="grid grid-cols-2 gap-px bg-primary/10 border hairline">
-              {[
-                { v: "1974", l: "Anno di fondazione" },
-                { v: "9", l: "Professionisti" },
-                { v: "2", l: "Sedi operative" },
-                { v: "6", l: "Partner di rete" },
-              ].map((s) => (
-                <div key={s.l} className="bg-background p-8">
-                  <p className="font-serif text-4xl text-primary">{s.v}</p>
-                  <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                    {s.l}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </aside>
-        </div>
-      </section>
+        }
+      />
 
       {/* Heritage block */}
-      <section className="section-y">
-        <div className="editorial-container grid lg:grid-cols-12 gap-16">
-          <div className="lg:col-span-5">
+      <section className="bg-background border-b hairline">
+        <div className="editorial-container py-20 lg:py-28 grid lg:grid-cols-12 gap-16">
+          <Reveal className="lg:col-span-5">
             <div className="gold-corner p-3">
               <img
                 src={office}
@@ -79,12 +74,12 @@ export default function ChiSiamo() {
                 height={1100}
               />
             </div>
-          </div>
+          </Reveal>
           <div className="lg:col-span-7 lg:pl-8">
-            <Eyebrow>La nostra storia</Eyebrow>
-            <h2 className="mt-6 serif-display text-display-xl text-balance">
-              Una continuità professionale rara nel panorama italiano.
-            </h2>
+            <SectionHeader
+              eyebrow="La nostra storia"
+              title="Una continuità professionale rara nel panorama italiano."
+            />
             <div className="mt-8 space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
                 Fondato dall'<span className="text-primary font-medium">Avv. Francesco Accarino</span>,
@@ -122,13 +117,14 @@ export default function ChiSiamo() {
       </section>
 
       {/* Team */}
-      <section className="section-y bg-surface-container-low border-y hairline">
-        <div className="editorial-container">
-          <div className="max-w-3xl mb-16">
-            <Eyebrow>Il team</Eyebrow>
-            <h2 className="mt-6 serif-display text-display-xl">
-              Avvocati. Specialisti. Persone.
-            </h2>
+      <section className="bg-surface-container-low border-b hairline">
+        <div className="editorial-container py-20 lg:py-28">
+          <div className="mb-16 lg:mb-20">
+            <SectionHeader
+              eyebrow="Il team"
+              title="Avvocati. Specialisti. Persone."
+              intro="Una squadra ristretta di professionisti dedicati: ogni mandato è seguito personalmente da un partner di riferimento."
+            />
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -158,14 +154,14 @@ export default function ChiSiamo() {
       </section>
 
       {/* Partners */}
-      <section className="section-y">
-        <div className="editorial-container">
-          <div className="grid lg:grid-cols-12 gap-12 mb-16">
+      <section className="bg-background border-b hairline">
+        <div className="editorial-container py-20 lg:py-28">
+          <div className="grid lg:grid-cols-12 gap-12 mb-16 lg:mb-20">
             <div className="lg:col-span-5">
-              <Eyebrow>Network</Eyebrow>
-              <h2 className="mt-6 serif-display text-display-xl">
-                Una rete di partner di caratura nazionale.
-              </h2>
+              <SectionHeader
+                eyebrow="Network"
+                title="Una rete di partner di caratura nazionale."
+              />
             </div>
             <p className="lg:col-span-6 lg:col-start-7 text-lg text-muted-foreground leading-relaxed self-end">
               Per le materie più specialistiche e i contenziosi più complessi, lo Studio
@@ -188,18 +184,28 @@ export default function ChiSiamo() {
       </section>
 
       {/* CTA */}
-      <section className="bg-primary text-primary-foreground py-24 relative">
-        <div className="absolute inset-0 bg-noise opacity-30" />
-        <div className="editorial-container relative text-center max-w-3xl mx-auto">
-          <Eyebrow>
-            <span className="text-gold">Iniziamo a lavorare insieme</span>
-          </Eyebrow>
-          <h2 className="mt-6 serif-display text-display-xl text-background text-balance">
-            La tua questione merita un'attenzione dedicata.
-          </h2>
-          <div className="mt-10 flex justify-center">
-            <CTAButton to="/contatti" variant="gold">Prenota una consulenza</CTAButton>
-          </div>
+      <section className="relative bg-primary text-primary-foreground border-y border-gold/30 overflow-hidden">
+        <div className="absolute inset-0 bg-noise opacity-25" />
+        <div className="relative editorial-container py-24 lg:py-32 text-center max-w-3xl mx-auto">
+          <Reveal>
+            <p className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold font-semibold">
+              <span aria-hidden className="w-6 h-px bg-gold" />
+              Iniziamo a lavorare insieme
+              <span aria-hidden className="w-6 h-px bg-gold" />
+            </p>
+          </Reveal>
+          <Reveal delay={120}>
+            <h2 className="mt-8 serif-display text-display-xl text-background text-balance leading-[1.05]">
+              La tua questione merita un'attenzione dedicata.
+            </h2>
+          </Reveal>
+          <Reveal delay={240}>
+            <div className="mt-10 flex justify-center">
+              <CTAButton to="/contatti" variant="gold">
+                Prenota una consulenza
+              </CTAButton>
+            </div>
+          </Reveal>
         </div>
       </section>
     </Layout>
