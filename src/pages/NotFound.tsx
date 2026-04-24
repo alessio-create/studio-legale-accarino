@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Layout } from "@/components/site/Layout";
 import { CTAButton } from "@/components/site/CTAButton";
 import { Eyebrow } from "@/components/site/Eyebrow";
+import { Seo } from "@/components/site/Seo";
 
 const NotFound = () => {
   const location = useLocation();
@@ -13,6 +14,12 @@ const NotFound = () => {
 
   return (
     <Layout>
+      <Seo
+        title="Pagina non trovata"
+        description="La pagina richiesta non è disponibile. Torna alla home dello Studio Legale Accarino o usa il menu di navigazione."
+        path={location.pathname}
+        noIndex
+      />
       <section className="min-h-[70vh] flex items-center">
         <div className="editorial-container text-center max-w-2xl mx-auto py-24">
           <Eyebrow>Errore 404</Eyebrow>
