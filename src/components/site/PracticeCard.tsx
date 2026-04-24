@@ -8,10 +8,48 @@ interface Props {
   icon: LucideIcon;
   href: string;
   topics?: string[];
+  image?: string;
+  imageAlt?: string;
 }
 
-export const PracticeCard = ({ number, title, description, icon: Icon, href, topics }: Props) => (
+export const PracticeCard = ({ number, title, description, icon: Icon, href, topics, image, imageAlt }: Props) => (
   <Link to={href} className="practice-card group flex flex-col h-full">
+    {image && (
+      <div className="practice-card-media relative -mx-10 -mt-10 mb-8 overflow-hidden">
+        <img
+          src={image}
+          alt={imageAlt ?? title}
+          loading="lazy"
+          width={1024}
+          height={640}
+          className="w-full h-44 lg:h-48 object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+        />
+        {/* Tonal wash to unify the image with the card surface */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, hsl(var(--primary) / 0.18) 0%, hsl(var(--primary) / 0.05) 45%, hsl(var(--card) / 0.0) 100%)",
+          }}
+        />
+        {/* Bottom fade into the card */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-16"
+          style={{
+            background:
+              "linear-gradient(180deg, hsl(var(--card) / 0) 0%, hsl(var(--card)) 100%)",
+          }}
+        />
+        {/* Gold hairline accent */}
+        <span
+          aria-hidden
+          className="absolute left-0 right-0 bottom-0 h-px bg-gold/40 transition-colors duration-500 group-hover:bg-gold"
+        />
+      </div>
+    )}
+
     <div className="flex items-start justify-between mb-10">
       <span className="text-[11px] tracking-[0.2em] uppercase text-gold-deep font-semibold">
         {number}

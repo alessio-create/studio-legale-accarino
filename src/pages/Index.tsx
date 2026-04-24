@@ -3,6 +3,10 @@ import {
   ArrowRight, ArrowUpRight, Building2, Calendar, Landmark, Scale, Users,
 } from "lucide-react";
 import heroCourthouse from "@/assets/hero-courthouse.jpg";
+import practiceEspropriazioni from "@/assets/practice-espropriazioni.jpg";
+import practiceUrbanistica from "@/assets/practice-urbanistica.jpg";
+import practiceAppalti from "@/assets/practice-appalti.jpg";
+import practiceConcorsi from "@/assets/practice-concorsi.jpg";
 import { Layout } from "@/components/site/Layout";
 import { Eyebrow } from "@/components/site/Eyebrow";
 import { CTAButton } from "@/components/site/CTAButton";
@@ -26,6 +30,8 @@ const specializations = [
     icon: Landmark,
     href: "/espropriazioni",
     topics: ["Indennità di esproprio", "Occupazioni d'urgenza", "Retrocessione"],
+    image: practiceEspropriazioni,
+    imageAlt: "Strumento di rilievo topografico su mappa catastale al tramonto",
   },
   {
     number: "02",
@@ -35,6 +41,8 @@ const specializations = [
     icon: Scale,
     href: "/urbanistica-edilizia",
     topics: ["Permessi e SCIA", "Vincoli e Soprintendenze", "Sanatorie"],
+    image: practiceUrbanistica,
+    imageAlt: "Dettaglio architettonico di palazzo classico italiano in luce dorata",
   },
   {
     number: "03",
@@ -44,6 +52,8 @@ const specializations = [
     icon: Building2,
     href: "/appalti-pubblici",
     topics: ["Ricorsi TAR", "Sospensive cautelari", "Esecuzione del contratto"],
+    image: practiceAppalti,
+    imageAlt: "Ingresso di edificio istituzionale con colonne in pietra",
   },
   {
     number: "04",
@@ -53,6 +63,8 @@ const specializations = [
     icon: Users,
     href: "/concorsi-pubblici",
     topics: ["Graduatorie", "Ricorsi collettivi", "Prove e valutazioni"],
+    image: practiceConcorsi,
+    imageAlt: "Aula d'esame classica con file di banchi in legno e luce naturale",
   },
 ];
 
