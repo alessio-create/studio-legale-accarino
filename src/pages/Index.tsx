@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight, ArrowUpRight, Award, Building2, Calendar, ChevronLeft, ChevronRight, Gavel,
-  Landmark, Quote, ShieldCheck, Star, Scale, Users, Phone, Mail, Clock, Lock,
+  Landmark, Quote, ShieldCheck, Star, Scale, Users, Phone, Mail, Clock, Lock, Search, X,
 } from "lucide-react";
 import heroCourthouse from "@/assets/hero-courthouse.jpg";
 import salernoImg from "@/assets/salerno.jpg";
@@ -18,6 +18,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { CountUp } from "@/components/site/CountUp";
 import { MaximTicker } from "@/components/site/MaximTicker";
 import { PracticeSideNav, type SideNavItem } from "@/components/site/PracticeSideNav";
+import { Highlight } from "@/components/site/Highlight";
 
 /**
  * Four core specializations — one card per practice detail page.
