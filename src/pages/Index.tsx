@@ -675,6 +675,35 @@ export default function Index() {
         </div>
       </section>
 
+      {/* ───────────────── CASE STUDIES ───────────────── */}
+      <section className="section-y bg-surface-container-low border-b hairline">
+        <div className="editorial-container">
+          <div className="flex items-end justify-between flex-wrap gap-8 mb-14 lg:mb-16">
+            <div className="max-w-2xl">
+              <Eyebrow>Casi studio</Eyebrow>
+              <h2 className="mt-6 serif-display text-display-xl text-balance">
+                Tre fascicoli, tre vittorie raccontate dall'interno.
+              </h2>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
+                Selezione editoriale di mandati conclusi negli ultimi due anni.
+                Apri ogni caso per leggere sfida, strategia e risultato — con dati
+                anonimizzati nel rispetto del segreto professionale.
+              </p>
+            </div>
+            <span className="hidden md:inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-muted-foreground font-semibold">
+              <span aria-hidden className="w-8 h-px bg-gold" />
+              Tocca una scheda per aprirla
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-primary/10 border hairline">
+            {caseStudies.map((c, i) => (
+              <CaseStudyCard key={c.title} caseStudy={c} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ───────────────── BLOG ───────────────── */}
       <section className="section-y bg-background">
         <div className="editorial-container">
