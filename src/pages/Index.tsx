@@ -636,13 +636,55 @@ export default function Index() {
                 </p>
               </Reveal>
               <Reveal delay={220}>
-                <Link
-                  to="/contatti"
-                  className="mt-10 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-primary hover:text-gold-deep transition-colors font-semibold border-b hairline pb-2"
-                >
-                  Parla con un avvocato
-                  <ArrowRight className="w-4 h-4 text-gold-deep" />
-                </Link>
+                <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
+                  {/* Search input */}
+                  <div className="relative flex-1 max-w-md group">
+                    <label htmlFor="practice-search" className="sr-only">
+                      Cerca tra le aree di pratica
+                    </label>
+                    <Search
+                      className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 text-gold-deep pointer-events-none"
+                      strokeWidth={1.5}
+                      aria-hidden="true"
+                    />
+                    <input
+                      id="practice-search"
+                      type="search"
+                      value={practiceQuery}
+                      onChange={(e) => setPracticeQuery(e.target.value)}
+                      placeholder="Cerca una procedura o un'area…"
+                      className="w-full bg-transparent border-0 border-b hairline pb-3 pl-7 pr-8 text-[15px] font-serif text-primary placeholder:text-muted-foreground/70 placeholder:font-sans placeholder:text-sm focus:outline-none focus:border-gold-deep transition-colors"
+                    />
+                    {practiceQuery && (
+                      <button
+                        type="button"
+                        onClick={() => setPracticeQuery("")}
+                        aria-label="Cancella ricerca"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-gold-deep transition-colors"
+                      >
+                        <X className="w-4 h-4" strokeWidth={1.5} />
+                      </button>
+                    )}
+                  </div>
+                  <Link
+                    to="/contatti"
+                    className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-primary hover:text-gold-deep transition-colors font-semibold border-b hairline pb-2 self-start sm:self-auto"
+                  >
+                    Parla con un avvocato
+                    <ArrowRight className="w-4 h-4 text-gold-deep" />
+                  </Link>
+                </div>
+                {practiceQuery && (
+                  <p
+                    role="status"
+                    aria-live="polite"
+                    className="mt-4 text-xs uppercase tracking-[0.2em] text-muted-foreground"
+                  >
+                    {totalMatches === 0
+                      ? "Nessun risultato"
+                      : `${totalMatches} risultat${totalMatches === 1 ? "o" : "i"} su ${practiceFamilies.reduce((n, f) => n + f.items.length, 0)}`}
+                  </p>
+                )}
               </Reveal>
             </div>
           </div>
