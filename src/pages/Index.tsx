@@ -112,6 +112,50 @@ const procedureGroups = [
   },
 ];
 
+/** TEAM — three named professionals (placeholder portraits). */
+const team = [
+  {
+    name: "Avv. Giorgio Accarino",
+    role: "Founding Partner",
+    focus: "Espropriazioni · Urbanistica",
+    image: lawyer1,
+  },
+  {
+    name: "Avv. Chiara Accarino",
+    role: "Senior Partner",
+    focus: "Appalti · Contenzioso TAR",
+    image: lawyer2,
+  },
+  {
+    name: "Avv. Marco De Luca",
+    role: "Associate",
+    focus: "Concorsi · Pubblico impiego",
+    image: lawyer3,
+  },
+];
+
+/** REVIEWS — anonymised editorial testimonials. */
+const reviews = [
+  {
+    quote:
+      "Hanno trasformato un diniego che credevamo definitivo in un'aggiudicazione. Tempismo chirurgico in fase cautelare.",
+    author: "Amministratore Delegato",
+    context: "PMI edile · Salerno",
+  },
+  {
+    quote:
+      "Lo Studio segue la nostra Stazione Appaltante da anni: pareri puntuali, difese costruite su misura, zero approssimazione.",
+    author: "Dirigente Area Tecnica",
+    context: "Ente pubblico · Campania",
+  },
+  {
+    quote:
+      "Ci hanno restituito un'indennità di esproprio quasi triplicata rispetto alla prima offerta. Trasparenza in ogni fase.",
+    author: "Famiglia proprietaria",
+    context: "Procedura ablativa · Cilento",
+  },
+];
+
 /** EVIDENCES — anonymised representative outcomes. */
 const results: ResultDetail[] = [
   {
