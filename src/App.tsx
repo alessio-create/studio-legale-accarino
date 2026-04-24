@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -17,24 +18,26 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/espropriazioni" element={<Espropriazioni />} />
-          <Route path="/appalti-pubblici" element={<AppaltiPubblici />} />
-          <Route path="/concorsi-pubblici" element={<ConcorsiPubblici />} />
-          <Route path="/urbanistica-edilizia" element={<UrbanisticaEdilizia />} />
-          <Route path="/chi-siamo" element={<ChiSiamo />} />
-          <Route path="/contatti" element={<Contatti />} />
-          <Route path="/blog" element={<Blog />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <HelmetProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/espropriazioni" element={<Espropriazioni />} />
+            <Route path="/appalti-pubblici" element={<AppaltiPubblici />} />
+            <Route path="/concorsi-pubblici" element={<ConcorsiPubblici />} />
+            <Route path="/urbanistica-edilizia" element={<UrbanisticaEdilizia />} />
+            <Route path="/chi-siamo" element={<ChiSiamo />} />
+            <Route path="/contatti" element={<Contatti />} />
+            <Route path="/blog" element={<Blog />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </HelmetProvider>
   </QueryClientProvider>
 );
 
