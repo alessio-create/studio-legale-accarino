@@ -403,73 +403,38 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ───── VOCI & VOLTI — reviews + team, stacked editorial ───── */}
+      {/* ───── LO STUDIO — team & reviews unified into one authoritative band ───── */}
       <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
-        {/* Subtle gold ambient wash, mirroring the stats band */}
+        {/* Subtle gold ambient wash spanning the entire band */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.035]"
+          className="pointer-events-none absolute inset-0 opacity-[0.04]"
           style={{
             background:
-              "radial-gradient(70% 60% at 50% 100%, hsl(var(--gold)) 0%, transparent 65%)",
+              "radial-gradient(70% 60% at 50% 0%, hsl(var(--gold)) 0%, transparent 65%)",
           }}
         />
 
         <div className="relative editorial-container py-20 lg:py-28">
-          {/* — Reviews — */}
-          <div className="mx-auto max-w-2xl text-center mb-14 lg:mb-20">
+          {/* — Single authoritative header — */}
+          <div className="mx-auto max-w-3xl text-center mb-16 lg:mb-24">
             <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-gold-deep font-semibold">
-              <span aria-hidden className="w-6 h-px bg-gold" />
-              Voci dei nostri assistiti
-              <span aria-hidden className="w-6 h-px bg-gold" />
+              <span aria-hidden className="w-8 h-px bg-gold" />
+              Lo Studio
+              <span aria-hidden className="w-8 h-px bg-gold" />
             </span>
-            <h2 className="mt-6 serif-display text-display-lg text-balance text-primary">
-              La fiducia si misura nel tempo, non nelle promesse.
+            <h2 className="mt-8 serif-display text-display-xl text-balance text-primary leading-[1.05]">
+              I volti che firmano ogni pratica,{" "}
+              <span className="italic">le voci che ce ne danno conto</span>.
             </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-primary/10 border hairline mb-24 lg:mb-32">
-            {reviews.map((r, i) => (
-              <Reveal
-                key={r.author}
-                delay={i * 110}
-                className="bg-background p-10 lg:p-12 flex flex-col h-full relative"
-              >
-                <Quote
-                  aria-hidden
-                  className="w-7 h-7 text-gold-deep stroke-[1.25] mb-6 opacity-80"
-                />
-                <blockquote className="font-serif text-lg lg:text-[1.35rem] leading-snug text-primary text-balance flex-1">
-                  &ldquo;{r.quote}&rdquo;
-                </blockquote>
-                <div className="mt-8 pt-6 border-t hairline">
-                  <p className="text-[11px] uppercase tracking-[0.2em] text-gold-deep font-semibold">
-                    {r.author}
-                  </p>
-                  <p className="mt-2 text-xs text-muted-foreground">
-                    {r.context}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* — Team — */}
-          <div className="mx-auto max-w-2xl text-center mb-14 lg:mb-20">
-            <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-gold-deep font-semibold">
-              <span aria-hidden className="w-6 h-px bg-gold" />
-              I volti dello Studio
-              <span aria-hidden className="w-6 h-px bg-gold" />
-            </span>
-            <h2 className="mt-6 serif-display text-display-lg text-balance text-primary">
-              Tre generazioni, una sola idea di rigore.
-            </h2>
-            <p className="mt-6 text-base text-muted-foreground leading-relaxed">
-              Ogni pratica è seguita personalmente da uno dei professionisti dello
-              Studio: nessun delegato, nessun passaggio anonimo.
+            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+              Ogni mandato è seguito personalmente da uno dei professionisti
+              dello Studio. La fiducia non si racconta: si misura nel tempo e
+              nelle parole di chi ci ha scelto.
             </p>
           </div>
 
+          {/* — Team grid — primary visual anchor — */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
             {team.map((m, i) => (
               <Reveal
@@ -486,7 +451,6 @@ export default function Index() {
                     height={1280}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
                   />
-                  {/* tonal wash to harmonise with the page palette */}
                   <span
                     aria-hidden
                     className="pointer-events-none absolute inset-0"
@@ -495,12 +459,10 @@ export default function Index() {
                         "linear-gradient(180deg, hsl(var(--primary) / 0) 55%, hsl(var(--primary) / 0.55) 100%)",
                     }}
                   />
-                  {/* gold hairline at the base */}
                   <span
                     aria-hidden
                     className="absolute inset-x-0 bottom-0 h-px bg-gold/40 transition-colors duration-500 group-hover:bg-gold"
                   />
-                  {/* eyebrow chip */}
                   <span className="absolute top-5 left-5 inline-flex items-center gap-2 bg-background/85 backdrop-blur-sm px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
                     <span aria-hidden className="w-3 h-px bg-gold" />
                     {String(i + 1).padStart(2, "0")}
@@ -524,6 +486,44 @@ export default function Index() {
                 </div>
               </Reveal>
             ))}
+          </div>
+
+          {/* — Reviews threaded as evidence beneath the team — */}
+          <div className="mt-20 lg:mt-28">
+            {/* Connecting micro-label binds the two halves together */}
+            <div className="flex items-center justify-center gap-4 mb-12 lg:mb-16">
+              <span aria-hidden className="h-px w-16 bg-gold/50" />
+              <span className="text-[10px] uppercase tracking-[0.28em] text-gold-deep font-semibold">
+                Quello che dicono di noi
+              </span>
+              <span aria-hidden className="h-px w-16 bg-gold/50" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-primary/10 border hairline">
+              {reviews.map((r, i) => (
+                <Reveal
+                  key={r.author}
+                  delay={i * 110}
+                  className="bg-background p-10 lg:p-12 flex flex-col h-full relative"
+                >
+                  <Quote
+                    aria-hidden
+                    className="w-7 h-7 text-gold-deep stroke-[1.25] mb-6 opacity-80"
+                  />
+                  <blockquote className="font-serif text-lg lg:text-[1.35rem] leading-snug text-primary text-balance flex-1">
+                    &ldquo;{r.quote}&rdquo;
+                  </blockquote>
+                  <div className="mt-8 pt-6 border-t hairline">
+                    <p className="text-[11px] uppercase tracking-[0.2em] text-gold-deep font-semibold">
+                      {r.author}
+                    </p>
+                    <p className="mt-2 text-xs text-muted-foreground">
+                      {r.context}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
