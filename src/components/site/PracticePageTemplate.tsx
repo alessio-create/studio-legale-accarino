@@ -185,6 +185,84 @@ export const PracticePageTemplate = ({
         </div>
       </section>
 
+      {/* Procedure dell'area — full editorial list */}
+      {areaProcedures.length > 0 && (
+        <section id="procedure" className="bg-background border-b hairline">
+          <div className="editorial-container py-20 lg:py-28">
+            <div className="grid lg:grid-cols-12 gap-12 mb-16 lg:mb-20">
+              <div className="lg:col-span-5">
+                <SectionHeader
+                  eyebrow="Le procedure"
+                  title={`${areaProcedures.length} procedure dedicate a quest'area.`}
+                  compact
+                />
+              </div>
+              <p className="lg:col-span-7 lg:col-start-6 text-lg text-muted-foreground leading-relaxed self-end">
+                Ogni procedura è una monografia editoriale a sé: contesto normativo,
+                strategia processuale, tempistiche, esiti tipici. Apri quella che ti
+                riguarda per leggere il dossier completo.
+              </p>
+            </div>
+
+            <ol className="border-t hairline">
+              {areaProcedures.map((p, i) => (
+                <li
+                  key={p.slug}
+                  className="border-b hairline group"
+                >
+                  <Link
+                    to={`/${p.slug}`}
+                    className="grid grid-cols-12 gap-6 lg:gap-10 py-8 lg:py-10 items-start hover:bg-surface-container-low transition-colors -mx-4 px-4 lg:-mx-6 lg:px-6"
+                  >
+                    {/* Numeral */}
+                    <span className="col-span-2 lg:col-span-1 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold tabular-nums pt-1">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+
+                    {/* Title + lead */}
+                    <div className="col-span-10 lg:col-span-8">
+                      <h3 className="font-serif text-2xl lg:text-[1.7rem] text-primary leading-tight text-balance group-hover:text-gold-deep transition-colors">
+                        {p.title}
+                      </h3>
+                      <p className="mt-3 text-[15px] text-muted-foreground leading-relaxed text-pretty">
+                        {p.lead}
+                      </p>
+                      <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                        <span className="inline-flex items-center gap-2">
+                          <Clock className="w-3 h-3 text-gold-deep" />
+                          {p.readingTime} min
+                        </span>
+                        <span aria-hidden className="w-1 h-1 rounded-full bg-gold/60" />
+                        <span>{p.audience}</span>
+                        {p.normativa.length > 0 && (
+                          <>
+                            <span aria-hidden className="w-1 h-1 rounded-full bg-gold/60" />
+                            <span className="text-primary/60 normal-case tracking-normal">
+                              {p.normativa.slice(0, 2).join(" · ")}
+                            </span>
+                          </>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* CTA */}
+                    <div className="hidden lg:flex col-span-3 justify-end items-start pt-2">
+                      <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-primary font-semibold">
+                        Apri dossier
+                        <ArrowUpRight
+                          className="w-3.5 h-3.5 text-gold-deep transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                          strokeWidth={1.75}
+                        />
+                      </span>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
+
       {/* Process */}
       <section className="bg-background border-b hairline">
         <div className="editorial-container py-20 lg:py-28">
