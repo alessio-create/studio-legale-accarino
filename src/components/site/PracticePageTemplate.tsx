@@ -1,10 +1,12 @@
 import { ReactNode } from "react";
-import { Check, LucideIcon, Phone, Quote } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowUpRight, Check, Clock, LucideIcon, Phone, Quote } from "lucide-react";
 import { CTAButton } from "./CTAButton";
 import { FAQ, FAQItem } from "./FAQ";
 import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "./Reveal";
 import ResultCard from "./ResultCard";
+import { procedures, type Procedure } from "@/data/procedures";
 
 export interface PracticeStat { value: string; label: string }
 export interface PracticeStep { num: string; title: string; description: string }
@@ -25,13 +27,19 @@ interface Props {
   intro: ReactNode;
   outcomes?: PracticeOutcome[];
   signatureQuote?: { quote: string; attribution?: string };
+  /** When provided, renders the full list of procedures of that area
+   *  with editorial copy and links to the dedicated pages. */
+  practiceArea?: Procedure["practiceArea"];
 }
 
 export const PracticePageTemplate = ({
   number, eyebrow, title, lead, heroImage, icon: Icon,
   whoFor, services, process, stats, faq, intro,
-  outcomes, signatureQuote,
+  outcomes, signatureQuote, practiceArea,
 }: Props) => {
+  const areaProcedures = practiceArea
+    ? procedures.filter((p) => p.practiceArea === practiceArea)
+    : [];
   return (
     <>
       {/* Hero — canonical editorial composition */}
