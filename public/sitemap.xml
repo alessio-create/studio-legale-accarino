@@ -39,4 +39,27 @@
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- Procedure pages — generated from src/data/procedures.ts -->
+  <url><loc>https://www.accarino.it/pareri-legittimita-atti-amministrativi</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/difesa-giudizio-tar</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/procedimenti-espropriativi-ablatori</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/gare-appalto-procedure-affidamento</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/contenzioso-esecutivo-varianti-contrattuali</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/procedimenti-disciplinari-responsabilita-erariale</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/concorsi-pubblici-selezioni-personale</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/provvedimenti-urbanistici-pianificazione</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/recupero-crediti-azioni-rivalsa</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/formazione-personale-compliance</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/opposizione-stima-esproprio</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.accarino.it/occupazioni-illegittime-urgenza</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/retrocessione-beni-espropriati</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/permessi-costruire-scia-dia</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/vincoli-paesaggistici-soprintendenze</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/abusi-edilizi-sanatoria</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/ricorsi-esclusioni-gara-appalto</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.accarino.it/sospensiva-cautelare-art-55-cpa</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/impugnazione-graduatorie-prove-concorsuali</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/ricorsi-collettivi-pubblico-impiego</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/diniego-accesso-atti</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.accarino.it/sanzioni-amministrative-ricorsi-gerarchici</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

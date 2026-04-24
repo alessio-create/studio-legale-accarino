@@ -21,6 +21,7 @@ import { CountUp } from "@/components/site/CountUp";
 import { MaximTicker } from "@/components/site/MaximTicker";
 import { WhereWeAre } from "@/components/site/WhereWeAre";
 import { Seo, orgJsonLd, faqJsonLd } from "@/components/site/Seo";
+import { procedureTitleToSlug } from "@/data/procedures";
 
 /* ─────────────────────────── DATA ─────────────────────────── */
 
@@ -604,14 +605,33 @@ export default function Index() {
                   {group.items.map((item, idx) => (
                     <li
                       key={item}
-                      className="group flex items-start justify-between gap-6 py-6 border-t hairline first:border-t-0 md:[&:nth-child(2)]:border-t-0"
+                      className="group border-t hairline first:border-t-0 md:[&:nth-child(2)]:border-t-0"
                     >
-                      <span className="font-serif text-lg text-primary leading-snug text-pretty pr-4 group-hover:text-gold-deep transition-colors">
-                        {item}
-                      </span>
-                      <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground pt-1 flex-shrink-0">
-                        {String(idx + 1).padStart(2, "0")}
-                      </span>
+                      {procedureTitleToSlug[item] ? (
+                        <Link
+                          to={`/${procedureTitleToSlug[item]}`}
+                          className="flex items-start justify-between gap-6 py-6"
+                        >
+                          <span className="font-serif text-lg text-primary leading-snug text-pretty pr-4 group-hover:text-gold-deep transition-colors">
+                            {item}
+                          </span>
+                          <span className="flex items-center gap-3 pt-1 flex-shrink-0">
+                            <ArrowUpRight className="w-4 h-4 text-gold-deep opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                            <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground">
+                              {String(idx + 1).padStart(2, "0")}
+                            </span>
+                          </span>
+                        </Link>
+                      ) : (
+                        <div className="flex items-start justify-between gap-6 py-6">
+                          <span className="font-serif text-lg text-primary leading-snug text-pretty pr-4">
+                            {item}
+                          </span>
+                          <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground pt-1 flex-shrink-0">
+                            {String(idx + 1).padStart(2, "0")}
+                          </span>
+                        </div>
+                      )}
                     </li>
                   ))}
                 </ul>

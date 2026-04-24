@@ -13,6 +13,8 @@ import AppaltiPubblici from "./pages/practice/AppaltiPubblici.tsx";
 import ConcorsiPubblici from "./pages/practice/ConcorsiPubblici.tsx";
 import UrbanisticaEdilizia from "./pages/practice/UrbanisticaEdilizia.tsx";
 import Blog from "./pages/Blog.tsx";
+import ProcedurePage from "./pages/ProcedurePage.tsx";
+import { procedures } from "./data/procedures";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +34,14 @@ const App = () => (
             <Route path="/chi-siamo" element={<ChiSiamo />} />
             <Route path="/contatti" element={<Contatti />} />
             <Route path="/blog" element={<Blog />} />
+            {/* Procedure pages — flat root URLs, generated from the registry */}
+            {procedures.map((p) => (
+              <Route
+                key={p.slug}
+                path={`/${p.slug}`}
+                element={<ProcedurePage />}
+              />
+            ))}
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
