@@ -1,6 +1,16 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, Check, Clock, Phone, Quote, Scale } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BookOpen,
+  Check,
+  Clock,
+  Landmark,
+  Phone,
+  Quote,
+  Scale,
+} from "lucide-react";
 import { ProceduresLayout } from "./ProceduresLayout";
 import { CTAButton } from "./CTAButton";
 import { Reveal } from "./Reveal";
@@ -8,6 +18,7 @@ import { FAQ } from "./FAQ";
 import { Seo, faqJsonLd, serviceJsonLd } from "./Seo";
 import { SectionHeader } from "./SectionHeader";
 import { MobileTOC } from "./MobileTOC";
+import { ReadingProgress } from "./ReadingProgress";
 import { useActiveSection } from "@/hooks/use-active-section";
 import {
   Procedure,
