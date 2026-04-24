@@ -810,6 +810,77 @@ export default function Index() {
                   </section>
                 );
               })}
+
+              {/* FAQ — answer common questions before the contact CTA */}
+              {filteredFamilies.length > 0 && (
+                <div className="pt-20 lg:pt-28 border-t hairline">
+                  <Reveal>
+                    <div className="flex items-center gap-4 mb-8">
+                      <span aria-hidden className="block w-8 h-px bg-gold" />
+                      <p className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">
+                        Domande frequenti
+                      </p>
+                    </div>
+                  </Reveal>
+                  <Reveal delay={80}>
+                    <h3 className="serif-display text-display-md text-balance leading-[1.1] max-w-3xl">
+                      Prima di scriverci,{" "}
+                      <span className="italic text-gold-deep">le risposte più richieste.</span>
+                    </h3>
+                  </Reveal>
+                  <Reveal delay={160}>
+                    <p className="mt-6 text-[15px] text-muted-foreground leading-relaxed max-w-2xl">
+                      Tempi, costi e modalità di lavoro dello Studio. Per quesiti
+                      specifici sul tuo caso, una consulenza riservata resta sempre
+                      la via più breve.
+                    </p>
+                  </Reveal>
+
+                  <div className="mt-10">
+                    <Reveal delay={220}>
+                      <FAQ
+                        items={[
+                          {
+                            q: "Quanto tempo ho per impugnare un atto della Pubblica Amministrazione?",
+                            a: "Il termine ordinario è di 60 giorni dalla notifica o piena conoscenza dell'atto. Per il rito appalti il termine si riduce a 30 giorni. In casi specifici è ancora possibile attivare il ricorso straordinario al Capo dello Stato (120 giorni) o sollecitare un intervento in autotutela.",
+                          },
+                          {
+                            q: "Quanto costa una consulenza preliminare?",
+                            a: "Il primo contatto e l'inquadramento del caso sono gratuiti. La consulenza scritta o lo studio degli atti viene preventivata in modo trasparente prima di qualsiasi attivazione: nessun costo nascosto, nessun obbligo di prosecuzione.",
+                          },
+                          {
+                            q: "In quali sedi giudiziarie patrocinate?",
+                            a: "Lo Studio difende davanti a tutti i TAR italiani, al Consiglio di Stato, alla Corte dei Conti, alla Corte di Cassazione e ai giudici ordinari per i profili risarcitori. Le due sedi (Salerno e Roma) garantiscono presenza diretta sull'asse Sud-Centro Italia.",
+                          },
+                          {
+                            q: "Posso essere assistito anche se vivo fuori regione?",
+                            a: "Sì. Gestiamo abitualmente cause in tutta Italia: la fase istruttoria si svolge a distanza con scambio sicuro di documenti, mentre udienze e adempimenti vengono curati direttamente dai nostri avvocati o tramite domiciliatari di fiducia.",
+                          },
+                          {
+                            q: "Quali sono i tempi medi di risposta?",
+                            a: "Per le richieste urgenti — termini in scadenza, sospensive, esclusioni da gara — garantiamo un primo riscontro qualificato entro 48 ore lavorative. Per casi non urgenti, la presa in carico avviene tipicamente entro 3-5 giorni.",
+                          },
+                        ]}
+                      />
+                    </Reveal>
+
+                    <Reveal delay={280}>
+                      <div className="mt-12 flex flex-wrap items-center justify-between gap-6 pt-8 border-t hairline">
+                        <p className="font-serif text-lg text-primary max-w-md text-balance">
+                          Non hai trovato risposta al tuo dubbio?
+                        </p>
+                        <Link
+                          to="/contatti"
+                          className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-primary hover:text-gold-deep transition-colors font-semibold border-b hairline pb-2"
+                        >
+                          Parla con un avvocato
+                          <ArrowRight className="w-4 h-4 text-gold-deep" />
+                        </Link>
+                      </div>
+                    </Reveal>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
