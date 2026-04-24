@@ -67,6 +67,7 @@ const specializations = [
 const practiceFamilies = [
   {
     family: "Diritto del Territorio",
+    slug: "area-territorio",
     href: "/espropriazioni",
     icon: Landmark,
     blurb:
@@ -82,6 +83,7 @@ const practiceFamilies = [
   },
   {
     family: "Imprese e Pubblica Amministrazione",
+    slug: "area-imprese-pa",
     href: "/appalti-pubblici",
     icon: Building2,
     blurb:
