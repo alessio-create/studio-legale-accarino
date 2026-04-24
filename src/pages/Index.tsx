@@ -304,6 +304,10 @@ export default function Index() {
     .filter((x): x is { fam: typeof practiceFamilies[number]; items: typeof practiceFamilies[number]["items"]; familyMatches: boolean } => x !== null);
   const totalMatches = filteredFamilies.reduce((n, g) => n + g.items.length, 0);
 
+  // Deep-link target highlight: reads location.hash, scrolls into view and
+  // briefly pulses the matching family or procedure.
+  const { targetedId, flash } = useHashTarget();
+
   return (
     <Layout>
       {/* HERO */}
