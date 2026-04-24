@@ -7,6 +7,7 @@ import { CTAButton } from "./CTAButton";
 import { Reveal } from "./Reveal";
 import { FAQ } from "./FAQ";
 import { Seo, faqJsonLd, serviceJsonLd } from "./Seo";
+import { SectionHeader } from "./SectionHeader";
 import { useActiveSection } from "@/hooks/use-active-section";
 import {
   Procedure,
@@ -328,14 +329,12 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
       <section className="bg-surface-container-low border-y hairline">
         <div className="editorial-container py-20 lg:py-28 grid lg:grid-cols-12 gap-12">
           <Reveal className="lg:col-span-4">
-            <Eyebrow>Domande frequenti</Eyebrow>
-            <h2 className="mt-6 serif-display text-display-lg text-balance">
-              Le domande più comuni su questa procedura
-            </h2>
-            <p className="mt-6 text-muted-foreground leading-relaxed">
-              Hai un quesito specifico? Una consulenza riservata di 15 minuti
-              chiarisce subito i termini del tuo caso.
-            </p>
+            <SectionHeader
+              eyebrow="Domande frequenti"
+              title="Le domande più comuni su questa procedura."
+              intro="Hai un quesito specifico? Una consulenza riservata di 15 minuti chiarisce subito i termini del tuo caso."
+              compact
+            />
             <div className="mt-8">
               <CTAButton to="/contatti" variant="ghost">
                 Parla con un avvocato
@@ -390,10 +389,11 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
           <div className="editorial-container py-20 lg:py-28">
             <div className="flex items-end justify-between flex-wrap gap-8 mb-14">
               <div className="max-w-2xl">
-                <Eyebrow>Procedure correlate</Eyebrow>
-                <h2 className="mt-6 serif-display text-display-lg text-balance">
-                  Altre procedure {procedure.audience.toLowerCase()}
-                </h2>
+                <SectionHeader
+                  eyebrow="Procedure correlate"
+                  title={`Altre procedure ${procedure.audience.toLowerCase()}.`}
+                  compact
+                />
               </div>
               <Link
                 to="/#area-imprese-pa-proc-6"
