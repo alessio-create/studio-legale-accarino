@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import {
   ArrowRight, ArrowUpRight, Building2, Calendar, Landmark, Scale, Users,
-  Quote,
 } from "lucide-react";
 import heroCourthouse from "@/assets/hero-courthouse.jpg";
 import practiceEspropriazioni from "@/assets/practice-espropriazioni.jpg";
