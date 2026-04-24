@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight, ArrowUpRight, Award, Building2, Calendar, ChevronLeft, ChevronRight, Gavel,
-  Landmark, Quote, ShieldCheck, Star, Scale, Users,
+  Landmark, Quote, ShieldCheck, Star, Scale, Users, Phone, Mail, Clock, Lock,
 } from "lucide-react";
 import heroCourthouse from "@/assets/hero-courthouse.jpg";
 import salernoImg from "@/assets/salerno.jpg";
