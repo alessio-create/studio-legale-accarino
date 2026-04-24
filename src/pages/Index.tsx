@@ -691,7 +691,7 @@ export default function Index() {
 
           {/* Two-column layout: sticky side-nav + family blocks */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-            <aside className="lg:col-span-3">
+            <aside className="hidden lg:block lg:col-span-3">
               <PracticeSideNav
                 eyebrow="Salta a una sezione"
                 items={filteredFamilies.map<SideNavItem>(({ fam, items }, gi) => ({
@@ -710,9 +710,9 @@ export default function Index() {
               />
             </aside>
 
-            <div className="lg:col-span-9 space-y-20 lg:space-y-28">
+            <div className="lg:col-span-9 space-y-16 lg:space-y-28">
               {filteredFamilies.length === 0 && (
-                <div className="border hairline bg-background p-12 lg:p-16 text-center">
+                <div className="border hairline bg-background p-8 sm:p-12 lg:p-16 text-center">
                   <p className="font-serif text-2xl text-primary">
                     Nessuna procedura corrisponde a "{practiceQuery}".
                   </p>
@@ -739,38 +739,36 @@ export default function Index() {
                     key={fam.family}
                     id={fam.slug}
                     className={`scroll-mt-24 ${
-                      gi > 0 ? "pt-20 lg:pt-28 border-t hairline" : ""
+                      gi > 0 ? "pt-16 lg:pt-28 border-t hairline" : ""
                     }`}
                   >
                     {/* Family header */}
-                    <header className="mb-12 lg:mb-16">
+                    <header className="mb-10 lg:mb-16">
                       <Reveal>
-                        <div className="flex items-center gap-4">
-                          <span aria-hidden className="block w-8 h-px bg-gold" />
-                          <p className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">
+                        <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
+                          <span aria-hidden className="block w-6 sm:w-8 h-px bg-gold flex-shrink-0" />
+                          <p className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold leading-relaxed">
                             {String(gi + 1).padStart(2, "0")} ·{" "}
                             <Highlight text={fam.family} query={practiceQuery} />
                           </p>
                         </div>
                       </Reveal>
-                      <div className="mt-6 grid md:grid-cols-12 gap-8 items-start">
-                        <div className="md:col-span-1">
-                          <Reveal delay={80}>
-                            <span className="inline-flex w-12 h-12 border hairline items-center justify-center bg-background">
-                              <Icon className="w-5 h-5 text-gold-deep" strokeWidth={1.5} />
-                            </span>
-                          </Reveal>
-                        </div>
-                        <div className="md:col-span-11">
+                      <div className="mt-6 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
+                        <Reveal delay={80}>
+                          <span className="inline-flex w-12 h-12 border hairline items-center justify-center bg-background flex-shrink-0">
+                            <Icon className="w-5 h-5 text-gold-deep" strokeWidth={1.5} />
+                          </span>
+                        </Reveal>
+                        <div className="flex-1 min-w-0">
                           <Reveal delay={120}>
-                            <p className="text-[17px] text-muted-foreground leading-relaxed max-w-2xl">
+                            <p className="text-base sm:text-[17px] text-muted-foreground leading-relaxed max-w-2xl">
                               <Highlight text={fam.blurb} query={practiceQuery} />
                             </p>
                           </Reveal>
                           <Reveal delay={180}>
                             <Link
                               to={fam.href}
-                              className="mt-6 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-primary font-semibold hover:text-gold-deep transition-colors"
+                              className="mt-6 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-primary font-semibold hover:text-gold-deep transition-colors min-h-[44px]"
                             >
                               Approfondisci l'area
                               <ArrowUpRight className="w-4 h-4 text-gold-deep" />
@@ -781,24 +779,24 @@ export default function Index() {
                     </header>
 
                     {/* Numbered procedure list */}
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 border-t hairline md:border-t-0">
                       {items.map((item, idx) => {
                         const originalIdx = fam.items.indexOf(item);
                         return (
                           <li
                             key={item.label + originalIdx}
                             id={`${fam.slug}-proc-${originalIdx + 1}`}
-                            className="scroll-mt-24 border-t hairline first:border-t-0 md:[&:nth-child(2)]:border-t-0"
+                            className="scroll-mt-24 border-b md:border-b-0 md:border-t hairline md:first:border-t-0 md:[&:nth-child(2)]:border-t-0"
                           >
                             <Reveal delay={idx * 60}>
                               <Link
                                 to={item.to}
-                                className="group flex items-start justify-between gap-6 py-6"
+                                className="group flex items-start justify-between gap-4 sm:gap-6 py-5 sm:py-6 px-2 -mx-2 min-h-[60px] active:bg-surface-container-low transition-colors rounded-sm"
                               >
-                                <span className="font-serif text-lg text-primary leading-snug text-pretty pr-4 group-hover:text-gold-deep transition-colors">
+                                <span className="font-serif text-base sm:text-lg text-primary leading-snug text-pretty pr-2 group-hover:text-gold-deep transition-colors">
                                   <Highlight text={item.label} query={practiceQuery} />
                                 </span>
-                                <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground pt-1.5 flex-shrink-0">
+                                <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground pt-1 sm:pt-1.5 flex-shrink-0">
                                   {String(originalIdx + 1).padStart(2, "0")}
                                 </span>
                               </Link>
