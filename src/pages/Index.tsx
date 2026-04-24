@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight, ArrowUpRight, Award, Building2, Calendar, ChevronLeft, ChevronRight, Gavel,
-  Landmark, Quote, ShieldCheck, Star, Scale, Users, Phone, Mail, Clock, Lock,
+  Landmark, Quote, ShieldCheck, Star, Scale, Users, Phone, Mail, Clock, Lock, Search, X,
 } from "lucide-react";
 import heroCourthouse from "@/assets/hero-courthouse.jpg";
 import salernoImg from "@/assets/salerno.jpg";
@@ -18,6 +18,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { CountUp } from "@/components/site/CountUp";
 import { MaximTicker } from "@/components/site/MaximTicker";
 import { PracticeSideNav, type SideNavItem } from "@/components/site/PracticeSideNav";
+import { Highlight } from "@/components/site/Highlight";
 
 /**
  * Four core specializations — one card per practice detail page.
@@ -279,6 +280,28 @@ export default function Index() {
     setActiveTestimonial((i) => (i + 1) % testimonials.length);
   const prevTestimonial = () =>
     setActiveTestimonial((i) => (i - 1 + testimonials.length) % testimonials.length);
+
+  // Filter state for "Aree di pratica" search
+  const [practiceQuery, setPracticeQuery] = useState("");
+  const normalizedQ = practiceQuery.trim().toLowerCase();
+  const filteredFamilies = practiceFamilies
+    .map((fam) => {
+      if (!normalizedQ) return { fam, items: fam.items, familyMatches: false };
+      const familyMatches =
+        fam.family.toLowerCase().includes(normalizedQ) ||
+        fam.blurb.toLowerCase().includes(normalizedQ);
+      const matchedItems = fam.items.filter((it) =>
+        it.label.toLowerCase().includes(normalizedQ)
+      );
+      // Keep family if its name/blurb matches (then show all items) OR
+      // if at least one procedure matches (then show only matched ones)
+      if (familyMatches) return { fam, items: fam.items, familyMatches };
+      if (matchedItems.length > 0)
+        return { fam, items: matchedItems, familyMatches };
+      return null;
+    })
+    .filter((x): x is { fam: typeof practiceFamilies[number]; items: typeof practiceFamilies[number]["items"]; familyMatches: boolean } => x !== null);
+  const totalMatches = filteredFamilies.reduce((n, g) => n + g.items.length, 0);
 
   return (
     <Layout>
@@ -613,13 +636,55 @@ export default function Index() {
                 </p>
               </Reveal>
               <Reveal delay={220}>
-                <Link
-                  to="/contatti"
-                  className="mt-10 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-primary hover:text-gold-deep transition-colors font-semibold border-b hairline pb-2"
-                >
-                  Parla con un avvocato
-                  <ArrowRight className="w-4 h-4 text-gold-deep" />
-                </Link>
+                <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
+                  {/* Search input */}
+                  <div className="relative flex-1 max-w-md group">
+                    <label htmlFor="practice-search" className="sr-only">
+                      Cerca tra le aree di pratica
+                    </label>
+                    <Search
+                      className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 text-gold-deep pointer-events-none"
+                      strokeWidth={1.5}
+                      aria-hidden="true"
+                    />
+                    <input
+                      id="practice-search"
+                      type="search"
+                      value={practiceQuery}
+                      onChange={(e) => setPracticeQuery(e.target.value)}
+                      placeholder="Cerca una procedura o un'area…"
+                      className="w-full bg-transparent border-0 border-b hairline pb-3 pl-7 pr-8 text-[15px] font-serif text-primary placeholder:text-muted-foreground/70 placeholder:font-sans placeholder:text-sm focus:outline-none focus:border-gold-deep transition-colors"
+                    />
+                    {practiceQuery && (
+                      <button
+                        type="button"
+                        onClick={() => setPracticeQuery("")}
+                        aria-label="Cancella ricerca"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-gold-deep transition-colors"
+                      >
+                        <X className="w-4 h-4" strokeWidth={1.5} />
+                      </button>
+                    )}
+                  </div>
+                  <Link
+                    to="/contatti"
+                    className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-primary hover:text-gold-deep transition-colors font-semibold border-b hairline pb-2 self-start sm:self-auto"
+                  >
+                    Parla con un avvocato
+                    <ArrowRight className="w-4 h-4 text-gold-deep" />
+                  </Link>
+                </div>
+                {practiceQuery && (
+                  <p
+                    role="status"
+                    aria-live="polite"
+                    className="mt-4 text-xs uppercase tracking-[0.2em] text-muted-foreground"
+                  >
+                    {totalMatches === 0
+                      ? "Nessun risultato"
+                      : `${totalMatches} risultat${totalMatches === 1 ? "o" : "i"} su ${practiceFamilies.reduce((n, f) => n + f.items.length, 0)}`}
+                  </p>
+                )}
               </Reveal>
             </div>
           </div>
@@ -629,20 +694,45 @@ export default function Index() {
             <aside className="lg:col-span-3">
               <PracticeSideNav
                 eyebrow="Salta a una sezione"
-                items={practiceFamilies.map<SideNavItem>((fam, gi) => ({
+                items={filteredFamilies.map<SideNavItem>(({ fam, items }, gi) => ({
                   id: fam.slug,
                   kicker: String(gi + 1).padStart(2, "0"),
                   label: fam.family,
-                  children: fam.items.map((item, idx) => ({
-                    id: `${fam.slug}-proc-${idx + 1}`,
-                    label: item.label,
-                  })),
+                  children: items.map((item) => {
+                    // Use original index so anchor ids stay stable
+                    const originalIdx = fam.items.indexOf(item);
+                    return {
+                      id: `${fam.slug}-proc-${originalIdx + 1}`,
+                      label: item.label,
+                    };
+                  }),
                 }))}
               />
             </aside>
 
             <div className="lg:col-span-9 space-y-20 lg:space-y-28">
-              {practiceFamilies.map((fam, gi) => {
+              {filteredFamilies.length === 0 && (
+                <div className="border hairline bg-background p-12 lg:p-16 text-center">
+                  <p className="font-serif text-2xl text-primary">
+                    Nessuna procedura corrisponde a "{practiceQuery}".
+                  </p>
+                  <p className="mt-3 text-muted-foreground">
+                    Prova con un altro termine — oppure{" "}
+                    <Link to="/contatti" className="text-gold-deep underline underline-offset-4 hover:text-primary transition-colors">
+                      raccontaci il tuo caso
+                    </Link>.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setPracticeQuery("")}
+                    className="mt-8 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-primary hover:text-gold-deep transition-colors font-semibold border-b hairline pb-2"
+                  >
+                    Cancella la ricerca
+                    <X className="w-4 h-4 text-gold-deep" strokeWidth={1.5} />
+                  </button>
+                </div>
+              )}
+              {filteredFamilies.map(({ fam, items }, gi) => {
                 const Icon = fam.icon;
                 return (
                   <section
@@ -658,7 +748,8 @@ export default function Index() {
                         <div className="flex items-center gap-4">
                           <span aria-hidden className="block w-8 h-px bg-gold" />
                           <p className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">
-                            {String(gi + 1).padStart(2, "0")} · {fam.family}
+                            {String(gi + 1).padStart(2, "0")} ·{" "}
+                            <Highlight text={fam.family} query={practiceQuery} />
                           </p>
                         </div>
                       </Reveal>
@@ -673,7 +764,7 @@ export default function Index() {
                         <div className="md:col-span-11">
                           <Reveal delay={120}>
                             <p className="text-[17px] text-muted-foreground leading-relaxed max-w-2xl">
-                              {fam.blurb}
+                              <Highlight text={fam.blurb} query={practiceQuery} />
                             </p>
                           </Reveal>
                           <Reveal delay={180}>
@@ -691,27 +782,30 @@ export default function Index() {
 
                     {/* Numbered procedure list */}
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
-                      {fam.items.map((item, idx) => (
-                        <li
-                          key={item.label + idx}
-                          id={`${fam.slug}-proc-${idx + 1}`}
-                          className="scroll-mt-24 border-t hairline first:border-t-0 md:[&:nth-child(2)]:border-t-0"
-                        >
-                          <Reveal delay={idx * 60}>
-                            <Link
-                              to={item.to}
-                              className="group flex items-start justify-between gap-6 py-6"
-                            >
-                              <span className="font-serif text-lg text-primary leading-snug text-pretty pr-4 group-hover:text-gold-deep transition-colors">
-                                {item.label}
-                              </span>
-                              <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground pt-1.5 flex-shrink-0">
-                                {String(idx + 1).padStart(2, "0")}
-                              </span>
-                            </Link>
-                          </Reveal>
-                        </li>
-                      ))}
+                      {items.map((item, idx) => {
+                        const originalIdx = fam.items.indexOf(item);
+                        return (
+                          <li
+                            key={item.label + originalIdx}
+                            id={`${fam.slug}-proc-${originalIdx + 1}`}
+                            className="scroll-mt-24 border-t hairline first:border-t-0 md:[&:nth-child(2)]:border-t-0"
+                          >
+                            <Reveal delay={idx * 60}>
+                              <Link
+                                to={item.to}
+                                className="group flex items-start justify-between gap-6 py-6"
+                              >
+                                <span className="font-serif text-lg text-primary leading-snug text-pretty pr-4 group-hover:text-gold-deep transition-colors">
+                                  <Highlight text={item.label} query={practiceQuery} />
+                                </span>
+                                <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground pt-1.5 flex-shrink-0">
+                                  {String(originalIdx + 1).padStart(2, "0")}
+                                </span>
+                              </Link>
+                            </Reveal>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </section>
                 );
