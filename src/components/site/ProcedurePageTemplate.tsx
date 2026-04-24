@@ -544,3 +544,25 @@ function MetaItem({ label, value }: { label: string; value: string }) {
     </div>
   );
 }
+
+function HeroMeta({
+  icon,
+  label,
+  value,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="bg-background px-5 py-4">
+      <div className="flex items-center gap-2 text-gold-deep mb-2">
+        {icon}
+        <span className="text-[9px] uppercase tracking-[0.24em] font-semibold">
+          {label}
+        </span>
+      </div>
+      <p className="font-serif text-base text-primary leading-tight">{value}</p>
+    </div>
+  );
+}
