@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, Check, Clock, Phone, Quote, Scale } from "lucide-react";
-import { Layout } from "./Layout";
+import { ProceduresLayout } from "./ProceduresLayout";
 import { CTAButton } from "./CTAButton";
 import { Reveal } from "./Reveal";
 import { FAQ } from "./FAQ";
@@ -46,7 +46,7 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
   const related = getRelatedProcedures(procedure, 3);
 
   return (
-    <Layout>
+    <ProceduresLayout>
       <Seo
         title={procedure.title}
         description={procedure.metaDescription}
