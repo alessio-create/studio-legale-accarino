@@ -123,11 +123,36 @@ export default {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" },
         },
+        "mega-in": {
+          "0%": { opacity: "0", transform: "translateY(-8px) scale(0.985)" },
+          "100%": { opacity: "1", transform: "translateY(0) scale(1)" },
+        },
+        "mega-item-in": {
+          "0%": { opacity: "0", transform: "translateY(6px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "live-pulse": {
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%": { opacity: "0.55", transform: "scale(1.35)" },
+        },
+        "review-in": {
+          "0%": { opacity: "0", transform: "translateY(8px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "review-out": {
+          "0%": { opacity: "1", transform: "translateY(0)" },
+          "100%": { opacity: "0", transform: "translateY(-6px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.25s ease-out",
         "accordion-up": "accordion-up 0.25s ease-out",
         "ticker": "ticker 40s linear infinite",
+        "mega-in": "mega-in 0.35s cubic-bezier(0.22, 1, 0.36, 1)",
+        "mega-item-in": "mega-item-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both",
+        "live-pulse": "live-pulse 1.8s ease-in-out infinite",
+        "review-in": "review-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both",
+        "review-out": "review-out 0.35s ease-in both",
       },
     },
   },
