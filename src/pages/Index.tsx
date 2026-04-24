@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 import {
   ArrowRight, ArrowUpRight, Building2, Calendar, Landmark, Scale, Users,
+  Quote,
 } from "lucide-react";
 import heroCourthouse from "@/assets/hero-courthouse.jpg";
 import practiceEspropriazioni from "@/assets/practice-espropriazioni.jpg";
 import practiceUrbanistica from "@/assets/practice-urbanistica.jpg";
 import practiceAppalti from "@/assets/practice-appalti.jpg";
 import practiceConcorsi from "@/assets/practice-concorsi.jpg";
+import lawyer1 from "@/assets/lawyer-1.jpg";
+import lawyer2 from "@/assets/lawyer-2.jpg";
+import lawyer3 from "@/assets/lawyer-3.jpg";
 import { Layout } from "@/components/site/Layout";
 import { Eyebrow } from "@/components/site/Eyebrow";
 import { CTAButton } from "@/components/site/CTAButton";
