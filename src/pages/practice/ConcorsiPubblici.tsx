@@ -1,11 +1,31 @@
 import { Users } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { PracticePageTemplate } from "@/components/site/PracticePageTemplate";
+import { Seo, serviceJsonLd, faqJsonLd } from "@/components/site/Seo";
 import lawBooks from "@/assets/law-books.jpg";
 
 export default function ConcorsiPubblici() {
+  const faq = [
+    { q: "Quanto tempo ho per impugnare l'esclusione?", a: "Il termine ordinario è di 60 giorni dalla notifica del provvedimento o dalla pubblicazione della graduatoria. Per alcune procedure speciali il termine è ridotto. Agisci subito." },
+    { q: "Conviene il ricorso collettivo?", a: "Quando più candidati sono stati esclusi dalla stessa procedura per i medesimi motivi, il ricorso collettivo riduce i costi individuali (€800–€1.500 a persona) e rafforza la posizione processuale." },
+    { q: "Se perdo, devo pagare le spese della PA?", a: "In caso di soccombenza il giudice può condannare alle spese, ma per i ricorsi in materia concorsuale spesso si applica la compensazione. Una valutazione preliminare aiuta a stimare il rischio." },
+    { q: "Si può davvero vincere contro la PA?", a: "Sì. Statisticamente i ricorsi su vizi sostanziali (violazione di legge, eccesso di potere) hanno percentuali di successo significative. Una valutazione preliminare seria stima la fondatezza del caso." },
+  ];
   return (
     <Layout>
+      <Seo
+        title="Avvocato Concorsi Pubblici a Salerno · Ricorsi e Graduatorie"
+        description="Escluso da un concorso o fuori dalla graduatoria utile? Studio a Salerno specializzato in ricorsi TAR su graduatorie, prove e bandi. Anche ricorsi collettivi."
+        path="/concorsi-pubblici"
+        jsonLd={[
+          serviceJsonLd({
+            name: "Concorsi Pubblici e Pubblico Impiego",
+            description: "Tutela dei candidati nelle selezioni pubbliche: impugnazione di graduatorie, prove e criteri di valutazione, ricorsi collettivi.",
+            path: "/concorsi-pubblici",
+          }),
+          faqJsonLd(faq),
+        ]}
+      />
       <PracticePageTemplate
         number="03"
         eyebrow="Area di pratica"
@@ -49,12 +69,7 @@ export default function ConcorsiPubblici() {
           { value: "ASL · MIUR", label: "Settori principali" },
           { value: "TAR Campania", label: "Sede principale" },
         ]}
-        faq={[
-          { q: "Quanto tempo ho per impugnare l'esclusione?", a: "Il termine ordinario è di 60 giorni dalla notifica del provvedimento o dalla pubblicazione della graduatoria. Per alcune procedure speciali il termine è ridotto. Agisci subito." },
-          { q: "Conviene il ricorso collettivo?", a: "Quando più candidati sono stati esclusi dalla stessa procedura per i medesimi motivi, il ricorso collettivo riduce i costi individuali (€800–€1.500 a persona) e rafforza la posizione processuale." },
-          { q: "Se perdo, devo pagare le spese della PA?", a: "In caso di soccombenza il giudice può condannare alle spese, ma per i ricorsi in materia concorsuale spesso si applica la compensazione. Una valutazione preliminare aiuta a stimare il rischio." },
-          { q: "Si può davvero vincere contro la PA?", a: "Sì. Statisticamente i ricorsi su vizi sostanziali (violazione di legge, eccesso di potere) hanno percentuali di successo significative. Una valutazione preliminare seria stima la fondatezza del caso." },
-        ]}
+        faq={faq}
         outcomes={[
           { value: "Reintegro", label: "Candidata in graduatoria", caseType: "Concorso ASL" },
           { value: "Annullato", label: "Bando illegittimo", caseType: "Concorso scuola" },

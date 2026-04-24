@@ -19,6 +19,8 @@ import { CountUp } from "@/components/site/CountUp";
 import { MaximTicker } from "@/components/site/MaximTicker";
 import { PracticeSideNav, type SideNavItem } from "@/components/site/PracticeSideNav";
 import { Highlight } from "@/components/site/Highlight";
+import { WhereWeAre } from "@/components/site/WhereWeAre";
+import { Seo, orgJsonLd, faqJsonLd } from "@/components/site/Seo";
 import { useHashTarget } from "@/hooks/use-hash-target";
 
 /**
@@ -310,6 +312,28 @@ export default function Index() {
 
   return (
     <Layout>
+      <Seo
+        title="Studio Legale a Salerno · Diritto Amministrativo dal 1974"
+        description="Espropriazioni, appalti, concorsi, urbanistica a Salerno. Ti rispondiamo entro 48 ore con un primo orientamento gratuito su tempi, opzioni e costi."
+        path="/"
+        jsonLd={[
+          orgJsonLd,
+          faqJsonLd([
+            {
+              q: "Quanto tempo ho per impugnare un atto della Pubblica Amministrazione?",
+              a: "Il termine ordinario è di 60 giorni dalla notifica o piena conoscenza dell'atto. Per il rito appalti il termine si riduce a 30 giorni. In casi specifici è ancora possibile attivare il ricorso straordinario al Capo dello Stato (120 giorni) o sollecitare un intervento in autotutela.",
+            },
+            {
+              q: "Quanto costa una consulenza preliminare?",
+              a: "Il primo contatto e l'inquadramento del caso sono gratuiti. La consulenza scritta o lo studio degli atti viene preventivata in modo trasparente prima di qualsiasi attivazione: nessun costo nascosto, nessun obbligo di prosecuzione.",
+            },
+            {
+              q: "Quali sono i tempi medi di risposta?",
+              a: "Per le richieste urgenti garantiamo un primo riscontro qualificato entro 48 ore lavorative. Per casi non urgenti, la presa in carico avviene tipicamente entro 3-5 giorni.",
+            },
+          ]),
+        ]}
+      />
       {/* HERO */}
       <section className="relative min-h-[92vh] flex items-end overflow-hidden bg-primary-deep text-primary-foreground">
         <img
@@ -1276,6 +1300,9 @@ export default function Index() {
           </Link>
         </div>
       </section>
+
+      {/* DOVE SIAMO — physical-presence proof block */}
+      <WhereWeAre />
 
       {/* FAQ */}
       <section className="section-y">

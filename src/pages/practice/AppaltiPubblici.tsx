@@ -1,11 +1,31 @@
 import { Building2 } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { PracticePageTemplate } from "@/components/site/PracticePageTemplate";
+import { Seo, serviceJsonLd, faqJsonLd } from "@/components/site/Seo";
 import office from "@/assets/office.jpg";
 
 export default function AppaltiPubblici() {
+  const faq = [
+    { q: "Posso continuare a partecipare ad altre gare mentre ricorro?", a: "Sì. Il ricorso non comporta alcuna sanzione interdittiva. Anzi, dimostrare di tutelare attivamente i propri diritti è un elemento di forza commerciale." },
+    { q: "Quanto dura un giudizio TAR per appalti?", a: "Il rito speciale appalti prevede tempi accelerati: cautelare entro 30 giorni, sentenza di merito entro 9 mesi. L'eventuale appello al Consiglio di Stato è ancora più rapido." },
+    { q: "Il TAR può annullare la gara già aggiudicata?", a: "Sì. In presenza di vizi rilevanti il TAR può disporre l'annullamento dell'aggiudicazione, l'aggiudicazione al ricorrente o, in casi più gravi, l'annullamento dell'intera gara con nuova procedura." },
+    { q: "Offrite assistenza preventiva sui bandi?", a: "Sì. Per imprese clienti in retainer offriamo l'analisi preventiva dei bandi più rilevanti, l'assistenza nella predisposizione dell'offerta e il monitoraggio costante del contenzioso del settore." },
+  ];
   return (
     <Layout>
+      <Seo
+        title="Avvocato Appalti Pubblici a Salerno · Ricorsi TAR Gare"
+        description="Esclusa o non aggiudicataria di una gara? Studio a Salerno specializzato in ricorsi TAR su esclusioni, sospensive cautelari e contenzioso appalti. Analisi in 48h."
+        path="/appalti-pubblici"
+        jsonLd={[
+          serviceJsonLd({
+            name: "Appalti Pubblici e Contenzioso Gare",
+            description: "Difesa delle imprese nei ricorsi al TAR per esclusioni illegittime, sospensive cautelari, verifica anomalia offerte e contenzioso esecutivo.",
+            path: "/appalti-pubblici",
+          }),
+          faqJsonLd(faq),
+        ]}
+      />
       <PracticePageTemplate
         number="02"
         eyebrow="Area di pratica"
@@ -49,12 +69,7 @@ export default function AppaltiPubblici() {
           { value: "PMI", label: "Focus B2B" },
           { value: "Retainer", label: "Disponibile" },
         ]}
-        faq={[
-          { q: "Posso continuare a partecipare ad altre gare mentre ricorro?", a: "Sì. Il ricorso non comporta alcuna sanzione interdittiva. Anzi, dimostrare di tutelare attivamente i propri diritti è un elemento di forza commerciale." },
-          { q: "Quanto dura un giudizio TAR per appalti?", a: "Il rito speciale appalti prevede tempi accelerati: cautelare entro 30 giorni, sentenza di merito entro 9 mesi. L'eventuale appello al Consiglio di Stato è ancora più rapido." },
-          { q: "Il TAR può annullare la gara già aggiudicata?", a: "Sì. In presenza di vizi rilevanti il TAR può disporre l'annullamento dell'aggiudicazione, l'aggiudicazione al ricorrente o, in casi più gravi, l'annullamento dell'intera gara con nuova procedura." },
-          { q: "Offrite assistenza preventiva sui bandi?", a: "Sì. Per imprese clienti in retainer offriamo l'analisi preventiva dei bandi più rilevanti, l'assistenza nella predisposizione dell'offerta e il monitoraggio costante del contenzioso del settore." },
-        ]}
+        faq={faq}
         outcomes={[
           { value: "Annullamento", label: "Aggiudicazione illegittima", caseType: "Gara €4M servizi" },
           { value: "Sospensione", label: "Cautelare in 28gg", caseType: "Esclusione PMI" },

@@ -2,6 +2,7 @@ import { Award, BookOpen, Building, Scale } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { Eyebrow } from "@/components/site/Eyebrow";
 import { CTAButton } from "@/components/site/CTAButton";
+import { Seo, orgJsonLd } from "@/components/site/Seo";
 import founder from "@/assets/founder.jpg";
 import office from "@/assets/office.jpg";
 
@@ -22,6 +23,12 @@ const partners = [
 export default function ChiSiamo() {
   return (
     <Layout>
+      <Seo
+        title="Chi Siamo · Studio Legale a Salerno dal 1974"
+        description="Studio Legale Accarino: cinquant'anni di diritto amministrativo a Salerno. Due sedi, nove professionisti, una rete di partner di caratura nazionale."
+        path="/chi-siamo"
+        jsonLd={orgJsonLd}
+      />
       {/* Hero */}
       <section className="bg-surface-container-low border-b hairline">
         <div className="editorial-container py-24 lg:py-32 grid lg:grid-cols-12 gap-12">
