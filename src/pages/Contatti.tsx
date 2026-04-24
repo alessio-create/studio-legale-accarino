@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Mail, MapPin, Phone, Clock } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
-import { Eyebrow } from "@/components/site/Eyebrow";
+import { PageHero } from "@/components/site/PageHero";
+import { SectionHeader } from "@/components/site/SectionHeader";
 import { Seo, orgJsonLd } from "@/components/site/Seo";
 import { useToast } from "@/hooks/use-toast";
 
@@ -56,24 +57,20 @@ export default function Contatti() {
         path="/contatti"
         jsonLd={orgJsonLd}
       />
-      {/* Hero */}
-      <section className="bg-surface-container-low border-b hairline">
-        <div className="editorial-container py-24 lg:py-32 max-w-4xl">
-          <Eyebrow>Contatti</Eyebrow>
-          <h1 className="mt-6 serif-display text-display-2xl text-balance">
-            Una consulenza riservata,<br />
+      <PageHero
+        eyebrow="Contatti"
+        eyebrowSuffix="Risposta in 48h"
+        title={
+          <>
+            Una consulenza riservata,{" "}
             <span className="italic">entro 48 ore</span>.
-          </h1>
-          <p className="mt-8 text-xl text-muted-foreground leading-relaxed max-w-3xl">
-            Compila il modulo: un avvocato dello Studio prenderà in carico la tua
-            richiesta e ti contatterà personalmente per un primo orientamento.
-            Tutte le informazioni trasmesse sono coperte da segreto professionale.
-          </p>
-        </div>
-      </section>
+          </>
+        }
+        lead="Compila il modulo: un avvocato dello Studio prenderà in carico la tua richiesta e ti contatterà personalmente per un primo orientamento. Tutte le informazioni trasmesse sono coperte da segreto professionale."
+      />
 
-      <section className="section-y">
-        <div className="editorial-container grid lg:grid-cols-12 gap-12 lg:gap-20">
+      <section className="bg-background border-b hairline">
+        <div className="editorial-container py-20 lg:py-28 grid lg:grid-cols-12 gap-12 lg:gap-20">
           {/* Form */}
           <div className="lg:col-span-7 order-2 lg:order-1">
             <form onSubmit={onSubmit} className="space-y-10">
@@ -144,12 +141,12 @@ export default function Contatti() {
 
           {/* Sidebar offices */}
           <aside className="lg:col-span-5 order-1 lg:order-2 space-y-12">
-            <div>
-              <Eyebrow>Le nostre sedi</Eyebrow>
-              <p className="mt-6 font-serif text-2xl text-primary leading-snug">
-                Due sedi nella provincia di Salerno, sempre a disposizione su appuntamento.
-              </p>
-            </div>
+            <SectionHeader
+              eyebrow="Le nostre sedi"
+              title="Due sedi nella provincia di Salerno."
+              intro="Sempre a disposizione su appuntamento, in centro a Salerno e a Cava de' Tirreni."
+              compact
+            />
 
             <div className="space-y-10">
               {sedi.map((s) => (
