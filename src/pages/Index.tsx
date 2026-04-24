@@ -744,8 +744,13 @@ export default function Index() {
                   <section
                     key={fam.family}
                     id={fam.slug}
-                    className={`scroll-mt-24 ${
+                    data-targeted={targetedId === fam.slug ? "true" : undefined}
+                    className={`scroll-mt-24 transition-colors duration-700 ${
                       gi > 0 ? "pt-16 lg:pt-28 border-t hairline" : ""
+                    } ${
+                      targetedId === fam.slug
+                        ? "relative before:absolute before:-inset-x-4 before:-inset-y-6 before:-z-10 before:bg-gold/[0.07] before:border before:border-gold/40 before:transition-opacity before:duration-700 before:animate-fade-in"
+                        : ""
                     }`}
                   >
                     {/* Family header */}
