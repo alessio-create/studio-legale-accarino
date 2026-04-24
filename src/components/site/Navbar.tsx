@@ -89,17 +89,17 @@ export const Navbar = () => {
     >
       {/* Top utility bar */}
       <div className={`hidden lg:block border-b transition-colors ${overDarkHero ? "border-background/15" : "border-primary/10"}`}>
-        <div className="editorial-container flex items-center justify-between h-8 text-[10px] uppercase tracking-[0.22em]">
+        <div className="editorial-container flex items-center justify-between h-9 text-[10px] uppercase tracking-[0.24em]">
           <div className={`flex items-center gap-6 ${overDarkHero ? "text-background/70" : "text-muted-foreground"}`}>
-            <span className="flex items-center gap-2">
+            <span className="flex items-center gap-2.5">
               <span className="w-1 h-1 bg-gold" />
-              Salerno · Cava de' Tirreni
+              Diritto Amministrativo
             </span>
-            <span className="hidden xl:inline">Diritto Amministrativo · Est. 1974</span>
+            <span className="hidden xl:inline">Sedi · Salerno &amp; Cava de&apos; Tirreni</span>
           </div>
           <a
             href={PHONE_HREF}
-            className={`flex items-center gap-2 font-semibold transition-colors ${
+            className={`flex items-center gap-2.5 font-semibold transition-colors ${
               overDarkHero ? "text-background hover:text-gold" : "text-primary hover:text-gold-deep"
             }`}
           >
