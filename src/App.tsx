@@ -16,6 +16,7 @@ import Blog from "./pages/Blog.tsx";
 import ProcedurePage from "./pages/ProcedurePage.tsx";
 import Procedures from "./pages/Procedures.tsx";
 import { procedures } from "./data/procedures";
+import { RouteTransition } from "./components/site/RouteTransition";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <RouteTransition />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/espropriazioni" element={<Espropriazioni />} />
