@@ -88,8 +88,12 @@
     --shadow-inset-gold: inset 0 0 0 1px hsl(var(--gold) / 0.5);
 
     /* Type tokens */
-    --font-serif: "Libre Baskerville", Georgia, serif;
-    --font-sans: "Source Sans 3", "Source Sans Pro", "Inter", system-ui, -apple-system, sans-serif;
+    /* Unified clean sans-serif system (Landi & Pappalardo–inspired).
+       --font-serif is intentionally aliased to the same sans stack so
+       legacy `font-serif` / `serif-display` classes render as sans without
+       a sweeping refactor. Swap back here if a true serif is reintroduced. */
+    --font-sans: "Inter", "Source Sans 3", "Source Sans Pro", system-ui, -apple-system, sans-serif;
+    --font-serif: "Inter", "Source Sans 3", system-ui, sans-serif;
 
     --transition-elegant: all 350ms cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -133,12 +137,15 @@
   }
 
   h1, h2, h3, h4, h5 {
-    font-family: var(--font-serif);
-    font-weight: 600;
-    letter-spacing: -0.015em;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    letter-spacing: -0.02em;
     color: hsl(var(--primary));
     line-height: 1.15;
   }
+
+  /* Style reset: no italics anywhere — clean editorial sans look */
+  i, em, .italic { font-style: normal !important; }
 
   p { text-wrap: pretty; }
 
@@ -181,21 +188,14 @@
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: hsl(var(--gold-deep));
+    color: hsl(var(--muted-foreground));
     display: inline-flex;
     align-items: center;
-    gap: 14px;
-  }
-  .eyebrow::before {
-    content: "";
-    width: 32px;
-    height: 1px;
-    background: hsl(var(--gold));
   }
 
   .gold-rule {
     height: 1px;
-    background: var(--gradient-gold-line);
+    background: hsl(var(--border));
   }
 
   .hairline {
@@ -203,45 +203,28 @@
   }
 
   .serif-display {
-    font-family: var(--font-serif);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
   }
 
-  /* Editorial drop-cap — first letter of a lead paragraph */
-  .drop-cap::first-letter {
-    font-family: var(--font-serif);
-    float: left;
-    font-size: 4.25em;
-    line-height: 0.85;
-    padding: 0.08em 0.12em 0 0;
-    margin-right: 0.05em;
-    color: hsl(var(--gold-deep));
-    font-weight: 500;
-  }
+  /* Drop-cap removed — replaced by clean sans paragraph styling */
+  .drop-cap::first-letter { font-size: inherit; float: none; color: inherit; }
 
   .nav-link {
     position: relative;
     font-family: var(--font-sans);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
     color: hsl(var(--primary));
     padding-block: 6px;
     transition: var(--transition-elegant);
   }
-  .nav-link::after {
-    content: "";
-    position: absolute;
-    left: 0; right: 100%;
-    bottom: 0;
-    height: 1px;
-    background: hsl(var(--gold));
-    transition: right 350ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .nav-link:hover::after,
-  .nav-link[data-active="true"]::after { right: 0; }
+  .nav-link:hover,
+  .nav-link[data-active="true"] { color: hsl(var(--gold-deep)); }
 
   .practice-card {
     background: hsl(var(--card));
@@ -281,18 +264,7 @@
     border-bottom-color: hsl(var(--gold));
   }
 
-  .gold-corner {
-    position: relative;
-  }
-  .gold-corner::before,
-  .gold-corner::after {
-    content: "";
-    position: absolute;
-    width: 20px; height: 20px;
-    border: 1px solid hsl(var(--gold));
-  }
-  .gold-corner::before { top: 0; left: 0; border-right: 0; border-bottom: 0; }
-  .gold-corner::after { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+  .gold-corner { position: relative; }
 }
 
 @layer utilities {
