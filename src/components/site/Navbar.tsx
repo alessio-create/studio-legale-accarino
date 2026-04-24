@@ -110,10 +110,10 @@ export const Navbar = () => {
       </div>
 
       <div className="editorial-container">
-        <div className="flex items-center justify-between h-16 lg:h-[68px]">
+        <div className="flex items-center justify-between h-20 lg:h-[88px]">
           <Logo inverted={overDarkHero} />
 
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-10">
             <button
               className={`nav-link inline-flex items-center gap-1.5 ${overDarkHero ? "!text-background hover:!text-gold" : ""}`}
               data-active={allServiceRoutes.includes(pathname) ? "true" : undefined}
@@ -142,7 +142,7 @@ export const Navbar = () => {
           <div className="hidden lg:block">
             <Link
               to="/contatti"
-              className={`group inline-flex items-center gap-2.5 px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] transition-all ${
+              className={`group inline-flex items-center gap-2.5 px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] transition-all ${
                 overDarkHero
                   ? "bg-gold text-primary hover:bg-background hover:text-primary"
                   : "bg-primary text-primary-foreground hover:bg-primary-glow shadow-inset-gold"
