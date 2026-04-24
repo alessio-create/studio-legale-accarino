@@ -135,7 +135,7 @@ export const Footer = () => (
           © {new Date().getFullYear()} Studio Legale Accarino · P.IVA 01234567890
         </p>
         <p className="text-[10px] uppercase tracking-[0.2em] text-background/50">
-          Salerno · Cava de' Tirreni · Roma
+          Salerno · Cava de' Tirreni
         </p>
       </div>
     </div>
