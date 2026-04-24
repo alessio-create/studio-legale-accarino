@@ -113,7 +113,7 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-20 lg:h-[88px]">
           <Logo inverted={overDarkHero} />
 
-          <nav className="hidden lg:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-6">
             <button
               className={`nav-link inline-flex items-center gap-1.5 ${overDarkHero ? "!text-background hover:!text-gold" : ""}`}
               data-active={allServiceRoutes.includes(pathname) ? "true" : undefined}
