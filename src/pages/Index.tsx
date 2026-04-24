@@ -134,28 +134,6 @@ const team = [
   },
 ];
 
-/** REVIEWS — anonymised editorial testimonials. */
-const reviews = [
-  {
-    quote:
-      "Hanno trasformato un diniego che credevamo definitivo in un'aggiudicazione. Tempismo chirurgico in fase cautelare.",
-    author: "Amministratore Delegato",
-    context: "PMI edile · Salerno",
-  },
-  {
-    quote:
-      "Lo Studio segue la nostra Stazione Appaltante da anni: pareri puntuali, difese costruite su misura, zero approssimazione.",
-    author: "Dirigente Area Tecnica",
-    context: "Ente pubblico · Campania",
-  },
-  {
-    quote:
-      "Ci hanno restituito un'indennità di esproprio quasi triplicata rispetto alla prima offerta. Trasparenza in ogni fase.",
-    author: "Famiglia proprietaria",
-    context: "Procedura ablativa · Cilento",
-  },
-];
-
 /** EVIDENCES — anonymised representative outcomes. */
 const results: ResultDetail[] = [
   {
@@ -487,43 +465,6 @@ export default function Index() {
             ))}
           </div>
 
-          {/* — Reviews threaded as evidence beneath the team — */}
-          <div className="mt-20 lg:mt-28">
-            {/* Connecting micro-label binds the two halves together */}
-            <div className="flex items-center justify-center gap-4 mb-12 lg:mb-16">
-              <span aria-hidden className="h-px w-16 bg-gold/50" />
-              <span className="text-[10px] uppercase tracking-[0.28em] text-gold-deep font-semibold">
-                Quello che dicono di noi
-              </span>
-              <span aria-hidden className="h-px w-16 bg-gold/50" />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-primary/10 border hairline">
-              {reviews.map((r, i) => (
-                <Reveal
-                  key={r.author}
-                  delay={i * 110}
-                  className="bg-background p-10 lg:p-12 flex flex-col h-full relative"
-                >
-                  <Quote
-                    aria-hidden
-                    className="w-7 h-7 text-gold-deep stroke-[1.25] mb-6 opacity-80"
-                  />
-                  <blockquote className="font-serif text-lg lg:text-[1.35rem] leading-snug text-primary text-balance flex-1">
-                    &ldquo;{r.quote}&rdquo;
-                  </blockquote>
-                  <div className="mt-8 pt-6 border-t hairline">
-                    <p className="text-[11px] uppercase tracking-[0.2em] text-gold-deep font-semibold">
-                      {r.author}
-                    </p>
-                    <p className="mt-2 text-xs text-muted-foreground">
-                      {r.context}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
