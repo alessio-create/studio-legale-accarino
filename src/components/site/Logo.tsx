@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import logoFull from "@/assets/logo-full.svg";
-import logoFullInverted from "@/assets/logo-full-inverted.svg";
+import logoHorizontal from "@/assets/logo-horizontal.svg";
+import logoHorizontalInverted from "@/assets/logo-horizontal-inverted.svg";
 
 export const Logo = ({ inverted = false }: { inverted?: boolean }) => (
   <Link
@@ -8,26 +8,26 @@ export const Logo = ({ inverted = false }: { inverted?: boolean }) => (
     className="relative flex items-center gap-3 group"
     aria-label="Studio Legale Accarino — Home"
   >
-    {/* Both logos stacked; cross-fade based on `inverted` prop */}
-    <span className="relative block h-10 w-[44px]">
+    {/* Both horizontal logos stacked; cross-fade based on `inverted` prop */}
+    <span className="relative block h-11 w-[195px] sm:h-12 sm:w-[210px]">
       <img
-        src={logoFullInverted}
+        src={logoHorizontalInverted}
         alt=""
         aria-hidden="true"
-        className={`absolute inset-0 h-10 w-auto transition-opacity duration-500 ease-out ${
+        className={`absolute inset-0 h-full w-auto transition-opacity duration-500 ease-out ${
           inverted ? "opacity-100" : "opacity-0"
         }`}
-        width={119}
-        height={91}
+        width={220}
+        height={50}
       />
       <img
-        src={logoFull}
+        src={logoHorizontal}
         alt="Studio Legale Accarino"
-        className={`absolute inset-0 h-10 w-auto transition-opacity duration-500 ease-out ${
+        className={`absolute inset-0 h-full w-auto transition-opacity duration-500 ease-out ${
           inverted ? "opacity-0" : "opacity-100"
         }`}
-        width={119}
-        height={91}
+        width={220}
+        height={50}
       />
     </span>
   </Link>
