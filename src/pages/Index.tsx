@@ -594,18 +594,20 @@ export default function Index() {
       <section className="bg-primary text-primary-foreground border-y border-gold/30 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise opacity-25" />
         <div className="editorial-container relative py-14 lg:py-20">
-          <div className="flex items-start justify-between flex-wrap gap-6 mb-12">
-            <div className="flex items-center gap-4">
-              <span className="w-8 h-px bg-gold" />
-              <span className="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold">
-                Esiti rappresentativi
+          <div className="flex items-start justify-between flex-wrap gap-6 mb-14">
+            <div>
+              <span className="text-[11px] uppercase tracking-[0.28em] text-gold font-semibold">
+                Risultati che parlano per noi
               </span>
+              <h2 className="mt-4 font-serif text-3xl lg:text-4xl text-background leading-tight max-w-xl">
+                Vittorie concrete, ottenute caso dopo caso.
+              </h2>
             </div>
-            <span className="text-xs text-background/50 max-w-sm leading-relaxed">
+            <span className="text-xs text-background/50 max-w-sm leading-relaxed lg:text-right">
               Esempi illustrativi del tipo di esito ottenibile. Casi anonimizzati nel rispetto del segreto professionale.
             </span>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8 divide-y lg:divide-y-0 lg:divide-x divide-background/10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-14 gap-x-10">
             {results.map((r, i) => (
               <ResultCard
                 key={r.label + i}
