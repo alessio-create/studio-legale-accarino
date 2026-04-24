@@ -195,14 +195,14 @@ export const Navbar = () => {
                     <p className="text-[10px] uppercase tracking-[0.22em] text-gold-deep font-semibold mb-5">
                       {group.heading}
                     </p>
-                    <ul className="space-y-1">
+                    <ul className="space-y-0">
                       {group.items.map((item) => {
                         const Icon = item.icon;
                         return (
                           <li key={item.to}>
                             <Link
                               to={item.to}
-                              className={`group block p-4 -mx-4 transition-colors ${
+                              className={`group block px-4 py-2.5 -mx-4 transition-colors ${
                                 item.featured
                                   ? "bg-gold-soft/40 hover:bg-gold-soft"
                                   : "hover:bg-surface-container-low"
