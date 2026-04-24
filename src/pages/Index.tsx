@@ -592,10 +592,10 @@ export default function Index() {
           </div>
         </div>
 
-        {/* AREE DI PRATICA — sticky label · numbered procedures */}
-        <div className="editorial-container">
+        {/* AREE DI PRATICA — sticky side-nav + numbered procedures */}
+        <div id="aree-di-pratica" className="editorial-container scroll-mt-24">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-20 lg:mb-24">
-            <div className="lg:col-span-8">
+            <div className="lg:col-span-8 lg:col-start-4">
               <Reveal>
                 <Eyebrow>Aree di pratica</Eyebrow>
               </Reveal>
@@ -612,12 +612,10 @@ export default function Index() {
                   tra Enti pubblici e soggetti privati.
                 </p>
               </Reveal>
-            </div>
-            <div className="lg:col-span-4 flex lg:justify-end lg:items-end">
-              <Reveal delay={200}>
+              <Reveal delay={220}>
                 <Link
                   to="/contatti"
-                  className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-primary hover:text-gold-deep transition-colors font-semibold border-b hairline pb-2"
+                  className="mt-10 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-primary hover:text-gold-deep transition-colors font-semibold border-b hairline pb-2"
                 >
                   Parla con un avvocato
                   <ArrowRight className="w-4 h-4 text-gold-deep" />
@@ -626,70 +624,100 @@ export default function Index() {
             </div>
           </div>
 
-          {practiceFamilies.map((fam, gi) => {
-            const Icon = fam.icon;
-            return (
-              <div
-                key={fam.family}
-                className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 ${
-                  gi > 0 ? "mt-20 lg:mt-28 pt-20 lg:pt-28 border-t hairline" : ""
-                }`}
-              >
-                {/* Sticky audience / family label */}
-                <div className="lg:col-span-4">
-                  <Reveal>
-                    <div className="lg:sticky lg:top-32">
-                      <span aria-hidden className="block w-8 h-px bg-gold mb-6" />
-                      <p className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">
-                        {String(gi + 1).padStart(2, "0")} · {fam.family}
-                      </p>
-                      <div className="mt-8 flex items-center gap-4">
-                        <span className="w-12 h-12 border hairline flex items-center justify-center bg-background">
-                          <Icon className="w-5 h-5 text-gold-deep" strokeWidth={1.5} />
-                        </span>
-                      </div>
-                      <p className="mt-8 text-[15px] text-muted-foreground leading-relaxed max-w-[300px]">
-                        {fam.blurb}
-                      </p>
-                      <Link
-                        to={fam.href}
-                        className="mt-10 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-primary font-semibold hover:text-gold-deep transition-colors"
-                      >
-                        Approfondisci l'area
-                        <ArrowUpRight className="w-4 h-4 text-gold-deep" />
-                      </Link>
-                    </div>
-                  </Reveal>
-                </div>
+          {/* Two-column layout: sticky side-nav + family blocks */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+            <aside className="lg:col-span-3">
+              <PracticeSideNav
+                eyebrow="Salta a una sezione"
+                items={practiceFamilies.map<SideNavItem>((fam, gi) => ({
+                  id: fam.slug,
+                  kicker: String(gi + 1).padStart(2, "0"),
+                  label: fam.family,
+                  children: fam.items.map((item, idx) => ({
+                    id: `${fam.slug}-proc-${idx + 1}`,
+                    label: item.label,
+                  })),
+                }))}
+              />
+            </aside>
 
-                {/* Numbered procedure list */}
-                <div className="lg:col-span-8">
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
-                    {fam.items.map((item, idx) => (
-                      <li
-                        key={item.label + idx}
-                        className="border-t hairline first:border-t-0 md:[&:nth-child(2)]:border-t-0"
-                      >
-                        <Reveal delay={idx * 60}>
-                          <Link
-                            to={item.to}
-                            className="group flex items-start justify-between gap-6 py-6"
-                          >
-                            <span className="font-serif text-lg text-primary leading-snug text-pretty pr-4 group-hover:text-gold-deep transition-colors">
-                              {item.label}
+            <div className="lg:col-span-9 space-y-20 lg:space-y-28">
+              {practiceFamilies.map((fam, gi) => {
+                const Icon = fam.icon;
+                return (
+                  <section
+                    key={fam.family}
+                    id={fam.slug}
+                    className={`scroll-mt-24 ${
+                      gi > 0 ? "pt-20 lg:pt-28 border-t hairline" : ""
+                    }`}
+                  >
+                    {/* Family header */}
+                    <header className="mb-12 lg:mb-16">
+                      <Reveal>
+                        <div className="flex items-center gap-4">
+                          <span aria-hidden className="block w-8 h-px bg-gold" />
+                          <p className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">
+                            {String(gi + 1).padStart(2, "0")} · {fam.family}
+                          </p>
+                        </div>
+                      </Reveal>
+                      <div className="mt-6 grid md:grid-cols-12 gap-8 items-start">
+                        <div className="md:col-span-1">
+                          <Reveal delay={80}>
+                            <span className="inline-flex w-12 h-12 border hairline items-center justify-center bg-background">
+                              <Icon className="w-5 h-5 text-gold-deep" strokeWidth={1.5} />
                             </span>
-                            <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground pt-1.5 flex-shrink-0">
-                              {String(idx + 1).padStart(2, "0")}
-                            </span>
-                          </Link>
-                        </Reveal>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            );
-          })}
+                          </Reveal>
+                        </div>
+                        <div className="md:col-span-11">
+                          <Reveal delay={120}>
+                            <p className="text-[17px] text-muted-foreground leading-relaxed max-w-2xl">
+                              {fam.blurb}
+                            </p>
+                          </Reveal>
+                          <Reveal delay={180}>
+                            <Link
+                              to={fam.href}
+                              className="mt-6 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-primary font-semibold hover:text-gold-deep transition-colors"
+                            >
+                              Approfondisci l'area
+                              <ArrowUpRight className="w-4 h-4 text-gold-deep" />
+                            </Link>
+                          </Reveal>
+                        </div>
+                      </div>
+                    </header>
+
+                    {/* Numbered procedure list */}
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+                      {fam.items.map((item, idx) => (
+                        <li
+                          key={item.label + idx}
+                          id={`${fam.slug}-proc-${idx + 1}`}
+                          className="scroll-mt-24 border-t hairline first:border-t-0 md:[&:nth-child(2)]:border-t-0"
+                        >
+                          <Reveal delay={idx * 60}>
+                            <Link
+                              to={item.to}
+                              className="group flex items-start justify-between gap-6 py-6"
+                            >
+                              <span className="font-serif text-lg text-primary leading-snug text-pretty pr-4 group-hover:text-gold-deep transition-colors">
+                                {item.label}
+                              </span>
+                              <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground pt-1.5 flex-shrink-0">
+                                {String(idx + 1).padStart(2, "0")}
+                              </span>
+                            </Link>
+                          </Reveal>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
 
