@@ -346,7 +346,7 @@ export default function Index() {
               Tuteliamo i tuoi diritti con <span className="text-gold">competenza</span>.
             </h1>
             <div className="mt-12 flex flex-col md:flex-row md:items-center gap-8 animate-fade-up">
-              <CTAButton to="/contatti" variant="gold">Prenota una consulenza</CTAButton>
+              <CTAButton to="/contatti" variant="gold">Parla con un avvocato</CTAButton>
               <div className="flex items-center gap-4 text-sm">
                 <span className="font-serif text-gold text-3xl">50+</span>
                 <span className="uppercase tracking-[0.18em] text-[11px] leading-snug text-background/70">
