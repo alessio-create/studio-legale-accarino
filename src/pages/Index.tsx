@@ -699,6 +699,7 @@ export default function Index() {
             <aside className="hidden lg:block lg:col-span-3">
               <PracticeSideNav
                 eyebrow="Salta a una sezione"
+                onActivate={flash}
                 items={filteredFamilies.map<SideNavItem>(({ fam, items }, gi) => ({
                   id: fam.slug,
                   kicker: String(gi + 1).padStart(2, "0"),
