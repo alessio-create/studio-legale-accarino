@@ -288,20 +288,36 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ───── HERO STATS — kept as hero extension ───── */}
-      <section className="bg-background border-b hairline">
-        <div className="editorial-container py-16 lg:py-20">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 lg:gap-y-0 gap-x-8 lg:divide-x divide-primary/10">
+      {/* ───── HERO STATS — premium editorial band ───── */}
+      <section className="relative bg-background border-b hairline overflow-hidden">
+        {/* Subtle gold ambient wash */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.04]"
+          style={{
+            background:
+              "radial-gradient(60% 80% at 50% 0%, hsl(var(--gold)) 0%, transparent 60%)",
+          }}
+        />
+        <div className="relative editorial-container py-20 lg:py-28">
+          <div className="mx-auto max-w-2xl text-center mb-16 lg:mb-20">
+            <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-gold-deep font-semibold">
+              <span aria-hidden className="w-6 h-px bg-gold" />
+              Lo Studio in cifre
+              <span aria-hidden className="w-6 h-px bg-gold" />
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-14 lg:gap-y-0 gap-x-8">
             {heroStats.map((s, i) => (
               <Reveal
                 key={s.label}
                 delay={i * 90}
-                className={`flex flex-col ${i === 0 ? "lg:pl-0" : "lg:pl-10"} lg:pr-10`}
+                className="group relative flex flex-col items-center text-center px-2 lg:px-6"
               >
-                <span aria-hidden className="w-8 h-px bg-gold mb-6" />
                 <p
-                  className="font-serif text-gold-deep leading-none tracking-tight tabular-nums"
-                  style={{ fontSize: "clamp(2.5rem, 4vw, 3.75rem)" }}
+                  className="font-serif text-gold-deep leading-none tracking-tight tabular-nums transition-transform duration-500 group-hover:-translate-y-0.5"
+                  style={{ fontSize: "clamp(3rem, 5.2vw, 4.75rem)" }}
                 >
                   <CountUp
                     to={s.to}
@@ -310,10 +326,14 @@ export default function Index() {
                     thousands={s.thousands}
                   />
                 </p>
-                <p className="mt-5 font-serif text-base text-primary leading-snug">
+                <span
+                  aria-hidden
+                  className="mt-5 w-10 h-px bg-gold/60 transition-all duration-500 group-hover:w-16 group-hover:bg-gold"
+                />
+                <p className="mt-5 font-serif text-lg text-primary leading-snug">
                   {s.label}
                 </p>
-                <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground leading-relaxed">
+                <p className="mt-3 text-[11px] uppercase tracking-[0.2em] text-muted-foreground leading-relaxed max-w-[18ch]">
                   {s.caption}
                 </p>
               </Reveal>
