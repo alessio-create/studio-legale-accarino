@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, LucideIcon } from "lucide-react";
 
 interface Props {
-  number: string;
+  number?: string;
   title: string;
   description: string;
   icon?: LucideIcon;
@@ -12,7 +12,7 @@ interface Props {
   imageAlt?: string;
 }
 
-export const PracticeCard = ({ number, title, description, href, topics, image, imageAlt }: Props) => (
+export const PracticeCard = ({ title, description, href, topics, image, imageAlt }: Props) => (
   <Link to={href} className="practice-card group flex flex-col h-full">
     {image && (
       <div className="practice-card-media relative -mx-10 -mt-10 mb-8 overflow-hidden">
@@ -49,12 +49,6 @@ export const PracticeCard = ({ number, title, description, href, topics, image, 
         />
       </div>
     )}
-
-    <div className="mb-10">
-      <span className="text-[11px] tracking-[0.2em] uppercase text-gold-deep font-semibold">
-        {number}
-      </span>
-    </div>
 
     <h3 className="font-serif text-2xl text-primary leading-tight mb-4">{title}</h3>
     <p className="text-muted-foreground text-[15px] leading-relaxed mb-8 flex-1">{description}</p>
