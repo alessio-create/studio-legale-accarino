@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import logoFullSquare from "@/assets/logo-full-square.svg";
 
 /**
  * Minimal premium route transition: a full-screen navy curtain with the
@@ -66,18 +67,12 @@ export const RouteTransition = () => {
         {/* Top hairline */}
         <span aria-hidden className="block h-px w-24 bg-gold/60" />
 
-        {/* Wordmark — mirrors the editorial Logo lockup */}
-        <div className="flex flex-col items-center text-center leading-none">
-          <span className="text-xs uppercase tracking-[0.32em] text-gold font-semibold">
-            Studio Legale
-          </span>
-          <span className="mt-4 font-serif text-3xl lg:text-4xl text-background tracking-[-0.02em]">
-            Accarino
-          </span>
-          <span className="mt-3 text-[10px] uppercase tracking-[0.28em] text-background/60">
-            Avvocati — Salerno
-          </span>
-        </div>
+        {/* Official logo */}
+        <img
+          src={logoFullSquare}
+          alt="Studio Legale Accarino"
+          className="h-28 lg:h-32 w-auto"
+        />
 
         {/* Loading bar */}
         <div className="relative mt-2 h-px w-44 bg-background/15 overflow-hidden">
