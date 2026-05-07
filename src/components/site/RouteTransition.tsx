@@ -8,7 +8,7 @@ import logoFullSquare from "@/assets/logo-full-square.svg";
  * route change. Uses ARIA live region semantics so screen readers announce
  * navigation without being noisy.
  */
-const TOTAL_MS = 750;
+const TOTAL_MS = 1600;
 
 export const RouteTransition = () => {
   const { pathname } = useLocation();
