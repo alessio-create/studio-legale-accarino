@@ -242,84 +242,6 @@ export const PracticePageTemplate = ({
         </div>
       </section>
 
-      {/* Procedure dell'area — full editorial list */}
-      {areaProcedures.length > 0 && (
-        <section id="procedure" className="bg-background border-b hairline">
-          <div className="editorial-container py-20 lg:py-28">
-            <div className="grid lg:grid-cols-12 gap-12 mb-16 lg:mb-20">
-              <div className="lg:col-span-5">
-                <SectionHeader
-                  eyebrow="Le procedure"
-                  title={`${areaProcedures.length} procedure dedicate a quest'area.`}
-                  compact
-                />
-              </div>
-              <p className="lg:col-span-7 lg:col-start-6 text-lg text-muted-foreground leading-relaxed self-end">
-                Ogni procedura è una monografia editoriale a sé: contesto normativo,
-                strategia processuale, tempistiche, esiti tipici. Apri quella che ti
-                riguarda per leggere il dossier completo.
-              </p>
-            </div>
-
-            <ol className="border-t hairline">
-              {areaProcedures.map((p, i) => (
-                <li
-                  key={p.slug}
-                  className="border-b hairline group"
-                >
-                  <Link
-                    to={`/${p.slug}`}
-                    className="grid grid-cols-12 gap-6 lg:gap-10 py-8 lg:py-10 items-start hover:bg-surface-container-low transition-colors -mx-4 px-4 lg:-mx-6 lg:px-6"
-                  >
-                    {/* Numeral */}
-                    <span className="col-span-2 lg:col-span-1 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold tabular-nums pt-1">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-
-                    {/* Title + lead */}
-                    <div className="col-span-10 lg:col-span-8">
-                      <h3 className="font-serif text-2xl lg:text-[1.7rem] text-primary leading-tight text-balance group-hover:text-gold-deep transition-colors">
-                        {p.title}
-                      </h3>
-                      <p className="mt-3 text-[15px] text-muted-foreground leading-relaxed text-pretty">
-                        {p.lead}
-                      </p>
-                      <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
-                        <span className="inline-flex items-center gap-2">
-                          <Clock className="w-3 h-3 text-gold-deep" />
-                          {p.readingTime} min
-                        </span>
-                        <span aria-hidden className="w-1 h-1 rounded-full bg-gold/60" />
-                        <span>{p.audience}</span>
-                        {p.normativa.length > 0 && (
-                          <>
-                            <span aria-hidden className="w-1 h-1 rounded-full bg-gold/60" />
-                            <span className="text-primary/60 normal-case tracking-normal">
-                              {p.normativa.slice(0, 2).join(" · ")}
-                            </span>
-                          </>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* CTA */}
-                    <div className="hidden lg:flex col-span-3 justify-end items-start pt-2">
-                      <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-primary font-semibold">
-                        Apri dossier
-                        <ArrowUpRight
-                          className="w-3.5 h-3.5 text-gold-deep transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                          strokeWidth={1.75}
-                        />
-                      </span>
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-      )}
-
       {/* Process — line-art illustrated steps */}
       <section className="relative bg-background border-b hairline overflow-hidden">
         <div
@@ -385,23 +307,6 @@ export const PracticePageTemplate = ({
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="bg-primary text-primary-foreground py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-noise opacity-30" />
-        <div className="editorial-container relative">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8 divide-x divide-background/10">
-            {stats.map((s, i) => (
-              <div key={s.label} className={`px-4 lg:px-8 ${i === 0 ? "lg:pl-0" : ""}`}>
-                <p className="font-serif text-display-xl text-gold leading-none">{s.value}</p>
-                <p className="mt-4 text-[11px] uppercase tracking-[0.2em] text-background/70">
-                  {s.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Client reviews — placed just before FAQ */}
       <ClientReviews />
 
@@ -425,20 +330,14 @@ export const PracticePageTemplate = ({
         </div>
       </section>
 
-      {/* Final CTA — premium animated blueprint backdrop */}
+      {/* Final CTA — solid premium dark band (backdrop removed) */}
       <section className="relative bg-primary text-primary-foreground border-y border-gold/30 overflow-hidden">
-        <BlueprintBackdrop />
+        <div className="absolute inset-0 bg-noise opacity-20" aria-hidden />
         <div className="relative editorial-container py-28 lg:py-36">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 text-center lg:text-left">
               <Reveal>
-                <p className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-gold font-semibold">
-                  <span aria-hidden className="w-6 h-px bg-gold" />
-                  Termini decadenziali stretti
-                </p>
-              </Reveal>
-              <Reveal delay={120}>
-                <h2 className="mt-8 serif-display text-display-xl lg:text-display-2xl text-background text-balance leading-[1.02]">
+                <h2 className="serif-display text-display-xl lg:text-display-2xl text-background text-balance leading-[1.02]">
                   Ogni giorno conta.<br />
                   <span className="text-gold italic font-light">Agisci entro i termini.</span>
                 </h2>
