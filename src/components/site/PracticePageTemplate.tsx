@@ -332,48 +332,70 @@ export const PracticePageTemplate = ({
         </section>
       )}
 
-      {/* Process */}
-      <section className="bg-background border-b hairline">
-        <div className="editorial-container py-20 lg:py-28">
-          <div className="grid lg:grid-cols-12 gap-12 mb-16 lg:mb-20">
-            <div className="lg:col-span-5">
-              <SectionHeader eyebrow="Il metodo" title="Un processo trasparente." />
+      {/* Process — line-art illustrated steps */}
+      <section className="relative bg-background border-b hairline overflow-hidden">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.03]"
+          style={{
+            background:
+              "radial-gradient(50% 70% at 0% 100%, hsl(var(--gold)) 0%, transparent 60%)",
+          }}
+        />
+        <div className="relative editorial-container py-20 lg:py-28">
+          <div className="grid lg:grid-cols-12 gap-12 mb-16 lg:mb-20 items-end">
+            <div className="lg:col-span-7">
+              <Reveal>
+                <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-gold-deep font-semibold">
+                  <span className="h-px w-8 bg-gold/60" />
+                  Il metodo
+                </span>
+              </Reveal>
+              <Reveal delay={120}>
+                <h2 className="mt-6 font-serif text-4xl lg:text-5xl text-primary leading-[1.05] text-balance">
+                  Un processo trasparente,<br />in quattro tempi.
+                </h2>
+              </Reveal>
             </div>
-            <p className="lg:col-span-7 lg:col-start-6 text-lg text-muted-foreground leading-relaxed self-end">
-              Ogni mandato segue un iter strutturato e prevedibile. Dalla prima analisi
-              fino alla decisione finale, il cliente riceve aggiornamenti puntuali e
-              tempistiche certe.
-            </p>
+            <Reveal delay={200} className="lg:col-span-5">
+              <p className="text-base text-muted-foreground leading-relaxed lg:text-right max-w-md lg:ml-auto">
+                Ogni mandato segue un iter strutturato e prevedibile. Dalla prima
+                analisi alla decisione finale, il cliente riceve aggiornamenti
+                puntuali e tempistiche certe.
+              </p>
+            </Reveal>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-primary/10 border hairline">
-            {process.map((step) => (
-              <div key={step.num} className="bg-background p-8 lg:p-10 relative">
-                <span className="font-serif italic text-5xl text-gold/40 leading-none">{step.num}</span>
-                <h4 className="mt-6 font-serif text-xl text-primary">{step.title}</h4>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{step.description}</p>
-              </div>
-            ))}
+          {/* Connecting hairline (desktop) */}
+          <div className="relative">
+            <span
+              aria-hidden
+              className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent"
+            />
+            <ol className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+              {process.map((step, i) => (
+                <Reveal key={step.num} delay={i * 140}>
+                  <li className="group relative flex flex-col items-center text-center px-2">
+                    <ProcessIllustration
+                      variant={PROCESS_VARIANTS[i % PROCESS_VARIANTS.length]}
+                      index={i}
+                    />
+                    <span className="mt-6 text-[10px] uppercase tracking-[0.28em] text-gold-deep font-semibold tabular-nums">
+                      Fase {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h4 className="mt-3 font-serif text-xl lg:text-[1.35rem] text-primary leading-snug text-balance">
+                      {step.title}
+                    </h4>
+                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-[28ch]">
+                      {step.description}
+                    </p>
+                  </li>
+                </Reveal>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
-
-      {/* Signature quote (optional) */}
-      {signatureQuote && (
-        <section className="bg-surface-container-low border-y hairline">
-          <div className="editorial-container py-20 lg:py-24 max-w-4xl">
-            <Quote className="w-12 h-12 text-gold/50 mb-8" strokeWidth={1} />
-            <blockquote className="font-serif text-2xl lg:text-3xl text-primary leading-relaxed text-pretty">
-              "{signatureQuote.quote}"
-            </blockquote>
-            {signatureQuote.attribution && (
-              <p className="mt-8 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
-                — {signatureQuote.attribution}
-              </p>
-            )}
-          </div>
-        </section>
-      )}
 
       {/* Stats */}
       <section className="bg-primary text-primary-foreground py-20 relative overflow-hidden">
@@ -391,6 +413,9 @@ export const PracticePageTemplate = ({
           </div>
         </div>
       </section>
+
+      {/* Client reviews — placed just before FAQ */}
+      <ClientReviews />
 
       {/* FAQ */}
       <section className="bg-surface-container-low border-y hairline">
@@ -412,33 +437,78 @@ export const PracticePageTemplate = ({
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* Final CTA — premium animated blueprint backdrop */}
       <section className="relative bg-primary text-primary-foreground border-y border-gold/30 overflow-hidden">
-        <div className="absolute inset-0 bg-noise opacity-25" />
-        <div className="relative editorial-container py-24 lg:py-32 text-center max-w-3xl mx-auto">
-          <Reveal>
-            <p className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold font-semibold">
-              <span aria-hidden className="w-6 h-px bg-gold" />
-              Termini decadenziali stretti
-              <span aria-hidden className="w-6 h-px bg-gold" />
-            </p>
-          </Reveal>
-          <Reveal delay={120}>
-            <h2 className="mt-8 serif-display text-display-xl text-background text-balance leading-[1.05]">
-              Ogni giorno conta. Agisci entro i termini.
-            </h2>
-            <p className="mt-6 text-lg text-background/75 leading-relaxed">
-              La nostra prima consulenza è gratuita e si svolge entro 48 ore
-              dalla richiesta.
-            </p>
-          </Reveal>
-          <Reveal delay={240}>
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <CTAButton to="/contatti" variant="gold">
-                Richiedi consulenza
-              </CTAButton>
+        <BlueprintBackdrop />
+        <div className="relative editorial-container py-28 lg:py-36">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 text-center lg:text-left">
+              <Reveal>
+                <p className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-gold font-semibold">
+                  <span aria-hidden className="w-6 h-px bg-gold" />
+                  Termini decadenziali stretti
+                </p>
+              </Reveal>
+              <Reveal delay={120}>
+                <h2 className="mt-8 serif-display text-display-xl lg:text-display-2xl text-background text-balance leading-[1.02]">
+                  Ogni giorno conta.<br />
+                  <span className="text-gold italic font-light">Agisci entro i termini.</span>
+                </h2>
+                <p className="mt-8 text-lg text-background/75 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                  Prima consulenza gratuita, entro 48 ore dalla richiesta.
+                  Riservata, senza impegno, condotta da un avvocato del team.
+                </p>
+              </Reveal>
+              <Reveal delay={240}>
+                <div className="mt-10 flex flex-wrap justify-center lg:justify-start gap-4">
+                  <CTAButton to="/contatti" variant="gold">
+                    Parla con un avvocato
+                  </CTAButton>
+                  <a
+                    href="tel:+390891234567"
+                    className="inline-flex items-center gap-3 px-6 py-4 text-label-sm uppercase tracking-[0.16em] text-background hover:text-gold transition-colors border border-background/25 hover:border-gold"
+                  >
+                    <Phone className="w-4 h-4 text-gold" strokeWidth={2} />
+                    089 123 4567
+                  </a>
+                </div>
+              </Reveal>
             </div>
-          </Reveal>
+
+            {/* What you get */}
+            <Reveal delay={300} className="lg:col-span-5">
+              <div className="relative gold-corner-frame bg-primary/40 backdrop-blur-sm p-8 lg:p-10">
+                <p className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] text-gold font-semibold">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  La consulenza include
+                </p>
+                <ul className="mt-6 space-y-5">
+                  {[
+                    "Inquadramento giuridico del caso",
+                    "Valutazione dei termini decadenziali",
+                    "Strategia processuale preliminare",
+                    "Stima onorari trasparente",
+                  ].map((item, i) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-3 text-background/90 animate-fade-in"
+                      style={{ animationDelay: `${400 + i * 100}ms` }}
+                    >
+                      <Check
+                        className="w-4 h-4 text-gold mt-1 flex-shrink-0"
+                        strokeWidth={2.5}
+                      />
+                      <span className="leading-relaxed text-[15px]">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8 pt-6 border-t border-background/15 flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-background/60">
+                  <Clock className="w-3.5 h-3.5 text-gold" />
+                  Risposta entro 48 ore
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
     </>
