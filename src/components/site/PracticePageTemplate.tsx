@@ -272,16 +272,22 @@ export const PracticePageTemplate = ({
             </Reveal>
           </div>
 
-          {/* Connecting hairline (desktop) */}
           <div className="relative">
-            <span
-              aria-hidden
-              className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent"
-            />
             <ol className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
               {process.map((step, i) => (
                 <Reveal key={step.num} delay={i * 140}>
                   <li className="group relative flex flex-col items-center text-center px-2">
+                    {/* Custom separator ticker between phases (desktop) */}
+                    {i > 0 && (
+                      <span
+                        aria-hidden
+                        className="hidden lg:flex absolute top-10 -left-4 -translate-y-1/2 items-center gap-1.5"
+                      >
+                        <span className="block w-1 h-1 rotate-45 bg-gold/70" />
+                        <span className="block w-1 h-1 rotate-45 bg-gold" />
+                        <span className="block w-1 h-1 rotate-45 bg-gold/70" />
+                      </span>
+                    )}
                     <ProcessIllustration
                       variant={PROCESS_VARIANTS[i % PROCESS_VARIANTS.length]}
                       index={i}
