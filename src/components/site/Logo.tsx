@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import monogram from "@/assets/monogram.svg";
+import monogramInverted from "@/assets/monogram-inverted.svg";
 
 /**
  * Wordmark placeholder for Studio Legale Accarino.
@@ -15,6 +17,12 @@ export const Logo = ({ inverted = false }: { inverted?: boolean }) => {
       className="group flex items-center gap-3 select-none"
       aria-label="Studio Legale Accarino — Home"
     >
+      <img
+        src={inverted ? monogramInverted : monogram}
+        alt=""
+        aria-hidden="true"
+        className="h-9 w-9 sm:h-10 sm:w-10 flex-shrink-0"
+      />
       <span className="flex flex-col leading-none">
         <span
           className={`text-[18px] sm:text-[20px] font-medium tracking-[-0.015em] transition-colors ${nameColor}`}
