@@ -37,12 +37,6 @@ export function ProcessIllustration({
       className="relative w-20 h-20 lg:w-[88px] lg:h-[88px] flex items-center justify-center"
       aria-hidden
     >
-      {/* Soft gold halo */}
-      <span
-        className="absolute inset-0 rounded-full bg-gold/10 blur-xl animate-pulse-soft"
-        style={{ animationDelay: `${baseDelay}ms` }}
-      />
-
       {/* Hairline square frame */}
       <span
         className="absolute inset-0 border hairline transition-colors duration-500"
