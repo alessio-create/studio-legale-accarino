@@ -69,8 +69,8 @@ export function PracticeIntroSection({
           compact
         />
         <Reveal delay={120}>
-          <div className="mt-8 prose prose-lg max-w-none">
-            <div className="font-serif text-2xl leading-relaxed text-primary text-pretty">
+          <div className="mt-8 max-w-2xl">
+            <div className="font-serif text-[1.35rem] lg:text-[1.5rem] leading-[1.55] text-primary text-pretty">
               {intro}
             </div>
           </div>
@@ -93,14 +93,18 @@ export function PracticeIntroSection({
             }}
           />
           <Reveal delay={80}>
-            <h3 className="font-serif text-2xl text-primary mb-6">
+            <p className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold mb-4">
+              <span aria-hidden className="h-px w-6 bg-gold/60" />
+              Il pubblico
+            </p>
+            <h3 className="font-serif text-2xl lg:text-[1.6rem] text-primary leading-snug mb-7 text-balance">
               A chi ci rivolgiamo
             </h3>
           </Reveal>
-          <ul className="space-y-4">
+          <ul className="space-y-3.5">
             {whoFor.map((w, i) => (
               <Reveal key={w} delay={180 + i * 110}>
-                <li className="group flex items-start gap-3 text-muted-foreground">
+                <li className="group flex items-start gap-3 text-[15px] text-muted-foreground">
                   <span
                     aria-hidden
                     className="mt-1.5 flex-shrink-0 inline-flex items-center justify-center w-4 h-4 rounded-full bg-gold/0 transition-all duration-300 group-hover:bg-gold/15"
