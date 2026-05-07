@@ -27,7 +27,7 @@ export const RouteTransition = () => {
     setPhase("in");
 
     // Hold the curtain briefly, then fade out.
-    const fadeOut = window.setTimeout(() => setPhase("out"), TOTAL_MS - 200);
+    const fadeOut = window.setTimeout(() => setPhase("out"), TOTAL_MS - 500);
     const hide = window.setTimeout(() => setVisible(false), TOTAL_MS);
 
     // Bring the user to the top of the new page once the curtain is up.
