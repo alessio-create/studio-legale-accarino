@@ -1,11 +1,14 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Check, Clock, LucideIcon, Phone, Quote } from "lucide-react";
+import { ArrowUpRight, Check, Clock, LucideIcon, Phone, Sparkles } from "lucide-react";
 import { CTAButton } from "./CTAButton";
 import { FAQ, FAQItem } from "./FAQ";
 import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "./Reveal";
 import ResultCard from "./ResultCard";
+import { ProcessIllustration, PROCESS_VARIANTS } from "./ProcessIllustration";
+import { ClientReviews } from "./ClientReviews";
+import { BlueprintBackdrop } from "./BlueprintBackdrop";
 import { procedures, type Procedure } from "@/data/procedures";
 
 export interface PracticeStat { value: string; label: string }
@@ -35,7 +38,7 @@ interface Props {
 export const PracticePageTemplate = ({
   number, eyebrow, title, lead, heroImage, icon: Icon,
   whoFor, services, process, stats, faq, intro,
-  outcomes, signatureQuote, practiceArea,
+  outcomes, signatureQuote: _signatureQuote, practiceArea,
 }: Props) => {
   const areaProcedures = practiceArea
     ? procedures.filter((p) => p.practiceArea === practiceArea)
