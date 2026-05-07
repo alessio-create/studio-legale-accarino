@@ -83,9 +83,7 @@ export default function ResultCard({
             setOpen(true);
           }
         }}
-        className={`group relative text-left w-full px-2 lg:px-6 ${
-          isFirst ? "lg:pl-0" : ""
-        } pt-6 lg:pt-0 select-none animate-fade-up focus:outline-none ${
+        className={`group relative text-left w-full px-6 lg:px-8 py-8 lg:py-10 select-none animate-fade-up focus:outline-none transition-colors duration-300 hover:bg-background/[0.03] ${
           hasDetail ? "cursor-pointer" : "cursor-default"
         }`}
         style={{ animationDelay: `${index * 120}ms` }}
@@ -98,7 +96,7 @@ export default function ResultCard({
         {/* Hold progress bar */}
         <span
           aria-hidden
-          className="pointer-events-none absolute left-2 lg:left-6 right-2 lg:right-6 top-0 h-px overflow-hidden"
+          className="pointer-events-none absolute left-6 lg:left-8 right-6 lg:right-8 top-0 h-px overflow-hidden"
         >
           <span
             className="block h-full bg-gold transition-[width] duration-75"
@@ -106,24 +104,30 @@ export default function ResultCard({
           />
         </span>
 
+        {/* Index marker */}
+        <span className="block text-[10px] uppercase tracking-[0.28em] text-gold/60 mb-5 font-medium">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+
         <p
-          className="font-serif text-gold leading-[1.02] tracking-tight transition-transform duration-300 group-hover:-translate-y-0.5"
+          className="font-serif text-gold leading-[1.05] tracking-tight transition-transform duration-300 group-hover:-translate-y-0.5 hyphens-none"
           style={{
-            fontSize: "clamp(1.75rem, 2.4vw, 2.5rem)",
-            wordBreak: "normal",
-            overflowWrap: "break-word",
+            fontSize: "clamp(1.5rem, 1.9vw, 2.125rem)",
+            wordBreak: "keep-all",
+            overflowWrap: "normal",
           }}
         >
           {result.value}
         </p>
-        <p className="mt-5 text-base text-background font-serif leading-snug">
+        <p className="mt-6 text-[15px] text-background/90 font-serif leading-snug">
           {result.label}
         </p>
-        <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-background/50">
+        <span aria-hidden className="block mt-5 h-px w-8 bg-gold/40 group-hover:w-12 transition-all duration-300" />
+        <p className="mt-4 text-[10px] uppercase tracking-[0.22em] text-background/45">
           {result.caseType}
         </p>
         {hasDetail && (
-          <p className="mt-5 text-[10px] uppercase tracking-[0.18em] text-gold/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <p className="mt-6 text-[10px] uppercase tracking-[0.18em] text-gold/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             ◍ Tieni premuto
           </p>
         )}
