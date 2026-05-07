@@ -220,37 +220,37 @@ export const PracticePageTemplate = ({
             </Reveal>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-px bg-primary/10 border hairline">
+          {/* Editorial list — uniform typographic scale, gold numerals, hairline rows */}
+          <ol className="border-t hairline">
             {services.map((s, i) => (
-              <Reveal
-                key={s.title}
-                delay={i * 100}
-                className="bg-background"
-              >
-                <article className="group relative h-full p-10 lg:p-12 transition-all duration-500 hover:bg-surface-container-low">
-                  <div className="flex items-start justify-between gap-6 mb-8">
-                    <span className="font-serif text-3xl lg:text-4xl text-gold/30 leading-none tabular-nums transition-colors duration-500 group-hover:text-gold/70">
+              <Reveal key={s.title} delay={i * 80}>
+                <li className="group border-b hairline">
+                  <div className="grid grid-cols-12 gap-6 lg:gap-10 py-7 lg:py-8 items-baseline transition-colors duration-300 hover:bg-background/60 -mx-4 px-4 lg:-mx-6 lg:px-6">
+                    {/* Numeral — kept, the user likes it */}
+                    <span className="col-span-2 lg:col-span-1 font-serif text-xl lg:text-2xl text-gold/70 tabular-nums leading-none transition-colors duration-300 group-hover:text-gold-deep">
                       {String(i + 1).padStart(2, "0")}
                     </span>
+
+                    {/* Title */}
+                    <h3 className="col-span-10 lg:col-span-5 font-serif text-xl lg:text-[1.4rem] text-primary leading-snug text-pretty transition-colors duration-300 group-hover:text-gold-deep">
+                      {s.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="col-span-12 lg:col-span-5 lg:col-start-8 text-[15px] text-muted-foreground leading-relaxed text-pretty">
+                      {s.description}
+                    </p>
+
+                    {/* Hover indicator */}
                     <span
                       aria-hidden
-                      className="h-px w-12 bg-gold/40 mt-4 transition-all duration-500 group-hover:w-20 group-hover:bg-gold"
+                      className="hidden lg:block col-span-1 col-start-12 justify-self-end h-px w-6 bg-gold/30 transition-all duration-500 group-hover:w-10 group-hover:bg-gold"
                     />
                   </div>
-                  <h3 className="font-serif text-2xl text-primary leading-snug text-pretty">
-                    {s.title}
-                  </h3>
-                  <p className="mt-5 text-muted-foreground leading-relaxed">
-                    {s.description}
-                  </p>
-                  <span
-                    aria-hidden
-                    className="absolute bottom-0 left-0 h-px w-0 bg-gold transition-all duration-700 group-hover:w-full"
-                  />
-                </article>
+                </li>
               </Reveal>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
