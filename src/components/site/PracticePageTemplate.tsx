@@ -186,22 +186,69 @@ export const PracticePageTemplate = ({
         </div>
       </section>
 
-      {/* Services */}
-      <section id="servizi" className="bg-surface-container-low border-b hairline">
-        <div className="editorial-container py-20 lg:py-28">
-          <SectionHeader
-            eyebrow="I servizi"
-            title="Assistenza completa, in ogni fase del procedimento."
-          />
-          <div className="mt-16 lg:mt-20 grid md:grid-cols-2 gap-px bg-primary/10 border hairline">
-            {services.map((s, i) => (
-              <div key={s.title} className="bg-background p-10 lg:p-12">
-                <span className="text-[11px] tracking-[0.2em] uppercase text-gold-deep font-semibold">
-                  Servizio {String(i + 1).padStart(2, "0")}
+      {/* Services — premium asymmetric editorial composition */}
+      <section id="servizi" className="relative bg-surface-container-low border-b hairline overflow-hidden">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.04]"
+          style={{
+            background:
+              "radial-gradient(50% 70% at 100% 0%, hsl(var(--gold)) 0%, transparent 60%)",
+          }}
+        />
+        <div className="relative editorial-container py-20 lg:py-28">
+          <div className="grid lg:grid-cols-12 gap-10 mb-16 lg:mb-20 items-end">
+            <div className="lg:col-span-7">
+              <Reveal>
+                <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-gold-deep font-semibold">
+                  <span className="h-px w-8 bg-gold/60" />
+                  I servizi
                 </span>
-                <h3 className="mt-6 font-serif text-2xl text-primary leading-snug">{s.title}</h3>
-                <p className="mt-4 text-muted-foreground leading-relaxed">{s.description}</p>
-              </div>
+              </Reveal>
+              <Reveal delay={120}>
+                <h2 className="mt-6 font-serif text-4xl lg:text-5xl text-primary leading-[1.05] text-balance">
+                  Assistenza completa,<br />in ogni fase del procedimento.
+                </h2>
+              </Reveal>
+            </div>
+            <Reveal delay={200} className="lg:col-span-5">
+              <p className="text-base text-muted-foreground leading-relaxed lg:text-right max-w-md lg:ml-auto">
+                Una squadra dedicata segue ogni mandato dall'analisi preliminare
+                fino all'esito finale, con interlocutore unico e tempistiche
+                certe.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-px bg-primary/10 border hairline">
+            {services.map((s, i) => (
+              <Reveal
+                key={s.title}
+                delay={i * 100}
+                className="bg-background"
+              >
+                <article className="group relative h-full p-10 lg:p-12 transition-all duration-500 hover:bg-surface-container-low">
+                  <div className="flex items-start justify-between gap-6 mb-8">
+                    <span className="font-serif text-3xl lg:text-4xl text-gold/30 leading-none tabular-nums transition-colors duration-500 group-hover:text-gold/70">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span
+                      aria-hidden
+                      className="h-px w-12 bg-gold/40 mt-4 transition-all duration-500 group-hover:w-20 group-hover:bg-gold"
+                    />
+                  </div>
+                  <h3 className="font-serif text-2xl text-primary leading-snug text-pretty">
+                    {s.title}
+                  </h3>
+                  <p className="mt-5 text-muted-foreground leading-relaxed">
+                    {s.description}
+                  </p>
+                  <span
+                    aria-hidden
+                    className="absolute bottom-0 left-0 h-px w-0 bg-gold transition-all duration-700 group-hover:w-full"
+                  />
+                </article>
+              </Reveal>
             ))}
           </div>
         </div>
