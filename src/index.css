@@ -366,15 +366,15 @@
 
   /* Route transition — minimal premium curtain */
   .animate-rt-fade {
-    animation: rt-fade 500ms cubic-bezier(0.4, 0, 0.2, 1) both;
+    animation: rt-fade 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
   @keyframes rt-fade {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
   }
 
   .animate-rt-load {
-    animation: rt-load 750ms cubic-bezier(0.65, 0, 0.35, 1) both;
+    animation: rt-load 1400ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
   @keyframes rt-load {
     0%   { transform: translateX(-100%); }

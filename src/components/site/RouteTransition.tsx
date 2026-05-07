@@ -27,7 +27,7 @@ export const RouteTransition = () => {
     setPhase("in");
 
     // Hold the curtain briefly, then fade out.
-    const fadeOut = window.setTimeout(() => setPhase("out"), TOTAL_MS - 200);
+    const fadeOut = window.setTimeout(() => setPhase("out"), TOTAL_MS - 500);
     const hide = window.setTimeout(() => setVisible(false), TOTAL_MS);
 
     // Bring the user to the top of the new page once the curtain is up.
@@ -48,7 +48,7 @@ export const RouteTransition = () => {
       role="status"
       aria-live="polite"
       aria-label="Caricamento pagina"
-      className={`fixed inset-0 z-[200] flex items-center justify-center bg-primary text-primary-foreground transition-opacity duration-200 ease-out ${
+      className={`fixed inset-0 z-[200] flex items-center justify-center bg-primary text-primary-foreground transition-[opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
         phase === "out" ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
