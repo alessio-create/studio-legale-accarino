@@ -9,6 +9,7 @@ import ResultCard from "./ResultCard";
 import { ProcessIllustration, PROCESS_VARIANTS } from "./ProcessIllustration";
 import { ClientReviews } from "./ClientReviews";
 import { BlueprintBackdrop } from "./BlueprintBackdrop";
+import { PracticeIntroSection } from "./PracticeIntroSection";
 import { procedures, type Procedure } from "@/data/procedures";
 
 export interface PracticeStat { value: string; label: string }
@@ -170,7 +171,7 @@ export const PracticePageTemplate = ({
               "radial-gradient(55% 70% at 100% 0%, hsl(var(--gold)) 0%, transparent 60%)",
           }}
         />
-        <ParallaxIntro intro={intro} whoFor={whoFor} />
+        <PracticeIntroSection intro={intro} whoFor={whoFor} />
       </section>
 
       {/* Services — premium asymmetric editorial composition */}
