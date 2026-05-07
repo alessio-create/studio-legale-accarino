@@ -385,10 +385,6 @@ export const PracticePageTemplate = ({
                     </li>
                   ))}
                 </ul>
-                <div className="mt-8 pt-6 border-t border-background/15 flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-background/60">
-                  <Clock className="w-3.5 h-3.5 text-gold" />
-                  Risposta entro 48 ore
-                </div>
               </div>
             </Reveal>
           </div>
