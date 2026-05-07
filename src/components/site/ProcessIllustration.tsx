@@ -36,13 +36,18 @@ export function ProcessIllustration({
     strokeLinejoin: "round" as const,
   };
 
-  const draw = (delay = 0): React.SVGProps<SVGPathElement> =>
-    inView
+  const draw = (delay = 0) =>
+    (inView
       ? {
           className: "animate-draw-line",
           style: { animationDelay: `${baseDelay + delay}ms` },
         }
-      : { style: { strokeDasharray: 240, strokeDashoffset: 240 } };
+      : {
+          style: {
+            strokeDasharray: 240,
+            strokeDashoffset: 240,
+          } as React.CSSProperties,
+        }) as { className?: string; style?: React.CSSProperties };
 
   return (
     <div
