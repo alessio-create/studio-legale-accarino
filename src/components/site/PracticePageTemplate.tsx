@@ -9,6 +9,7 @@ import ResultCard from "./ResultCard";
 import { ProcessIllustration, PROCESS_VARIANTS } from "./ProcessIllustration";
 import { ClientReviews } from "./ClientReviews";
 import { BlueprintBackdrop } from "./BlueprintBackdrop";
+import { PracticeIntroSection } from "./PracticeIntroSection";
 import { procedures, type Procedure } from "@/data/procedures";
 
 export interface PracticeStat { value: string; label: string }
@@ -160,30 +161,17 @@ export const PracticePageTemplate = ({
       )}
 
       {/* Intro & For Whom */}
-      <section className="bg-background border-b hairline">
-        <div className="editorial-container py-20 lg:py-28 grid lg:grid-cols-12 gap-16">
-          <div className="lg:col-span-7">
-            <SectionHeader eyebrow="Il contesto" title="Una materia di confine, dove conta la strategia." compact />
-            <div className="mt-8 prose prose-lg max-w-none">
-              <div className="font-serif text-2xl leading-relaxed text-primary text-pretty">
-                {intro}
-              </div>
-            </div>
-          </div>
-          <aside className="lg:col-span-5">
-            <div className="border-l-2 border-gold pl-8 py-2">
-              <h3 className="font-serif text-2xl text-primary mb-6">A chi ci rivolgiamo</h3>
-              <ul className="space-y-4">
-                {whoFor.map((w) => (
-                  <li key={w} className="flex items-start gap-3 text-muted-foreground">
-                    <Check className="w-4 h-4 text-gold-deep mt-1.5 flex-shrink-0" strokeWidth={2.5} />
-                    <span className="leading-relaxed">{w}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </aside>
-        </div>
+      <section className="relative bg-background border-b hairline overflow-hidden">
+        {/* Subtle gold ambient wash for depth */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.035]"
+          style={{
+            background:
+              "radial-gradient(55% 70% at 100% 0%, hsl(var(--gold)) 0%, transparent 60%)",
+          }}
+        />
+        <PracticeIntroSection intro={intro} whoFor={whoFor} />
       </section>
 
       {/* Services — premium asymmetric editorial composition */}
