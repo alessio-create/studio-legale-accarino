@@ -93,12 +93,11 @@ export function PracticeIntroSection({
             }}
           />
           <Reveal delay={80}>
-            <p className="text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold mb-4">
+            <p className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold mb-5">
+              <span aria-hidden className="h-px w-6 bg-gold/60" />
               A chi ci rivolgiamo
             </p>
-            <h3 className="font-serif text-xl lg:text-[1.4rem] text-primary leading-snug mb-7">
-              I clienti che assistiamo in quest'area.
-            </h3>
+            <h3 className="sr-only">A chi ci rivolgiamo</h3>
           </Reveal>
           <ul className="space-y-3.5">
             {whoFor.map((w, i) => (
