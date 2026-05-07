@@ -172,15 +172,6 @@ export const Navbar = () => {
           className="hidden lg:block absolute left-0 right-0 top-full bg-background border-t hairline shadow-[0_24px_60px_-30px_hsl(217_50%_12%/0.25)] animate-mega-in origin-top overflow-hidden"
           onMouseEnter={() => setMegaOpen(true)}
         >
-          {/* Subtle gold ambient wash — adds depth without heaviness */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-[0.05]"
-            style={{
-              background:
-                "radial-gradient(60% 80% at 100% 0%, hsl(var(--gold)) 0%, transparent 60%)",
-            }}
-          />
           {/* Animated gold rule under the header */}
           <span
             aria-hidden
