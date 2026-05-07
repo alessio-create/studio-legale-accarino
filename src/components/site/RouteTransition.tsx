@@ -48,7 +48,7 @@ export const RouteTransition = () => {
       role="status"
       aria-live="polite"
       aria-label="Caricamento pagina"
-      className={`fixed inset-0 z-[200] flex items-center justify-center bg-primary text-primary-foreground transition-opacity duration-200 ease-out ${
+      className={`fixed inset-0 z-[200] flex items-center justify-center bg-primary text-primary-foreground transition-[opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
         phase === "out" ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
