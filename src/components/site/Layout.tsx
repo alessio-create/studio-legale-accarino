@@ -4,6 +4,7 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { CookieBanner } from "./CookieBanner";
 import { ChatWidget } from "./ChatWidget";
+import { Breadcrumbs } from "./Breadcrumbs";
 
 export const Layout = ({ children }: { children: ReactNode }) => {
   const { pathname } = useLocation();
@@ -14,7 +15,10 @@ export const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      <main className={`flex-1 ${isHome ? "" : "pt-20 lg:pt-[116px]"}`}>{children}</main>
+      <main className={`flex-1 ${isHome ? "" : "pt-20 lg:pt-[116px]"}`}>
+        {!isHome && <Breadcrumbs />}
+        {children}
+      </main>
       <Footer />
       <CookieBanner />
       <ChatWidget />
