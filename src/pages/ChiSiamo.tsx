@@ -1,6 +1,5 @@
 import { Award, BookOpen, Building, Scale, ArrowUpRight } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
-import { CTAButton } from "@/components/site/CTAButton";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { Reveal } from "@/components/site/Reveal";
 import { CountUp } from "@/components/site/CountUp";
