@@ -62,14 +62,6 @@ export default function ChiSiamo() {
       />
       {/* Editorial hero — image first on mobile, side-by-side on desktop */}
       <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.04]"
-          style={{
-            background:
-              "radial-gradient(60% 80% at 0% 0%, hsl(var(--gold)) 0%, transparent 60%)",
-          }}
-        />
         <div className="relative editorial-container py-14 sm:py-20 lg:py-28 grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
           <div className="lg:col-span-7 order-2 lg:order-1">
             <Reveal>
