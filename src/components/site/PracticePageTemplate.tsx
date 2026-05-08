@@ -4,7 +4,6 @@ import { CTAButton } from "./CTAButton";
 import { FAQ, FAQItem } from "./FAQ";
 import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "./Reveal";
-import ResultCard from "./ResultCard";
 import { ProcessIllustration, PROCESS_VARIANTS } from "./ProcessIllustration";
 import { ClientReviews } from "./ClientReviews";
 import { PracticeIntroSection } from "./PracticeIntroSection";
