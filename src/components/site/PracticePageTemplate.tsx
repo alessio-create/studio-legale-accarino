@@ -78,19 +78,13 @@ export const PracticePageTemplate = ({
                 <CTAButton to="/contatti">Parla con un avvocato</CTAButton>
                 <a
                   href="tel:+390891234567"
-                  className="group relative isolate inline-flex items-center justify-center gap-3 px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary hover:text-gold-deep transition-colors duration-500 overflow-hidden"
+                  className="group inline-flex items-center justify-center gap-2.5 px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary hover:text-gold-deep transition-colors duration-300"
                 >
-                  {/* Diagonal gold shimmer sweep */}
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[900ms] ease-out bg-[linear-gradient(115deg,transparent_30%,hsl(var(--gold)/0.25)_50%,transparent_70%)]"
-                  />
-                  {/* Phone icon — gentle ring tilt */}
                   <Phone
-                    className="relative z-10 w-4 h-4 text-gold-deep transition-transform duration-500 group-hover:-rotate-12"
+                    className="w-3.5 h-3.5 text-gold-deep transition-transform duration-300 group-hover:translate-x-1"
                     strokeWidth={2}
                   />
-                  <span className="relative z-10">089 123 4567</span>
+                  <span>089 123 4567</span>
                 </a>
               </div>
             </Reveal>
