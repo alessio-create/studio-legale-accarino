@@ -257,18 +257,12 @@ export default function ChiSiamo() {
       {/* Partners — orbital constellation */}
       <section className="bg-background border-b hairline">
         <div className="editorial-container py-16 sm:py-20 lg:py-28">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-12 sm:mb-16 lg:mb-20">
-            <div className="lg:col-span-5">
-              <SectionHeader
-                eyebrow="Network"
-                title="Una rete di partner di caratura nazionale."
-              />
-            </div>
-            <p className="lg:col-span-6 lg:col-start-7 text-[15px] sm:text-lg text-muted-foreground leading-relaxed self-end">
-              Per le materie più specialistiche e i contenziosi più complessi, lo Studio
-              opera in collaborazione con accademici e professionisti di primo piano,
-              garantendo al cliente competenze trasversali in ogni ambito del diritto.
-            </p>
+          <div className="max-w-3xl mb-12 sm:mb-16 lg:mb-20">
+            <SectionHeader
+              eyebrow="Network"
+              title="Una rete di partner di caratura nazionale."
+              intro="Per le materie più specialistiche e i contenziosi più complessi, lo Studio opera in collaborazione con accademici e professionisti di primo piano, garantendo al cliente competenze trasversali in ogni ambito del diritto."
+            />
           </div>
 
           <PartnersOrbit partners={partners} />
