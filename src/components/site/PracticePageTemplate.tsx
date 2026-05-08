@@ -78,19 +78,19 @@ export const PracticePageTemplate = ({
                 <CTAButton to="/contatti">Parla con un avvocato</CTAButton>
                 <a
                   href="tel:+390891234567"
-                  className="group relative inline-flex items-center justify-center gap-3 px-6 py-4 text-label-sm uppercase tracking-[0.16em] text-primary hover:text-gold-deep border border-primary/20 hover:border-gold transition-colors duration-500 overflow-hidden"
+                  className="group relative isolate inline-flex items-center justify-center gap-3 px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary hover:text-gold-deep transition-colors duration-500 overflow-hidden"
                 >
-                  {/* Engraved corner brackets */}
-                  <span aria-hidden className="pointer-events-none absolute top-1.5 left-1.5 w-2.5 h-2.5 border-t border-l border-gold opacity-0 -translate-x-1 -translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500" />
-                  <span aria-hidden className="pointer-events-none absolute top-1.5 right-1.5 w-2.5 h-2.5 border-t border-r border-gold opacity-0 translate-x-1 -translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500" />
-                  <span aria-hidden className="pointer-events-none absolute bottom-1.5 left-1.5 w-2.5 h-2.5 border-b border-l border-gold opacity-0 -translate-x-1 translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500" />
-                  <span aria-hidden className="pointer-events-none absolute bottom-1.5 right-1.5 w-2.5 h-2.5 border-b border-r border-gold opacity-0 translate-x-1 translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500" />
-
-                  <Phone className="w-4 h-4 text-gold-deep transition-transform duration-500 group-hover:-rotate-12" strokeWidth={2} />
-                  <span className="relative">
-                    089 123 4567
-                    <span aria-hidden className="absolute left-0 -bottom-1 h-px w-full bg-gold origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
-                  </span>
+                  {/* Diagonal gold shimmer sweep */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[900ms] ease-out bg-[linear-gradient(115deg,transparent_30%,hsl(var(--gold)/0.25)_50%,transparent_70%)]"
+                  />
+                  {/* Phone icon — gentle ring tilt */}
+                  <Phone
+                    className="relative z-10 w-4 h-4 text-gold-deep transition-transform duration-500 group-hover:-rotate-12"
+                    strokeWidth={2}
+                  />
+                  <span className="relative z-10">089 123 4567</span>
                 </a>
               </div>
             </Reveal>
