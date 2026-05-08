@@ -10,12 +10,10 @@ interface Props {
 }
 
 /**
- * Editorial CTA — solid premium fill (matches navbar CTA), with two
- * cinematic effects on hover:
- *   1. A diagonal gold shimmer sweeps across the surface.
- *   2. The arrow glides forward, leaves the button, and a fresh arrow
- *      slides in from the left — a continuous "forward motion" cue.
- * No outlines, no underlines, no corner ornaments.
+ * Unified site CTA — same visual language and hover behaviour as the
+ * navbar CTA: solid editorial fill, label in tracked uppercase, and a
+ * single arrow that glides forward on hover. No shimmer, no corner
+ * ornaments, no underlines — coherent across every page.
  */
 export const CTAButton = ({
   to,
@@ -24,7 +22,7 @@ export const CTAButton = ({
   className = "",
 }: Props) => {
   const base =
-    "group relative isolate inline-flex items-center justify-center gap-3 px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.18em] overflow-hidden transition-colors duration-500";
+    "group inline-flex items-center justify-center gap-2.5 px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] transition-all duration-300";
 
   const styles = {
     primary:
@@ -35,12 +33,6 @@ export const CTAButton = ({
       "bg-transparent text-primary border border-primary/25 hover:border-primary",
   }[variant];
 
-  // Shimmer color tuned to variant.
-  const shimmer =
-    variant === "gold"
-      ? "bg-[linear-gradient(115deg,transparent_30%,hsl(var(--primary)/0.18)_50%,transparent_70%)]"
-      : "bg-[linear-gradient(115deg,transparent_30%,hsl(var(--gold)/0.35)_50%,transparent_70%)]";
-
   const arrowColor =
     variant === "primary"
       ? "text-gold"
@@ -50,26 +42,11 @@ export const CTAButton = ({
 
   return (
     <Link to={to} className={`${base} ${styles} ${className}`}>
-      {/* Diagonal shimmer sweep */}
-      <span
-        aria-hidden
-        className={`pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[900ms] ease-out ${shimmer}`}
+      <span>{children}</span>
+      <ArrowRight
+        className={`w-3.5 h-3.5 ${arrowColor} transition-transform duration-300 group-hover:translate-x-1`}
+        strokeWidth={2.25}
       />
-
-      {/* Label */}
-      <span className="relative z-10">{children}</span>
-
-      {/* Twin arrows — first glides out to the right, second slides in from the left */}
-      <span className="relative z-10 inline-flex items-center justify-center w-4 h-4 overflow-hidden">
-        <ArrowRight
-          className={`absolute w-4 h-4 ${arrowColor} transition-all duration-500 ease-out group-hover:translate-x-6 group-hover:opacity-0`}
-          strokeWidth={2.25}
-        />
-        <ArrowRight
-          className={`absolute w-4 h-4 ${arrowColor} -translate-x-6 opacity-0 transition-all duration-500 ease-out delay-100 group-hover:translate-x-0 group-hover:opacity-100`}
-          strokeWidth={2.25}
-        />
-      </span>
     </Link>
   );
 };
