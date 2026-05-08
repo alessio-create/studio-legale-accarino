@@ -7,9 +7,6 @@ import practiceEspropriazioni from "@/assets/practice-espropriazioni.jpg";
 import practiceUrbanistica from "@/assets/practice-urbanistica.jpg";
 import practiceAppalti from "@/assets/practice-appalti.jpg";
 import practiceConcorsi from "@/assets/practice-concorsi.jpg";
-import lawyer1 from "@/assets/lawyer-1.jpg";
-import lawyer2 from "@/assets/lawyer-2.jpg";
-import lawyer3 from "@/assets/lawyer-3.jpg";
 import { Layout } from "@/components/site/Layout";
 import { Eyebrow } from "@/components/site/Eyebrow";
 import { CTAButton } from "@/components/site/CTAButton";
@@ -119,19 +116,16 @@ const team = [
     name: "[Placeholder]",
     role: "[PLACEHOLDER]",
     focus: "[Placeholder]",
-    image: lawyer1,
   },
   {
     name: "[Placeholder]",
     role: "[PLACEHOLDER]",
     focus: "[Placeholder]",
-    image: lawyer2,
   },
   {
     name: "[Placeholder]",
     role: "[PLACEHOLDER]",
     focus: "[Placeholder]",
-    image: lawyer3,
   },
 ];
 
@@ -478,27 +472,37 @@ export default function Index() {
                 delay={i * 130}
                 className="group flex flex-col"
               >
-                <div className="relative overflow-hidden bg-primary/5 aspect-[4/5]">
-                  <img
-                    src={m.image}
-                    alt={`Ritratto di ${m.name}`}
-                    loading="lazy"
-                    width={1024}
-                    height={1280}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
-                  />
-                  <span
+                {/* Placeholder portrait — blueprint with gold corners + numeral */}
+                <div className="relative aspect-[4/5] bg-primary text-primary-foreground overflow-hidden">
+                  <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-0"
+                    className="absolute inset-0 opacity-[0.07]"
                     style={{
-                      background:
-                        "linear-gradient(180deg, hsl(var(--primary) / 0) 55%, hsl(var(--primary) / 0.55) 100%)",
+                      backgroundImage:
+                        "linear-gradient(hsl(var(--gold)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--gold)) 1px, transparent 1px)",
+                      backgroundSize: "32px 32px",
                     }}
                   />
-                  <span
+                  <div
                     aria-hidden
-                    className="absolute inset-x-0 bottom-0 h-px bg-gold/40 transition-colors duration-500 group-hover:bg-gold"
+                    className="pointer-events-none absolute inset-0 opacity-30"
+                    style={{
+                      background:
+                        "radial-gradient(60% 80% at 50% 30%, hsl(var(--gold)/0.35) 0%, transparent 60%)",
+                    }}
                   />
+                  <span className="absolute top-3 left-3 w-3 h-3 border-t border-l border-gold" />
+                  <span className="absolute top-3 right-3 w-3 h-3 border-t border-r border-gold" />
+                  <span className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-gold" />
+                  <span className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-gold" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="font-serif text-7xl text-gold tabular-nums leading-none transition-transform duration-700 group-hover:scale-110">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <span className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.28em] text-gold/85">
+                    [Foto]
+                  </span>
                 </div>
 
                 <div className="pt-7">
