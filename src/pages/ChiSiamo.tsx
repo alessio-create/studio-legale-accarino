@@ -338,13 +338,16 @@ function PartnersOrbit({
         </svg>
 
         {/* Center monogram */}
+        {/* Center monogram */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
           <p className="text-[10px] uppercase tracking-[0.3em] text-gold-deep font-semibold">
             Lo Studio
           </p>
-          <p className="mt-3 font-serif text-5xl text-primary leading-none">
-            A
-          </p>
+          <img
+            src={monogramCircle}
+            alt="Studio Legale Accarino"
+            className="mt-3 mx-auto w-20 h-20"
+          />
           <span aria-hidden className="block mx-auto mt-3 h-px w-10 bg-gold" />
           <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
             Salerno · 1974
