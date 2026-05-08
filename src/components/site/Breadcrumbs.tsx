@@ -62,11 +62,8 @@ export const Breadcrumbs = () => {
   const lastIndex = crumbs.length - 1;
 
   return (
-    <nav
-      aria-label="Breadcrumb"
-      className="sticky top-20 lg:top-[116px] z-30 border-b hairline bg-background/85 backdrop-blur-md"
-    >
-      <ol className="editorial-container flex items-center gap-2 h-11 text-[11px] uppercase tracking-[0.18em] font-semibold overflow-x-auto whitespace-nowrap">
+    <nav aria-label="Breadcrumb" className="bg-transparent">
+      <ol className="editorial-container flex items-center gap-2 pt-6 sm:pt-8 text-[11px] uppercase tracking-[0.18em] font-semibold overflow-x-auto whitespace-nowrap">
         <li className="flex items-center gap-2 flex-shrink-0">
           <Link
             to="/"
