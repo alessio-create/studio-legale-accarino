@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Check, Clock, LucideIcon, Phone, Sparkles } from "lucide-react";
+import { LucideIcon, Phone } from "lucide-react";
 import { CTAButton } from "./CTAButton";
 import { FAQ, FAQItem } from "./FAQ";
 import { SectionHeader } from "./SectionHeader";
@@ -285,71 +285,6 @@ export const PracticePageTemplate = ({
           </div>
           <div className="lg:col-span-8">
             <FAQ items={faq} />
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA — solid premium dark band (backdrop removed) */}
-      <section className="relative bg-primary text-primary-foreground border-y border-gold/30 overflow-hidden">
-        <div className="absolute inset-0 bg-noise opacity-20" aria-hidden />
-        <div className="relative editorial-container py-28 lg:py-36">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 text-center lg:text-left">
-              <Reveal>
-                <h2 className="serif-display text-display-xl lg:text-display-2xl text-background text-balance leading-[1.02]">
-                  Ogni giorno conta.<br />
-                  <span className="text-gold italic font-light">Agisci entro i termini.</span>
-                </h2>
-                <p className="mt-8 text-lg text-background/75 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                  Prima consulenza gratuita, entro 48 ore dalla richiesta.
-                  Riservata, senza impegno, condotta da un avvocato del team.
-                </p>
-              </Reveal>
-              <Reveal delay={240}>
-                <div className="mt-10 flex flex-wrap justify-center lg:justify-start gap-4">
-                  <CTAButton to="/contatti" variant="gold">
-                    Parla con un avvocato
-                  </CTAButton>
-                  <a
-                    href="tel:+390891234567"
-                    className="inline-flex items-center gap-3 px-6 py-4 text-label-sm uppercase tracking-[0.16em] text-background hover:text-gold transition-colors border border-background/25 hover:border-gold"
-                  >
-                    <Phone className="w-4 h-4 text-gold" strokeWidth={2} />
-                    089 123 4567
-                  </a>
-                </div>
-              </Reveal>
-            </div>
-
-            {/* What you get */}
-            <Reveal delay={300} className="lg:col-span-5">
-              <div className="relative gold-corner-frame bg-primary/40 backdrop-blur-sm p-8 lg:p-10">
-                <p className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] text-gold font-semibold">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  La consulenza include
-                </p>
-                <ul className="mt-6 space-y-5">
-                  {[
-                    "Inquadramento giuridico del caso",
-                    "Valutazione dei termini decadenziali",
-                    "Strategia processuale preliminare",
-                    "Stima onorari trasparente",
-                  ].map((item, i) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-3 text-background/90 animate-fade-in"
-                      style={{ animationDelay: `${400 + i * 100}ms` }}
-                    >
-                      <Check
-                        className="w-4 h-4 text-gold mt-1 flex-shrink-0"
-                        strokeWidth={2.5}
-                      />
-                      <span className="leading-relaxed text-[15px]">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
           </div>
         </div>
       </section>
