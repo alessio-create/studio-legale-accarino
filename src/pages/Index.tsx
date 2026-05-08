@@ -318,7 +318,7 @@ export default function Index() {
       />
 
       {/* ───────────────── HERO ───────────────── */}
-      <section className="relative min-h-[92vh] flex items-end overflow-hidden bg-primary-deep text-primary-foreground">
+      <section className="relative min-h-[80vh] sm:min-h-[92vh] flex items-end overflow-hidden bg-primary-deep text-primary-foreground">
         <img
           src={heroCourthouse}
           alt="Interno di un palazzo di giustizia neoclassico illuminato da luce dorata"
@@ -331,18 +331,18 @@ export default function Index() {
         <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/40 to-transparent" />
         <div className="absolute inset-0 bg-noise opacity-20" />
 
-        <div className="relative z-10 editorial-container pt-40 pb-24 lg:pt-48 lg:pb-32">
+        <div className="relative z-10 editorial-container pt-28 pb-28 sm:pt-40 sm:pb-24 lg:pt-48 lg:pb-32">
           <div className="max-w-4xl">
-            <p className="eyebrow !text-gold mb-8 animate-fade-up">
+            <p className="eyebrow !text-gold mb-5 sm:mb-8 animate-fade-up">
               <span className="text-background/80">Studio Legale · Salerno &amp; Cava de&apos; Tirreni</span>
             </p>
-            <h1 className="serif-display text-[clamp(2.75rem,6.5vw,5.5rem)] text-background text-balance leading-[1.04] animate-fade-up">
+            <h1 className="serif-display text-[clamp(2.25rem,6.5vw,5.5rem)] text-background text-balance leading-[1.06] animate-fade-up">
               Tuteliamo i tuoi diritti con <span className="text-gold">competenza</span>.
             </h1>
-            <div className="mt-12 flex flex-col md:flex-row md:items-center gap-8 animate-fade-up">
+            <div className="mt-8 sm:mt-12 flex flex-col md:flex-row md:items-center gap-6 sm:gap-8 animate-fade-up">
               <CTAButton to="/contatti" variant="gold">Parla con un avvocato</CTAButton>
               <div className="flex items-center gap-4 text-sm">
-                <span className="font-serif text-gold text-3xl">50+</span>
+                <span className="font-serif text-gold text-2xl sm:text-3xl">50+</span>
                 <span className="uppercase tracking-[0.18em] text-[11px] leading-snug text-background/70">
                   Anni di esperienza<br />in diritto amministrativo
                 </span>
@@ -353,8 +353,8 @@ export default function Index() {
 
         {/* bottom credential ticker, part of the hero */}
         <div className="absolute bottom-0 inset-x-0 border-t border-background/10 bg-primary-deep/80 backdrop-blur-md z-10">
-          <div className="editorial-container py-5 flex items-center gap-8">
-            <span className="text-[10px] uppercase tracking-[0.22em] text-gold font-semibold flex-shrink-0">
+          <div className="editorial-container py-4 sm:py-5 flex items-center gap-4 sm:gap-8">
+            <span className="hidden sm:inline-flex text-[10px] uppercase tracking-[0.22em] text-gold font-semibold flex-shrink-0">
               Hanno scelto lo Studio
             </span>
             <div
@@ -390,8 +390,8 @@ export default function Index() {
               "radial-gradient(60% 80% at 50% 0%, hsl(var(--gold)) 0%, transparent 60%)",
           }}
         />
-        <div className="relative editorial-container py-20 lg:py-28">
-          <div className="mx-auto max-w-2xl text-center mb-16 lg:mb-20">
+        <div className="relative editorial-container py-14 sm:py-20 lg:py-28">
+          <div className="mx-auto max-w-2xl text-center mb-10 sm:mb-16 lg:mb-20">
             <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-gold-deep font-semibold">
               <span aria-hidden className="w-6 h-px bg-gold" />
               Lo Studio in cifre
@@ -399,7 +399,7 @@ export default function Index() {
             </span>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-14 lg:gap-y-0 gap-x-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 sm:gap-y-14 lg:gap-y-0 gap-x-6 sm:gap-x-8">
             {heroStats.map((s, i) => (
               <Reveal
                 key={s.label}
@@ -408,7 +408,7 @@ export default function Index() {
               >
                 <p
                   className="font-serif text-gold-deep leading-none tracking-tight tabular-nums transition-transform duration-500 group-hover:-translate-y-0.5"
-                  style={{ fontSize: "clamp(3rem, 5.2vw, 4.75rem)" }}
+                  style={{ fontSize: "clamp(2.25rem, 5.2vw, 4.75rem)" }}
                 >
                   <CountUp
                     to={s.to}
@@ -419,12 +419,12 @@ export default function Index() {
                 </p>
                 <span
                   aria-hidden
-                  className="mt-5 w-10 h-px bg-gold/60 transition-all duration-500 group-hover:w-16 group-hover:bg-gold"
+                  className="mt-4 sm:mt-5 w-8 sm:w-10 h-px bg-gold/60 transition-all duration-500 group-hover:w-16 group-hover:bg-gold"
                 />
-                <p className="mt-5 font-serif text-lg text-primary leading-snug">
+                <p className="mt-4 sm:mt-5 font-serif text-base sm:text-lg text-primary leading-snug">
                   {s.label}
                 </p>
-                <p className="mt-3 text-[11px] uppercase tracking-[0.2em] text-muted-foreground leading-relaxed max-w-[18ch]">
+                <p className="mt-2 sm:mt-3 text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-muted-foreground leading-relaxed max-w-[18ch]">
                   {s.caption}
                 </p>
               </Reveal>
