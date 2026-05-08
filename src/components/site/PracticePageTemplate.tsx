@@ -43,8 +43,8 @@ export const PracticePageTemplate = ({
     <>
       {/* Hero — canonical editorial composition */}
       <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
-        <div className="relative editorial-container py-20 lg:py-28 grid lg:grid-cols-12 gap-12 lg:gap-16 items-end">
-          <div className="lg:col-span-7">
+        <div className="relative editorial-container py-12 sm:py-16 lg:py-28 grid lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-end">
+          <div className="lg:col-span-7 order-2 lg:order-1">
             <Reveal>
               <p className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
                 <span aria-hidden className="w-8 h-px bg-gold" />
@@ -56,21 +56,21 @@ export const PracticePageTemplate = ({
               </p>
             </Reveal>
             <Reveal delay={120}>
-              <h1 className="mt-8 serif-display text-display-2xl text-primary text-balance leading-[1.04]">
+              <h1 className="mt-5 sm:mt-8 serif-display text-display-2xl text-primary text-balance leading-[1.06]">
                 {title}
               </h1>
             </Reveal>
             <Reveal delay={220}>
-              <p className="mt-8 text-xl text-muted-foreground leading-relaxed max-w-2xl text-pretty">
+              <p className="mt-5 sm:mt-8 text-base sm:text-xl text-muted-foreground leading-relaxed max-w-2xl text-pretty">
                 {lead}
               </p>
             </Reveal>
             <Reveal delay={300}>
-              <div className="mt-10 flex flex-wrap gap-4">
+              <div className="mt-7 sm:mt-10 flex flex-wrap gap-3 sm:gap-4">
                 <CTAButton to="/contatti">Parla con un avvocato</CTAButton>
                 <a
                   href="tel:+390891234567"
-                  className="group inline-flex items-center justify-center gap-2.5 px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary hover:text-gold-deep transition-colors duration-300"
+                  className="group inline-flex items-center justify-center gap-2.5 px-5 py-3 min-h-[44px] text-[11px] font-semibold uppercase tracking-[0.18em] text-primary hover:text-gold-deep transition-colors duration-300"
                 >
                   <Phone
                     className="w-3.5 h-3.5 text-gold-deep transition-transform duration-300 group-hover:translate-x-1"
@@ -81,19 +81,19 @@ export const PracticePageTemplate = ({
               </div>
             </Reveal>
           </div>
-          <Reveal delay={200} className="lg:col-span-5">
+          <Reveal delay={200} className="lg:col-span-5 order-1 lg:order-2">
             <div className="relative gold-corner p-3">
               <img
                 src={heroImage}
                 alt={title}
-                className="w-full h-[420px] object-cover grayscale-[20%]"
+                className="w-full h-[240px] sm:h-[340px] lg:h-[420px] object-cover grayscale-[20%]"
                 width={900}
                 height={1100}
                 loading="lazy"
               />
-              <div className="absolute -bottom-px left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-6 py-3 flex items-center gap-3">
-                <Icon className="w-5 h-5 text-gold" />
-                <span className="text-[11px] uppercase tracking-[0.2em]">
+              <div className="absolute -bottom-px left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 sm:px-6 py-2.5 sm:py-3 flex items-center gap-2 sm:gap-3 whitespace-nowrap">
+                <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
+                <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em]">
                   Area Specializzata
                 </span>
               </div>
@@ -131,8 +131,8 @@ export const PracticePageTemplate = ({
               "radial-gradient(50% 70% at 100% 0%, hsl(var(--gold)) 0%, transparent 60%)",
           }}
         />
-        <div className="relative editorial-container py-20 lg:py-28">
-          <div className="grid lg:grid-cols-12 gap-10 mb-16 lg:mb-20 items-end">
+        <div className="relative editorial-container py-14 sm:py-20 lg:py-28">
+          <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 mb-10 sm:mb-16 lg:mb-20 items-end">
             <div className="lg:col-span-7">
               <Reveal>
                 <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-gold-deep font-semibold">
@@ -141,13 +141,13 @@ export const PracticePageTemplate = ({
                 </span>
               </Reveal>
               <Reveal delay={120}>
-                <h2 className="mt-6 font-serif text-4xl lg:text-5xl text-primary leading-[1.05] text-balance">
+                <h2 className="mt-5 sm:mt-6 font-serif text-3xl sm:text-4xl lg:text-5xl text-primary leading-[1.08] text-balance">
                   Assistenza completa,<br />in ogni fase del procedimento.
                 </h2>
               </Reveal>
             </div>
             <Reveal delay={200} className="lg:col-span-5">
-              <p className="text-base text-muted-foreground leading-relaxed lg:text-right max-w-md lg:ml-auto">
+              <p className="text-[15px] sm:text-base text-muted-foreground leading-relaxed lg:text-right max-w-md lg:ml-auto">
                 Una squadra dedicata segue ogni mandato dall'analisi preliminare
                 fino all'esito finale, con interlocutore unico e tempistiche
                 certe.
@@ -191,8 +191,8 @@ export const PracticePageTemplate = ({
 
       {/* Process — line-art illustrated steps */}
       <section className="relative bg-background border-b hairline overflow-hidden">
-        <div className="relative editorial-container py-20 lg:py-28">
-          <div className="grid lg:grid-cols-12 gap-12 mb-16 lg:mb-20 items-end">
+        <div className="relative editorial-container py-14 sm:py-20 lg:py-28">
+          <div className="grid lg:grid-cols-12 gap-8 sm:gap-12 mb-10 sm:mb-16 lg:mb-20 items-end">
             <div className="lg:col-span-7">
               <Reveal>
                 <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-gold-deep font-semibold">
@@ -201,13 +201,13 @@ export const PracticePageTemplate = ({
                 </span>
               </Reveal>
               <Reveal delay={120}>
-                <h2 className="mt-6 font-serif text-4xl lg:text-5xl text-primary leading-[1.05] text-balance">
+                <h2 className="mt-5 sm:mt-6 font-serif text-3xl sm:text-4xl lg:text-5xl text-primary leading-[1.08] text-balance">
                   Un processo trasparente,<br />in quattro tempi.
                 </h2>
               </Reveal>
             </div>
             <Reveal delay={200} className="lg:col-span-5">
-              <p className="text-base text-muted-foreground leading-relaxed lg:text-right max-w-md lg:ml-auto">
+              <p className="text-[15px] sm:text-base text-muted-foreground leading-relaxed lg:text-right max-w-md lg:ml-auto">
                 Ogni mandato segue un iter strutturato e prevedibile. Dalla prima
                 analisi alla decisione finale, il cliente riceve aggiornamenti
                 puntuali e tempistiche certe.
@@ -216,7 +216,7 @@ export const PracticePageTemplate = ({
           </div>
 
           <div className="relative">
-            <ol className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+            <ol className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-8">
               {process.map((step, i) => (
                 <Reveal key={step.num} delay={i * 140}>
                   <li className="group relative flex flex-col items-center text-center px-2">
@@ -232,14 +232,14 @@ export const PracticePageTemplate = ({
                       </span>
                     )}
                     {/* Engraved roman numeral — minimal, editorial */}
-                    <span className="font-serif text-5xl lg:text-6xl text-gold-deep leading-none tabular-nums">
+                    <span className="font-serif text-4xl sm:text-5xl lg:text-6xl text-gold-deep leading-none tabular-nums">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="mt-5 inline-block h-px w-8 bg-gold/60" aria-hidden />
                     <span className="mt-5 text-[10px] uppercase tracking-[0.28em] text-gold-deep font-semibold tabular-nums">
                       Fase {String(i + 1).padStart(2, "0")}
                     </span>
-                    <h4 className="mt-3 font-serif text-xl lg:text-[1.35rem] text-primary leading-snug text-balance">
+                    <h4 className="mt-3 font-serif text-lg sm:text-xl lg:text-[1.35rem] text-primary leading-snug text-balance">
                       {step.title}
                     </h4>
                     <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-[28ch]">
@@ -258,7 +258,7 @@ export const PracticePageTemplate = ({
 
       {/* FAQ */}
       <section className="bg-surface-container-low border-y hairline">
-        <div className="editorial-container py-20 lg:py-28 grid lg:grid-cols-12 gap-12">
+        <div className="editorial-container py-14 sm:py-20 lg:py-28 grid lg:grid-cols-12 gap-8 sm:gap-12">
           <div className="lg:col-span-4">
             <SectionHeader
               eyebrow="Domande frequenti"
@@ -266,7 +266,7 @@ export const PracticePageTemplate = ({
               intro="Hai un quesito specifico? Prenota una consulenza riservata di 15 minuti."
               compact
             />
-            <div className="mt-8">
+            <div className="mt-6 sm:mt-8">
               <CTAButton to="/contatti" variant="ghost">Parla con un avvocato</CTAButton>
             </div>
           </div>

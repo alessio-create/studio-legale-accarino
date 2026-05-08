@@ -318,7 +318,7 @@ export default function Index() {
       />
 
       {/* ───────────────── HERO ───────────────── */}
-      <section className="relative min-h-[92vh] flex items-end overflow-hidden bg-primary-deep text-primary-foreground">
+      <section className="relative min-h-[80vh] sm:min-h-[92vh] flex items-end overflow-hidden bg-primary-deep text-primary-foreground">
         <img
           src={heroCourthouse}
           alt="Interno di un palazzo di giustizia neoclassico illuminato da luce dorata"
@@ -331,18 +331,18 @@ export default function Index() {
         <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/40 to-transparent" />
         <div className="absolute inset-0 bg-noise opacity-20" />
 
-        <div className="relative z-10 editorial-container pt-40 pb-24 lg:pt-48 lg:pb-32">
+        <div className="relative z-10 editorial-container pt-28 pb-28 sm:pt-40 sm:pb-24 lg:pt-48 lg:pb-32">
           <div className="max-w-4xl">
-            <p className="eyebrow !text-gold mb-8 animate-fade-up">
+            <p className="eyebrow !text-gold mb-5 sm:mb-8 animate-fade-up">
               <span className="text-background/80">Studio Legale · Salerno &amp; Cava de&apos; Tirreni</span>
             </p>
-            <h1 className="serif-display text-[clamp(2.75rem,6.5vw,5.5rem)] text-background text-balance leading-[1.04] animate-fade-up">
+            <h1 className="serif-display text-[clamp(2.25rem,6.5vw,5.5rem)] text-background text-balance leading-[1.06] animate-fade-up">
               Tuteliamo i tuoi diritti con <span className="text-gold">competenza</span>.
             </h1>
-            <div className="mt-12 flex flex-col md:flex-row md:items-center gap-8 animate-fade-up">
+            <div className="mt-8 sm:mt-12 flex flex-col md:flex-row md:items-center gap-6 sm:gap-8 animate-fade-up">
               <CTAButton to="/contatti" variant="gold">Parla con un avvocato</CTAButton>
               <div className="flex items-center gap-4 text-sm">
-                <span className="font-serif text-gold text-3xl">50+</span>
+                <span className="font-serif text-gold text-2xl sm:text-3xl">50+</span>
                 <span className="uppercase tracking-[0.18em] text-[11px] leading-snug text-background/70">
                   Anni di esperienza<br />in diritto amministrativo
                 </span>
@@ -353,8 +353,8 @@ export default function Index() {
 
         {/* bottom credential ticker, part of the hero */}
         <div className="absolute bottom-0 inset-x-0 border-t border-background/10 bg-primary-deep/80 backdrop-blur-md z-10">
-          <div className="editorial-container py-5 flex items-center gap-8">
-            <span className="text-[10px] uppercase tracking-[0.22em] text-gold font-semibold flex-shrink-0">
+          <div className="editorial-container py-4 sm:py-5 flex items-center gap-4 sm:gap-8">
+            <span className="hidden sm:inline-flex text-[10px] uppercase tracking-[0.22em] text-gold font-semibold flex-shrink-0">
               Hanno scelto lo Studio
             </span>
             <div
@@ -390,8 +390,8 @@ export default function Index() {
               "radial-gradient(60% 80% at 50% 0%, hsl(var(--gold)) 0%, transparent 60%)",
           }}
         />
-        <div className="relative editorial-container py-20 lg:py-28">
-          <div className="mx-auto max-w-2xl text-center mb-16 lg:mb-20">
+        <div className="relative editorial-container py-14 sm:py-20 lg:py-28">
+          <div className="mx-auto max-w-2xl text-center mb-10 sm:mb-16 lg:mb-20">
             <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-gold-deep font-semibold">
               <span aria-hidden className="w-6 h-px bg-gold" />
               Lo Studio in cifre
@@ -399,7 +399,7 @@ export default function Index() {
             </span>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-14 lg:gap-y-0 gap-x-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 sm:gap-y-14 lg:gap-y-0 gap-x-6 sm:gap-x-8">
             {heroStats.map((s, i) => (
               <Reveal
                 key={s.label}
@@ -408,7 +408,7 @@ export default function Index() {
               >
                 <p
                   className="font-serif text-gold-deep leading-none tracking-tight tabular-nums transition-transform duration-500 group-hover:-translate-y-0.5"
-                  style={{ fontSize: "clamp(3rem, 5.2vw, 4.75rem)" }}
+                  style={{ fontSize: "clamp(2.25rem, 5.2vw, 4.75rem)" }}
                 >
                   <CountUp
                     to={s.to}
@@ -419,12 +419,12 @@ export default function Index() {
                 </p>
                 <span
                   aria-hidden
-                  className="mt-5 w-10 h-px bg-gold/60 transition-all duration-500 group-hover:w-16 group-hover:bg-gold"
+                  className="mt-4 sm:mt-5 w-8 sm:w-10 h-px bg-gold/60 transition-all duration-500 group-hover:w-16 group-hover:bg-gold"
                 />
-                <p className="mt-5 font-serif text-lg text-primary leading-snug">
+                <p className="mt-4 sm:mt-5 font-serif text-base sm:text-lg text-primary leading-snug">
                   {s.label}
                 </p>
-                <p className="mt-3 text-[11px] uppercase tracking-[0.2em] text-muted-foreground leading-relaxed max-w-[18ch]">
+                <p className="mt-2 sm:mt-3 text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-muted-foreground leading-relaxed max-w-[18ch]">
                   {s.caption}
                 </p>
               </Reveal>
@@ -445,19 +445,19 @@ export default function Index() {
           }}
         />
 
-        <div className="relative editorial-container py-20 lg:py-28">
+        <div className="relative editorial-container py-14 sm:py-20 lg:py-28">
           {/* — Single authoritative header — */}
-          <div className="mx-auto max-w-3xl text-center mb-16 lg:mb-24">
+          <div className="mx-auto max-w-3xl text-center mb-10 sm:mb-16 lg:mb-24">
             <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-gold-deep font-semibold">
               <span aria-hidden className="w-8 h-px bg-gold" />
               Lo Studio
               <span aria-hidden className="w-8 h-px bg-gold" />
             </span>
-            <h2 className="mt-8 serif-display text-display-xl text-balance text-primary leading-[1.05]">
+            <h2 className="mt-5 sm:mt-8 serif-display text-display-xl text-balance text-primary leading-[1.08]">
               I volti che firmano ogni pratica,{" "}
               <span className="italic">le voci che ce ne danno conto</span>.
             </h2>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            <p className="mt-5 sm:mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
               Ogni mandato è seguito personalmente da uno dei professionisti
               dello Studio. La fiducia non si racconta: si misura nel tempo e
               nelle parole di chi ci ha scelto.
@@ -465,7 +465,7 @@ export default function Index() {
           </div>
 
           {/* — Team grid — primary visual anchor — */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
             {team.map((m, i) => (
               <Reveal
                 key={m.name}
@@ -533,13 +533,13 @@ export default function Index() {
       {/* ───────────────── FEATURES ───────────────── */}
       <section className="section-y bg-surface-container-low">
         <div className="editorial-container">
-          <div className="flex items-end justify-between flex-wrap gap-8 mb-14">
+          <div className="flex items-end justify-between flex-wrap gap-6 sm:gap-8 mb-10 sm:mb-14">
             <div className="max-w-2xl">
               <Eyebrow>Specializzazioni</Eyebrow>
-              <h2 className="mt-6 serif-display text-display-xl text-balance">
+              <h2 className="mt-5 sm:mt-6 serif-display text-display-xl text-balance">
                 Quattro aree di specializzazione, una sola promessa di precisione.
               </h2>
-              <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
+              <p className="mt-5 sm:mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
                 Lo Studio concentra mezzo secolo di esperienza in quattro ambiti
                 del diritto amministrativo. Esplora ciascuna area per scoprire
                 competenze, casistica e procedure.
@@ -569,14 +569,14 @@ export default function Index() {
 
       {/* ───────────── WHAT WE CAN DO FOR YOU ───────────── */}
       <section className="bg-background border-y hairline">
-        <div className="editorial-container py-20 lg:py-28">
-          <div className="flex items-end justify-between flex-wrap gap-8 mb-16 lg:mb-20">
+        <div className="editorial-container py-14 sm:py-20 lg:py-28">
+          <div className="flex items-end justify-between flex-wrap gap-6 sm:gap-8 mb-10 sm:mb-16 lg:mb-20">
             <div className="max-w-3xl">
               <Eyebrow>Cosa facciamo per voi</Eyebrow>
-              <h2 className="mt-6 serif-display text-display-xl text-balance">
+              <h2 className="mt-5 sm:mt-6 serif-display text-display-xl text-balance">
                 Le procedure che gestiamo, divise per chi ne ha bisogno.
               </h2>
-              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+              <p className="mt-5 sm:mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
                 Una mappa operativa dei servizi: dalla consulenza preventiva al
                 contenzioso davanti alle Magistrature Superiori, distinta tra Pubbliche
                 Amministrazioni e soggetti privati.
@@ -594,7 +594,7 @@ export default function Index() {
           {procedureGroups.map((group, gi) => (
             <div
               key={group.audience}
-              className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 ${gi > 0 ? "mt-24 lg:mt-32" : ""}`}
+              className={`grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 ${gi > 0 ? "mt-14 sm:mt-24 lg:mt-32" : ""}`}
             >
               <div className="lg:col-span-3">
                 <div className="lg:sticky lg:top-32">
@@ -602,7 +602,7 @@ export default function Index() {
                   <p className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">
                     {group.audience}
                   </p>
-                  <p className="mt-6 text-sm text-muted-foreground leading-relaxed max-w-[260px]">
+                  <p className="mt-4 sm:mt-6 text-sm text-muted-foreground leading-relaxed max-w-[260px]">
                     {group.intro}
                   </p>
                 </div>
@@ -618,9 +618,9 @@ export default function Index() {
                       {procedureTitleToSlug[item] ? (
                         <Link
                           to={`/${procedureTitleToSlug[item]}`}
-                          className="flex items-start justify-between gap-6 py-6"
+                          className="flex items-start justify-between gap-4 sm:gap-6 py-5 sm:py-6 min-h-[56px]"
                         >
-                          <span className="font-serif text-lg text-primary leading-snug text-pretty pr-4 group-hover:text-gold-deep transition-colors">
+                          <span className="font-serif text-base sm:text-lg text-primary leading-snug text-pretty pr-2 sm:pr-4 group-hover:text-gold-deep transition-colors">
                             {item}
                           </span>
                           <span className="flex items-center gap-3 pt-1 flex-shrink-0">
@@ -631,8 +631,8 @@ export default function Index() {
                           </span>
                         </Link>
                       ) : (
-                        <div className="flex items-start justify-between gap-6 py-6">
-                          <span className="font-serif text-lg text-primary leading-snug text-pretty pr-4">
+                        <div className="flex items-start justify-between gap-4 sm:gap-6 py-5 sm:py-6">
+                          <span className="font-serif text-base sm:text-lg text-primary leading-snug text-pretty pr-2 sm:pr-4">
                             {item}
                           </span>
                           <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground pt-1 flex-shrink-0">
@@ -653,13 +653,13 @@ export default function Index() {
       {/* ───────────────── CASE STUDIES ───────────────── */}
       <section className="section-y bg-surface-container-low border-b hairline">
         <div className="editorial-container">
-          <div className="flex items-end justify-between flex-wrap gap-8 mb-14 lg:mb-16">
+          <div className="flex items-end justify-between flex-wrap gap-6 sm:gap-8 mb-10 sm:mb-14 lg:mb-16">
             <div className="max-w-2xl">
               <Eyebrow>Casi studio</Eyebrow>
-              <h2 className="mt-6 serif-display text-display-xl text-balance">
+              <h2 className="mt-5 sm:mt-6 serif-display text-display-xl text-balance">
                 Tre fascicoli, tre vittorie raccontate dall'interno.
               </h2>
-              <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
+              <p className="mt-5 sm:mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
                 Selezione editoriale di mandati conclusi negli ultimi due anni.
                 Apri ogni caso per leggere sfida, strategia e risultato — con dati
                 anonimizzati nel rispetto del segreto professionale.
@@ -682,13 +682,13 @@ export default function Index() {
       {/* ───────────────── BLOG ───────────────── */}
       <section className="section-y bg-background">
         <div className="editorial-container">
-          <div className="flex items-end justify-between flex-wrap gap-8 mb-14">
+          <div className="flex items-end justify-between flex-wrap gap-6 sm:gap-8 mb-10 sm:mb-14">
             <div className="max-w-2xl">
               <Eyebrow>Dal nostro blog</Eyebrow>
-              <h2 className="mt-6 serif-display text-display-xl text-balance">
+              <h2 className="mt-5 sm:mt-6 serif-display text-display-xl text-balance">
                 Approfondimenti, sentenze, novità normative.
               </h2>
-              <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
+              <p className="mt-5 sm:mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
                 Una selezione di letture firmate dai professionisti dello Studio
                 per restare aggiornati sull'evoluzione del diritto amministrativo.
               </p>
@@ -706,9 +706,9 @@ export default function Index() {
               <Link
                 key={a.title}
                 to="/blog"
-                className="group bg-background p-10 lg:p-12 flex flex-col hover:bg-surface-container-low transition-colors"
+                className="group bg-background p-7 sm:p-10 lg:p-12 flex flex-col hover:bg-surface-container-low transition-colors"
               >
-                <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center justify-between mb-6 sm:mb-8">
                   <span className="text-[10px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
                     {a.category}
                   </span>
@@ -718,14 +718,14 @@ export default function Index() {
                   </span>
                 </div>
 
-                <h3 className="font-serif text-2xl text-primary leading-snug text-balance group-hover:text-gold-deep transition-colors">
+                <h3 className="font-serif text-xl sm:text-2xl text-primary leading-snug text-balance group-hover:text-gold-deep transition-colors">
                   {a.title}
                 </h3>
-                <p className="mt-5 text-sm text-muted-foreground leading-relaxed flex-1">
+                <p className="mt-4 sm:mt-5 text-sm text-muted-foreground leading-relaxed flex-1">
                   {a.excerpt}
                 </p>
 
-                <div className="mt-10 pt-6 border-t hairline flex items-center justify-between">
+                <div className="mt-8 sm:mt-10 pt-6 border-t hairline flex items-center justify-between">
                   <span className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
                     {a.readTime} di lettura
                   </span>

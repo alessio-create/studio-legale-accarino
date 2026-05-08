@@ -16,9 +16,9 @@ export default {
         sans: ["Source Sans 3", "Source Sans Pro", "Inter", "system-ui", "sans-serif"],
       },
       fontSize: {
-        "display-2xl": ["clamp(3.5rem, 7vw, 6rem)", { lineHeight: "1.02", letterSpacing: "-0.025em" }],
-        "display-xl": ["clamp(2.5rem, 5vw, 4.25rem)", { lineHeight: "1.08", letterSpacing: "-0.02em" }],
-        "display-lg": ["clamp(2rem, 3.5vw, 3rem)", { lineHeight: "1.15", letterSpacing: "-0.015em" }],
+        "display-2xl": ["clamp(2.25rem, 6.5vw, 6rem)", { lineHeight: "1.05", letterSpacing: "-0.025em" }],
+        "display-xl": ["clamp(1.875rem, 5vw, 4.25rem)", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
+        "display-lg": ["clamp(1.625rem, 3.5vw, 3rem)", { lineHeight: "1.18", letterSpacing: "-0.015em" }],
         "display-md": ["clamp(1.5rem, 2vw, 1.875rem)", { lineHeight: "1.3" }],
         "label-sm": ["0.75rem", { lineHeight: "1.2", letterSpacing: "0.16em" }],
       },

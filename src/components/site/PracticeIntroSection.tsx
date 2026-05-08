@@ -57,7 +57,7 @@ export function PracticeIntroSection({
   return (
     <div
       ref={sectionRef}
-      className="relative editorial-container py-20 lg:py-28 grid lg:grid-cols-12 gap-16"
+      className="relative editorial-container py-14 sm:py-20 lg:py-28 grid lg:grid-cols-12 gap-12 sm:gap-16"
     >
       <div
         className="lg:col-span-7 will-change-transform"
@@ -69,8 +69,8 @@ export function PracticeIntroSection({
           compact
         />
         <Reveal delay={120}>
-          <div className="mt-8 max-w-2xl">
-            <div className="font-serif text-[1.35rem] lg:text-[1.5rem] leading-[1.55] text-primary text-pretty">
+          <div className="mt-6 sm:mt-8 max-w-2xl">
+            <div className="font-serif text-[1.125rem] sm:text-[1.35rem] lg:text-[1.5rem] leading-[1.55] text-primary text-pretty">
               {intro}
             </div>
           </div>
@@ -97,7 +97,7 @@ export function PracticeIntroSection({
               <span aria-hidden className="h-px w-6 bg-gold/60" />
               Il pubblico
             </p>
-            <h3 className="font-serif text-2xl lg:text-[1.6rem] text-primary leading-snug mb-7 text-balance">
+            <h3 className="font-serif text-xl sm:text-2xl lg:text-[1.6rem] text-primary leading-snug mb-6 sm:mb-7 text-balance">
               A chi ci rivolgiamo
             </h3>
           </Reveal>

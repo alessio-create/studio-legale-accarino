@@ -15,14 +15,14 @@ interface Props {
 export const PracticeCard = ({ title, description, href, topics, image, imageAlt }: Props) => (
   <Link to={href} className="practice-card group flex flex-col h-full">
     {image && (
-      <div className="practice-card-media relative -mx-10 -mt-10 mb-8 overflow-hidden">
+      <div className="practice-card-media relative -mx-7 -mt-7 mb-6 md:-mx-10 md:-mt-10 md:mb-8 overflow-hidden">
         <img
           src={image}
           alt={imageAlt ?? title}
           loading="lazy"
           width={1024}
           height={640}
-          className="w-full h-44 lg:h-48 object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+          className="w-full h-40 sm:h-44 lg:h-48 object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
         />
         {/* Tonal wash to unify the image with the card surface */}
         <span

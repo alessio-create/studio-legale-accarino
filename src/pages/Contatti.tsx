@@ -59,7 +59,7 @@ export default function Contatti() {
       />
       {/* Editorial hero — minimal, focused on the headline and the lead */}
       <section className="relative bg-surface-container-low border-b hairline">
-        <div className="editorial-container py-20 lg:py-28">
+        <div className="editorial-container py-12 sm:py-20 lg:py-28">
           <div className="max-w-4xl">
             <Reveal>
               <p className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
@@ -68,12 +68,12 @@ export default function Contatti() {
               </p>
             </Reveal>
             <Reveal delay={120}>
-              <h1 className="mt-8 serif-display text-display-2xl text-primary text-balance leading-[1.04]">
+              <h1 className="mt-5 sm:mt-8 serif-display text-display-2xl text-primary text-balance leading-[1.06]">
                 Parliamo del tuo caso, in via riservata.
               </h1>
             </Reveal>
             <Reveal delay={220}>
-              <p className="mt-8 text-xl text-muted-foreground leading-relaxed max-w-2xl text-pretty">
+              <p className="mt-5 sm:mt-8 text-base sm:text-xl text-muted-foreground leading-relaxed max-w-2xl text-pretty">
                 Compila il modulo: un avvocato dello Studio prenderà in carico la
                 tua richiesta e ti contatterà personalmente per un primo
                 orientamento. Tutte le informazioni trasmesse sono coperte da
@@ -85,11 +85,11 @@ export default function Contatti() {
       </section>
 
       <section className="bg-background border-b hairline">
-        <div className="editorial-container py-20 lg:py-28 grid lg:grid-cols-12 gap-12 lg:gap-20">
+        <div className="editorial-container py-14 sm:py-20 lg:py-28 grid lg:grid-cols-12 gap-12 lg:gap-20">
           {/* Form */}
           <div className="lg:col-span-7 order-2 lg:order-1">
-            <form onSubmit={onSubmit} className="space-y-10">
-              <div className="grid sm:grid-cols-2 gap-8">
+            <form onSubmit={onSubmit} className="space-y-8 sm:space-y-10">
+              <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
                 <div>
                   <label className="text-[11px] uppercase tracking-[0.2em] text-primary font-semibold">
                     Nome e Cognome *
@@ -146,7 +146,7 @@ export default function Contatti() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full group inline-flex items-center justify-center gap-3 bg-primary text-primary-foreground px-8 py-5 text-label-sm font-semibold uppercase tracking-[0.2em] shadow-inset-gold hover:bg-primary-glow transition-all disabled:opacity-60"
+                className="w-full group inline-flex items-center justify-center gap-3 bg-primary text-primary-foreground px-6 sm:px-8 py-4 sm:py-5 min-h-[52px] text-label-sm font-semibold uppercase tracking-[0.2em] shadow-inset-gold hover:bg-primary-glow transition-all disabled:opacity-60"
               >
                 {submitting ? "Invio in corso..." : "Invia richiesta"}
                 <span className="w-6 h-px bg-gold group-hover:w-10 transition-all" />
@@ -155,7 +155,7 @@ export default function Contatti() {
           </div>
 
           {/* Sidebar offices */}
-          <aside className="lg:col-span-5 order-1 lg:order-2 space-y-12">
+          <aside className="lg:col-span-5 order-1 lg:order-2 space-y-8 sm:space-y-12">
             <SectionHeader
               eyebrow="Le nostre sedi"
               title="Due sedi nella provincia di Salerno."
@@ -203,8 +203,8 @@ export default function Contatti() {
 
       {/* Closing reassurance band — fills the void below the form */}
       <section className="bg-surface-container-low border-b hairline">
-        <div className="editorial-container py-20 lg:py-24">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="editorial-container py-14 sm:py-20 lg:py-24">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <div className="lg:col-span-5">
               <Reveal>
                 <p className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
