@@ -26,7 +26,7 @@ export const ProceduresLayout = ({ children }: { children: ReactNode }) => {
           <SidebarInset className="bg-background">
             {/* Always-visible trigger bar so the sidebar can be toggled
                 regardless of its collapsed/expanded state. */}
-            <div className="sticky top-[calc(80px+44px)] lg:top-[calc(116px+44px)] z-20 flex items-center gap-3 border-b hairline bg-background/85 backdrop-blur-md px-4 lg:px-6 h-12">
+            <div className="sticky top-20 lg:top-[116px] z-30 flex items-center gap-3 border-b hairline bg-background/85 backdrop-blur-md px-4 lg:px-6 h-12">
               <SidebarTrigger className="-ml-1">
                 <PanelLeft className="h-4 w-4" />
               </SidebarTrigger>
