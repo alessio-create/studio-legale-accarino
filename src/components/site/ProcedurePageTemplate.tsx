@@ -411,7 +411,7 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
 
       {/* ─────────── FAQ ─────────── */}
       <section className="bg-surface-container-low border-y hairline">
-        <div className="editorial-container py-20 lg:py-28 grid lg:grid-cols-12 gap-12">
+        <div className="editorial-container py-14 sm:py-20 lg:py-28 grid lg:grid-cols-12 gap-8 sm:gap-12">
           <Reveal className="lg:col-span-4">
             <SectionHeader
               eyebrow="Domande frequenti"
@@ -442,7 +442,7 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
           §
         </span>
 
-        <div className="relative editorial-container py-24 lg:py-32 max-w-4xl mx-auto text-center">
+        <div className="relative editorial-container py-16 sm:py-24 lg:py-32 max-w-4xl mx-auto text-center">
           <Reveal>
             <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-gold font-semibold">
               <span aria-hidden className="w-8 h-px bg-gold" />
@@ -452,22 +452,22 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
           </Reveal>
 
           <Reveal delay={120}>
-            <Quote className="mx-auto mt-10 w-8 h-8 text-gold/70" strokeWidth={1} />
-            <h2 className="mt-6 serif-display text-display-xl text-background text-balance leading-[1.05]">
+            <Quote className="mx-auto mt-7 sm:mt-10 w-7 h-7 sm:w-8 sm:h-8 text-gold/70" strokeWidth={1} />
+            <h2 className="mt-5 sm:mt-6 serif-display text-display-xl text-background text-balance leading-[1.08]">
               Ogni caso è diverso. La tua difesa parte da una conversazione.
             </h2>
-            <p className="mt-7 text-lg text-background/75 leading-relaxed max-w-2xl mx-auto">
+            <p className="mt-5 sm:mt-7 text-base sm:text-lg text-background/75 leading-relaxed max-w-2xl mx-auto">
               Prenota una prima consulenza riservata: rispondiamo entro 48 ore
               con una valutazione preliminare del tuo caso.
             </p>
           </Reveal>
 
           <Reveal delay={240}>
-            <div className="mt-12 flex flex-wrap justify-center gap-4">
+            <div className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-3 sm:gap-4">
               <CTAButton to="/contatti">Richiedi consulenza</CTAButton>
               <a
                 href="tel:+390891234567"
-                className="inline-flex items-center gap-3 px-6 py-4 text-[11px] uppercase tracking-[0.2em] text-background hover:text-gold transition-colors border border-background/20 hover:border-gold"
+                className="inline-flex items-center justify-center gap-3 px-6 py-4 min-h-[44px] text-[11px] uppercase tracking-[0.2em] text-background hover:text-gold transition-colors border border-background/20 hover:border-gold"
               >
                 <Phone className="w-4 h-4 text-gold" />
                 089 123 4567
@@ -491,8 +491,8 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
       {/* ─────────── RELATED ─────────── */}
       {related.length > 0 && (
         <section className="bg-background">
-          <div className="editorial-container py-20 lg:py-28">
-            <div className="flex items-end justify-between flex-wrap gap-8 mb-14">
+          <div className="editorial-container py-14 sm:py-20 lg:py-28">
+            <div className="flex items-end justify-between flex-wrap gap-6 sm:gap-8 mb-10 sm:mb-14">
               <div className="max-w-2xl">
                 <SectionHeader
                   eyebrow="Procedure correlate"
