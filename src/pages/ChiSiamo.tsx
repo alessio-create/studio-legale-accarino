@@ -94,27 +94,6 @@ export default function ChiSiamo() {
                 principi: rigore tecnico, riservatezza, risultato.
               </p>
             </Reveal>
-            <Reveal delay={320}>
-              <div className="mt-10 sm:mt-12 grid grid-cols-2 sm:grid-cols-4 gap-px bg-primary/10 border hairline">
-                {[
-                  { v: 50, suffix: "+", l: "Anni di attività" },
-                  { v: 9, suffix: "", l: "Professionisti" },
-                  { v: 2, suffix: "", l: "Sedi operative" },
-                  { v: 600, suffix: "+", l: "Mandati seguiti" },
-                ].map((s) => (
-                  <div key={s.l} className="bg-background p-5 sm:p-6">
-                    <CountUp
-                      to={s.v}
-                      suffix={s.suffix}
-                      className="font-serif text-2xl sm:text-3xl text-primary tabular-nums"
-                    />
-                    <p className="mt-2 sm:mt-3 text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                      {s.l}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
           </div>
           <Reveal className="lg:col-span-5 order-1 lg:order-2">
             <div className="relative gold-corner p-3">
