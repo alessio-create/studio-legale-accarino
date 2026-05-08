@@ -76,7 +76,7 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
       <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-noise opacity-40" />
 
-        <div className="relative editorial-container pt-20 lg:pt-28 pb-14 lg:pb-20">
+        <div className="relative editorial-container pt-12 sm:pt-20 lg:pt-28 pb-10 sm:pb-14 lg:pb-20">
           {/* Breadcrumb / kicker */}
           <Reveal>
             <p className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.24em] font-semibold">
@@ -95,7 +95,7 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
           </Reveal>
 
           {/* Headline cluster with ghost numeral */}
-          <div className="relative mt-10">
+          <div className="relative mt-7 sm:mt-10">
             <span
               aria-hidden
               className="ghost-numeral hidden md:block absolute -top-10 right-0 text-[10rem] lg:text-[14rem]"
@@ -110,7 +110,7 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
             </Reveal>
 
             <Reveal delay={180}>
-              <h1 className="serif-display text-display-2xl text-primary text-balance leading-[1.02] max-w-4xl">
+              <h1 className="serif-display text-display-2xl text-primary text-balance leading-[1.06] max-w-4xl">
                 {procedure.title}
               </h1>
             </Reveal>
@@ -118,12 +118,12 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
             <Reveal delay={280}>
               <span
                 aria-hidden
-                className="block mt-8 h-px w-24 editorial-rule"
+                className="block mt-6 sm:mt-8 h-px w-20 sm:w-24 editorial-rule"
               />
             </Reveal>
 
             <Reveal delay={340}>
-              <p className="mt-8 text-xl text-muted-foreground leading-relaxed max-w-2xl text-pretty">
+              <p className="mt-5 sm:mt-8 text-base sm:text-xl text-muted-foreground leading-relaxed max-w-2xl text-pretty">
                 {procedure.lead}
               </p>
             </Reveal>
@@ -131,7 +131,7 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
 
           {/* Meta dock — datasheet-style */}
           <Reveal delay={420}>
-            <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-px bg-primary/10 border hairline max-w-3xl">
+            <div className="mt-8 sm:mt-12 grid grid-cols-2 sm:grid-cols-4 gap-px bg-primary/10 border hairline max-w-3xl">
               <HeroMeta
                 icon={<Clock className="w-3.5 h-3.5" />}
                 label="Lettura"
@@ -157,13 +157,13 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
         </div>
 
         {/* Hero image — clipped reveal + ornamental frame */}
-        <Reveal delay={500} className="editorial-container pb-16 lg:pb-24">
+        <Reveal delay={500} className="editorial-container pb-10 sm:pb-16 lg:pb-24">
           <figure className="relative gold-corner-frame p-3">
             <div className="overflow-hidden">
               <img
                 src={procedure.heroImage}
                 alt={procedure.title}
-                className="w-full h-[320px] md:h-[440px] lg:h-[560px] object-cover animate-image-reveal"
+                className="w-full h-[220px] sm:h-[320px] md:h-[440px] lg:h-[560px] object-cover animate-image-reveal"
                 width={1600}
                 height={900}
               />
@@ -191,14 +191,14 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
 
       {/* ─────────── BODY: meta · sections · TOC ─────────── */}
       <section className="bg-background">
-        <div className="editorial-container py-20 lg:py-28">
+        <div className="editorial-container py-14 sm:py-20 lg:py-28">
           <MobileTOC
             sections={procedure.sections.map((s) => ({
               id: s.id,
               title: s.title,
             }))}
           />
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16">
             {/* ── Left meta rail (sticky, animated in) ── */}
             <Reveal
               as="aside"
@@ -247,7 +247,7 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
             </Reveal>
 
             {/* ── Body sections ── */}
-            <div className="lg:col-span-6 space-y-20 lg:space-y-28">
+            <div className="lg:col-span-6 space-y-14 sm:space-y-20 lg:space-y-28">
               {procedure.sections.map((s, i) => (
                 <article
                   key={s.id}
