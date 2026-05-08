@@ -159,36 +159,31 @@ export default function ChiSiamo() {
             ))}
           </ol>
 
-          {/* Credentials — properly boxed, gold corner accents, numbered */}
-          <div className="mt-16 sm:mt-20 grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-primary/10 border hairline">
-            {[
-              { i: Scale, t: "Magistrature Superiori", d: "Cassazione, Consiglio di Stato, Corte dei Conti" },
-              { i: Award, t: "Cassazionisti", d: "Patrocinio davanti alle giurisdizioni superiori" },
-              { i: BookOpen, t: "Pubblicazioni", d: "Articoli e contributi su riviste specializzate" },
-              { i: Building, t: "Enti istituzionali", d: "Esperienza per Regione, Comuni, ASL, ASI" },
-            ].map(({ i: Icon, t, d }, idx) => (
-              <Reveal key={t} delay={idx * 80}>
-                <div className="group relative bg-background p-7 sm:p-8 h-full flex flex-col">
-                  <div className="flex items-center justify-between">
-                    <span className="font-serif text-xl text-gold-deep tabular-nums">
-                      {String(idx + 1).padStart(2, "0")}
-                    </span>
-                    <Icon
-                      className="w-5 h-5 text-gold-deep transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"
-                      strokeWidth={1.5}
-                    />
+          {/* Credenziali — riga editoriale sobria, due colonne tipografiche */}
+          <Reveal>
+            <div className="mt-16 sm:mt-20 grid lg:grid-cols-12 gap-8 lg:gap-12 border-t hairline pt-10">
+              <p className="lg:col-span-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
+                Credenziali
+              </p>
+              <dl className="lg:col-span-9 grid sm:grid-cols-2 gap-x-12 gap-y-6">
+                {[
+                  { t: "Magistrature Superiori", d: "Cassazione, Consiglio di Stato, Corte dei Conti." },
+                  { t: "Patrocinio cassazionista", d: "Abilitazione alle giurisdizioni superiori." },
+                  { t: "Enti pubblici assistiti", d: "Regione, Comuni, ASL, Consorzio ASI." },
+                  { t: "Attività scientifica", d: "Pubblicazioni e contributi su riviste di settore." },
+                ].map((c) => (
+                  <div key={c.t} className="flex flex-col">
+                    <dt className="font-serif text-base text-primary leading-snug">
+                      {c.t}
+                    </dt>
+                    <dd className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
+                      {c.d}
+                    </dd>
                   </div>
-                  <span aria-hidden className="block mt-4 h-px w-8 bg-gold/60" />
-                  <p className="mt-5 font-serif text-base sm:text-lg text-primary leading-snug">
-                    {t}
-                  </p>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                    {d}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+                ))}
+              </dl>
+            </div>
+          </Reveal>
         </div>
       </section>
 
