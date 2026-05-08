@@ -24,7 +24,7 @@ const BlogArticle = () => {
 
       {/* Article hero — title + image */}
       <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
-        <div className="relative editorial-container py-20 lg:py-28">
+        <div className="relative editorial-container py-12 sm:py-20 lg:py-28">
           <Reveal>
             <Link
               to="/blog"
@@ -34,8 +34,8 @@ const BlogArticle = () => {
               Torna al blog
             </Link>
           </Reveal>
-          <div className="mt-10 grid lg:grid-cols-12 gap-12 items-end">
-            <div className="lg:col-span-7">
+          <div className="mt-7 sm:mt-10 grid lg:grid-cols-12 gap-8 sm:gap-12 items-end">
+            <div className="lg:col-span-7 order-2 lg:order-1">
               <Reveal delay={80}>
                 <p className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
                   <span aria-hidden className="w-8 h-px bg-gold" />
@@ -43,17 +43,17 @@ const BlogArticle = () => {
                 </p>
               </Reveal>
               <Reveal delay={140}>
-                <h1 className="mt-8 serif-display text-display-xl text-primary text-balance leading-[1.05]">
+                <h1 className="mt-5 sm:mt-8 serif-display text-display-xl text-primary text-balance leading-[1.08]">
                   {article.title}
                 </h1>
               </Reveal>
               <Reveal delay={220}>
-                <p className="mt-8 text-xl text-muted-foreground leading-relaxed max-w-2xl text-pretty">
+                <p className="mt-5 sm:mt-8 text-base sm:text-xl text-muted-foreground leading-relaxed max-w-2xl text-pretty">
                   {article.excerpt}
                 </p>
               </Reveal>
               <Reveal delay={300}>
-                <div className="mt-10 flex flex-wrap items-center gap-6 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                <div className="mt-7 sm:mt-10 flex flex-wrap items-center gap-4 sm:gap-6 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
                   <span className="inline-flex items-center gap-2">
                     <User className="w-3.5 h-3.5 text-gold-deep" />
                     {article.author}
@@ -68,12 +68,12 @@ const BlogArticle = () => {
                 </div>
               </Reveal>
             </div>
-            <Reveal delay={200} className="lg:col-span-5">
-              <div className="relative gold-corner p-3">
+            <Reveal delay={200} className="lg:col-span-5 order-1 lg:order-2">
+              <div className="relative gold-corner p-2 sm:p-3">
                 <img
                   src={article.image}
                   alt={article.title}
-                  className="w-full h-[360px] object-cover grayscale-[20%]"
+                  className="w-full h-[220px] sm:h-[320px] lg:h-[360px] object-cover grayscale-[20%]"
                   loading="eager"
                 />
               </div>
@@ -84,12 +84,12 @@ const BlogArticle = () => {
 
       {/* Article body + sidebar */}
       <section className="bg-background border-b hairline">
-        <div className="editorial-container py-20 lg:py-28 grid lg:grid-cols-12 gap-12 lg:gap-16">
+        <div className="editorial-container py-14 sm:py-20 lg:py-28 grid lg:grid-cols-12 gap-10 lg:gap-16">
           {/* Main column */}
           <article className="lg:col-span-8">
             {/* Bullets summary */}
             <Reveal>
-              <div className="border-l-2 border-gold pl-6 lg:pl-8 py-2">
+              <div className="border-l-2 border-gold pl-5 sm:pl-6 lg:pl-8 py-2">
                 <p className="text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
                   In sintesi
                 </p>
@@ -108,15 +108,15 @@ const BlogArticle = () => {
             </Reveal>
 
             {/* Long-form sections */}
-            <div className="mt-16 space-y-14">
+            <div className="mt-10 sm:mt-16 space-y-10 sm:space-y-14">
               {article.sections.map((s, i) => (
                 <Reveal key={s.heading} delay={i * 80}>
                   <div>
-                    <h2 className="font-serif text-2xl lg:text-3xl text-primary leading-snug text-balance">
+                    <h2 className="font-serif text-xl sm:text-2xl lg:text-3xl text-primary leading-snug text-balance">
                       {s.heading}
                     </h2>
                     <span aria-hidden className="block mt-4 h-px w-12 bg-gold" />
-                    <div className="mt-6 space-y-5 text-lg text-muted-foreground leading-relaxed">
+                    <div className="mt-5 sm:mt-6 space-y-4 sm:space-y-5 text-base sm:text-lg text-muted-foreground leading-relaxed">
                       {s.body.map((p, j) => (
                         <p key={j}>{p}</p>
                       ))}
@@ -195,7 +195,7 @@ const BlogArticle = () => {
       {/* Final CTA banner */}
       <section className="relative bg-primary text-primary-foreground border-y border-gold/30 overflow-hidden">
         <div className="absolute inset-0 bg-noise opacity-25" />
-        <div className="relative editorial-container py-24 lg:py-32 text-center max-w-3xl mx-auto">
+        <div className="relative editorial-container py-16 sm:py-24 lg:py-32 text-center max-w-3xl mx-auto">
           <Reveal>
             <p className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold font-semibold">
               <span aria-hidden className="w-6 h-px bg-gold" />
@@ -204,18 +204,18 @@ const BlogArticle = () => {
             </p>
           </Reveal>
           <Reveal delay={120}>
-            <h2 className="mt-8 serif-display text-display-xl text-background text-balance leading-[1.05]">
+            <h2 className="mt-6 sm:mt-8 serif-display text-display-xl text-background text-balance leading-[1.08]">
               Dalla teoria al tuo caso concreto.
             </h2>
           </Reveal>
           <Reveal delay={200}>
-            <p className="mt-6 text-lg text-background/75 leading-relaxed">
+            <p className="mt-5 sm:mt-6 text-base sm:text-lg text-background/75 leading-relaxed">
               Ogni vicenda ha specificità che fanno la differenza. Confrontiamoci
               sulla tua, in totale riservatezza.
             </p>
           </Reveal>
           <Reveal delay={280}>
-            <div className="mt-10 flex justify-center">
+            <div className="mt-8 sm:mt-10 flex justify-center">
               <CTAButton to="/contatti" variant="gold">
                 Parla con un avvocato
               </CTAButton>
@@ -227,14 +227,14 @@ const BlogArticle = () => {
       {/* Related articles */}
       {related.length > 0 && (
         <section className="bg-background border-b hairline">
-          <div className="editorial-container py-20 lg:py-28">
-            <div className="grid lg:grid-cols-12 gap-12 mb-12 lg:mb-16 items-end">
+          <div className="editorial-container py-14 sm:py-20 lg:py-28">
+            <div className="grid lg:grid-cols-12 gap-8 sm:gap-12 mb-10 sm:mb-12 lg:mb-16 items-end">
               <div className="lg:col-span-7">
                 <p className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
                   <span aria-hidden className="w-8 h-px bg-gold" />
                   Continua a leggere
                 </p>
-                <h2 className="mt-6 font-serif text-3xl lg:text-4xl text-primary leading-[1.1] text-balance">
+                <h2 className="mt-5 sm:mt-6 font-serif text-2xl sm:text-3xl lg:text-4xl text-primary leading-[1.12] text-balance">
                   Altri approfondimenti dallo Studio.
                 </h2>
               </div>
@@ -247,7 +247,7 @@ const BlogArticle = () => {
               </Link>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
               {related.map((a, i) => (
                 <Reveal key={a.slug} delay={i * 80}>
                   <Link

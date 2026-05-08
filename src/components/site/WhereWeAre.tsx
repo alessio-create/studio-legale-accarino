@@ -45,13 +45,13 @@ export function WhereWeAre() {
       className="section-y bg-background border-t hairline scroll-mt-24"
     >
       <div className="editorial-container">
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16 lg:mb-20">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 mb-10 sm:mb-16 lg:mb-20">
           <div className="lg:col-span-5">
             <Reveal>
               <Eyebrow>Dove siamo</Eyebrow>
             </Reveal>
             <Reveal delay={80}>
-              <h2 className="mt-6 serif-display text-display-xl text-balance leading-[1.05]">
+              <h2 className="mt-5 sm:mt-6 serif-display text-display-xl text-balance leading-[1.08]">
                 Due sedi in provincia di Salerno,{" "}
                 <span className="italic text-gold-deep">
                   porta a porta con i tribunali.
@@ -60,7 +60,7 @@ export function WhereWeAre() {
             </Reveal>
           </div>
           <Reveal delay={140} className="lg:col-span-7 lg:pt-4">
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
               Riceviamo su appuntamento. Prima di venire, ti diciamo cosa
               portare e quanto durerà il colloquio: niente attese inutili e
               niente sorprese sui costi.
@@ -72,7 +72,7 @@ export function WhereWeAre() {
           {sedi.map((s) => (
             <article
               key={s.city}
-              className="bg-background p-8 lg:p-12 flex flex-col"
+              className="bg-background p-6 sm:p-8 lg:p-12 flex flex-col"
             >
               {/* Map (or placeholder when not yet provided) */}
               <div className="aspect-[16/9] bg-surface-container-low border hairline overflow-hidden mb-8 relative">

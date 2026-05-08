@@ -46,17 +46,17 @@ const Blog = () => {
       {/* Featured article */}
       {featured && (
         <section className="bg-background border-b hairline">
-          <div className="editorial-container py-20 lg:py-28">
+          <div className="editorial-container py-14 sm:py-20 lg:py-28">
             <Reveal>
               <Link
                 to={`/blog/${featured.slug}`}
-                className="group grid lg:grid-cols-12 gap-12 lg:gap-16 items-center"
+                className="group grid lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center"
               >
-                <div className="lg:col-span-7 relative gold-corner p-3 overflow-hidden">
+                <div className="lg:col-span-7 relative gold-corner p-2 sm:p-3 overflow-hidden">
                   <img
                     src={featured.image}
                     alt={featured.title}
-                    className="w-full h-[360px] lg:h-[440px] object-cover grayscale-[20%] transition-transform duration-700 group-hover:scale-[1.03]"
+                    className="w-full h-[220px] sm:h-[360px] lg:h-[440px] object-cover grayscale-[20%] transition-transform duration-700 group-hover:scale-[1.03]"
                     loading="eager"
                   />
                 </div>
@@ -67,10 +67,10 @@ const Blog = () => {
                     <span aria-hidden className="w-3 h-px bg-gold/50" />
                     <span className="text-primary/70">{featured.category}</span>
                   </p>
-                  <h2 className="mt-6 font-serif text-3xl lg:text-4xl text-primary leading-[1.1] text-balance transition-colors duration-300 group-hover:text-gold-deep">
+                  <h2 className="mt-5 sm:mt-6 font-serif text-2xl sm:text-3xl lg:text-4xl text-primary leading-[1.12] text-balance transition-colors duration-300 group-hover:text-gold-deep">
                     {featured.title}
                   </h2>
-                  <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                  <p className="mt-5 sm:mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
                     {featured.excerpt}
                   </p>
                   <div className="mt-8 flex items-center gap-6 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
@@ -94,8 +94,8 @@ const Blog = () => {
 
       {/* Filters + grid */}
       <section className="bg-surface-container-low border-b hairline">
-        <div className="editorial-container py-20 lg:py-28">
-          <div className="flex flex-wrap items-center gap-3 mb-12 lg:mb-16">
+        <div className="editorial-container py-14 sm:py-20 lg:py-28">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-8 sm:mb-12 lg:mb-16">
             {categories.map((c) => {
               const isActive = c === active;
               return (
@@ -105,7 +105,7 @@ const Blog = () => {
                     setActive(c);
                     setPage(1);
                   }}
-                  className={`px-4 py-2 text-[11px] uppercase tracking-[0.18em] font-semibold border hairline transition-colors duration-300 ${
+                  className={`px-4 py-2.5 min-h-[40px] text-[11px] uppercase tracking-[0.18em] font-semibold border hairline transition-colors duration-300 ${
                     isActive
                       ? "bg-primary text-primary-foreground border-primary"
                       : "bg-background text-primary hover:border-primary"
@@ -117,7 +117,7 @@ const Blog = () => {
             })}
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
             {paginated.map((a, i) => (
               <Reveal key={a.slug} delay={i * 80}>
                 <Link
@@ -132,17 +132,17 @@ const Blog = () => {
                       loading="lazy"
                     />
                   </div>
-                  <div className="p-8 flex flex-col flex-1">
+                  <div className="p-6 sm:p-8 flex flex-col flex-1">
                     <p className="text-[11px] uppercase tracking-[0.2em] text-gold-deep font-semibold">
                       {a.category}
                     </p>
-                    <h3 className="mt-4 font-serif text-2xl text-primary leading-snug text-balance transition-colors duration-300 group-hover:text-gold-deep">
+                    <h3 className="mt-3 sm:mt-4 font-serif text-xl sm:text-2xl text-primary leading-snug text-balance transition-colors duration-300 group-hover:text-gold-deep">
                       {a.title}
                     </h3>
-                    <p className="mt-4 text-sm text-muted-foreground leading-relaxed flex-1">
+                    <p className="mt-3 sm:mt-4 text-sm text-muted-foreground leading-relaxed flex-1">
                       {a.excerpt}
                     </p>
-                    <div className="mt-6 flex items-center justify-between text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                    <div className="mt-5 sm:mt-6 flex items-center justify-between text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
                       <span>{a.date}</span>
                       <span className="inline-flex items-center gap-2">
                         <Clock className="w-3.5 h-3.5 text-gold-deep" />
