@@ -4,10 +4,10 @@ import { CTAButton } from "./CTAButton";
 import { FAQ, FAQItem } from "./FAQ";
 import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "./Reveal";
-import ResultCard from "./ResultCard";
 import { ProcessIllustration, PROCESS_VARIANTS } from "./ProcessIllustration";
 import { ClientReviews } from "./ClientReviews";
 import { PracticeIntroSection } from "./PracticeIntroSection";
+import { OutcomesTicker } from "./OutcomesTicker";
 import type { Procedure } from "@/data/procedures";
 
 export interface PracticeStat { value: string; label: string }
@@ -108,52 +108,9 @@ export const PracticePageTemplate = ({
         </div>
       </section>
 
-      {/* Outcomes strip (optional) */}
+      {/* Outcomes — marquee ticker matching the page rhythm */}
       {outcomes && outcomes.length > 0 && (
-        <section className="bg-primary text-primary-foreground border-y border-gold/30 relative overflow-hidden">
-          <div className="absolute inset-0 bg-noise opacity-25" />
-          {/* Premium ambient gold wash */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-[0.07]"
-            style={{
-              background:
-                "radial-gradient(60% 70% at 0% 0%, hsl(var(--gold)) 0%, transparent 60%), radial-gradient(50% 60% at 100% 100%, hsl(var(--gold)) 0%, transparent 60%)",
-            }}
-          />
-          <span aria-hidden className="absolute top-0 left-0 right-0 h-px bg-gradient-gold-line opacity-60" />
-          <span aria-hidden className="absolute bottom-0 left-0 right-0 h-px bg-gradient-gold-line opacity-40" />
-
-          <div className="relative editorial-container py-20 lg:py-28">
-            <div className="grid lg:grid-cols-12 gap-10 mb-16 lg:mb-20 items-end">
-              <div className="lg:col-span-7">
-                <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-gold font-semibold">
-                  <span className="h-px w-8 bg-gold/60" />
-                  Risultati che parlano per noi
-                </span>
-                <h2 className="mt-6 font-serif text-4xl lg:text-5xl text-background leading-[1.05] text-balance">
-                  Casi reali, esiti concreti.
-                </h2>
-              </div>
-              <p className="lg:col-span-5 text-sm text-background/55 leading-relaxed lg:text-right max-w-md lg:ml-auto">
-                Esempi illustrativi del tipo di esito ottenibile. Casi anonimizzati nel rispetto del segreto professionale.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-              {outcomes.map((o, i) => (
-                <div
-                  key={o.label + i}
-                  className={`relative ${
-                    i > 0 ? "lg:border-l lg:border-background/10" : ""
-                  } ${i > 0 && i % 2 !== 0 ? "sm:border-l sm:border-background/10 lg:border-l" : ""}`}
-                >
-                  <ResultCard result={o} index={i} isFirst={i === 0} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <OutcomesTicker outcomes={outcomes} />
       )}
 
       {/* Intro & For Whom */}
