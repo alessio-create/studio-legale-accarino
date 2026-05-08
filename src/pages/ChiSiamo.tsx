@@ -2,7 +2,6 @@ import { Building } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { Reveal } from "@/components/site/Reveal";
-import { CountUp } from "@/components/site/CountUp";
 import { ValuesTicker } from "@/components/site/ValuesTicker";
 import { FeatureTicker } from "@/components/site/FeatureTicker";
 import { Seo, orgJsonLd } from "@/components/site/Seo";
