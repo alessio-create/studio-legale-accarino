@@ -13,6 +13,7 @@ import AppaltiPubblici from "./pages/practice/AppaltiPubblici.tsx";
 import ConcorsiPubblici from "./pages/practice/ConcorsiPubblici.tsx";
 import UrbanisticaEdilizia from "./pages/practice/UrbanisticaEdilizia.tsx";
 import Blog from "./pages/Blog.tsx";
+import BlogArticle from "./pages/BlogArticle.tsx";
 import ProcedurePage from "./pages/ProcedurePage.tsx";
 import Procedures from "./pages/Procedures.tsx";
 import { procedures } from "./data/procedures";
@@ -41,6 +42,7 @@ const App = () => (
             <Route path="/chi-siamo" element={<ChiSiamo />} />
             <Route path="/contatti" element={<Contatti />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogArticle />} />
             {/* Procedures index — browseable taxonomy */}
             <Route path="/procedure" element={<Procedures />} />
             {/* Procedure pages — flat root URLs, generated from the registry */}
