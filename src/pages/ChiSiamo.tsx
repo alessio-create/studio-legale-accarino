@@ -193,32 +193,12 @@ export default function ChiSiamo() {
       {/* Team — placeholder cards (no portraits yet) */}
       <section className="bg-surface-container-low border-b hairline">
         <div className="editorial-container py-16 sm:py-20 lg:py-28">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-12 sm:mb-16 lg:mb-20 items-end">
-            <div className="lg:col-span-7">
-              <SectionHeader
-                eyebrow="Il team"
-                title="Avvocati. Specialisti. Persone."
-                intro="Una squadra ristretta di professionisti dedicati: ogni mandato è seguito personalmente da un partner di riferimento."
-              />
-            </div>
-            <Reveal delay={150} className="lg:col-span-5">
-              <div className="grid grid-cols-2 gap-px bg-primary/10 border hairline lg:ml-auto lg:max-w-sm">
-                {[
-                  { v: 4, l: "Partner" },
-                  { v: 5, l: "Collaboratori" },
-                ].map((s) => (
-                  <div key={s.l} className="bg-background p-5 sm:p-6 text-center">
-                    <CountUp
-                      to={s.v}
-                      className="font-serif text-2xl sm:text-3xl text-primary tabular-nums"
-                    />
-                    <p className="mt-2 text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                      {s.l}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
+          <div className="mb-12 sm:mb-16 lg:mb-20 max-w-3xl">
+            <SectionHeader
+              eyebrow="Il team"
+              title="Avvocati. Specialisti. Persone."
+              intro="Una squadra ristretta di professionisti dedicati: ogni mandato è seguito personalmente da un partner di riferimento."
+            />
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
