@@ -37,15 +37,6 @@ export const PageHero = ({
 }: Props) => {
   return (
     <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
-      {/* Subtle gold ambient wash — mirrors the stats / reviews bands */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
-        style={{
-          background:
-            "radial-gradient(60% 80% at 0% 0%, hsl(var(--gold)) 0%, transparent 60%)",
-        }}
-      />
       <div className="relative editorial-container py-20 lg:py-28">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-end">
           <div className={aside ? "lg:col-span-7" : "lg:col-span-9 max-w-4xl"}>
