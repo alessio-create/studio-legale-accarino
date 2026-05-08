@@ -1,4 +1,4 @@
-import { Award, BookOpen, Building, Scale } from "lucide-react";
+import { Building } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { Reveal } from "@/components/site/Reveal";
