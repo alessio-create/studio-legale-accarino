@@ -6,6 +6,7 @@ import { ValuesTicker } from "@/components/site/ValuesTicker";
 import { FeatureTicker } from "@/components/site/FeatureTicker";
 import { Seo, orgJsonLd } from "@/components/site/Seo";
 import office from "@/assets/office.jpg";
+import monogramCircle from "@/assets/monogram-circle.svg";
 
 const team = [
   {
