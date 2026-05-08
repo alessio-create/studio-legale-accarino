@@ -37,8 +37,8 @@ export const PageHero = ({
 }: Props) => {
   return (
     <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
-      <div className="relative editorial-container py-20 lg:py-28">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-end">
+      <div className="relative editorial-container py-12 sm:py-16 lg:py-28">
+        <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 items-end">
           <div className={aside ? "lg:col-span-7" : "lg:col-span-9 max-w-4xl"}>
             <Reveal>
               <p className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
@@ -54,14 +54,14 @@ export const PageHero = ({
             </Reveal>
 
             <Reveal delay={120}>
-              <h1 className="mt-8 serif-display text-display-2xl text-primary text-balance leading-[1.04]">
+              <h1 className="mt-5 sm:mt-8 serif-display text-display-2xl text-primary text-balance leading-[1.06]">
                 {title}
               </h1>
             </Reveal>
 
             {lead && (
               <Reveal delay={220}>
-                <p className="mt-8 text-xl text-muted-foreground leading-relaxed max-w-2xl text-pretty">
+                <p className="mt-5 sm:mt-8 text-base sm:text-xl text-muted-foreground leading-relaxed max-w-2xl text-pretty">
                   {lead}
                 </p>
               </Reveal>
@@ -69,7 +69,7 @@ export const PageHero = ({
 
             {children && (
               <Reveal delay={300}>
-                <div className="mt-10">{children}</div>
+                <div className="mt-7 sm:mt-10">{children}</div>
               </Reveal>
             )}
           </div>
