@@ -242,9 +242,12 @@
   .practice-card {
     background: hsl(var(--card));
     border: 1px solid hsl(var(--primary) / 0.12);
-    padding: 40px;
+    padding: 28px;
     transition: var(--transition-elegant);
     position: relative;
+  }
+  @media (min-width: 768px) {
+    .practice-card { padding: 40px; }
   }
   .practice-card:hover {
     border-color: hsl(var(--gold) / 0.6);

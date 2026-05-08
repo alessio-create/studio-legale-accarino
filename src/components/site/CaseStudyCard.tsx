@@ -62,7 +62,7 @@ export const CaseStudyCard = ({
               loading="lazy"
               width={1024}
               height={640}
-              className="w-full h-56 lg:h-64 object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.05]"
+              className="w-full h-44 sm:h-56 lg:h-64 object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.05]"
             />
             <span
               aria-hidden
@@ -89,15 +89,15 @@ export const CaseStudyCard = ({
           </div>
 
           {/* Body */}
-          <div className="flex flex-col flex-1 p-8 lg:p-10">
-            <p className="font-serif text-xl lg:text-2xl text-primary leading-snug text-balance group-hover:text-gold-deep transition-colors">
+          <div className="flex flex-col flex-1 p-6 sm:p-8 lg:p-10">
+            <p className="font-serif text-lg sm:text-xl lg:text-2xl text-primary leading-snug text-balance group-hover:text-gold-deep transition-colors">
               {caseStudy.title}
             </p>
-            <p className="mt-4 text-[15px] text-muted-foreground leading-relaxed flex-1">
+            <p className="mt-3 sm:mt-4 text-[15px] text-muted-foreground leading-relaxed flex-1">
               {caseStudy.excerpt}
             </p>
 
-            <div className="mt-8 pt-6 border-t hairline flex items-end justify-between gap-4">
+            <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t hairline flex items-end justify-between gap-4">
               <div>
                 <p className="text-[10px] uppercase tracking-[0.22em] text-gold-deep font-semibold mb-1">
                   Esito
