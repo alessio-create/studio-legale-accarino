@@ -1,6 +1,5 @@
 import { Award, BookOpen, Building, Scale, ArrowUpRight } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
-import { CTAButton } from "@/components/site/CTAButton";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { Reveal } from "@/components/site/Reveal";
 import { CountUp } from "@/components/site/CountUp";
@@ -293,31 +292,6 @@ export default function ChiSiamo() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="relative bg-primary text-primary-foreground border-y border-gold/30 overflow-hidden">
-        <div className="absolute inset-0 bg-noise opacity-25" />
-        <div className="relative editorial-container py-24 lg:py-32 text-center max-w-3xl mx-auto">
-          <Reveal>
-            <p className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold font-semibold">
-              <span aria-hidden className="w-6 h-px bg-gold" />
-              Iniziamo a lavorare insieme
-              <span aria-hidden className="w-6 h-px bg-gold" />
-            </p>
-          </Reveal>
-          <Reveal delay={120}>
-            <h2 className="mt-8 serif-display text-display-xl text-background text-balance leading-[1.05]">
-              La tua questione merita un'attenzione dedicata.
-            </h2>
-          </Reveal>
-          <Reveal delay={240}>
-            <div className="mt-10 flex justify-center">
-              <CTAButton to="/contatti" variant="gold">
-                Parla con un avvocato
-              </CTAButton>
-            </div>
-          </Reveal>
-        </div>
-      </section>
     </Layout>
   );
 }
