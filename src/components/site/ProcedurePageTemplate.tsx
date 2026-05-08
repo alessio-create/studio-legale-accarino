@@ -74,15 +74,6 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
 
       {/* ─────────── HERO — editorial monograph cover ─────────── */}
       <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
-        {/* Background ornament: parchment glow + faint grid */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.05]"
-          style={{
-            background:
-              "radial-gradient(70% 90% at 0% 0%, hsl(var(--gold)) 0%, transparent 55%)",
-          }}
-        />
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-noise opacity-40" />
 
         <div className="relative editorial-container pt-20 lg:pt-28 pb-14 lg:pb-20">
