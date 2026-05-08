@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Mail, MapPin, Phone, Clock, Lock, Timer, ShieldCheck, MessageSquare } from "lucide-react";
+import { Mail, MapPin, Phone, Clock, Timer, ShieldCheck, MessageSquare } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { Reveal } from "@/components/site/Reveal";
-import { CountUp } from "@/components/site/CountUp";
 import { Seo, orgJsonLd } from "@/components/site/Seo";
 import { useToast } from "@/hooks/use-toast";
 
@@ -58,29 +57,19 @@ export default function Contatti() {
         path="/contatti"
         jsonLd={orgJsonLd}
       />
-      {/* Editorial hero — full composition with key reassurances */}
-      <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.04]"
-          style={{
-            background:
-              "radial-gradient(60% 80% at 0% 0%, hsl(var(--gold)) 0%, transparent 60%)",
-          }}
-        />
-        <div className="relative editorial-container py-20 lg:py-28 grid lg:grid-cols-12 gap-12 lg:gap-16 items-end">
-          <div className="lg:col-span-7">
+      {/* Editorial hero — minimal, focused on the headline and the lead */}
+      <section className="relative bg-surface-container-low border-b hairline">
+        <div className="editorial-container py-20 lg:py-28">
+          <div className="max-w-4xl">
             <Reveal>
-              <p className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
+              <p className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
                 <span aria-hidden className="w-8 h-px bg-gold" />
-                <span>Contatti</span>
-                <span aria-hidden className="w-3 h-px bg-gold/50" />
-                <span className="text-primary/70">Risposta in 48h</span>
+                Contatti
               </p>
             </Reveal>
             <Reveal delay={120}>
               <h1 className="mt-8 serif-display text-display-2xl text-primary text-balance leading-[1.04]">
-                Una consulenza riservata, entro 48 ore.
+                Parliamo del tuo caso, in via riservata.
               </h1>
             </Reveal>
             <Reveal delay={220}>
@@ -91,42 +80,7 @@ export default function Contatti() {
                 segreto professionale.
               </p>
             </Reveal>
-            <Reveal delay={320}>
-              <ul className="mt-10 flex flex-wrap gap-x-10 gap-y-5">
-                {[
-                  { i: Lock, t: "Segreto professionale" },
-                  { i: Timer, t: "Risposta in 48 ore" },
-                  { i: ShieldCheck, t: "Primo orientamento gratuito" },
-                ].map(({ i: Icon, t }) => (
-                  <li key={t} className="flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-primary font-semibold">
-                    <Icon className="w-4 h-4 text-gold-deep" strokeWidth={1.75} />
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
           </div>
-          <Reveal delay={200} className="lg:col-span-5">
-            <div className="grid grid-cols-2 gap-px bg-primary/10 border hairline">
-              {[
-                { v: 48, suffix: "h", l: "Tempo di risposta" },
-                { v: 50, suffix: "+", l: "Anni di esperienza" },
-                { v: 2, suffix: "", l: "Sedi operative" },
-                { v: 100, suffix: "%", l: "Riservatezza" },
-              ].map((s) => (
-                <div key={s.l} className="bg-background p-6">
-                  <CountUp
-                    to={s.v}
-                    suffix={s.suffix}
-                    className="font-serif text-3xl text-primary tabular-nums"
-                  />
-                  <p className="mt-3 text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                    {s.l}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
         </div>
       </section>
 
@@ -248,16 +202,8 @@ export default function Contatti() {
       </section>
 
       {/* Closing reassurance band — fills the void below the form */}
-      <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.04]"
-          style={{
-            background:
-              "radial-gradient(55% 70% at 100% 0%, hsl(var(--gold)) 0%, transparent 60%)",
-          }}
-        />
-        <div className="relative editorial-container py-20 lg:py-24">
+      <section className="bg-surface-container-low border-b hairline">
+        <div className="editorial-container py-20 lg:py-24">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             <div className="lg:col-span-5">
               <Reveal>
@@ -279,7 +225,7 @@ export default function Contatti() {
               </Reveal>
             </div>
 
-            <ol className="lg:col-span-7 grid sm:grid-cols-3 gap-px bg-primary/10 border hairline">
+            <ol className="lg:col-span-7 border-t hairline">
               {[
                 {
                   n: "01",
@@ -301,23 +247,24 @@ export default function Contatti() {
                 },
               ].map((s, i) => (
                 <Reveal key={s.n} delay={i * 100}>
-                  <li className="group bg-background p-8 h-full flex flex-col">
-                    <div className="flex items-center justify-between">
-                      <span className="font-serif text-2xl text-gold-deep tabular-nums">
-                        {s.n}
-                      </span>
+                  <li className="group grid grid-cols-12 gap-4 sm:gap-8 py-7 sm:py-8 items-baseline border-b hairline transition-colors duration-300 hover:bg-background -mx-4 px-4 lg:-mx-6 lg:px-6">
+                    <span className="col-span-2 font-serif text-2xl sm:text-3xl text-gold-deep tabular-nums leading-none">
+                      {s.n}
+                    </span>
+                    <div className="col-span-9 sm:col-span-8 flex flex-col">
+                      <h3 className="font-serif text-lg sm:text-xl text-primary leading-snug transition-colors duration-300 group-hover:text-gold-deep">
+                        {s.t}
+                      </h3>
+                      <p className="mt-2 text-[15px] text-muted-foreground leading-relaxed text-pretty">
+                        {s.d}
+                      </p>
+                    </div>
+                    <span className="col-span-1 sm:col-span-2 flex justify-end pt-1">
                       <s.i
                         className="w-5 h-5 text-gold-deep transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110"
                         strokeWidth={1.5}
                       />
-                    </div>
-                    <span aria-hidden className="block mt-4 h-px w-8 bg-gold/60" />
-                    <h3 className="mt-5 font-serif text-lg text-primary leading-snug">
-                      {s.t}
-                    </h3>
-                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                      {s.d}
-                    </p>
+                    </span>
                   </li>
                 </Reveal>
               ))}
