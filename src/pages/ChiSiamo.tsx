@@ -213,6 +213,9 @@ export default function ChiSiamo() {
         </div>
       </section>
 
+      {/* Feature ticker — divides heritage from team */}
+      <FeatureTicker />
+
       {/* Team — placeholder cards (no portraits yet) */}
       <section className="bg-surface-container-low border-b hairline">
         <div className="editorial-container py-16 sm:py-20 lg:py-28">
