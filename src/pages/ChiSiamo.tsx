@@ -419,11 +419,8 @@ function PartnersOrbit({
           const left = 50 + radiusPct * Math.cos(angle);
           const top = 50 + radiusPct * Math.sin(angle);
           return (
-            <Reveal key={p.name} delay={i * 100}>
-              <div
-                className="group absolute -translate-x-1/2 -translate-y-1/2"
-                style={{ left: `${left}%`, top: `${top}%` }}
-              >
+            <Reveal key={p.name} delay={i * 100} variant="fade" className="absolute" style={{ left: `${left}%`, top: `${top}%`, transform: "translate(-50%, -50%)" }}>
+              <div className="group">
                 <div className="relative flex flex-col items-center text-center w-44">
                   <span
                     aria-hidden
