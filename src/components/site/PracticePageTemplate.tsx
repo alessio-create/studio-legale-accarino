@@ -4,7 +4,6 @@ import { CTAButton } from "./CTAButton";
 import { FAQ, FAQItem } from "./FAQ";
 import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "./Reveal";
-import { ProcessIllustration, PROCESS_VARIANTS } from "./ProcessIllustration";
 import { ClientReviews } from "./ClientReviews";
 import { PracticeIntroSection } from "./PracticeIntroSection";
 import { OutcomesTicker } from "./OutcomesTicker";
@@ -197,14 +196,6 @@ export const PracticePageTemplate = ({
 
       {/* Process — line-art illustrated steps */}
       <section className="relative bg-background border-b hairline overflow-hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.03]"
-          style={{
-            background:
-              "radial-gradient(50% 70% at 0% 100%, hsl(var(--gold)) 0%, transparent 60%)",
-          }}
-        />
         <div className="relative editorial-container py-20 lg:py-28">
           <div className="grid lg:grid-cols-12 gap-12 mb-16 lg:mb-20 items-end">
             <div className="lg:col-span-7">
@@ -238,18 +229,19 @@ export const PracticePageTemplate = ({
                     {i > 0 && (
                       <span
                         aria-hidden
-                        className="hidden lg:flex absolute top-10 -left-4 -translate-y-1/2 items-center gap-1.5"
+                        className="hidden lg:flex absolute top-8 -left-4 -translate-y-1/2 items-center gap-1.5"
                       >
                         <span className="block w-1 h-1 rotate-45 bg-gold/70" />
                         <span className="block w-1 h-1 rotate-45 bg-gold" />
                         <span className="block w-1 h-1 rotate-45 bg-gold/70" />
                       </span>
                     )}
-                    <ProcessIllustration
-                      variant={PROCESS_VARIANTS[i % PROCESS_VARIANTS.length]}
-                      index={i}
-                    />
-                    <span className="mt-6 text-[10px] uppercase tracking-[0.28em] text-gold-deep font-semibold tabular-nums">
+                    {/* Engraved roman numeral — minimal, editorial */}
+                    <span className="font-serif text-5xl lg:text-6xl text-gold-deep leading-none tabular-nums">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="mt-5 inline-block h-px w-8 bg-gold/60" aria-hidden />
+                    <span className="mt-5 text-[10px] uppercase tracking-[0.28em] text-gold-deep font-semibold tabular-nums">
                       Fase {String(i + 1).padStart(2, "0")}
                     </span>
                     <h4 className="mt-3 font-serif text-xl lg:text-[1.35rem] text-primary leading-snug text-balance">
