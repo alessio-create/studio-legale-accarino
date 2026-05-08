@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -135,50 +136,88 @@ export default function ResultCard({
 
       {hasDetail && (
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-lg bg-primary text-primary-foreground border-gold/30">
-          <DialogHeader>
-            <p className="text-[10px] uppercase tracking-[0.22em] text-gold mb-2">
+        <DialogContent className="max-w-md bg-primary text-primary-foreground border-gold/30 p-6 max-h-[90vh] overflow-y-auto">
+          <DialogHeader className="space-y-1.5">
+            <p className="text-[10px] uppercase tracking-[0.22em] text-gold">
               {result.caseType}
             </p>
-            <DialogTitle className="font-serif text-3xl text-gold leading-tight">
+            <DialogTitle className="font-serif text-xl md:text-2xl text-gold leading-tight">
               {result.detail!.title}
             </DialogTitle>
-            <DialogDescription className="text-background/70 font-serif italic pt-2">
+            <DialogDescription className="text-background/70 font-serif italic text-sm leading-snug">
               {result.detail!.summary}
             </DialogDescription>
           </DialogHeader>
-          <dl className="mt-4 space-y-4 text-sm">
-            <div className="grid grid-cols-3 gap-4 border-t border-background/10 pt-4">
-              <dt className="text-[10px] uppercase tracking-[0.2em] text-background/60">
-                Procedura
-              </dt>
-              <dd className="col-span-2 text-background">
-                {result.detail!.procedure}
-              </dd>
-            </div>
-            <div className="grid grid-cols-3 gap-4 border-t border-background/10 pt-4">
-              <dt className="text-[10px] uppercase tracking-[0.2em] text-background/60">
-                Durata
-              </dt>
-              <dd className="col-span-2 text-background">
-                {result.detail!.duration}
-              </dd>
-            </div>
-            <div className="grid grid-cols-3 gap-4 border-t border-background/10 pt-4">
-              <dt className="text-[10px] uppercase tracking-[0.2em] text-background/60">
-                Esito
-              </dt>
-              <dd className="col-span-2 text-gold font-serif">
-                {result.detail!.outcome}
-              </dd>
-            </div>
-          </dl>
-          <p className="mt-6 text-[10px] italic text-background/40 border-t border-background/10 pt-4">
+          <div className="mt-3 rounded-md border border-background/10 bg-background/[0.04] py-3 px-4 text-center">
+            <p className="font-serif text-3xl md:text-4xl text-gold leading-none">
+              {result.value}
+            </p>
+            <p className="mt-1.5 text-[9px] uppercase tracking-[0.22em] text-background/60">
+              {result.label}
+            </p>
+          </div>
+          <DetailAccordion
+            items={[
+              { label: "Procedura", value: result.detail!.procedure },
+              { label: "Durata", value: result.detail!.duration },
+              { label: "Esito", value: result.detail!.outcome, highlight: true },
+            ]}
+          />
+          <p className="mt-3 text-[10px] italic text-background/40 border-t border-background/10 pt-3">
             Caso anonimizzato. Esempio illustrativo, non garanzia di risultato.
           </p>
         </DialogContent>
       </Dialog>
       )}
     </>
+  );
+}
+
+function DetailAccordion({
+  items,
+}: {
+  items: { label: string; value: string; highlight?: boolean }[];
+}) {
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <div className="mt-3 border-t border-background/10">
+      {items.map((it, i) => {
+        const isOpen = open === i;
+        return (
+          <div key={it.label} className="border-b border-background/10">
+            <button
+              type="button"
+              onClick={() => setOpen(isOpen ? null : i)}
+              className="w-full flex items-center justify-between gap-4 py-2.5 text-left"
+              aria-expanded={isOpen}
+            >
+              <span className="text-[10px] uppercase tracking-[0.22em] text-background/70">
+                {it.label}
+              </span>
+              <ChevronDown
+                className={`w-4 h-4 text-gold/70 transition-transform duration-300 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            <div
+              className={`grid transition-all duration-300 ease-out ${
+                isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+              }`}
+            >
+              <div className="overflow-hidden">
+                <p
+                  className={`pb-3 pr-6 text-sm leading-snug ${
+                    it.highlight ? "text-gold font-serif" : "text-background/90"
+                  }`}
+                >
+                  {it.value}
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 }
