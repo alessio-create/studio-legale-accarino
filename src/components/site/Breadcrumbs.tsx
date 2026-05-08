@@ -1,3 +1,12 @@
+/**
+ * Per-route background mapping so the breadcrumb bar visually fuses
+ * with the hero of the page below it (no color seam).
+ */
+const bgForPath = (pathname: string): string => {
+  if (pathname.startsWith("/blog")) return "bg-background";
+  return "bg-surface-container-low";
+};
+
 import { Fragment, useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronRight, Home } from "lucide-react";
@@ -62,8 +71,8 @@ export const Breadcrumbs = () => {
   const lastIndex = crumbs.length - 1;
 
   return (
-    <nav aria-label="Breadcrumb" className="bg-surface-container-low">
-      <ol className="editorial-container flex items-center gap-2 pt-8 sm:pt-10 pb-2 text-[10px] sm:text-[11px] uppercase tracking-[0.2em] font-medium overflow-x-auto whitespace-nowrap">
+    <nav aria-label="Breadcrumb" className={bgForPath(pathname)}>
+      <ol className="editorial-container flex items-center gap-2 pt-8 sm:pt-10 pb-1 text-[10px] sm:text-[11px] uppercase tracking-[0.2em] font-medium overflow-x-auto whitespace-nowrap">
         <li className="flex items-center gap-2 flex-shrink-0">
           <Link
             to="/"
