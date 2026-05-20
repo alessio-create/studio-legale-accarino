@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import logoFullSquare from "@/assets/logo-full-square.svg";
+import logoFullSquare from "@/assets/logo-accarino-loader.png";
 
 /**
  * Click-intercepting route transition. We hijack in-app link clicks, run the
@@ -140,7 +140,7 @@ export const RouteTransition = () => {
             <img
               src={logoFullSquare}
               alt="Studio Legale Accarino"
-              className="h-24 lg:h-28 w-auto"
+              className="h-36 lg:h-44 w-auto"
               draggable={false}
             />
             <span
