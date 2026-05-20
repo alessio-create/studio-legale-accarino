@@ -20,7 +20,6 @@ export const RouteTransition = () => {
   const { pathname } = useLocation();
   const [phase, setPhase] = useState<Phase>("idle");
   const timers = useRef<number[]>([]);
-  const [toHome, setToHome] = useState(false);
 
   const clearTimers = () => {
     timers.current.forEach((t) => window.clearTimeout(t));
