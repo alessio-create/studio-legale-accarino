@@ -37,7 +37,20 @@ export const SmoothScroll = () => {
     };
     rafId = requestAnimationFrame(raf);
 
-    // Glide on in-page anchor clicks (e.g. TOC links).
+    const getAnchorOffset = () => {
+      const navbar = document.querySelector<HTMLElement>("header");
+      const procedureBar = document.querySelector<HTMLElement>(
+        "[data-procedure-trigger-bar]",
+      );
+      const navbarHeight = navbar?.getBoundingClientRect().height ?? 0;
+      const procedureBarHeight =
+        procedureBar?.getBoundingClientRect().height ?? 0;
+
+      return -(navbarHeight + procedureBarHeight + 24);
+    };
+
+    // Glide on in-page anchor clicks (e.g. TOC links), respecting the fixed
+    // navbar and procedure index bar so headings remain fully visible.
     const onAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
       const link = target?.closest("a[href^='#']") as HTMLAnchorElement | null;
@@ -47,7 +60,8 @@ export const SmoothScroll = () => {
       const el = document.getElementById(id);
       if (!el) return;
       e.preventDefault();
-      lenis.scrollTo(el, { offset: -96, duration: 1.4 });
+      window.history.pushState(null, "", `#${id}`);
+      lenis.scrollTo(el, { offset: getAnchorOffset(), duration: 1.1 });
     };
     document.addEventListener("click", onAnchorClick);
 
