@@ -33,8 +33,8 @@ const serviceGroups = [
       },
       {
         to: "/concorsi-pubblici",
-        label: "Attività della Pubblica Amministrazione",
-        desc: "Pareri, procedimenti amministrativi, compliance e formazione.",
+        label: "Concorsi Pubblici",
+        desc: "Ricorsi su graduatorie, esclusioni, prove e bandi. Anche ricorsi collettivi.",
         icon: Users,
       },
     ],
