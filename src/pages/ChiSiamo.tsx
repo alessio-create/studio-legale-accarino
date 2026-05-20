@@ -193,22 +193,28 @@ export default function ChiSiamo() {
             />
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12 max-w-5xl mx-auto">
             {team.map((m, i) => (
               <Reveal key={i} delay={i * 100}>
                 <article className="group bg-background border hairline overflow-hidden transition-all duration-500 hover:shadow-[0_24px_60px_-30px_hsl(217_50%_12%/0.25)]">
                   {/* Portrait */}
-                  <div className="relative aspect-[4/5] bg-primary text-primary-foreground overflow-hidden">
+                  <div className="relative aspect-[3/4] bg-primary text-primary-foreground overflow-hidden">
                     <img
                       src={m.photo}
                       alt={`Ritratto di ${m.name}`}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                      className="absolute inset-0 w-full h-full object-cover object-[center_15%] transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
                       loading="lazy"
                     />
-                    <span className="absolute top-3 left-3 w-3 h-3 border-t border-l border-gold" />
-                    <span className="absolute top-3 right-3 w-3 h-3 border-t border-r border-gold" />
-                    <span className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-gold" />
-                    <span className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-gold" />
+                    {/* Subtle gradient for legibility of corner marks over light backgrounds */}
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-primary/30"
+                    />
+                    {/* Refined corner brackets — longer, thinner, gold, with hover bloom */}
+                    <span className="pointer-events-none absolute top-4 left-4 w-5 h-5 border-t-[1.5px] border-l-[1.5px] border-gold transition-all duration-500 group-hover:w-7 group-hover:h-7 group-hover:border-gold-deep" />
+                    <span className="pointer-events-none absolute top-4 right-4 w-5 h-5 border-t-[1.5px] border-r-[1.5px] border-gold transition-all duration-500 group-hover:w-7 group-hover:h-7 group-hover:border-gold-deep" />
+                    <span className="pointer-events-none absolute bottom-4 left-4 w-5 h-5 border-b-[1.5px] border-l-[1.5px] border-gold transition-all duration-500 group-hover:w-7 group-hover:h-7 group-hover:border-gold-deep" />
+                    <span className="pointer-events-none absolute bottom-4 right-4 w-5 h-5 border-b-[1.5px] border-r-[1.5px] border-gold transition-all duration-500 group-hover:w-7 group-hover:h-7 group-hover:border-gold-deep" />
                   </div>
                   <div className="p-6 sm:p-7">
                     <p className="text-[10px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
