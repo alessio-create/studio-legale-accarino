@@ -333,8 +333,9 @@ export default function Index() {
           height={1280}
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-deep/95 via-primary-deep/70 to-primary-deep/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-deep/95 via-primary-deep/85 to-primary-deep/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/70 to-primary-deep/30" />
+        <div className="absolute inset-0 bg-primary-deep/25" />
         <div className="absolute inset-0 bg-noise opacity-20" />
 
         <div className="relative z-10 editorial-container pt-28 pb-28 sm:pt-40 sm:pb-24 lg:pt-48 lg:pb-32">
