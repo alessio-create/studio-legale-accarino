@@ -11,11 +11,9 @@ import logoFullSquare from "@/assets/logo-full-square.svg";
  */
 type Phase = "idle" | "covering" | "held" | "revealing";
 
-const COVER_MS = 850;   // curtain slides in from bottom
-const HOLD_MS = 650;    // logo on screen while page swaps
-const REVEAL_MS = 700;  // curtain slides up
-const REVEAL_MS_HOME = 1100; // gentler, longer exit when arriving on Home
-const HOLD_MS_HOME = 800;
+const COVER_MS = 850;    // curtain slides in from bottom
+const HOLD_MS = 800;     // logo on screen while page swaps
+const REVEAL_MS = 1100;  // gentle, longer curtain exit
 
 export const RouteTransition = () => {
   const navigate = useNavigate();
