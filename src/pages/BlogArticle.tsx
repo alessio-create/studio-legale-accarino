@@ -24,7 +24,7 @@ const BlogArticle = () => {
 
       {/* Article hero — title + image */}
       <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
-        <div className="relative editorial-container py-12 sm:py-20 lg:py-28">
+        <div className="relative editorial-container pt-4 sm:pt-6 lg:pt-10 pb-12 sm:pb-20 lg:pb-28">
           <Reveal>
             <Link
               to="/blog"

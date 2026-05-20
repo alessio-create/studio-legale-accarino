@@ -76,7 +76,7 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
       <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-noise opacity-40" />
 
-        <div className="relative editorial-container pt-12 sm:pt-20 lg:pt-28 pb-10 sm:pb-14 lg:pb-20">
+        <div className="relative editorial-container pt-4 sm:pt-6 lg:pt-10 pb-10 sm:pb-14 lg:pb-20">
           {/* Breadcrumb / kicker */}
           <Reveal>
             <p className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.24em] font-semibold">
