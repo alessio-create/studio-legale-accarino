@@ -628,16 +628,15 @@ export default function Index() {
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 [&_.hairline]:border-white/15">
                   {group.items.map((item, idx) => (
                     <li
-                      key={item}
+                      key={item.label}
                       className="group border-t hairline first:border-t-0 md:[&:nth-child(2)]:border-t-0"
                     >
-                      {procedureTitleToSlug[item] ? (
                         <Link
-                          to={`/${procedureTitleToSlug[item]}`}
+                          to={item.to}
                           className="flex items-start justify-between gap-4 sm:gap-6 py-5 sm:py-6 min-h-[56px]"
                         >
                           <span className="font-serif text-base sm:text-lg text-white leading-snug text-pretty pr-2 sm:pr-4 group-hover:text-gold transition-colors">
-                            {item}
+                            {item.label}
                           </span>
                           <span className="flex items-center gap-3 pt-1 flex-shrink-0">
                             <ArrowUpRight className="w-4 h-4 text-gold opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
@@ -646,16 +645,6 @@ export default function Index() {
                             </span>
                           </span>
                         </Link>
-                      ) : (
-                        <div className="flex items-start justify-between gap-4 sm:gap-6 py-5 sm:py-6">
-                          <span className="font-serif text-base sm:text-lg text-white leading-snug text-pretty pr-2 sm:pr-4">
-                            {item}
-                          </span>
-                          <span className="text-[11px] tabular-nums tracking-[0.18em] text-white/50 pt-1 flex-shrink-0">
-                            {String(idx + 1).padStart(2, "0")}
-                          </span>
-                        </div>
-                      )}
                     </li>
                   ))}
                 </ul>
