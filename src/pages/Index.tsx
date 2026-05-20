@@ -104,14 +104,14 @@ const procedureGroups = [
     intro:
       "Assistenza alle Pubbliche Amministrazioni e alle stazioni appaltanti nella prevenzione e gestione del contenzioso.",
     items: [
-      "Difesa in giudizio davanti al TAR e al Consiglio di Stato",
-      "Consulenza sull'attività amministrativa",
-      "Procedimenti espropriativi e ablatori",
-      "Provvedimenti urbanistici e pianificazione",
-      "Gare d'appalto e procedure di affidamento",
-      "Corte dei Conti e responsabilità erariale",
-      "Concorsi pubblici e selezioni del personale",
-      "Formazione del personale e compliance",
+      { label: "Difesa in giudizio davanti al TAR e al Consiglio di Stato", to: "/procedure" },
+      { label: "Consulenza sull'attività amministrativa", to: "/pareri-legittimita-atti-amministrativi" },
+      { label: "Procedimenti espropriativi e ablatori", to: "/espropriazioni" },
+      { label: "Provvedimenti urbanistici e pianificazione", to: "/urbanistica-edilizia" },
+      { label: "Gare d'appalto e procedure di affidamento", to: "/appalti-pubblici" },
+      { label: "Corte dei Conti e responsabilità erariale", to: "/procedure" },
+      { label: "Concorsi pubblici e selezioni del personale", to: "/concorsi-pubblici" },
+      { label: "Formazione del personale e compliance", to: "/procedure" },
     ],
   },
   {
@@ -119,14 +119,14 @@ const procedureGroups = [
     intro:
       "Tutela di privati cittadini, professionisti e imprese nei rapporti conflittuali con la Pubblica Amministrazione.",
     items: [
-      "Espropriazioni pubbliche, opposizione a stima, occupazioni, retrocessione",
-      "Edilizia, ordinanze di demolizione e procedure di sanatoria",
-      "Permessi a costruire, SCIA e DIA",
-      "Vincoli di beni culturali e paesaggistici",
-      "Ricorsi contro atti delle Pubbliche amministrazioni",
-      "Ricorsi per gare d'appalto",
-      "Ricorsi nel pubblico impiego",
-      "Ricorsi contro sanzioni amministrative per l'accesso agli atti",
+      { label: "Espropriazioni pubbliche, opposizione a stima, occupazioni, retrocessione", to: "/espropriazioni" },
+      { label: "Edilizia, ordinanze di demolizione e procedure di sanatoria", to: "/urbanistica-edilizia" },
+      { label: "Permessi a costruire, SCIA e DIA", to: "/urbanistica-edilizia" },
+      { label: "Vincoli di beni culturali e paesaggistici", to: "/urbanistica-edilizia" },
+      { label: "Ricorsi contro atti delle Pubbliche amministrazioni", to: "/procedure" },
+      { label: "Ricorsi per gare d'appalto", to: "/appalti-pubblici" },
+      { label: "Ricorsi nel pubblico impiego", to: "/concorsi-pubblici" },
+      { label: "Ricorsi contro sanzioni amministrative per l'accesso agli atti", to: "/procedure" },
     ],
   },
 ];
@@ -628,16 +628,15 @@ export default function Index() {
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 [&_.hairline]:border-white/15">
                   {group.items.map((item, idx) => (
                     <li
-                      key={item}
+                      key={item.label}
                       className="group border-t hairline first:border-t-0 md:[&:nth-child(2)]:border-t-0"
                     >
-                      {procedureTitleToSlug[item] ? (
                         <Link
-                          to={`/${procedureTitleToSlug[item]}`}
+                          to={item.to}
                           className="flex items-start justify-between gap-4 sm:gap-6 py-5 sm:py-6 min-h-[56px]"
                         >
                           <span className="font-serif text-base sm:text-lg text-white leading-snug text-pretty pr-2 sm:pr-4 group-hover:text-gold transition-colors">
-                            {item}
+                            {item.label}
                           </span>
                           <span className="flex items-center gap-3 pt-1 flex-shrink-0">
                             <ArrowUpRight className="w-4 h-4 text-gold opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
@@ -646,16 +645,6 @@ export default function Index() {
                             </span>
                           </span>
                         </Link>
-                      ) : (
-                        <div className="flex items-start justify-between gap-4 sm:gap-6 py-5 sm:py-6">
-                          <span className="font-serif text-base sm:text-lg text-white leading-snug text-pretty pr-2 sm:pr-4">
-                            {item}
-                          </span>
-                          <span className="text-[11px] tabular-nums tracking-[0.18em] text-white/50 pt-1 flex-shrink-0">
-                            {String(idx + 1).padStart(2, "0")}
-                          </span>
-                        </div>
-                      )}
                     </li>
                   ))}
                 </ul>
