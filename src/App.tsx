@@ -16,6 +16,8 @@ import Blog from "./pages/Blog.tsx";
 import BlogArticle from "./pages/BlogArticle.tsx";
 import ProcedurePage from "./pages/ProcedurePage.tsx";
 import Procedures from "./pages/Procedures.tsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
+import CookiePolicy from "./pages/CookiePolicy.tsx";
 import { procedures } from "./data/procedures";
 import { RouteTransition } from "./components/site/RouteTransition";
 import { SmoothScroll } from "./components/site/SmoothScroll";
@@ -43,6 +45,8 @@ const App = () => (
             <Route path="/contatti" element={<Contatti />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogArticle />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
             {/* Procedures index — browseable taxonomy */}
             <Route path="/procedure" element={<Procedures />} />
             {/* Procedure pages — flat root URLs, generated from the registry */}
