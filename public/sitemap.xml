@@ -13,6 +13,8 @@
   <url><loc>https://studio-legale-accarino.lovable.app/chi-siamo</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://studio-legale-accarino.lovable.app/contatti</loc><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://studio-legale-accarino.lovable.app/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://studio-legale-accarino.lovable.app/privacy-policy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://studio-legale-accarino.lovable.app/cookie-policy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <!-- Blog articles -->
   <url><loc>https://studio-legale-accarino.lovable.app/blog/indennita-esproprio-aree-edificabili-2025</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://studio-legale-accarino.lovable.app/blog/soccorso-istruttorio-appalti-codice-2023</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
