@@ -142,10 +142,10 @@ export const Footer = () => (
       </div>
 
       <div className="mt-16 pt-8 border-t border-background/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <p className="text-xs text-background/50">
+        <p className="text-xs text-background/75">
           © {new Date().getFullYear()} Studio Legale Accarino · R.d.T. 3929066994
         </p>
-        <div className="flex items-center gap-5 text-[10px] uppercase tracking-[0.2em] text-background/50">
+        <div className="flex items-center gap-5 text-[10px] uppercase tracking-[0.2em] text-background/75">
           <Link to="/privacy-policy" className="hover:text-gold transition-colors">
             Privacy Policy
           </Link>
