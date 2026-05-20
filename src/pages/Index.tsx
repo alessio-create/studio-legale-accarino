@@ -62,7 +62,7 @@ const specializations = [
   },
   {
     number: "04",
-    title: "Attività della Pubblica Amministrazione",
+    title: "Lo Studio",
     description:
       "Consulenza e difesa di Enti e Amministrazioni: pareri di legittimità, procedimenti amministrativi, contenzioso e compliance.",
     icon: Users,
