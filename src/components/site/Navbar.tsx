@@ -49,8 +49,8 @@ const mainLinks = [
   { to: "/contatti", label: "Contatti" },
 ];
 
-const PHONE_DISPLAY = "+39 089 123 4567";
-const PHONE_HREF = "tel:+390891234567";
+const PHONE_DISPLAY = "+39 089 343140";
+const PHONE_HREF = "tel:+39089343140";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
