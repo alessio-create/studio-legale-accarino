@@ -92,7 +92,7 @@ export const Footer = () => (
             <li>
               <Link to="/concorsi-pubblici" className="hover:text-gold transition-colors inline-flex items-center gap-2 group">
                 <span className="w-1 h-1 bg-gold/50 group-hover:bg-gold transition-colors" />
-                Attività della Pubblica Amministrazione
+                Concorsi Pubblici
               </Link>
             </li>
             <li>
