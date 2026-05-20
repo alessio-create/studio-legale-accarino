@@ -45,18 +45,18 @@ const partners = [
 ];
 
 const milestones = [
-  { year: "1974", title: "Fondazione", text: "L'Avv. Francesco Accarino apre lo Studio a Salerno con vocazione amministrativista." },
+  { year: "1975", title: "Fondazione", text: "L'Avv. Francesco Accarino apre lo Studio con vocazione amministrativista." },
   { year: "1989", title: "Patrocinio in Cassazione", text: "Abilitazione alle giurisdizioni superiori e primi grandi contenziosi espropriativi." },
   { year: "2003", title: "Seconda generazione", text: "Si consolida la struttura partner con l'ingresso dell'Avv. Paolo Accarino." },
-  { year: "2014", title: "Sede di Cava de' Tirreni", text: "Apertura della seconda sede operativa per servire l'agro nocerino-sarnese." },
-  { year: "2024", title: "Cinquant'anni", text: "Una rete consolidata, oltre 600 mandati amministrativi seguiti." },
+  { year: "2012", title: "Sede di Salerno", text: "Apertura della seconda sede operativa a Salerno." },
+  { year: "2025", title: "Cinquant'anni", text: "Una rete consolidata, oltre 600 mandati amministrativi seguiti." },
 ];
 
 export default function ChiSiamo() {
   return (
     <Layout>
       <Seo
-        title="Chi Siamo · Studio Legale a Salerno dal 1974"
+        title="Chi Siamo · Studio Legale a Salerno dal 1975"
         description="Studio Legale Accarino: cinquant'anni di diritto amministrativo a Salerno. Due sedi, nove professionisti, una rete di partner di caratura nazionale."
         path="/chi-siamo"
         jsonLd={orgJsonLd}
@@ -70,7 +70,7 @@ export default function ChiSiamo() {
                 <span aria-hidden className="w-8 h-px bg-gold" />
                 <span>Lo Studio</span>
                 <span aria-hidden className="w-3 h-px bg-gold/50" />
-                <span className="text-primary/70">Dal 1974</span>
+                <span className="text-primary/70">Dal 1975</span>
               </p>
             </Reveal>
             <Reveal delay={120}>
@@ -80,7 +80,7 @@ export default function ChiSiamo() {
             </Reveal>
             <Reveal delay={220}>
               <p className="mt-6 sm:mt-8 text-base sm:text-xl text-muted-foreground leading-relaxed max-w-2xl text-pretty">
-                Fondato a Salerno nel 1974, lo Studio Legale Accarino è oggi uno
+                Fondato nel 1975, lo Studio Legale Accarino è oggi uno
                 dei riferimenti nel Sud Italia per il contenzioso amministrativo.
                 Una storia di continuità professionale, costruita su tre
                 principi: rigore tecnico, riservatezza, risultato.
@@ -159,9 +159,8 @@ export default function ChiSiamo() {
               </p>
               <dl className="lg:col-span-9 grid sm:grid-cols-2 gap-x-12 gap-y-6">
                 {[
-                  { t: "Magistrature Superiori", d: "Cassazione, Consiglio di Stato, Corte dei Conti." },
-                  { t: "Patrocinio cassazionista", d: "Abilitazione alle giurisdizioni superiori." },
-                  { t: "Enti pubblici assistiti", d: "Regione, Comuni, ASL, Consorzio ASI." },
+                  { t: "Magistrature Superiori", d: "Cassazione, Consiglio di Stato, Corte dei Conti, Tribunale Superiore delle Acque Pubbliche." },
+                  { t: "Enti pubblici assistiti", d: "Regione, Comuni, ASL, Consorzio ASI, CIRA (Centro Italiano Ricerca Aerospaziali)." },
                   { t: "Attività scientifica", d: "Pubblicazioni e contributi su riviste di settore." },
                 ].map((c) => (
                   <div key={c.t} className="flex flex-col">
@@ -332,7 +331,7 @@ function PartnersOrbit({
           />
           <span aria-hidden className="block mx-auto mt-3 h-px w-10 bg-gold" />
           <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
-            Salerno · 1974
+            Salerno · 1975
           </p>
         </div>
 
