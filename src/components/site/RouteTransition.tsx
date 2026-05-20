@@ -63,11 +63,11 @@ export const RouteTransition = () => {
         }}
       />
 
-      <div className="relative flex flex-col items-center gap-8 animate-rt-fade">
+      <div className="relative flex flex-col items-center gap-8">
         {/* Top hairline */}
         <span aria-hidden className="block h-px w-24 bg-gold/60" />
 
-        {/* Official logo */}
+        {/* Official logo — appears instantly, no fade */}
         <img
           src={logoFullSquare}
           alt="Studio Legale Accarino"
