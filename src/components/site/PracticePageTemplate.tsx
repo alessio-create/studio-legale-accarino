@@ -69,14 +69,14 @@ export const PracticePageTemplate = ({
               <div className="mt-7 sm:mt-10 flex flex-wrap gap-3 sm:gap-4">
                 <CTAButton to="/contatti">Parla con un avvocato</CTAButton>
                 <a
-                  href="tel:+390891234567"
+                  href="tel:+39089343140"
                   className="group inline-flex items-center justify-center gap-2.5 px-5 py-3 min-h-[44px] text-[11px] font-semibold uppercase tracking-[0.18em] text-primary hover:text-gold-deep transition-colors duration-300"
                 >
                   <Phone
                     className="w-3.5 h-3.5 text-gold-deep transition-transform duration-300 group-hover:translate-x-1"
                     strokeWidth={2}
                   />
-                  <span>089 123 4567</span>
+                  <span>089 343140</span>
                 </a>
               </div>
             </Reveal>

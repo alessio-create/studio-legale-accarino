@@ -396,11 +396,11 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
                     Risposta in 48h
                   </p>
                   <a
-                    href="tel:+390891234567"
+                    href="tel:+39089343140"
                     className="inline-flex items-center gap-2 text-sm text-primary hover:text-gold-deep transition-colors"
                   >
                     <Phone className="w-3.5 h-3.5 text-gold-deep" />
-                    089 123 4567
+                    089 343140
                   </a>
                 </div>
               </div>
@@ -466,11 +466,11 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
             <div className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-3 sm:gap-4">
               <CTAButton to="/contatti">Richiedi consulenza</CTAButton>
               <a
-                href="tel:+390891234567"
+                href="tel:+39089343140"
                 className="inline-flex items-center justify-center gap-3 px-6 py-4 min-h-[44px] text-[11px] uppercase tracking-[0.2em] text-background hover:text-gold transition-colors border border-background/20 hover:border-gold"
               >
                 <Phone className="w-4 h-4 text-gold" />
-                089 123 4567
+                089 343140
               </a>
             </div>
           </Reveal>
