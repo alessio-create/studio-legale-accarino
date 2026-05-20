@@ -7,6 +7,9 @@ import practiceEspropriazioni from "@/assets/practice-espropriazioni.jpg";
 import practiceUrbanistica from "@/assets/practice-urbanistica.jpg";
 import practiceAppalti from "@/assets/practice-appalti.jpg";
 import practiceConcorsi from "@/assets/practice-concorsi.jpg";
+import caseEspropriazioniCilento from "@/assets/case-espropriazioni-cilento.jpg";
+import caseAppaltiCampania from "@/assets/case-appalti-campania.jpg";
+import caseUrbanisticaCostiera from "@/assets/case-urbanistica-costiera.jpg";
 import francescoPhoto from "@/assets/team-francesco-accarino.png";
 import paoloPhoto from "@/assets/team-paolo-accarino.png";
 import danielePhoto from "@/assets/team-daniele-accarino.png";
@@ -22,6 +25,7 @@ import { MaximTicker } from "@/components/site/MaximTicker";
 import { WhereWeAre } from "@/components/site/WhereWeAre";
 import { Seo, orgJsonLd, faqJsonLd } from "@/components/site/Seo";
 import { procedureTitleToSlug } from "@/data/procedures";
+import { blogArticles } from "@/data/blog";
 
 /* ─────────────────────────── DATA ─────────────────────────── */
 
@@ -195,7 +199,7 @@ const caseStudies: CaseStudy[] = [
     outcome: "+€1,2M sull'offerta iniziale",
     excerpt:
       "Famiglia proprietaria di terreno agricolo soggetto a procedura espropriativa per opera viaria pubblica, con indennità inizialmente liquidata a valore agricolo.",
-    image: practiceEspropriazioni,
+    image: caseEspropriazioniCilento,
     detail: {
       metric: { value: "+€1,2M", label: "Recupero rispetto alla prima stima" },
       challenge:
@@ -213,7 +217,7 @@ const caseStudies: CaseStudy[] = [
     outcome: "Aggiudicazione riaffidata al ricorrente",
     excerpt:
       "PMI esclusa per presunto vizio formale dell'offerta tecnica in una procedura aperta per servizi alla Pubblica Amministrazione del valore di circa €4M.",
-    image: practiceAppalti,
+    image: caseAppaltiCampania,
     detail: {
       metric: { value: "28 giorni", label: "Dal ricorso alla sospensiva" },
       challenge:
@@ -231,7 +235,7 @@ const caseStudies: CaseStudy[] = [
     outcome: "Demolizione revocata, immobile sanato",
     excerpt:
       "Immobile residenziale in area sottoposta a vincolo paesaggistico, oggetto di ordinanza di demolizione a seguito di difformità rilevate dall'Ufficio Tecnico comunale.",
-    image: practiceUrbanistica,
+    image: caseUrbanisticaCostiera,
     detail: {
       metric: { value: "14 mesi", label: "Dall'istanza alla sanatoria definitiva" },
       challenge:
@@ -253,32 +257,14 @@ const heroStats = [
 ];
 
 /** BLOG — three featured articles linking to /blog. */
-const featuredArticles = [
-  {
-    category: "Espropriazioni",
-    date: "12 Marzo 2026",
-    readTime: "6 min",
-    title: "Indennità di esproprio: come contestare la stima dell'Agenzia delle Entrate.",
-    excerpt:
-      "Una guida operativa ai criteri di valutazione e agli strumenti di opposizione davanti alla Corte d'Appello.",
-  },
-  {
-    category: "Appalti Pubblici",
-    date: "28 Febbraio 2026",
-    readTime: "4 min",
-    title: "Rito appalti: i 30 giorni che decidono la sorte di una gara.",
-    excerpt:
-      "Termini, sospensiva cautelare e strategie processuali nel contenzioso accelerato davanti al TAR.",
-  },
-  {
-    category: "Urbanistica",
-    date: "14 Febbraio 2026",
-    readTime: "5 min",
-    title: "Sanatorie edilizie in zone vincolate: cosa cambia con la riforma.",
-    excerpt:
-      "L'accertamento di conformità e il parere della Soprintendenza alla luce della giurisprudenza più recente.",
-  },
-];
+const featuredArticles = blogArticles.slice(0, 3).map((a) => ({
+  slug: a.slug,
+  category: a.category,
+  date: a.date,
+  readTime: a.readingTime,
+  title: a.title,
+  excerpt: a.excerpt,
+}));
 
 const credentials = [
   "Regione Campania",
@@ -711,8 +697,8 @@ export default function Index() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-primary/10 border hairline">
             {featuredArticles.map((a) => (
               <Link
-                key={a.title}
-                to="/blog"
+                key={a.slug}
+                to={`/blog/${a.slug}`}
                 className="group bg-background p-7 sm:p-10 lg:p-12 flex flex-col hover:bg-surface-container-low transition-colors"
               >
                 <div className="flex items-center justify-between mb-6 sm:mb-8">
@@ -734,7 +720,7 @@ export default function Index() {
 
                 <div className="mt-8 sm:mt-10 pt-6 border-t hairline flex items-center justify-between">
                   <span className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                    {a.readTime} di lettura
+                    {a.readTime}
                   </span>
                   <ArrowUpRight
                     className="w-4 h-4 text-gold-deep group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
