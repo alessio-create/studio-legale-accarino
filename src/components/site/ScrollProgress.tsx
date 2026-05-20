@@ -32,7 +32,7 @@ export const ScrollProgress = () => {
   return (
     <div
       aria-hidden
-      className="fixed left-0 right-0 top-[64px] lg:top-[72px] z-40 h-[2px] bg-transparent pointer-events-none"
+      className="fixed left-0 right-0 top-0 z-[60] h-[2px] bg-transparent pointer-events-none"
     >
       <div
         className="h-full origin-left bg-gradient-to-r from-gold via-gold-deep to-gold transition-[transform] duration-100 ease-out"
