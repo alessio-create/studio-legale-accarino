@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import logoFull from "@/assets/logo-accarino-full.png";
-import logoMark from "@/assets/logo-accarino-mark.png";
+import logoFullInverted from "@/assets/logo-accarino-full-inverted.png";
 
 /**
  * Wordmark placeholder for Studio Legale Accarino.
@@ -15,9 +15,9 @@ export const Logo = ({ inverted = false }: { inverted?: boolean }) => {
       aria-label="Studio Legale Accarino — Home"
     >
       <img
-        src={inverted ? logoMark : logoFull}
+        src={inverted ? logoFullInverted : logoFull}
         alt="Studio Legale Accarino"
-        className={`${inverted ? "h-10 w-auto" : "h-10 sm:h-11 w-auto"} flex-shrink-0`}
+        className="h-10 sm:h-11 w-auto flex-shrink-0"
       />
     </Link>
   );
