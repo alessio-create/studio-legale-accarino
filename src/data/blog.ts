@@ -1,9 +1,9 @@
-import practiceEspropriazioni from "@/assets/practice-espropriazioni.jpg";
-import practiceAppalti from "@/assets/practice-appalti.jpg";
-import practiceConcorsi from "@/assets/practice-concorsi.jpg";
-import practiceUrbanistica from "@/assets/practice-urbanistica.jpg";
-import lawBooks from "@/assets/law-books.jpg";
-import heroColumns from "@/assets/hero-columns.jpg";
+import blogIndennitaEsproprio from "@/assets/blog-indennita-esproprio.jpg";
+import blogSoccorsoIstruttorio from "@/assets/blog-soccorso-istruttorio.jpg";
+import blogRicorsoGraduatoria from "@/assets/blog-ricorso-graduatoria.jpg";
+import blogPermessoCostruire from "@/assets/blog-permesso-costruire.jpg";
+import blogOccupazioneAcquisitiva from "@/assets/blog-occupazione-acquisitiva.jpg";
+import blogAnomaliaOfferta from "@/assets/blog-anomalia-offerta.jpg";
 
 export interface BlogArticleEvidence {
   label: string;
