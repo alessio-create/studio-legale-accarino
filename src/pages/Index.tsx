@@ -575,8 +575,25 @@ export default function Index() {
       </section>
 
       {/* ───────────── WHAT WE CAN DO FOR YOU ───────────── */}
-      <section className="bg-background border-y hairline">
-        <div className="editorial-container py-14 sm:py-20 lg:py-28">
+      <section className="relative border-y hairline overflow-hidden bg-[hsl(var(--primary)/0.04)]">
+        {/* Soft navy tint + gold ambient wash to anchor the section in brand */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, hsl(var(--primary) / 0.06) 0%, hsl(var(--primary) / 0.02) 60%, transparent 100%)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.05]"
+          style={{
+            background:
+              "radial-gradient(60% 50% at 90% 0%, hsl(var(--gold)) 0%, transparent 70%)",
+          }}
+        />
+        <div className="relative editorial-container py-14 sm:py-20 lg:py-28">
           <div className="flex items-end justify-between flex-wrap gap-6 sm:gap-8 mb-10 sm:mb-16 lg:mb-20">
             <div className="max-w-3xl">
               <Eyebrow>Cosa facciamo per voi</Eyebrow>
