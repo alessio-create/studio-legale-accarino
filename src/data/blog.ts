@@ -141,6 +141,7 @@ export const blogArticles: BlogArticle[] = [
     slug: "ricorso-graduatoria-concorso-pubblico",
     category: "Concorsi Pubblici",
     title: "Ricorso contro la graduatoria di un concorso pubblico: termini e strategia",
+    seoTitle: "Ricorso graduatoria concorso pubblico · Accarino",
     excerpt:
       "Sessanta giorni per impugnare, una preparazione documentale che inizia molto prima. Le tappe concrete per costruire un ricorso efficace.",
     image: blogRicorsoGraduatoria,
@@ -183,6 +184,7 @@ export const blogArticles: BlogArticle[] = [
     slug: "permesso-costruire-silenzio-assenso",
     category: "Urbanistica",
     title: "Permesso di costruire e silenzio-assenso: quando vale e quando no",
+    seoTitle: "Permesso di costruire e silenzio-assenso · Accarino",
     excerpt:
       "L'art. 20 del Testo Unico Edilizia regola il silenzio-assenso, ma vincoli paesaggistici e tutele speciali ne escludono l'operatività in molti casi pratici.",
     image: blogPermessoCostruire,
@@ -215,6 +217,7 @@ export const blogArticles: BlogArticle[] = [
     slug: "occupazione-acquisitiva-risarcimento",
     category: "Espropriazioni",
     title: "Occupazione senza titolo della P.A.: come ottenere il risarcimento",
+    seoTitle: "Occupazione senza titolo P.A. e risarcimento · Accarino",
     excerpt:
       "Dall'art. 42-bis del T.U. Espropri alla giurisprudenza CEDU, il percorso per recuperare il valore del bene illegittimamente acquisito.",
     image: blogOccupazioneAcquisitiva,
@@ -251,6 +254,7 @@ export const blogArticles: BlogArticle[] = [
     slug: "anomalia-offerta-appalti-pubblici",
     category: "Appalti Pubblici",
     title: "Anomalia dell'offerta: il sindacato del giudice amministrativo",
+    seoTitle: "Anomalia dell'offerta negli appalti pubblici · Accarino",
     excerpt:
       "I confini del controllo giurisdizionale sulla valutazione di anomalia nelle gare d'appalto, fra discrezionalità tecnica e vizi macroscopici.",
     image: blogAnomaliaOfferta,
