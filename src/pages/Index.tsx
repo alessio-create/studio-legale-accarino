@@ -62,7 +62,7 @@ const specializations = [
   },
   {
     number: "04",
-    title: "Attività della Pubblica Amministrazione",
+    title: "Lo Studio",
     description:
       "Consulenza e difesa di Enti e Amministrazioni: pareri di legittimità, procedimenti amministrativi, contenzioso e compliance.",
     icon: Users,
@@ -246,8 +246,8 @@ const caseStudies: CaseStudy[] = [
 
 /** Hero stats kept as part of the hero introduction. */
 const heroStats = [
-  { to: 50, suffix: "+", thousands: false, label: "Anni di esperienza", caption: "Dal 1974 al servizio del diritto pubblico" },
-  { to: 4, suffix: "", pad: 2, label: "Aree di specializzazione", caption: "Espropri · Urbanistica · Appalti · Concorsi" },
+  { to: 50, suffix: "+", thousands: false, label: "Anni di esperienza", caption: "Dal 1975 al servizio del diritto pubblico" },
+  { to: 4, suffix: "", pad: 2, label: "Aree di specializzazione", caption: "Espropri · Urbanistica · Appalti · Lo Studio" },
   { to: 1700, suffix: "+", thousands: true, label: "Cause patrocinate", caption: "TAR, Consiglio di Stato, Cassazione" },
   { to: 9, suffix: "", label: "Professionisti dedicati", caption: "Team multidisciplinare su due sedi" },
 ];
@@ -295,7 +295,7 @@ export default function Index() {
   return (
     <Layout>
       <Seo
-        title="Studio Legale a Salerno · Diritto Amministrativo dal 1974"
+        title="Studio Legale a Salerno · Diritto Amministrativo dal 1975"
         description="Espropriazioni, appalti, concorsi, urbanistica a Salerno. Ti rispondiamo entro 48 ore con un primo orientamento gratuito su tempi, opzioni e costi."
         path="/"
         jsonLd={[

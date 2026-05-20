@@ -56,7 +56,7 @@ export default function ChiSiamo() {
   return (
     <Layout>
       <Seo
-        title="Chi Siamo · Studio Legale a Salerno dal 1975"
+        title="Lo Studio · Studio Legale a Salerno dal 1975"
         description="Studio Legale Accarino: cinquant'anni di diritto amministrativo a Salerno. Due sedi, nove professionisti, una rete di partner di caratura nazionale."
         path="/chi-siamo"
         jsonLd={orgJsonLd}
