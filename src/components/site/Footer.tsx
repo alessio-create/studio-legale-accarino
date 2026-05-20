@@ -104,8 +104,8 @@ export const Footer = () => (
             <li><Link to="/chi-siamo" className="hover:text-gold transition-colors">Chi Sono</Link></li>
             <li><Link to="/blog" className="hover:text-gold transition-colors">Blog</Link></li>
             <li><Link to="/contatti" className="hover:text-gold transition-colors">Contatti</Link></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Cookie Policy</a></li>
+            <li><Link to="/privacy-policy" className="hover:text-gold transition-colors">Privacy Policy</Link></li>
+            <li><Link to="/cookie-policy" className="hover:text-gold transition-colors">Cookie Policy</Link></li>
           </ul>
         </div>
 
@@ -139,13 +139,13 @@ export const Footer = () => (
           © {new Date().getFullYear()} Studio Legale Accarino · R.d.T. 3929066994
         </p>
         <div className="flex items-center gap-5 text-[10px] uppercase tracking-[0.2em] text-background/50">
-          <a href="#" className="hover:text-gold transition-colors">
+          <Link to="/privacy-policy" className="hover:text-gold transition-colors">
             Privacy Policy
-          </a>
+          </Link>
           <span aria-hidden="true">·</span>
-          <a href="#" className="hover:text-gold transition-colors">
+          <Link to="/cookie-policy" className="hover:text-gold transition-colors">
             Cookie Policy
-          </a>
+          </Link>
         </div>
       </div>
     </div>

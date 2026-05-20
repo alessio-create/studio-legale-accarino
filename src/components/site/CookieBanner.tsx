@@ -72,7 +72,7 @@ export const CookieBanner = () => {
             <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
               Utilizziamo cookie tecnici essenziali e, previo consenso, cookie
               analitici per migliorare il sito. Consulta la{" "}
-              <Link to="/" className="text-gold-deep underline underline-offset-2">
+              <Link to="/privacy-policy" className="text-gold-deep underline underline-offset-2">
                 Privacy Policy
               </Link>
               .
