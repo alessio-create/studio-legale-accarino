@@ -214,7 +214,7 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
             {/* ── Left meta rail (sticky, animated in) ── */}
             <Reveal
               as="aside"
-              className="lg:col-span-3 lg:sticky lg:top-32 self-start"
+              className="lg:col-span-3 lg:sticky lg:top-[180px] self-start"
             >
               <div className="border-l-2 border-gold pl-6 lg:pl-7 space-y-8">
                 <MetaItem label="Per chi" value={procedure.audience} />
@@ -264,7 +264,7 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
                 <article
                   key={s.id}
                   id={s.id}
-                  className="scroll-mt-32 relative"
+                  className="scroll-mt-[180px] relative"
                 >
                   {/* Oversized ghost numeral — museum catalog cue */}
                   <span
@@ -364,7 +364,7 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
             <Reveal
               as="aside"
               delay={150}
-              className="hidden lg:block lg:col-span-3 lg:sticky lg:top-32 self-start"
+              className="hidden lg:block lg:col-span-3 lg:sticky lg:top-[180px] self-start"
             >
               <div className="pl-2">
                 <p className="text-[10px] uppercase tracking-[0.24em] text-gold-deep font-semibold mb-6">
