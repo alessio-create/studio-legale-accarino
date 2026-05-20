@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { MessageCircle, Send, Sparkles, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 /**
  * Floating concierge chatbot — bottom-right.
@@ -17,10 +18,18 @@ import { MessageCircle, Send, Sparkles, X } from "lucide-react";
  * be wired to a Lovable AI edge function trained on the site's content.
  */
 
-type Message = { role: "user" | "assistant"; content: string };
+type Message = {
+  role: "user" | "assistant";
+  content: string;
+  cta?: { label: string; to: string };
+};
 
-const PLACEHOLDER_REPLY =
-  "Grazie per la tua domanda. Un avvocato del team risponderà a breve. Nel frattempo, posso indirizzarti alla sezione del sito più pertinente.";
+const CONTACT_REPLY: Message = {
+  role: "assistant",
+  content:
+    "Grazie per il tuo messaggio. Per una risposta puntuale ti invitiamo a contattarci direttamente: un avvocato del team ti risponderà al più presto.",
+  cta: { label: "Vai alla pagina Contatti", to: "/contatti" },
+};
 
 export const ChatWidget = () => {
   const [revealed, setRevealed] = useState(false);
@@ -30,6 +39,11 @@ export const ChatWidget = () => {
     {
       role: "assistant",
       content: "Scrivi un messaggio",
+    },
+    {
+      role: "assistant",
+      content:
+        "Benvenuto nello Studio Legale Accarino. Siamo qui per orientarti tra aree di pratica, procedure e contatti.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -88,9 +102,8 @@ export const ChatWidget = () => {
     if (!text) return;
     setMessages((m) => [...m, { role: "user", content: text }]);
     setInput("");
-    // TODO: wire to Lovable AI edge function trained on site content.
     window.setTimeout(() => {
-      setMessages((m) => [...m, { role: "assistant", content: PLACEHOLDER_REPLY }]);
+      setMessages((m) => [...m, CONTACT_REPLY]);
     }, 600);
   };
 
@@ -199,6 +212,16 @@ export const ChatWidget = () => {
                   }`}
                 >
                   {m.content}
+                  {m.cta && (
+                    <Link
+                      to={m.cta.to}
+                      onClick={() => setOpen(false)}
+                      className="mt-3 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-gold-deep font-semibold font-sans border-b border-gold/60 hover:border-gold-deep transition-colors"
+                    >
+                      {m.cta.label}
+                      <span aria-hidden>→</span>
+                    </Link>
+                  )}
                 </div>
               </div>
             ))}
