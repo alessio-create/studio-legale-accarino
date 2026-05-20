@@ -453,55 +453,75 @@ export default function Index() {
 
         <div className="relative editorial-container py-14 sm:py-20 lg:py-28">
           {/* — Single authoritative header — */}
-          <div className="mx-auto max-w-3xl text-center mb-10 sm:mb-16 lg:mb-24">
-            <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-gold-deep font-semibold">
-              <span aria-hidden className="w-8 h-px bg-gold" />
-              Lo Studio
-              <span aria-hidden className="w-8 h-px bg-gold" />
-            </span>
-            <h2 className="mt-5 sm:mt-8 serif-display text-display-xl text-balance text-primary leading-[1.08]">
-              I volti che firmano ogni pratica,{" "}
-              <span className="italic">le voci che ce ne danno conto</span>.
-            </h2>
-            <p className="mt-5 sm:mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Ogni mandato è seguito personalmente da uno dei professionisti
-              dello Studio. La fiducia non si racconta: si misura nel tempo e
-              nelle parole di chi ci ha scelto.
-            </p>
+          <div className="mx-auto max-w-3xl text-center mb-12 sm:mb-16 lg:mb-24">
+            <Reveal variant="fade">
+              <span className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-gold-deep font-semibold">
+                <span aria-hidden className="w-8 h-px bg-gold" />
+                Lo Studio
+                <span aria-hidden className="w-8 h-px bg-gold" />
+              </span>
+            </Reveal>
+            <Reveal delay={120}>
+              <h2 className="mt-5 sm:mt-8 serif-display text-display-xl text-balance text-primary leading-[1.08]">
+                I volti che firmano ogni pratica,{" "}
+                <span className="italic">le voci che ce ne danno conto</span>.
+              </h2>
+            </Reveal>
+            <Reveal delay={240}>
+              <p className="mt-5 sm:mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
+                Ogni mandato è seguito personalmente da uno dei professionisti
+                dello Studio. La fiducia non si racconta: si misura nel tempo e
+                nelle parole di chi ci ha scelto.
+              </p>
+            </Reveal>
+            <Reveal variant="hairline" delay={380} className="mx-auto mt-8 sm:mt-10 w-px h-10 sm:h-14 bg-gold/40">
+              <span className="sr-only">divider</span>
+            </Reveal>
           </div>
 
           {/* — Team grid — primary visual anchor — */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-12 max-w-5xl mx-auto">
             {team.map((m, i) => (
               <Reveal
                 key={m.name}
-                delay={i * 130}
+                delay={400 + i * 180}
                 className="group flex flex-col"
               >
                 {/* Portrait */}
                 <div className="relative aspect-[3/4] bg-primary text-primary-foreground overflow-hidden">
-                  <img
-                    src={m.photo}
-                    alt={`Ritratto di ${m.name}`}
-                    className="absolute inset-0 w-full h-full object-cover object-[center_15%] grayscale transition-all duration-[1200ms] ease-out group-hover:grayscale-0 group-hover:scale-[1.04]"
-                    loading="lazy"
-                  />
+                  {/* Animated reveal mask on first appearance */}
+                  <Reveal
+                    variant="hairline"
+                    delay={550 + i * 180}
+                    className="absolute inset-0"
+                  >
+                    <img
+                      src={m.photo}
+                      alt={`Ritratto di ${m.name}`}
+                      className="absolute inset-0 w-full h-full object-cover object-[center_15%] grayscale transition-all duration-[1200ms] ease-out group-hover:grayscale-0 group-hover:scale-[1.04]"
+                      loading="lazy"
+                    />
+                  </Reveal>
                   <span
                     aria-hidden
-                    className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-primary/30"
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-primary/40"
                   />
+                  {/* Editorial index numeral, bottom-left */}
+                  <span className="pointer-events-none absolute bottom-3 left-4 font-serif text-[11px] tracking-[0.22em] text-gold/80">
+                    · {String(i + 1).padStart(2, "0")} ·
+                  </span>
                 </div>
 
-                <div className="pt-7">
-                  <h3 className="font-serif text-2xl text-primary leading-tight">
-                    {m.name}
-                  </h3>
-                  <p className="mt-2 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
+                <div className="pt-6 sm:pt-7">
+                  <p className="text-[10px] uppercase tracking-[0.24em] text-gold-deep font-semibold">
                     {m.role}
                   </p>
+                  <h3 className="mt-3 font-serif text-2xl text-primary leading-tight transition-colors duration-500 group-hover:text-gold-deep">
+                    {m.name}
+                  </h3>
                   <span
                     aria-hidden
-                    className="block mt-5 w-10 h-px bg-gold/60 transition-all duration-500 group-hover:w-16 group-hover:bg-gold"
+                    className="block mt-5 w-10 h-px bg-gold/60 transition-all duration-500 group-hover:w-20 group-hover:bg-gold"
                   />
                   <p className="mt-5 text-sm text-muted-foreground leading-relaxed">
                     {m.focus}
