@@ -42,12 +42,12 @@
     --brand-blue-50:  210 88% 93%;      /* #DDEDFC */
 
     /* Accent — Bright Yellow #FDA311 (replaces previous "gold") */
-    --gold: 38 98% 53%;                 /* #FDA311 */
+    --gold: 37 98% 53%;                 /* #FDA311 */
     --gold-foreground: 220 51% 16%;
     --gold-soft: 33 100% 95%;           /* #FFF3E3 */
     --gold-deep: 33 99% 50%;            /* deepened brand yellow for text */
 
-    --brand-yellow: 38 98% 53%;         /* #FDA311 */
+    --brand-yellow: 37 98% 53%;         /* #FDA311 */
     --brand-yellow-500: 33 99% 62%;     /* #FEA93E */
     --brand-yellow-400: 30 99% 68%;     /* #FEB15E */
     --brand-yellow-300: 28 99% 75%;     /* #FEBC7F */
