@@ -122,7 +122,9 @@ export const RouteTransition = () => {
             phase === "covering"
               ? `rt-cover ${COVER_MS}ms cubic-bezier(0.65, 0, 0.35, 1) forwards`
               : undefined,
-          transition: `transform ${REVEAL_MS}ms cubic-bezier(0.76, 0, 0.24, 1)`,
+          transition: toHome
+            ? `transform ${REVEAL_MS_HOME}ms cubic-bezier(0.22, 1, 0.36, 1)`
+            : `transform ${REVEAL_MS}ms cubic-bezier(0.76, 0, 0.24, 1)`,
         }}
       >
         <div aria-hidden className="absolute inset-0 bg-noise opacity-25" />
