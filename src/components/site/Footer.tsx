@@ -123,7 +123,7 @@ export const Footer = () => (
               <MapPin className="w-4 h-4 text-gold mt-0.5 flex-shrink-0" strokeWidth={1.75} />
               <div>
                 <p className="text-background font-serif text-base">Salerno</p>
-                <p className="text-background/60 text-xs mt-1 leading-relaxed">
+                <p className="text-background/80 text-xs mt-1 leading-relaxed">
                   C.so Vittorio Emanuele 58<br />84121 Salerno (SA)
                 </p>
               </div>
@@ -132,7 +132,7 @@ export const Footer = () => (
               <MapPin className="w-4 h-4 text-gold mt-0.5 flex-shrink-0" strokeWidth={1.75} />
               <div>
                 <p className="text-background font-serif text-base">Cava de' Tirreni</p>
-                <p className="text-background/60 text-xs mt-1 leading-relaxed">
+                <p className="text-background/80 text-xs mt-1 leading-relaxed">
                   Via G. Accarino, 5<br />84013 Cava de' Tirreni (SA)
                 </p>
               </div>
