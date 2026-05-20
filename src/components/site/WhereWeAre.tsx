@@ -1,4 +1,4 @@
-import { Clock, MapPin, Phone } from "lucide-react";
+import { Clock, MapPin, Phone, ArrowUpRight } from "lucide-react";
 import { Eyebrow } from "./Eyebrow";
 import { Reveal } from "./Reveal";
 
@@ -22,6 +22,8 @@ const sedi = [
     hours: "Mar–Gio · 15:00–18:00 · su appuntamento",
     mapEmbed:
       "https://www.google.com/maps?q=Corso+Vittorio+Emanuele+58,+84121+Salerno+SA&output=embed",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Corso+Vittorio+Emanuele+58%2C+84121+Salerno+SA",
   },
   {
     city: "Cava de' Tirreni",
@@ -30,6 +32,8 @@ const sedi = [
     hours: "Lun–Ven · 10:00–17:00 · su appuntamento",
     mapEmbed:
       "https://www.google.com/maps?q=Via+G.+Accarino+5,+84013+Cava+de'+Tirreni+SA&output=embed",
+    mapLink:
+      "https://www.google.com/maps/search/?api=1&query=Via+G.+Accarino+5%2C+84013+Cava+de%27+Tirreni+SA",
   },
 ];
 
@@ -144,6 +148,18 @@ export function WhereWeAre() {
                 </div>
               </dl>
 
+              <a
+                href={s.mapLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-8 inline-flex items-center justify-center gap-2.5 self-start bg-primary text-primary-foreground px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] hover:bg-primary-glow transition-all shadow-inset-gold"
+              >
+                Apri su Google Maps
+                <ArrowUpRight
+                  className="w-3.5 h-3.5 text-gold transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  strokeWidth={2.25}
+                />
+              </a>
             </article>
           ))}
         </div>
