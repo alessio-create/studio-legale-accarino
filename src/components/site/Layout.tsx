@@ -15,7 +15,10 @@ export const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      <main className={`flex-1 ${isHome ? "" : "pt-20 lg:pt-[116px]"}`}>
+      <main
+        key={pathname}
+        className={`flex-1 animate-page-in ${isHome ? "" : "pt-20 lg:pt-[116px]"}`}
+      >
         {!isHome && <Breadcrumbs />}
         {children}
       </main>
