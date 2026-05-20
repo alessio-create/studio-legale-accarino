@@ -1,7 +1,7 @@
 import { Building2 } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { PracticePageTemplate } from "@/components/site/PracticePageTemplate";
-import { Seo, serviceJsonLd, faqJsonLd } from "@/components/site/Seo";
+import { Seo, serviceJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/components/site/Seo";
 import appaltiHero from "@/assets/appalti-pubblici.jpg";
 
 export default function AppaltiPubblici() {
@@ -25,6 +25,11 @@ export default function AppaltiPubblici() {
             path: "/appalti-pubblici",
           }),
           faqJsonLd(faq),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Aree di pratica", path: "/procedure" },
+            { name: "Appalti Pubblici", path: "/appalti-pubblici" },
+          ]),
         ]}
       />
       <PracticePageTemplate

@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowUpRight, BookOpen, Clock, ScrollText, User } from "luci
 import { Layout } from "@/components/site/Layout";
 import { CTAButton } from "@/components/site/CTAButton";
 import { Reveal } from "@/components/site/Reveal";
-import { Seo } from "@/components/site/Seo";
+import { Seo, breadcrumbJsonLd } from "@/components/site/Seo";
 import { getArticleBySlug, getRelatedArticles } from "@/data/blog";
 
 const BlogArticle = () => {
@@ -37,7 +37,14 @@ const BlogArticle = () => {
         path={`/blog/${article.slug}`}
         includeBrand={false}
         type="article"
-        jsonLd={articleJsonLd}
+        jsonLd={[
+          articleJsonLd,
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Blog", path: "/blog" },
+            { name: article.title, path: `/blog/${article.slug}` },
+          ]),
+        ]}
       />
 
       {/* Article hero — title + image */}

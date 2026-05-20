@@ -82,28 +82,65 @@ export function Seo({
 export const orgJsonLd: JsonLd = {
   "@context": "https://schema.org",
   "@type": "LegalService",
+  "@id": `${SITE_URL}/#legalservice`,
   name: SITE_NAME,
   url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`, // [PLACEHOLDER] caricare logo PNG quadrato
+  logo: `${SITE_URL}/logo.png`,
   image: DEFAULT_OG,
   description:
-    "Studio Legale Accarino, Salerno. Diritto amministrativo dal 1974: espropriazioni, appalti pubblici, concorsi, urbanistica.",
+    "Studio Legale Accarino, Salerno e Cava de' Tirreni. Diritto amministrativo dal 1975: espropriazioni, appalti pubblici, concorsi, urbanistica.",
+  foundingDate: "1975",
   areaServed: ["Salerno", "Campania", "Italia"],
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "[PLACEHOLDER indirizzo Salerno]",
-    addressLocality: "Salerno",
-    postalCode: "[PLACEHOLDER CAP]",
-    addressRegion: "SA",
-    addressCountry: "IT",
-  },
-  telephone: "[PLACEHOLDER telefono]",
-  email: "[PLACEHOLDER email]",
-  priceRange: "€€",
-  sameAs: [
-    // [PLACEHOLDER] LinkedIn, Google Business Profile, ecc.
+  address: [
+    {
+      "@type": "PostalAddress",
+      streetAddress: "C.so Vittorio Emanuele 58",
+      addressLocality: "Salerno",
+      postalCode: "84121",
+      addressRegion: "SA",
+      addressCountry: "IT",
+    },
+    {
+      "@type": "PostalAddress",
+      streetAddress: "Via G. Accarino 5",
+      addressLocality: "Cava de' Tirreni",
+      postalCode: "84013",
+      addressRegion: "SA",
+      addressCountry: "IT",
+    },
   ],
+  telephone: "+39 089 343140",
+  email: "studioassociato@accarino.it",
+  priceRange: "€€",
+  sameAs: [],
 };
+
+/** Sitewide WebSite identity — emitted once via index.html. */
+export const websiteJsonLd: JsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  name: SITE_NAME,
+  url: SITE_URL,
+  inLanguage: "it-IT",
+  publisher: { "@id": `${SITE_URL}/#legalservice` },
+};
+
+/** BreadcrumbList JSON-LD — strong signal for Google + AI extractors. */
+export function breadcrumbJsonLd(
+  items: { name: string; path: string }[],
+): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((it, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: it.name,
+      item: `${SITE_URL}${it.path.startsWith("/") ? it.path : `/${it.path}`}`,
+    })),
+  };
+}
 
 export function faqJsonLd(items: { q: string; a: string }[]): JsonLd {
   return {

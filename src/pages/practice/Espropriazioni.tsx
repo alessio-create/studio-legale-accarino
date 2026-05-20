@@ -1,7 +1,7 @@
 import { Landmark } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { PracticePageTemplate } from "@/components/site/PracticePageTemplate";
-import { Seo, serviceJsonLd, faqJsonLd } from "@/components/site/Seo";
+import { Seo, serviceJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/components/site/Seo";
 import lawBooks from "@/assets/espropriazioni.jpg";
 
 export default function Espropriazioni() {
@@ -25,6 +25,11 @@ export default function Espropriazioni() {
             path: "/espropriazioni",
           }),
           faqJsonLd(faq),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Aree di pratica", path: "/procedure" },
+            { name: "Espropriazioni", path: "/espropriazioni" },
+          ]),
         ]}
       />
       <PracticePageTemplate

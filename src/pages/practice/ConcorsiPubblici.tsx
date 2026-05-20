@@ -1,7 +1,7 @@
 import { Users } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { PracticePageTemplate } from "@/components/site/PracticePageTemplate";
-import { Seo, serviceJsonLd, faqJsonLd } from "@/components/site/Seo";
+import { Seo, serviceJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/components/site/Seo";
 import lawBooks from "@/assets/concorsi-pubblici.jpg";
 
 export default function ConcorsiPubblici() {
@@ -25,6 +25,11 @@ export default function ConcorsiPubblici() {
             path: "/concorsi-pubblici",
           }),
           faqJsonLd(faq),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Aree di pratica", path: "/procedure" },
+            { name: "Concorsi Pubblici", path: "/concorsi-pubblici" },
+          ]),
         ]}
       />
       <PracticePageTemplate

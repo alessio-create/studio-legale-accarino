@@ -15,7 +15,7 @@ import { ProceduresLayout } from "./ProceduresLayout";
 import { CTAButton } from "./CTAButton";
 import { Reveal } from "./Reveal";
 import { FAQ } from "./FAQ";
-import { Seo, faqJsonLd, serviceJsonLd } from "./Seo";
+import { Seo, faqJsonLd, serviceJsonLd, breadcrumbJsonLd } from "./Seo";
 import { SectionHeader } from "./SectionHeader";
 import { MobileTOC } from "./MobileTOC";
 import { useActiveSection } from "@/hooks/use-active-section";
@@ -100,6 +100,11 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
             path: `/${procedure.slug}`,
           }),
           faqJsonLd(procedure.faq),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Procedure", path: "/procedure" },
+            { name: procedure.title, path: `/${procedure.slug}` },
+          ]),
         ]}
       />
 
