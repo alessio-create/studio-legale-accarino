@@ -566,19 +566,19 @@ export default function Index() {
       </section>
 
       {/* ───────────── WHAT WE CAN DO FOR YOU ───────────── */}
-      <section className="relative border-y hairline bg-[hsl(var(--primary)/0.04)]">
-        {/* Soft navy tint + gold ambient wash to anchor the section in brand */}
+      <section className="relative border-y hairline bg-primary-deep text-white">
+        {/* Deep navy base + gold ambient wash to anchor the section in brand */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, hsl(var(--primary) / 0.06) 0%, hsl(var(--primary) / 0.02) 60%, transparent 100%)",
+              "linear-gradient(180deg, hsl(var(--primary-deep)) 0%, hsl(var(--primary)) 100%)",
           }}
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.05]"
+          className="pointer-events-none absolute inset-0 opacity-[0.18]"
           style={{
             background:
               "radial-gradient(60% 50% at 90% 0%, hsl(var(--gold)) 0%, transparent 70%)",
@@ -587,22 +587,23 @@ export default function Index() {
         <div className="relative editorial-container py-14 sm:py-20 lg:py-28">
           <div className="flex items-end justify-between flex-wrap gap-6 sm:gap-8 mb-10 sm:mb-16 lg:mb-20">
             <div className="max-w-3xl">
-              <Eyebrow>Cosa facciamo per voi</Eyebrow>
-              <h2 className="mt-5 sm:mt-6 serif-display text-display-xl text-balance">
-                Le procedure che gestiamo, divise per chi ne ha bisogno.
+              <span className="eyebrow text-gold">Cosa facciamo per voi</span>
+              <h2 className="mt-5 sm:mt-6 serif-display text-display-xl text-balance text-white">
+                Le procedure che gestiamo,{" "}
+                <span className="text-gold italic">divise per chi ne ha bisogno.</span>
               </h2>
-              <p className="mt-5 sm:mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
+              <p className="mt-5 sm:mt-6 text-base sm:text-lg text-white/75 leading-relaxed">
                 Una mappa operativa dei servizi: dalla consulenza preventiva al
-                contenzioso davanti alle Magistrature Superiori, distinta tra Pubbliche
-                Amministrazioni e soggetti privati.
+                contenzioso davanti alle <span className="text-gold">Magistrature Superiori</span>,
+                distinta tra <span className="text-gold">Pubbliche Amministrazioni</span> e <span className="text-gold">soggetti privati</span>.
               </p>
             </div>
             <Link
               to="/procedure"
-              className="hidden md:inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-primary hover:text-gold-deep transition-colors font-semibold"
+              className="hidden md:inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-white hover:text-gold transition-colors font-semibold"
             >
               Indice completo
-              <ArrowRight className="w-4 h-4 text-gold-deep" />
+              <ArrowRight className="w-4 h-4 text-gold" />
             </Link>
           </div>
 
@@ -614,17 +615,17 @@ export default function Index() {
               <div className="lg:col-span-3">
                 <div className="lg:sticky lg:top-32">
                   <span aria-hidden className="block w-8 h-px bg-gold mb-6" />
-                  <p className="text-[13px] sm:text-sm uppercase tracking-[0.24em] text-primary font-semibold">
+                  <p className="text-[13px] sm:text-sm uppercase tracking-[0.24em] text-gold font-semibold">
                     {group.audience}
                   </p>
-                  <p className="mt-4 sm:mt-6 text-base sm:text-[17px] text-muted-foreground leading-relaxed max-w-[300px]">
+                  <p className="mt-4 sm:mt-6 text-base sm:text-[17px] text-white/75 leading-relaxed max-w-[300px]">
                     {group.intro}
                   </p>
                 </div>
               </div>
 
               <div className="lg:col-span-9">
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 [&_.hairline]:border-white/15">
                   {group.items.map((item, idx) => (
                     <li
                       key={item}
@@ -635,22 +636,22 @@ export default function Index() {
                           to={`/${procedureTitleToSlug[item]}`}
                           className="flex items-start justify-between gap-4 sm:gap-6 py-5 sm:py-6 min-h-[56px]"
                         >
-                          <span className="font-serif text-base sm:text-lg text-primary leading-snug text-pretty pr-2 sm:pr-4 group-hover:text-gold-deep transition-colors">
+                          <span className="font-serif text-base sm:text-lg text-white leading-snug text-pretty pr-2 sm:pr-4 group-hover:text-gold transition-colors">
                             {item}
                           </span>
                           <span className="flex items-center gap-3 pt-1 flex-shrink-0">
-                            <ArrowUpRight className="w-4 h-4 text-gold-deep opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                            <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground">
+                            <ArrowUpRight className="w-4 h-4 text-gold opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                            <span className="text-[11px] tabular-nums tracking-[0.18em] text-white/50">
                               {String(idx + 1).padStart(2, "0")}
                             </span>
                           </span>
                         </Link>
                       ) : (
                         <div className="flex items-start justify-between gap-4 sm:gap-6 py-5 sm:py-6">
-                          <span className="font-serif text-base sm:text-lg text-primary leading-snug text-pretty pr-2 sm:pr-4">
+                          <span className="font-serif text-base sm:text-lg text-white leading-snug text-pretty pr-2 sm:pr-4">
                             {item}
                           </span>
-                          <span className="text-[11px] tabular-nums tracking-[0.18em] text-muted-foreground pt-1 flex-shrink-0">
+                          <span className="text-[11px] tabular-nums tracking-[0.18em] text-white/50 pt-1 flex-shrink-0">
                             {String(idx + 1).padStart(2, "0")}
                           </span>
                         </div>
