@@ -52,7 +52,8 @@ export default function Contatti() {
   return (
     <Layout>
       <Seo
-        title="Contatti · Studio Legale a Salerno"
+        title="Contatti · Studio Legale Accarino Salerno"
+        includeBrand={false}
         description="Prenota una consulenza riservata. Ti rispondiamo entro 48 ore con un primo orientamento concreto su tempi, opzioni e costi. Sedi a Salerno e Cava de' Tirreni."
         path="/contatti"
         jsonLd={orgJsonLd}

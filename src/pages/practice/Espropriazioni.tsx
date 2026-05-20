@@ -14,7 +14,8 @@ export default function Espropriazioni() {
   return (
     <Layout>
       <Seo
-        title="Avvocato Espropriazioni a Salerno · Opposizione alla Stima"
+        title="Avvocato Espropriazioni Salerno · Opposizione Stima"
+        includeBrand={false}
         description="Hai ricevuto un decreto di esproprio o un'occupazione d'urgenza? Studio Legale a Salerno specializzato in opposizione alla stima e contenzioso TAR. Risposta in 48h."
         path="/espropriazioni"
         jsonLd={[

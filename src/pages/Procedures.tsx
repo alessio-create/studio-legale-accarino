@@ -38,6 +38,7 @@ export default function Procedures() {
     <ProceduresLayout>
       <Seo
         title="Indice delle Procedure · Studio Legale Accarino"
+        includeBrand={false}
         description="Mappa completa delle procedure trattate dallo Studio: divise per Pubbliche Amministrazioni e privati, organizzate per area di pratica. Risposta in 48h."
         path="/procedure"
       />

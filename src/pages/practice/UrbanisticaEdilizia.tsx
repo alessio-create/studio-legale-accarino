@@ -14,7 +14,8 @@ export default function UrbanisticaEdilizia() {
   return (
     <Layout>
       <Seo
-        title="Avvocato Urbanistica ed Edilizia a Salerno · Permessi e Sanatorie"
+        title="Avvocato Urbanistica Salerno · Permessi e Sanatorie"
+        includeBrand={false}
         description="Permessi a costruire, varianti, vincoli, abusi: assistenza completa nei rapporti con Comuni, Soprintendenze e Regione in Campania. Risposta in 48h."
         path="/urbanistica-edilizia"
         jsonLd={[
