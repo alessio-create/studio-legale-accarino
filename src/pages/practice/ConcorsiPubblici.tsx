@@ -14,7 +14,8 @@ export default function ConcorsiPubblici() {
   return (
     <Layout>
       <Seo
-        title="Avvocato Concorsi Pubblici a Salerno · Ricorsi e Graduatorie"
+        title="Avvocato Concorsi Pubblici Salerno · Graduatorie"
+        includeBrand={false}
         description="Escluso da un concorso o fuori dalla graduatoria utile? Studio a Salerno specializzato in ricorsi TAR su graduatorie, prove e bandi. Anche ricorsi collettivi."
         path="/concorsi-pubblici"
         jsonLd={[

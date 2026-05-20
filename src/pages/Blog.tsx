@@ -32,9 +32,10 @@ const Blog = () => {
   return (
     <Layout>
       <Seo
-        title="Blog · Diritto Amministrativo, Appalti, Espropri"
+        title="Blog Studio Accarino · Diritto Amministrativo"
         description="Approfondimenti, sentenze commentate e guide pratiche su espropriazioni, appalti pubblici, concorsi e urbanistica. A cura dello Studio Legale Accarino."
         path="/blog"
+        includeBrand={false}
       />
       <PageHero
         eyebrow="Insights & Aggiornamenti"

@@ -14,7 +14,8 @@ export default function AppaltiPubblici() {
   return (
     <Layout>
       <Seo
-        title="Avvocato Appalti Pubblici a Salerno · Ricorsi TAR Gare"
+        title="Avvocato Appalti Pubblici Salerno · Ricorsi TAR"
+        includeBrand={false}
         description="Esclusa o non aggiudicataria di una gara? Studio a Salerno specializzato in ricorsi TAR su esclusioni, sospensive cautelari e contenzioso appalti. Analisi in 48h."
         path="/appalti-pubblici"
         jsonLd={[

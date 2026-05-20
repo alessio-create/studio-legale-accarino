@@ -301,9 +301,10 @@ export default function Index() {
   return (
     <Layout>
       <Seo
-        title="Studio Legale a Salerno · Diritto Amministrativo dal 1975"
+        title="Studio Legale Accarino · Diritto Amministrativo Salerno"
         description="Espropriazioni, appalti, concorsi, urbanistica a Salerno. Ti rispondiamo entro 48 ore con un primo orientamento gratuito su tempi, opzioni e costi."
         path="/"
+        includeBrand={false}
         jsonLd={[
           orgJsonLd,
           faqJsonLd([
