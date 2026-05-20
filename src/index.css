@@ -438,13 +438,16 @@
 
   /* Route cross-fade — applied to <main> on every navigation via key={pathname} */
   .animate-page-in {
-    animation: page-in 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: none;
   }
   @keyframes page-in {
     0%   { opacity: 0; transform: translateY(6px); }
     100% { opacity: 1; transform: translateY(0); }
   }
-  @media (prefers-reduced-motion: reduce) {
-    .animate-page-in { animation: none; }
+
+  /* Route curtain — slides up from below to cover the current page */
+  @keyframes rt-cover {
+    from { transform: translate3d(0, 100%, 0); }
+    to   { transform: translate3d(0, 0, 0); }
   }
 }
