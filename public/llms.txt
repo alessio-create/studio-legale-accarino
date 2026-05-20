@@ -1,0 +1,27 @@
+# Studio Legale Accarino
+
+> Studio legale a Salerno specializzato in diritto amministrativo dal 1975: espropriazioni, appalti pubblici, concorsi pubblici, urbanistica ed edilizia.
+
+## Pages
+
+- [Home](/): Presentazione dello Studio e aree di specializzazione.
+- [Lo Studio](/chi-siamo): Storia, professionisti e sedi (Salerno, Cava de' Tirreni).
+- [Contatti](/contatti): Richiesta consulenza e recapiti.
+- [Blog](/blog): Approfondimenti, sentenze commentate e guide pratiche.
+- [Indice Procedure](/procedure): Mappa completa delle procedure trattate.
+
+## Specializzazioni
+
+- [Espropriazioni](/espropriazioni): Opposizione alla stima, occupazioni illegittime, retrocessione.
+- [Appalti Pubblici](/appalti-pubblici): Ricorsi TAR su esclusioni, sospensive, contenzioso gare.
+- [Concorsi Pubblici](/concorsi-pubblici): Impugnazione graduatorie, ricorsi collettivi, pubblico impiego.
+- [Urbanistica ed Edilizia](/urbanistica-edilizia): Permessi a costruire, vincoli, abusi edilizi.
+
+## Blog
+
+- [Indennità di esproprio per aree edificabili 2025](/blog/indennita-esproprio-aree-edificabili-2025)
+- [Soccorso istruttorio nel nuovo Codice Appalti](/blog/soccorso-istruttorio-appalti-codice-2023)
+- [Ricorso contro la graduatoria di un concorso pubblico](/blog/ricorso-graduatoria-concorso-pubblico)
+- [Permesso di costruire e silenzio-assenso](/blog/permesso-costruire-silenzio-assenso)
+- [Occupazione senza titolo della P.A.](/blog/occupazione-acquisitiva-risarcimento)
+- [Anomalia dell'offerta negli appalti pubblici](/blog/anomalia-offerta-appalti-pubblici)
