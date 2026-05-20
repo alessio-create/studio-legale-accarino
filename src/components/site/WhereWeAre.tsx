@@ -23,8 +23,8 @@ const sedi = [
     parking: "[PLACEHOLDER es. parcheggio convenzionato a 80m, sosta libera in Via …]",
     transit: "[PLACEHOLDER es. Stazione Salerno a 10 min a piedi · bus 1, 4, 9]",
     a11y: "[PLACEHOLDER conferma accessibilità: ingresso a livello strada / ascensore / bagno accessibile]",
-    // Maps embed: usare una URL "https://www.google.com/maps/embed?..." reale.
-    mapEmbed: "", // vuoto = mostriamo placeholder visivo invece dell'iframe
+    mapEmbed:
+      "https://www.google.com/maps?q=Corso+Vittorio+Emanuele+58,+84121+Salerno+SA&output=embed",
   },
   {
     city: "Cava de' Tirreni",
@@ -34,7 +34,8 @@ const sedi = [
     parking: "[PLACEHOLDER es. parcheggio Trezza a 5 min]",
     transit: "[PLACEHOLDER es. Stazione Cava de' Tirreni a 7 min a piedi]",
     a11y: "[PLACEHOLDER]",
-    mapEmbed: "",
+    mapEmbed:
+      "https://www.google.com/maps?q=Via+G.+Accarino+5,+84013+Cava+de'+Tirreni+SA&output=embed",
   },
 ];
 
