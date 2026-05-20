@@ -474,7 +474,9 @@ export default function Index() {
                 nelle parole di chi ci ha scelto.
               </p>
             </Reveal>
-            <Reveal variant="hairline" delay={380} className="mx-auto mt-8 sm:mt-10 w-px h-10 sm:h-14 bg-gold/40" />
+            <Reveal variant="hairline" delay={380} className="mx-auto mt-8 sm:mt-10 w-px h-10 sm:h-14 bg-gold/40">
+              <span className="sr-only">divider</span>
+            </Reveal>
           </div>
 
           {/* — Team grid — primary visual anchor — */}
