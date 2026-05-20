@@ -435,4 +435,16 @@
     @apply text-gold-deep underline underline-offset-2 hover:text-primary transition-colors;
   }
   .prose-legal strong { @apply text-primary font-semibold; }
+
+  /* Route cross-fade — applied to <main> on every navigation via key={pathname} */
+  .animate-page-in {
+    animation: page-in 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes page-in {
+    0%   { opacity: 0; transform: translateY(6px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-page-in { animation: none; }
+  }
 }
