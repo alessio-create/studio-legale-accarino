@@ -7,6 +7,9 @@ import practiceEspropriazioni from "@/assets/practice-espropriazioni.jpg";
 import practiceUrbanistica from "@/assets/practice-urbanistica.jpg";
 import practiceAppalti from "@/assets/practice-appalti.jpg";
 import practiceConcorsi from "@/assets/practice-concorsi.jpg";
+import francescoPhoto from "@/assets/team-francesco-accarino.png";
+import paoloPhoto from "@/assets/team-paolo-accarino.png";
+import danielePhoto from "@/assets/team-daniele-accarino.png";
 import { Layout } from "@/components/site/Layout";
 import { Eyebrow } from "@/components/site/Eyebrow";
 import { CTAButton } from "@/components/site/CTAButton";
@@ -113,19 +116,22 @@ const procedureGroups = [
 /** TEAM — three named professionals (placeholder portraits). */
 const team = [
   {
-    name: "[Placeholder]",
-    role: "[PLACEHOLDER]",
-    focus: "[Placeholder]",
+    name: "Francesco Accarino",
+    role: "Founding Partner",
+    focus: "Diritto amministrativo, espropriazioni, contenzioso.",
+    photo: francescoPhoto,
   },
   {
-    name: "[Placeholder]",
-    role: "[PLACEHOLDER]",
-    focus: "[Placeholder]",
+    name: "Paolo Accarino",
+    role: "Senior Partner",
+    focus: "Diritto amministrativo, appalti pubblici, urbanistica.",
+    photo: paoloPhoto,
   },
   {
-    name: "[Placeholder]",
-    role: "[PLACEHOLDER]",
-    focus: "[Placeholder]",
+    name: "Daniele Accarino",
+    role: "Partner",
+    focus: "Diritto amministrativo, concorsi pubblici, sanità.",
+    photo: danielePhoto,
   },
 ];
 
@@ -472,37 +478,18 @@ export default function Index() {
                 delay={i * 130}
                 className="group flex flex-col"
               >
-                {/* Placeholder portrait — blueprint with gold corners + numeral */}
-                <div className="relative aspect-[4/5] bg-primary text-primary-foreground overflow-hidden">
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 opacity-[0.07]"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(hsl(var(--gold)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--gold)) 1px, transparent 1px)",
-                      backgroundSize: "32px 32px",
-                    }}
+                {/* Portrait */}
+                <div className="relative aspect-[3/4] bg-primary text-primary-foreground overflow-hidden">
+                  <img
+                    src={m.photo}
+                    alt={`Ritratto di ${m.name}`}
+                    className="absolute inset-0 w-full h-full object-cover object-[center_15%] transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+                    loading="lazy"
                   />
-                  <div
+                  <span
                     aria-hidden
-                    className="pointer-events-none absolute inset-0 opacity-30"
-                    style={{
-                      background:
-                        "radial-gradient(60% 80% at 50% 30%, hsl(var(--gold)/0.35) 0%, transparent 60%)",
-                    }}
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-primary/30"
                   />
-                  <span className="absolute top-3 left-3 w-3 h-3 border-t border-l border-gold" />
-                  <span className="absolute top-3 right-3 w-3 h-3 border-t border-r border-gold" />
-                  <span className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-gold" />
-                  <span className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-gold" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="font-serif text-7xl text-gold tabular-nums leading-none transition-transform duration-700 group-hover:scale-110">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <span className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.28em] text-gold/85">
-                    [Foto]
-                  </span>
                 </div>
 
                 <div className="pt-7">
