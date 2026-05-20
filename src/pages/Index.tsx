@@ -7,6 +7,9 @@ import practiceEspropriazioni from "@/assets/practice-espropriazioni.jpg";
 import practiceUrbanistica from "@/assets/practice-urbanistica.jpg";
 import practiceAppalti from "@/assets/practice-appalti.jpg";
 import practiceConcorsi from "@/assets/practice-concorsi.jpg";
+import francescoPhoto from "@/assets/team-francesco-accarino.png";
+import paoloPhoto from "@/assets/team-paolo-accarino.png";
+import danielePhoto from "@/assets/team-daniele-accarino.png";
 import { Layout } from "@/components/site/Layout";
 import { Eyebrow } from "@/components/site/Eyebrow";
 import { CTAButton } from "@/components/site/CTAButton";
@@ -113,19 +116,22 @@ const procedureGroups = [
 /** TEAM — three named professionals (placeholder portraits). */
 const team = [
   {
-    name: "[Placeholder]",
-    role: "[PLACEHOLDER]",
-    focus: "[Placeholder]",
+    name: "Francesco Accarino",
+    role: "Founding Partner",
+    focus: "Diritto amministrativo, espropriazioni, contenzioso.",
+    photo: francescoPhoto,
   },
   {
-    name: "[Placeholder]",
-    role: "[PLACEHOLDER]",
-    focus: "[Placeholder]",
+    name: "Paolo Accarino",
+    role: "Senior Partner",
+    focus: "Diritto amministrativo, appalti pubblici, urbanistica.",
+    photo: paoloPhoto,
   },
   {
-    name: "[Placeholder]",
-    role: "[PLACEHOLDER]",
-    focus: "[Placeholder]",
+    name: "Daniele Accarino",
+    role: "Partner",
+    focus: "Diritto amministrativo, concorsi pubblici, sanità.",
+    photo: danielePhoto,
   },
 ];
 
