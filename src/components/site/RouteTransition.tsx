@@ -1,50 +1,100 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import logoFullSquare from "@/assets/logo-full-square.svg";
 
 /**
- * Premium route transition — a navy curtain wipes up from below with an
- * easing curve, the wordmark fades in centered behind a thin gold hairline
- * that draws in, then the curtain wipes off the top to reveal the new page.
- * Choreographed and brief (~1000ms total). Skipped on the first paint and
- * for users with `prefers-reduced-motion`.
+ * Click-intercepting route transition. We hijack in-app link clicks, run the
+ * curtain enter animation on the CURRENT page, only then navigate to the
+ * destination, hold briefly with the wordmark + gold hairline, and finally
+ * fade the curtain away. This eliminates the brief flash of the next page
+ * before the curtain. Respects `prefers-reduced-motion`.
  */
-const TOTAL_MS = 1100;
-const EXIT_AT = 850;
+type Phase = "idle" | "covering" | "held" | "revealing";
+
+const COVER_MS = 520;   // curtain slides in from bottom
+const HOLD_MS = 280;    // logo on screen while page swaps
+const REVEAL_MS = 360;  // curtain fades out
 
 export const RouteTransition = () => {
+  const navigate = useNavigate();
   const { pathname } = useLocation();
-  const [visible, setVisible] = useState(false);
-  const [phase, setPhase] = useState<"enter" | "hold" | "exit">("enter");
-  const [hasMounted, setHasMounted] = useState(false);
+  const [phase, setPhase] = useState<Phase>("idle");
+  const timers = useRef<number[]>([]);
+
+  const clearTimers = () => {
+    timers.current.forEach((t) => window.clearTimeout(t));
+    timers.current = [];
+  };
 
   useEffect(() => {
-    if (!hasMounted) {
-      setHasMounted(true);
-      return;
-    }
     const reduced =
-      typeof window !== "undefined" &&
-      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
 
-    setVisible(true);
-    setPhase("enter");
-    window.scrollTo(0, 0);
+    const onClick = (e: MouseEvent) => {
+      if (e.defaultPrevented || e.button !== 0) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 
-    const toHold = window.setTimeout(() => setPhase("hold"), 320);
-    const toExit = window.setTimeout(() => setPhase("exit"), EXIT_AT);
-    const toHide = window.setTimeout(() => setVisible(false), TOTAL_MS);
+      const anchor = (e.target as HTMLElement | null)?.closest("a");
+      if (!anchor) return;
 
-    return () => {
-      window.clearTimeout(toHold);
-      window.clearTimeout(toExit);
-      window.clearTimeout(toHide);
+      const href = anchor.getAttribute("href");
+      if (!href) return;
+      if (anchor.target && anchor.target !== "_self") return;
+      if (anchor.hasAttribute("download")) return;
+      if (/^(mailto:|tel:|#)/i.test(href)) return;
+
+      let url: URL;
+      try {
+        url = new URL(href, window.location.href);
+      } catch {
+        return;
+      }
+      if (url.origin !== window.location.origin) return;
+
+      const nextPath = url.pathname + url.search + url.hash;
+      if (url.pathname === pathname) return; // same page, let default scroll behavior handle it
+
+      e.preventDefault();
+
+      if (reduced) {
+        navigate(nextPath);
+        return;
+      }
+
+      clearTimers();
+      setPhase("covering");
+
+      // After cover completes, swap the route, then hold, then reveal.
+      timers.current.push(
+        window.setTimeout(() => {
+          navigate(nextPath);
+          window.scrollTo(0, 0);
+          setPhase("held");
+        }, COVER_MS)
+      );
+      timers.current.push(
+        window.setTimeout(() => setPhase("revealing"), COVER_MS + HOLD_MS)
+      );
+      timers.current.push(
+        window.setTimeout(
+          () => setPhase("idle"),
+          COVER_MS + HOLD_MS + REVEAL_MS
+        )
+      );
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
 
-  if (!visible) return null;
+    document.addEventListener("click", onClick, true);
+    return () => {
+      document.removeEventListener("click", onClick, true);
+      clearTimers();
+    };
+  }, [navigate, pathname]);
+
+  if (phase === "idle") return null;
+
+  const covered = phase !== "covering"; // covering keyframe handles the slide; held/revealing keep it at 0
+  const fading = phase === "revealing";
+  const showLogo = phase === "held" || phase === "revealing" || phase === "covering";
 
   return (
     <div
@@ -53,20 +103,18 @@ export const RouteTransition = () => {
       aria-label="Caricamento pagina"
       className="fixed inset-0 z-[200] pointer-events-none overflow-hidden"
     >
-      {/* Curtain */}
       <div
         className="absolute inset-0 bg-primary will-change-transform"
         style={{
-          transform:
-            phase === "enter"
-              ? "translate3d(0, 100%, 0)"
-              : "translate3d(0, 0, 0)",
-          opacity: phase === "exit" ? 0 : 1,
-          transition:
-            "transform 520ms cubic-bezier(0.76, 0, 0.24, 1), opacity 280ms ease-out",
+          transform: covered ? "translate3d(0, 0, 0)" : undefined,
+          animation:
+            phase === "covering"
+              ? `rt-cover ${COVER_MS}ms cubic-bezier(0.76, 0, 0.24, 1) forwards`
+              : undefined,
+          opacity: fading ? 0 : 1,
+          transition: `opacity ${REVEAL_MS}ms ease-out`,
         }}
       >
-        {/* Texture + subtle gold halo for parchment depth */}
         <div aria-hidden className="absolute inset-0 bg-noise opacity-25" />
         <div
           aria-hidden
@@ -77,15 +125,14 @@ export const RouteTransition = () => {
           }}
         />
 
-        {/* Centered mark */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div
             className="flex flex-col items-center gap-6"
             style={{
-              opacity: phase === "hold" ? 1 : 0,
-              transform: phase === "hold" ? "scale(1)" : "scale(0.985)",
+              opacity: showLogo ? 1 : 0,
+              transform: showLogo ? "scale(1)" : "scale(0.985)",
               transition:
-                "opacity 380ms cubic-bezier(0.22, 1, 0.36, 1) 80ms, transform 520ms cubic-bezier(0.22, 1, 0.36, 1) 80ms",
+                "opacity 360ms cubic-bezier(0.22, 1, 0.36, 1) 120ms, transform 520ms cubic-bezier(0.22, 1, 0.36, 1) 120ms",
             }}
           >
             <img
@@ -94,15 +141,14 @@ export const RouteTransition = () => {
               className="h-24 lg:h-28 w-auto"
               draggable={false}
             />
-            {/* Hairline draws in */}
             <span
               aria-hidden
               className="block h-px bg-gold origin-center"
               style={{
                 width: 72,
-                transform: phase === "hold" ? "scaleX(1)" : "scaleX(0)",
+                transform: showLogo ? "scaleX(1)" : "scaleX(0)",
                 transition:
-                  "transform 520ms cubic-bezier(0.22, 1, 0.36, 1) 160ms",
+                  "transform 520ms cubic-bezier(0.22, 1, 0.36, 1) 240ms",
               }}
             />
           </div>
