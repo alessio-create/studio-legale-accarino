@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { MouseEvent, useMemo } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -56,6 +56,25 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
   );
   const active = useActiveSection(sectionIds);
   const related = getRelatedProcedures(procedure, 3);
+
+  const scrollToSection = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    const navbarHeight =
+      document.querySelector<HTMLElement>("header")?.getBoundingClientRect().height ?? 0;
+    const procedureBarHeight =
+      document.querySelector<HTMLElement>("[data-procedure-trigger-bar]")?.getBoundingClientRect().height ?? 0;
+    const top = element.getBoundingClientRect().top + window.scrollY - navbarHeight - procedureBarHeight - 28;
+    const lenis = (window as unknown as { __lenis?: { scrollTo: (target: number, options?: { duration?: number }) => void } }).__lenis;
+
+    window.history.pushState(null, "", `#${id}`);
+    if (lenis) lenis.scrollTo(top, { duration: 1.05 });
+    else window.scrollTo({ top, behavior: "smooth" });
+  };
 
   // Pick up to 3 blog articles that share the procedure's practice area;
   // fall back to the most recent if none match.
@@ -264,7 +283,7 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
                 <article
                   key={s.id}
                   id={s.id}
-                  className="scroll-mt-[180px] relative"
+                  className="scroll-mt-[196px] relative"
                 >
                   {/* Oversized ghost numeral — museum catalog cue */}
                   <span
@@ -377,6 +396,7 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
                       <li key={s.id}>
                         <a
                           href={`#${s.id}`}
+                          onClick={(event) => scrollToSection(event, s.id)}
                           className={`group flex items-start gap-3 text-sm leading-snug transition-colors ${
                             isActive
                               ? "text-primary"
