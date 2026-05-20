@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Static sitemap. Update <lastmod> values when you publish content changes.
-  Base URL: https://studio-legale-accarino.lovable.app
+  Base URL: https://studiolegaleaccarino.it
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://studio-legale-accarino.lovable.app/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/procedure</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/espropriazioni</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/urbanistica-edilizia</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/appalti-pubblici</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/concorsi-pubblici</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/chi-siamo</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/contatti</loc><changefreq>yearly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/privacy-policy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/cookie-policy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/procedure</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/espropriazioni</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/urbanistica-edilizia</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/appalti-pubblici</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/concorsi-pubblici</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/chi-siamo</loc><lastmod>2026-05-20</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/contatti</loc><lastmod>2026-05-20</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/blog</loc><lastmod>2026-05-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/privacy-policy</loc><lastmod>2026-05-20</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/cookie-policy</loc><lastmod>2026-05-20</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <!-- Blog articles -->
-  <url><loc>https://studio-legale-accarino.lovable.app/blog/indennita-esproprio-aree-edificabili-2025</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/blog/soccorso-istruttorio-appalti-codice-2023</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/blog/ricorso-graduatoria-concorso-pubblico</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/blog/permesso-costruire-silenzio-assenso</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/blog/occupazione-acquisitiva-risarcimento</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/blog/anomalia-offerta-appalti-pubblici</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/blog/indennita-esproprio-aree-edificabili-2025</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/blog/soccorso-istruttorio-appalti-codice-2023</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/blog/ricorso-graduatoria-concorso-pubblico</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/blog/permesso-costruire-silenzio-assenso</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/blog/occupazione-acquisitiva-risarcimento</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/blog/anomalia-offerta-appalti-pubblici</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <!-- Procedure pages — generated from src/data/procedures.ts -->
-  <url><loc>https://studio-legale-accarino.lovable.app/pareri-legittimita-atti-amministrativi</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/difesa-giudizio-tar</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/procedimenti-espropriativi-ablatori</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/gare-appalto-procedure-affidamento</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/contenzioso-esecutivo-varianti-contrattuali</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/procedimenti-disciplinari-responsabilita-erariale</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/concorsi-pubblici-selezioni-personale</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/provvedimenti-urbanistici-pianificazione</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/recupero-crediti-azioni-rivalsa</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/formazione-personale-compliance</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/opposizione-stima-esproprio</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/occupazioni-illegittime-urgenza</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/retrocessione-beni-espropriati</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/permessi-costruire-scia-dia</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/vincoli-paesaggistici-soprintendenze</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/abusi-edilizi-sanatoria</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/ricorsi-esclusioni-gara-appalto</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/sospensiva-cautelare-art-55-cpa</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/impugnazione-graduatorie-prove-concorsuali</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/ricorsi-collettivi-pubblico-impiego</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/diniego-accesso-atti</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://studio-legale-accarino.lovable.app/sanzioni-amministrative-ricorsi-gerarchici</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/pareri-legittimita-atti-amministrativi</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/difesa-giudizio-tar</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/procedimenti-espropriativi-ablatori</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/gare-appalto-procedure-affidamento</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/contenzioso-esecutivo-varianti-contrattuali</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/procedimenti-disciplinari-responsabilita-erariale</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/concorsi-pubblici-selezioni-personale</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/provvedimenti-urbanistici-pianificazione</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/recupero-crediti-azioni-rivalsa</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/formazione-personale-compliance</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/opposizione-stima-esproprio</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/occupazioni-illegittime-urgenza</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/retrocessione-beni-espropriati</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/permessi-costruire-scia-dia</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/vincoli-paesaggistici-soprintendenze</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/abusi-edilizi-sanatoria</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/ricorsi-esclusioni-gara-appalto</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/sospensiva-cautelare-art-55-cpa</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/impugnazione-graduatorie-prove-concorsuali</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/ricorsi-collettivi-pubblico-impiego</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/diniego-accesso-atti</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://studiolegaleaccarino.it/sanzioni-amministrative-ricorsi-gerarchici</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
