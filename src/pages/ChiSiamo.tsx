@@ -202,7 +202,7 @@ export default function ChiSiamo() {
                     <img
                       src={m.photo}
                       alt={`Ritratto di ${m.name}`}
-                      className="absolute inset-0 w-full h-full object-cover object-[center_15%] transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+                      className="absolute inset-0 w-full h-full object-cover object-[center_15%] grayscale transition-all duration-[1200ms] ease-out group-hover:grayscale-0 group-hover:scale-[1.04]"
                       loading="lazy"
                     />
                     {/* Subtle gradient for legibility of corner marks over light backgrounds */}
