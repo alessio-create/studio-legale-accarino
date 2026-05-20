@@ -575,7 +575,7 @@ export default function Index() {
       </section>
 
       {/* ───────────── WHAT WE CAN DO FOR YOU ───────────── */}
-      <section className="relative border-y hairline overflow-hidden bg-[hsl(var(--primary)/0.04)]">
+      <section className="relative border-y hairline bg-[hsl(var(--primary)/0.04)]">
         {/* Soft navy tint + gold ambient wash to anchor the section in brand */}
         <div
           aria-hidden
