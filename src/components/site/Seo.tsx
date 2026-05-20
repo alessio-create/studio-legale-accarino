@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
  * Until then, canonical URLs are still emitted as relative-aware values.
  */
 const SITE_NAME = "Studio Legale Accarino";
-const SITE_URL = "https://www.accarino.it"; // [PLACEHOLDER] sostituire con il dominio reale
+const SITE_URL = "https://studio-legale-accarino.lovable.app";
 const DEFAULT_OG = `${SITE_URL}/og-default.jpg`; // [PLACEHOLDER] caricare immagine OG reale 1200x630
 
 export type JsonLd = Record<string, unknown>;
@@ -22,6 +22,8 @@ export interface SeoProps {
   image?: string;
   /** Append "| Studio Legale Accarino" to title (default true). */
   includeBrand?: boolean;
+  /** og:type — defaults to "website"; use "article" on blog posts. */
+  type?: "website" | "article";
   /** Optional JSON-LD payload(s) injected as <script type="application/ld+json">. */
   jsonLd?: JsonLd | JsonLd[];
   /** Set to true on placeholder/thin pages we don't want indexed. */
@@ -34,6 +36,7 @@ export function Seo({
   path,
   image = DEFAULT_OG,
   includeBrand = true,
+  type = "website",
   jsonLd,
   noIndex = false,
 }: SeoProps) {
@@ -51,7 +54,7 @@ export function Seo({
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={type} />
       <meta property="og:url" content={canonical} />
       <meta property="og:locale" content="it_IT" />
       <meta property="og:site_name" content={SITE_NAME} />
