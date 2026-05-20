@@ -11,9 +11,9 @@ import logoFullSquare from "@/assets/logo-full-square.svg";
  */
 type Phase = "idle" | "covering" | "held" | "revealing";
 
-const COVER_MS = 520;   // curtain slides in from bottom
-const HOLD_MS = 280;    // logo on screen while page swaps
-const REVEAL_MS = 360;  // curtain fades out
+const COVER_MS = 850;   // curtain slides in from bottom
+const HOLD_MS = 650;    // logo on screen while page swaps
+const REVEAL_MS = 700;  // curtain fades out
 
 export const RouteTransition = () => {
   const navigate = useNavigate();
@@ -109,10 +109,10 @@ export const RouteTransition = () => {
           transform: covered ? "translate3d(0, 0, 0)" : undefined,
           animation:
             phase === "covering"
-              ? `rt-cover ${COVER_MS}ms cubic-bezier(0.76, 0, 0.24, 1) forwards`
+              ? `rt-cover ${COVER_MS}ms cubic-bezier(0.65, 0, 0.35, 1) forwards`
               : undefined,
           opacity: fading ? 0 : 1,
-          transition: `opacity ${REVEAL_MS}ms ease-out`,
+          transition: `opacity ${REVEAL_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`,
         }}
       >
         <div aria-hidden className="absolute inset-0 bg-noise opacity-25" />
@@ -130,9 +130,9 @@ export const RouteTransition = () => {
             className="flex flex-col items-center gap-6"
             style={{
               opacity: showLogo ? 1 : 0,
-              transform: showLogo ? "scale(1)" : "scale(0.985)",
+              transform: showLogo ? "scale(1)" : "scale(0.97)",
               transition:
-                "opacity 360ms cubic-bezier(0.22, 1, 0.36, 1) 120ms, transform 520ms cubic-bezier(0.22, 1, 0.36, 1) 120ms",
+                "opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) 220ms, transform 900ms cubic-bezier(0.22, 1, 0.36, 1) 220ms",
             }}
           >
             <img
@@ -145,10 +145,10 @@ export const RouteTransition = () => {
               aria-hidden
               className="block h-px bg-gold origin-center"
               style={{
-                width: 72,
+                width: 88,
                 transform: showLogo ? "scaleX(1)" : "scaleX(0)",
                 transition:
-                  "transform 520ms cubic-bezier(0.22, 1, 0.36, 1) 240ms",
+                  "transform 900ms cubic-bezier(0.22, 1, 0.36, 1) 420ms",
               }}
             />
           </div>
