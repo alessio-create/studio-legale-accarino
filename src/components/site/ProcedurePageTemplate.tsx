@@ -62,6 +62,7 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
         title={procedure.title}
         description={procedure.metaDescription}
         path={`/${procedure.slug}`}
+        includeBrand={false}
         jsonLd={[
           serviceJsonLd({
             name: procedure.title,
