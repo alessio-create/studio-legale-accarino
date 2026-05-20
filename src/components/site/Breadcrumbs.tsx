@@ -14,9 +14,9 @@ const STATIC_LABELS: Record<string, string> = {
   contatti: "Contatti",
   blog: "Blog",
   procedure: "Procedure",
-  espropriazioni: "Espropriazioni",
-  "appalti-pubblici": "Appalti Pubblici",
-  "concorsi-pubblici": "Concorsi Pubblici",
+  espropriazioni: "Espropriazioni e Occupazioni Illegittime",
+  "appalti-pubblici": "Appalti Pubblici e Contenzioso Gare",
+  "concorsi-pubblici": "Concorsi Pubblici e Pubblico Impiego",
   "urbanistica-edilizia": "Urbanistica ed Edilizia",
 };
 
