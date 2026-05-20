@@ -7,6 +7,9 @@ import practiceEspropriazioni from "@/assets/practice-espropriazioni.jpg";
 import practiceUrbanistica from "@/assets/practice-urbanistica.jpg";
 import practiceAppalti from "@/assets/practice-appalti.jpg";
 import practiceConcorsi from "@/assets/practice-concorsi.jpg";
+import caseEspropriazioniCilento from "@/assets/case-espropriazioni-cilento.jpg";
+import caseAppaltiCampania from "@/assets/case-appalti-campania.jpg";
+import caseUrbanisticaCostiera from "@/assets/case-urbanistica-costiera.jpg";
 import francescoPhoto from "@/assets/team-francesco-accarino.png";
 import paoloPhoto from "@/assets/team-paolo-accarino.png";
 import danielePhoto from "@/assets/team-daniele-accarino.png";
@@ -22,6 +25,7 @@ import { MaximTicker } from "@/components/site/MaximTicker";
 import { WhereWeAre } from "@/components/site/WhereWeAre";
 import { Seo, orgJsonLd, faqJsonLd } from "@/components/site/Seo";
 import { procedureTitleToSlug } from "@/data/procedures";
+import { blogArticles } from "@/data/blog";
 
 /* ─────────────────────────── DATA ─────────────────────────── */
 
