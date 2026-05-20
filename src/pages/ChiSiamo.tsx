@@ -210,11 +210,6 @@ export default function ChiSiamo() {
                       aria-hidden
                       className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-primary/30"
                     />
-                    {/* Refined corner brackets — longer, thinner, gold, with hover bloom */}
-                    <span className="pointer-events-none absolute top-4 left-4 w-5 h-5 border-t-[1.5px] border-l-[1.5px] border-gold transition-all duration-500 group-hover:w-7 group-hover:h-7 group-hover:border-gold-deep" />
-                    <span className="pointer-events-none absolute top-4 right-4 w-5 h-5 border-t-[1.5px] border-r-[1.5px] border-gold transition-all duration-500 group-hover:w-7 group-hover:h-7 group-hover:border-gold-deep" />
-                    <span className="pointer-events-none absolute bottom-4 left-4 w-5 h-5 border-b-[1.5px] border-l-[1.5px] border-gold transition-all duration-500 group-hover:w-7 group-hover:h-7 group-hover:border-gold-deep" />
-                    <span className="pointer-events-none absolute bottom-4 right-4 w-5 h-5 border-b-[1.5px] border-r-[1.5px] border-gold transition-all duration-500 group-hover:w-7 group-hover:h-7 group-hover:border-gold-deep" />
                   </div>
                   <div className="p-6 sm:p-7">
                     <p className="text-[10px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
