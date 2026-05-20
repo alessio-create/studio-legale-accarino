@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
  * Until then, canonical URLs are still emitted as relative-aware values.
  */
 const SITE_NAME = "Studio Legale Accarino";
-const SITE_URL = "https://studio-legale-accarino.lovable.app";
+const SITE_URL = "https://studiolegaleaccarino.it";
 const DEFAULT_OG = `${SITE_URL}/og-default.jpg`; // [PLACEHOLDER] caricare immagine OG reale 1200x630
 
 export type JsonLd = Record<string, unknown>;
