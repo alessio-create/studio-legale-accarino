@@ -623,10 +623,10 @@ export default function Index() {
               <div className="lg:col-span-3">
                 <div className="lg:sticky lg:top-32">
                   <span aria-hidden className="block w-8 h-px bg-gold mb-6" />
-                  <p className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">
+                  <p className="text-[13px] sm:text-sm uppercase tracking-[0.24em] text-primary font-semibold">
                     {group.audience}
                   </p>
-                  <p className="mt-4 sm:mt-6 text-sm text-muted-foreground leading-relaxed max-w-[260px]">
+                  <p className="mt-4 sm:mt-6 text-base sm:text-[17px] text-muted-foreground leading-relaxed max-w-[300px]">
                     {group.intro}
                   </p>
                 </div>
