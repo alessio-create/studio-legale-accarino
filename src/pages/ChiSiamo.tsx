@@ -63,7 +63,7 @@ export default function ChiSiamo() {
       />
       {/* Editorial hero — image first on mobile, side-by-side on desktop */}
       <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
-        <div className="relative editorial-container py-14 sm:py-20 lg:py-28 grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
+        <div className="relative editorial-container pt-4 sm:pt-6 lg:pt-10 pb-14 sm:pb-20 lg:pb-28 grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
           <div className="lg:col-span-7 order-2 lg:order-1">
             <Reveal>
               <p className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">

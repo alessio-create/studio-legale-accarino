@@ -59,7 +59,7 @@ export default function Contatti() {
       />
       {/* Editorial hero — minimal, focused on the headline and the lead */}
       <section className="relative bg-surface-container-low border-b hairline">
-        <div className="editorial-container py-12 sm:py-20 lg:py-28">
+        <div className="editorial-container pt-4 sm:pt-6 lg:pt-10 pb-12 sm:pb-20 lg:pb-28">
           <div className="max-w-4xl">
             <Reveal>
               <p className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">

@@ -37,7 +37,7 @@ export const PageHero = ({
 }: Props) => {
   return (
     <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
-      <div className="relative editorial-container py-12 sm:py-16 lg:py-28">
+      <div className="relative editorial-container pt-4 sm:pt-6 lg:pt-10 pb-12 sm:pb-16 lg:pb-28">
         <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 items-end">
           <div className={aside ? "lg:col-span-7" : "lg:col-span-9 max-w-4xl"}>
             <Reveal>
