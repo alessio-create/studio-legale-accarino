@@ -697,8 +697,8 @@ export default function Index() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-primary/10 border hairline">
             {featuredArticles.map((a) => (
               <Link
-                key={a.title}
-                to="/blog"
+                key={a.slug}
+                to={`/blog/${a.slug}`}
                 className="group bg-background p-7 sm:p-10 lg:p-12 flex flex-col hover:bg-surface-container-low transition-colors"
               >
                 <div className="flex items-center justify-between mb-6 sm:mb-8">
@@ -720,7 +720,7 @@ export default function Index() {
 
                 <div className="mt-8 sm:mt-10 pt-6 border-t hairline flex items-center justify-between">
                   <span className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                    {a.readTime} di lettura
+                    {a.readTime}
                   </span>
                   <ArrowUpRight
                     className="w-4 h-4 text-gold-deep group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
