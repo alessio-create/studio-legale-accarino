@@ -9,8 +9,8 @@ import logoFullSquare from "@/assets/logo-full-square.svg";
  * Choreographed and brief (~1000ms total). Skipped on the first paint and
  * for users with `prefers-reduced-motion`.
  */
-const TOTAL_MS = 1000;
-const EXIT_AT = 700;
+const TOTAL_MS = 1100;
+const EXIT_AT = 850;
 
 export const RouteTransition = () => {
   const { pathname } = useLocation();
@@ -46,13 +46,6 @@ export const RouteTransition = () => {
 
   if (!visible) return null;
 
-  const curtainTransform =
-    phase === "enter"
-      ? "translate3d(0, 100%, 0)"
-      : phase === "exit"
-      ? "translate3d(0, -100%, 0)"
-      : "translate3d(0, 0, 0)";
-
   return (
     <div
       role="status"
@@ -64,8 +57,13 @@ export const RouteTransition = () => {
       <div
         className="absolute inset-0 bg-primary will-change-transform"
         style={{
-          transform: curtainTransform,
-          transition: "transform 520ms cubic-bezier(0.76, 0, 0.24, 1)",
+          transform:
+            phase === "enter"
+              ? "translate3d(0, 100%, 0)"
+              : "translate3d(0, 0, 0)",
+          opacity: phase === "exit" ? 0 : 1,
+          transition:
+            "transform 520ms cubic-bezier(0.76, 0, 0.24, 1), opacity 280ms ease-out",
         }}
       >
         {/* Texture + subtle gold halo for parchment depth */}
