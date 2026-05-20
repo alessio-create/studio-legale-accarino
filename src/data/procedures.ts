@@ -20,7 +20,7 @@ import lawBooks from "@/assets/law-books.jpg";
 import heroCourthouse from "@/assets/hero-courthouse.jpg";
 import heroColumns from "@/assets/hero-columns.jpg";
 
-export type Audience = "Per gli Enti" | "Per le Persone";
+export type Audience = "Per gli Enti" | "Per i Privati";
 
 export interface ProcedureSection {
   /** URL-safe id, used as section anchor and TOC label key. */
@@ -528,7 +528,7 @@ export const procedures: Procedure[] = [
   {
     slug: "opposizione-stima-esproprio",
     title: "Opposizione alla stima dell'indennità di esproprio",
-    audience: "Per le Persone",
+    audience: "Per i Privati",
     practiceArea: "Espropriazioni",
     heroImage: practiceEspropriazioni,
     metaDescription:
@@ -580,7 +580,7 @@ export const procedures: Procedure[] = [
   {
     slug: "occupazioni-illegittime-urgenza",
     title: "Occupazioni illegittime e d'urgenza",
-    audience: "Per le Persone",
+    audience: "Per i Privati",
     practiceArea: "Espropriazioni",
     heroImage: practiceEspropriazioni,
     metaDescription:
@@ -623,7 +623,7 @@ export const procedures: Procedure[] = [
   {
     slug: "retrocessione-beni-espropriati",
     title: "Retrocessione totale o parziale dei beni",
-    audience: "Per le Persone",
+    audience: "Per i Privati",
     practiceArea: "Espropriazioni",
     heroImage: practiceEspropriazioni,
     metaDescription:
@@ -666,7 +666,7 @@ export const procedures: Procedure[] = [
   {
     slug: "permessi-costruire-scia-dia",
     title: "Permessi a costruire, SCIA e DIA",
-    audience: "Per le Persone",
+    audience: "Per i Privati",
     practiceArea: "Urbanistica ed Edilizia",
     heroImage: practiceUrbanistica,
     metaDescription:
@@ -709,7 +709,7 @@ export const procedures: Procedure[] = [
   {
     slug: "vincoli-paesaggistici-soprintendenze",
     title: "Vincoli paesaggistici e Soprintendenze",
-    audience: "Per le Persone",
+    audience: "Per i Privati",
     practiceArea: "Urbanistica ed Edilizia",
     heroImage: heroColumns,
     metaDescription:
@@ -752,7 +752,7 @@ export const procedures: Procedure[] = [
   {
     slug: "abusi-edilizi-sanatoria",
     title: "Abusi edilizi e procedure di sanatoria",
-    audience: "Per le Persone",
+    audience: "Per i Privati",
     practiceArea: "Urbanistica ed Edilizia",
     heroImage: practiceUrbanistica,
     metaDescription:
@@ -804,7 +804,7 @@ export const procedures: Procedure[] = [
   {
     slug: "ricorsi-esclusioni-gara-appalto",
     title: "Ricorsi su esclusioni in gara d'appalto",
-    audience: "Per le Persone",
+    audience: "Per i Privati",
     practiceArea: "Appalti Pubblici",
     heroImage: practiceAppalti,
     metaDescription:
@@ -847,7 +847,7 @@ export const procedures: Procedure[] = [
   {
     slug: "sospensiva-cautelare-art-55-cpa",
     title: "Sospensive cautelari ex art. 55 c.p.a.",
-    audience: "Per le Persone",
+    audience: "Per i Privati",
     practiceArea: "Diritto amministrativo",
     heroImage: heroCourthouse,
     metaDescription:
@@ -890,7 +890,7 @@ export const procedures: Procedure[] = [
   {
     slug: "impugnazione-graduatorie-prove-concorsuali",
     title: "Impugnazione graduatorie e prove concorsuali",
-    audience: "Per le Persone",
+    audience: "Per i Privati",
     practiceArea: "Concorsi Pubblici",
     heroImage: practiceConcorsi,
     metaDescription:
@@ -933,7 +933,7 @@ export const procedures: Procedure[] = [
   {
     slug: "ricorsi-collettivi-pubblico-impiego",
     title: "Ricorsi collettivi nel pubblico impiego",
-    audience: "Per le Persone",
+    audience: "Per i Privati",
     practiceArea: "Concorsi Pubblici",
     heroImage: practiceConcorsi,
     metaDescription:
@@ -976,7 +976,7 @@ export const procedures: Procedure[] = [
   {
     slug: "diniego-accesso-atti",
     title: "Diniego di accesso agli atti",
-    audience: "Per le Persone",
+    audience: "Per i Privati",
     practiceArea: "Diritto amministrativo",
     heroImage: lawBooks,
     metaDescription:
@@ -1019,7 +1019,7 @@ export const procedures: Procedure[] = [
   {
     slug: "sanzioni-amministrative-ricorsi-gerarchici",
     title: "Sanzioni amministrative e ricorsi gerarchici",
-    audience: "Per le Persone",
+    audience: "Per i Privati",
     practiceArea: "Diritto amministrativo",
     heroImage: lawBooks,
     metaDescription:
@@ -1075,7 +1075,7 @@ export function getRelatedProcedures(current: Procedure, limit = 3): Procedure[]
     .slice(0, limit);
 }
 
-/** Map of original "Per gli Enti" / "Per le Persone" item titles → slug.
+/** Map of original "Per gli Enti" / "Per i Privati" item titles → slug.
  *  Used by Index.tsx to turn the procedure list into <Link>s without
  *  refactoring its data shape. */
 export const procedureTitleToSlug: Record<string, string> = procedures.reduce(
@@ -1098,7 +1098,7 @@ export type GroupedProcedures = Array<{
 }>;
 
 export function getGroupedProcedures(): GroupedProcedures {
-  const audiences: Audience[] = ["Per gli Enti", "Per le Persone"];
+  const audiences: Audience[] = ["Per gli Enti", "Per i Privati"];
   return audiences.map((audience) => {
     const inAudience = procedures.filter((p) => p.audience === audience);
     const areaOrder: Procedure["practiceArea"][] = [];
