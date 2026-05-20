@@ -24,8 +24,30 @@ export const MobileTOC = ({ sections }: Props) => {
   );
   const activeSection = sections[activeIndex];
 
+  const scrollToSection = (event: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setOpen(false);
+
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    const navbarHeight =
+      document.querySelector<HTMLElement>("header")?.getBoundingClientRect().height ?? 0;
+    const procedureBarHeight =
+      document.querySelector<HTMLElement>("[data-procedure-trigger-bar]")?.getBoundingClientRect().height ?? 0;
+    const mobileTocHeight =
+      document.querySelector<HTMLElement>("[data-mobile-procedure-toc]")?.getBoundingClientRect().height ?? 0;
+    const top = element.getBoundingClientRect().top + window.scrollY - navbarHeight - procedureBarHeight - mobileTocHeight - 20;
+    const lenis = (window as unknown as { __lenis?: { scrollTo: (target: number, options?: { duration?: number }) => void } }).__lenis;
+
+    window.history.pushState(null, "", `#${id}`);
+    if (lenis) lenis.scrollTo(top, { duration: 1.05 });
+    else window.scrollTo({ top, behavior: "smooth" });
+  };
+
   return (
-    <div className="lg:hidden sticky top-20 z-30 -mx-4 sm:-mx-6 mb-8 bg-background/95 backdrop-blur-md border-y hairline">
+    <div data-mobile-procedure-toc className="lg:hidden sticky top-20 z-30 -mx-4 sm:-mx-6 mb-8 bg-background/95 backdrop-blur-md border-y hairline">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
@@ -59,7 +81,7 @@ export const MobileTOC = ({ sections }: Props) => {
               <li key={s.id}>
                 <a
                   href={`#${s.id}`}
-                  onClick={() => setOpen(false)}
+                  onClick={(event) => scrollToSection(event, s.id)}
                   className={`flex items-start gap-3 text-sm leading-snug transition-colors ${
                     isActive
                       ? "text-primary"
