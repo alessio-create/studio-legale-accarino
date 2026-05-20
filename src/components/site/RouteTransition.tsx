@@ -63,12 +63,7 @@ export const RouteTransition = () => {
       }
 
       clearTimers();
-      const goingHome = url.pathname === "/";
-      setToHome(goingHome);
       setPhase("covering");
-
-      const holdMs = goingHome ? HOLD_MS_HOME : HOLD_MS;
-      const revealMs = goingHome ? REVEAL_MS_HOME : REVEAL_MS;
 
       // After cover completes, swap the route, then hold, then reveal.
       timers.current.push(
@@ -79,12 +74,12 @@ export const RouteTransition = () => {
         }, COVER_MS)
       );
       timers.current.push(
-        window.setTimeout(() => setPhase("revealing"), COVER_MS + holdMs)
+        window.setTimeout(() => setPhase("revealing"), COVER_MS + HOLD_MS)
       );
       timers.current.push(
         window.setTimeout(
           () => setPhase("idle"),
-          COVER_MS + holdMs + revealMs
+          COVER_MS + HOLD_MS + REVEAL_MS
         )
       );
     };
@@ -120,9 +115,7 @@ export const RouteTransition = () => {
             phase === "covering"
               ? `rt-cover ${COVER_MS}ms cubic-bezier(0.65, 0, 0.35, 1) forwards`
               : undefined,
-          transition: toHome
-            ? `transform ${REVEAL_MS_HOME}ms cubic-bezier(0.22, 1, 0.36, 1)`
-            : `transform ${REVEAL_MS}ms cubic-bezier(0.76, 0, 0.24, 1)`,
+          transition: `transform ${REVEAL_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`,
         }}
       >
         <div aria-hidden className="absolute inset-0 bg-noise opacity-25" />
