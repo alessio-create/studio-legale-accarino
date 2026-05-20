@@ -1,4 +1,4 @@
-import { Clock, MapPin, Car, Train, Accessibility, Phone } from "lucide-react";
+import { Clock, MapPin, Phone } from "lucide-react";
 import { Eyebrow } from "./Eyebrow";
 import { Reveal } from "./Reveal";
 
@@ -20,9 +20,6 @@ const sedi = [
     address: "C.so Vittorio Emanuele 58 · 84121 Salerno (SA)",
     phone: "+39 089 343140",
     hours: "Mar–Gio · 15:00–18:00 · su appuntamento",
-    parking: "[PLACEHOLDER es. parcheggio convenzionato a 80m, sosta libera in Via …]",
-    transit: "[PLACEHOLDER es. Stazione Salerno a 10 min a piedi · bus 1, 4, 9]",
-    a11y: "[PLACEHOLDER conferma accessibilità: ingresso a livello strada / ascensore / bagno accessibile]",
     mapEmbed:
       "https://www.google.com/maps?q=Corso+Vittorio+Emanuele+58,+84121+Salerno+SA&output=embed",
   },
@@ -31,9 +28,6 @@ const sedi = [
     address: "Via G. Accarino, 5 · 84013 Cava de' Tirreni (SA)",
     phone: "+39 089 343140",
     hours: "Lun–Ven · 10:00–17:00 · su appuntamento",
-    parking: "[PLACEHOLDER es. parcheggio Trezza a 5 min]",
-    transit: "[PLACEHOLDER es. Stazione Cava de' Tirreni a 7 min a piedi]",
-    a11y: "[PLACEHOLDER]",
     mapEmbed:
       "https://www.google.com/maps?q=Via+G.+Accarino+5,+84013+Cava+de'+Tirreni+SA&output=embed",
   },
@@ -150,48 +144,6 @@ export function WhereWeAre() {
                 </div>
               </dl>
 
-              {/* Practical directions */}
-              <ul className="mt-8 pt-8 border-t hairline space-y-4 text-sm text-muted-foreground leading-relaxed">
-                <li className="flex items-start gap-4">
-                  <Car
-                    className="w-4 h-4 text-primary/60 mt-0.5 flex-shrink-0"
-                    strokeWidth={1.5}
-                    aria-hidden
-                  />
-                  <div>
-                    <span className="block text-[10px] uppercase tracking-[0.22em] text-primary font-semibold mb-1">
-                      Parcheggio
-                    </span>
-                    {s.parking}
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <Train
-                    className="w-4 h-4 text-primary/60 mt-0.5 flex-shrink-0"
-                    strokeWidth={1.5}
-                    aria-hidden
-                  />
-                  <div>
-                    <span className="block text-[10px] uppercase tracking-[0.22em] text-primary font-semibold mb-1">
-                      Mezzi pubblici
-                    </span>
-                    {s.transit}
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <Accessibility
-                    className="w-4 h-4 text-primary/60 mt-0.5 flex-shrink-0"
-                    strokeWidth={1.5}
-                    aria-hidden
-                  />
-                  <div>
-                    <span className="block text-[10px] uppercase tracking-[0.22em] text-primary font-semibold mb-1">
-                      Accessibilità
-                    </span>
-                    {s.a11y}
-                  </div>
-                </li>
-              </ul>
             </article>
           ))}
         </div>
