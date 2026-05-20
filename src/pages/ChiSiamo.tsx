@@ -7,31 +7,31 @@ import { FeatureTicker } from "@/components/site/FeatureTicker";
 import { Seo, orgJsonLd } from "@/components/site/Seo";
 import office from "@/assets/office.jpg";
 import monogramCircle from "@/assets/monogram-circle.png";
+import francescoPhoto from "@/assets/team-francesco-accarino.png";
+import paoloPhoto from "@/assets/team-paolo-accarino.png";
+import danielePhoto from "@/assets/team-daniele-accarino.png";
 
 const team = [
   {
-    name: "[Nome Cognome]",
-    role: "[Ruolo / Founding Partner]",
-    focus: "[Aree di specializzazione]",
-    initials: "—",
+    name: "Francesco Accarino",
+    role: "Founding Partner",
+    focus: "Diritto amministrativo, espropriazioni, contenzioso.",
+    initials: "FA",
+    photo: francescoPhoto,
   },
   {
-    name: "[Nome Cognome]",
-    role: "[Ruolo / Senior Partner]",
-    focus: "[Aree di specializzazione]",
-    initials: "—",
+    name: "Paolo Accarino",
+    role: "Senior Partner",
+    focus: "Diritto amministrativo, appalti pubblici, urbanistica.",
+    initials: "PA",
+    photo: paoloPhoto,
   },
   {
-    name: "[Nome Cognome]",
-    role: "[Ruolo / Of Counsel]",
-    focus: "[Aree di specializzazione]",
-    initials: "—",
-  },
-  {
-    name: "[Nome Cognome]",
-    role: "[Ruolo / Associate]",
-    focus: "[Aree di specializzazione]",
-    initials: "—",
+    name: "Daniele Accarino",
+    role: "Partner",
+    focus: "Diritto amministrativo, concorsi pubblici, sanità.",
+    initials: "DA",
+    photo: danielePhoto,
   },
 ];
 
@@ -193,41 +193,22 @@ export default function ChiSiamo() {
             />
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {team.map((m, i) => (
               <Reveal key={i} delay={i * 100}>
                 <article className="group bg-background border hairline overflow-hidden transition-all duration-500 hover:shadow-[0_24px_60px_-30px_hsl(217_50%_12%/0.25)]">
-                  {/* Placeholder portrait — monogram on tonal blueprint */}
+                  {/* Portrait */}
                   <div className="relative aspect-[4/5] bg-primary text-primary-foreground overflow-hidden">
-                    <div
-                      aria-hidden
-                      className="absolute inset-0 opacity-[0.07]"
-                      style={{
-                        backgroundImage:
-                          "linear-gradient(hsl(var(--gold)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--gold)) 1px, transparent 1px)",
-                        backgroundSize: "32px 32px",
-                      }}
-                    />
-                    <div
-                      aria-hidden
-                      className="pointer-events-none absolute inset-0 opacity-30"
-                      style={{
-                        background:
-                          "radial-gradient(60% 80% at 50% 30%, hsl(var(--gold)/0.35) 0%, transparent 60%)",
-                      }}
+                    <img
+                      src={m.photo}
+                      alt={`Ritratto di ${m.name}`}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                      loading="lazy"
                     />
                     <span className="absolute top-3 left-3 w-3 h-3 border-t border-l border-gold" />
                     <span className="absolute top-3 right-3 w-3 h-3 border-t border-r border-gold" />
                     <span className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-gold" />
                     <span className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-gold" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-serif text-6xl sm:text-7xl text-gold tabular-nums leading-none transition-transform duration-700 group-hover:scale-110">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-                    <span className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.28em] text-gold/85">
-                      [Foto]
-                    </span>
                   </div>
                   <div className="p-6 sm:p-7">
                     <p className="text-[10px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
