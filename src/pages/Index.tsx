@@ -62,12 +62,12 @@ const specializations = [
   },
   {
     number: "04",
-    title: "Lo Studio",
+    title: "Concorsi Pubblici",
     description:
-      "Consulenza e difesa di Enti e Amministrazioni: pareri di legittimità, procedimenti amministrativi, contenzioso e compliance.",
+      "Tutela dei candidati nelle selezioni pubbliche: impugnazione di graduatorie, prove e criteri di valutazione, ricorsi collettivi.",
     icon: Users,
     href: "/concorsi-pubblici",
-    topics: ["Pareri di legittimità", "Procedimenti amministrativi", "Formazione e compliance"],
+    topics: ["Ricorso individuale", "Ricorso collettivo", "Pubblico impiego"],
     image: practiceConcorsi,
     imageAlt: "Aula d'esame classica con file di banchi in legno e luce naturale",
   },
@@ -247,7 +247,7 @@ const caseStudies: CaseStudy[] = [
 /** Hero stats kept as part of the hero introduction. */
 const heroStats = [
   { to: 50, suffix: "+", thousands: false, label: "Anni di esperienza", caption: "Dal 1975 al servizio del diritto pubblico" },
-  { to: 4, suffix: "", pad: 2, label: "Aree di specializzazione", caption: "Espropri · Urbanistica · Appalti · Lo Studio" },
+  { to: 4, suffix: "", pad: 2, label: "Aree di specializzazione", caption: "Espropri · Urbanistica · Appalti · Concorsi" },
   { to: 1700, suffix: "+", thousands: true, label: "Cause patrocinate", caption: "TAR, Consiglio di Stato, Cassazione" },
   { to: 9, suffix: "", label: "Professionisti dedicati", caption: "Team multidisciplinare su due sedi" },
 ];
