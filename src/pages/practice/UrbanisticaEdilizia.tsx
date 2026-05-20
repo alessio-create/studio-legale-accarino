@@ -1,7 +1,7 @@
 import { Scale } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { PracticePageTemplate } from "@/components/site/PracticePageTemplate";
-import { Seo, serviceJsonLd, faqJsonLd } from "@/components/site/Seo";
+import { Seo, serviceJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/components/site/Seo";
 import office from "@/assets/urbanistica-edilizia.jpg";
 
 export default function UrbanisticaEdilizia() {
