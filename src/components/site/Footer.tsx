@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Mail, MapPin, Phone, Clock } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone, Clock, Printer } from "lucide-react";
 import { Logo } from "./Logo";
 
 export const Footer = () => (
@@ -38,18 +38,22 @@ export const Footer = () => (
           </p>
           <div className="mt-8 space-y-3">
             <a
-              href="tel:+390891234567"
+              href="tel:+39089343140"
               className="flex items-center gap-3 text-sm text-background hover:text-gold transition-colors"
             >
               <Phone className="w-4 h-4 text-gold flex-shrink-0" strokeWidth={2} />
-              +39 089 123 4567
+              +39 089 343140
             </a>
+            <div className="flex items-center gap-3 text-sm text-background/70">
+              <Printer className="w-4 h-4 text-gold flex-shrink-0" strokeWidth={2} />
+              Fax +39 089 343140
+            </div>
             <a
-              href="mailto:info@accarino.it"
+              href="mailto:studioassociato@accarino.it"
               className="flex items-center gap-3 text-sm text-background hover:text-gold transition-colors"
             >
               <Mail className="w-4 h-4 text-gold flex-shrink-0" strokeWidth={2} />
-              info@accarino.it
+              studioassociato@accarino.it
             </a>
             <div className="flex items-center gap-3 text-sm text-background/70">
               <Clock className="w-4 h-4 text-gold flex-shrink-0" strokeWidth={2} />
@@ -132,7 +136,7 @@ export const Footer = () => (
 
       <div className="mt-16 pt-8 border-t border-background/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <p className="text-xs text-background/50">
-          © {new Date().getFullYear()} Studio Legale Accarino · P.IVA 01234567890
+          © {new Date().getFullYear()} Studio Legale Accarino · R.d.T. 3929066994
         </p>
         <div className="flex items-center gap-5 text-[10px] uppercase tracking-[0.2em] text-background/50">
           <a href="#" className="hover:text-gold transition-colors">
