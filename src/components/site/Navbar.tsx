@@ -6,6 +6,20 @@ import illoEspropriazioni from "@/assets/practice-espropriazioni.png";
 import illoUrbanistica from "@/assets/practice-urbanistica.png";
 import illoAppalti from "@/assets/practice-appalti.png";
 import illoConcorsi from "@/assets/practice-concorsi.png";
+import { procedures } from "@/data/procedures";
+import { blogArticles } from "@/data/blog";
+
+/** Curated picks for the mega-menu "In evidenza" column. */
+const FEATURED_PROCEDURE =
+  procedures.find((p) => p.slug === "gare-appalto-procedure-affidamento") ??
+  procedures[0];
+const FEATURED_ARTICLE = blogArticles[0];
+const FEATURED_REVIEW = {
+  initials: "M.R.",
+  role: "Imprenditore edile · Salerno",
+  text:
+    "Procedimento complesso seguito con metodo chirurgico. In sei mesi annullamento del provvedimento e ripresa dei lavori.",
+};
 
 const serviceGroups = [
   {
@@ -220,7 +234,7 @@ export const Navbar = () => {
                 />
               </div>
 
-              <div className="col-span-9 grid grid-cols-2 gap-x-10 gap-y-8">
+              <div className="col-span-6 grid grid-cols-2 gap-x-10 gap-y-8">
                 {serviceGroups.map((group, gi) => (
                   <div
                     key={group.heading}
@@ -287,6 +301,76 @@ export const Navbar = () => {
                     </ul>
                   </div>
                 ))}
+              </div>
+
+              {/* ───────── In evidenza — curated cross-links ───────── */}
+              <div
+                className="col-span-3 border-l hairline pl-8 animate-mega-item-in"
+                style={{ animationDelay: "240ms" }}
+              >
+                <p className="flex items-center gap-3 text-[10px] uppercase tracking-[0.22em] text-gold-deep font-semibold mb-6">
+                  <span aria-hidden className="w-6 h-px bg-gold" />
+                  In evidenza
+                </p>
+
+                <ul className="space-y-5">
+                  {/* Featured procedure */}
+                  <li>
+                    <Link
+                      to={`/${FEATURED_PROCEDURE.slug}`}
+                      className="group block"
+                    >
+                      <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
+                        Procedura
+                      </span>
+                      <p className="mt-1.5 font-serif text-[15px] text-primary leading-snug group-hover:text-gold-deep transition-colors text-pretty">
+                        {FEATURED_PROCEDURE.title}
+                      </p>
+                      <span className="mt-2 inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-primary font-semibold">
+                        Approfondisci
+                        <ArrowUpRight className="w-3 h-3 text-gold-deep transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </span>
+                    </Link>
+                  </li>
+
+                  <li aria-hidden className="h-px bg-primary/10" />
+
+                  {/* Featured blog article */}
+                  <li>
+                    <Link
+                      to={`/blog/${FEATURED_ARTICLE.slug}`}
+                      className="group block"
+                    >
+                      <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
+                        Approfondimento · {FEATURED_ARTICLE.readingTime}
+                      </span>
+                      <p className="mt-1.5 font-serif text-[15px] text-primary leading-snug group-hover:text-gold-deep transition-colors text-pretty">
+                        {FEATURED_ARTICLE.title}
+                      </p>
+                      <span className="mt-2 inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-primary font-semibold">
+                        Leggi
+                        <ArrowUpRight className="w-3 h-3 text-gold-deep transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </span>
+                    </Link>
+                  </li>
+
+                  <li aria-hidden className="h-px bg-primary/10" />
+
+                  {/* Featured review */}
+                  <li>
+                    <Link to="/chi-siamo#recensioni" className="group block">
+                      <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
+                        Recensione cliente
+                      </span>
+                      <blockquote className="mt-1.5 font-serif text-[13.5px] text-primary leading-snug italic text-pretty">
+                        "{FEATURED_REVIEW.text}"
+                      </blockquote>
+                      <p className="mt-2 text-[10px] uppercase tracking-[0.18em] text-gold-deep font-semibold">
+                        {FEATURED_REVIEW.initials} · {FEATURED_REVIEW.role}
+                      </p>
+                    </Link>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
