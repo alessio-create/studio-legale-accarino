@@ -257,32 +257,14 @@ const heroStats = [
 ];
 
 /** BLOG — three featured articles linking to /blog. */
-const featuredArticles = [
-  {
-    category: "Espropriazioni",
-    date: "12 Marzo 2026",
-    readTime: "6 min",
-    title: "Indennità di esproprio: come contestare la stima dell'Agenzia delle Entrate.",
-    excerpt:
-      "Una guida operativa ai criteri di valutazione e agli strumenti di opposizione davanti alla Corte d'Appello.",
-  },
-  {
-    category: "Appalti Pubblici",
-    date: "28 Febbraio 2026",
-    readTime: "4 min",
-    title: "Rito appalti: i 30 giorni che decidono la sorte di una gara.",
-    excerpt:
-      "Termini, sospensiva cautelare e strategie processuali nel contenzioso accelerato davanti al TAR.",
-  },
-  {
-    category: "Urbanistica",
-    date: "14 Febbraio 2026",
-    readTime: "5 min",
-    title: "Sanatorie edilizie in zone vincolate: cosa cambia con la riforma.",
-    excerpt:
-      "L'accertamento di conformità e il parere della Soprintendenza alla luce della giurisprudenza più recente.",
-  },
-];
+const featuredArticles = blogArticles.slice(0, 3).map((a) => ({
+  slug: a.slug,
+  category: a.category,
+  date: a.date,
+  readTime: a.readingTime,
+  title: a.title,
+  excerpt: a.excerpt,
+}));
 
 const credentials = [
   "Regione Campania",
