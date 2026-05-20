@@ -499,10 +499,6 @@ export default function Index() {
                     aria-hidden
                     className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-primary/40"
                   />
-                  {/* Editorial index numeral, bottom-left */}
-                  <span className="pointer-events-none absolute bottom-3 left-4 font-serif text-[11px] tracking-[0.22em] text-gold/80">
-                    · {String(i + 1).padStart(2, "0")} ·
-                  </span>
                 </div>
 
                 <div className="pt-6 sm:pt-7">
