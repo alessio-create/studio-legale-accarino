@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import monogram from "@/assets/monogram.svg";
-import monogramInverted from "@/assets/monogram-inverted.svg";
+import monogram from "@/assets/monogram.png";
+import monogramInverted from "@/assets/monogram-inverted.png";
 
 /**
  * Wordmark placeholder for Studio Legale Accarino.
