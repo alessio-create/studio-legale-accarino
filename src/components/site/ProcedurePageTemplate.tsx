@@ -549,9 +549,9 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
             <div className="mt-16 pt-8 border-t border-background/15 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[10px] uppercase tracking-[0.24em] text-background/50">
               <span>Studio Legale Accarino</span>
               <span aria-hidden className="w-1 h-1 rounded-full bg-gold/60" />
-              <span>Salerno · Roma</span>
+              <span>Salerno · Cava de&apos; Tirreni</span>
               <span aria-hidden className="w-1 h-1 rounded-full bg-gold/60" />
-              <span>dal 1978</span>
+              <span>dal 1975</span>
             </div>
           </Reveal>
         </div>
