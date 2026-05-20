@@ -19,6 +19,8 @@ export interface BlogArticle {
   slug: string;
   category: string;
   title: string;
+  /** Optional shorter title used as <title> tag (kept under 60 chars). */
+  seoTitle?: string;
   excerpt: string;
   image: string;
   date: string;
@@ -35,6 +37,7 @@ export const blogArticles: BlogArticle[] = [
     slug: "indennita-esproprio-aree-edificabili-2025",
     category: "Espropriazioni",
     title: "Indennità di esproprio per aree edificabili: i criteri aggiornati al 2025",
+    seoTitle: "Indennità esproprio aree edificabili 2025 · Accarino",
     excerpt:
       "Una guida operativa al valore venale di mercato, alla riduzione del 25% per finalità di riforma economico-sociale e ai più recenti orientamenti della Corte di Cassazione.",
     image: blogIndennitaEsproprio,
@@ -94,6 +97,7 @@ export const blogArticles: BlogArticle[] = [
     slug: "soccorso-istruttorio-appalti-codice-2023",
     category: "Appalti Pubblici",
     title: "Soccorso istruttorio nel nuovo Codice Appalti: cosa è davvero sanabile",
+    seoTitle: "Soccorso istruttorio Codice Appalti 2023 · Accarino",
     excerpt:
       "Il D.Lgs. 36/2023 ridefinisce l'istituto del soccorso istruttorio: i confini fra integrazione formale, sostanziale e i casi di esclusione automatica.",
     image: blogSoccorsoIstruttorio,
