@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown, Phone, Landmark, Building2, Users, Scale, ArrowUpRight, ArrowRight } from "lucide-react";
 import { Logo } from "./Logo";
+import illoEspropriazioni from "@/assets/practice-espropriazioni.png";
+import illoUrbanistica from "@/assets/practice-urbanistica.png";
+import illoAppalti from "@/assets/practice-appalti.png";
+import illoConcorsi from "@/assets/practice-concorsi.png";
 
 const serviceGroups = [
   {
@@ -12,12 +16,14 @@ const serviceGroups = [
         label: "Espropriazioni",
         desc: "Indennità, opposizione alla stima, occupazioni illegittime.",
         icon: Landmark,
+        illustration: illoEspropriazioni,
       },
       {
         to: "/urbanistica-edilizia",
         label: "Urbanistica ed Edilizia",
         desc: "Permessi a costruire, varianti, vincoli, abusi e sanatorie.",
         icon: Scale,
+        illustration: illoUrbanistica,
       },
     ],
   },
@@ -30,12 +36,14 @@ const serviceGroups = [
         desc: "Ricorsi TAR, sospensive cautelari, contenzioso esecutivo.",
         icon: Building2,
         featured: true,
+        illustration: illoAppalti,
       },
       {
         to: "/concorsi-pubblici",
         label: "Concorsi Pubblici",
         desc: "Ricorsi su graduatorie, esclusioni, prove e bandi. Anche ricorsi collettivi.",
         icon: Users,
+        illustration: illoConcorsi,
       },
     ],
   },
