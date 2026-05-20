@@ -101,7 +101,7 @@ export default function ChiSiamo() {
               <div className="absolute -bottom-px left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 sm:px-6 py-2.5 sm:py-3 flex items-center gap-2 sm:gap-3 whitespace-nowrap">
                 <Building className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold" />
                 <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em]">
-                  Salerno · Cava de' Tirreni
+                  SALERNO · CAVA DE&apos; TIRRENI
                 </span>
               </div>
             </div>
