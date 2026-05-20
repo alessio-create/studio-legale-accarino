@@ -33,8 +33,8 @@ const serviceGroups = [
       },
       {
         to: "/concorsi-pubblici",
-        label: "Concorsi Pubblici",
-        desc: "Ricorsi individuali e collettivi, impugnazione graduatorie.",
+        label: "Attività della Pubblica Amministrazione",
+        desc: "Pareri, procedimenti amministrativi, compliance e formazione.",
         icon: Users,
       },
     ],
