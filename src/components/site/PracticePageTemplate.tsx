@@ -43,7 +43,7 @@ export const PracticePageTemplate = ({
     <>
       {/* Hero — canonical editorial composition */}
       <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
-        <div className="relative editorial-container py-12 sm:py-16 lg:py-28 grid lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-end">
+        <div className="relative editorial-container pt-4 sm:pt-6 lg:pt-10 pb-12 sm:pb-16 lg:pb-28 grid lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-end">
           <div className="lg:col-span-7 order-2 lg:order-1">
             <Reveal>
               <p className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
