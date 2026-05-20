@@ -6,6 +6,20 @@ import illoEspropriazioni from "@/assets/practice-espropriazioni.png";
 import illoUrbanistica from "@/assets/practice-urbanistica.png";
 import illoAppalti from "@/assets/practice-appalti.png";
 import illoConcorsi from "@/assets/practice-concorsi.png";
+import { procedures } from "@/data/procedures";
+import { blogArticles } from "@/data/blog";
+
+/** Curated picks for the mega-menu "In evidenza" column. */
+const FEATURED_PROCEDURE =
+  procedures.find((p) => p.slug === "gare-appalto-procedure-affidamento") ??
+  procedures[0];
+const FEATURED_ARTICLE = blogArticles[0];
+const FEATURED_REVIEW = {
+  initials: "M.R.",
+  role: "Imprenditore edile · Salerno",
+  text:
+    "Procedimento complesso seguito con metodo chirurgico. In sei mesi annullamento del provvedimento e ripresa dei lavori.",
+};
 
 const serviceGroups = [
   {
