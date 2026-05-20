@@ -199,7 +199,7 @@ const caseStudies: CaseStudy[] = [
     outcome: "+€1,2M sull'offerta iniziale",
     excerpt:
       "Famiglia proprietaria di terreno agricolo soggetto a procedura espropriativa per opera viaria pubblica, con indennità inizialmente liquidata a valore agricolo.",
-    image: practiceEspropriazioni,
+    image: caseEspropriazioniCilento,
     detail: {
       metric: { value: "+€1,2M", label: "Recupero rispetto alla prima stima" },
       challenge:
@@ -217,7 +217,7 @@ const caseStudies: CaseStudy[] = [
     outcome: "Aggiudicazione riaffidata al ricorrente",
     excerpt:
       "PMI esclusa per presunto vizio formale dell'offerta tecnica in una procedura aperta per servizi alla Pubblica Amministrazione del valore di circa €4M.",
-    image: practiceAppalti,
+    image: caseAppaltiCampania,
     detail: {
       metric: { value: "28 giorni", label: "Dal ricorso alla sospensiva" },
       challenge:
@@ -235,7 +235,7 @@ const caseStudies: CaseStudy[] = [
     outcome: "Demolizione revocata, immobile sanato",
     excerpt:
       "Immobile residenziale in area sottoposta a vincolo paesaggistico, oggetto di ordinanza di demolizione a seguito di difformità rilevate dall'Ufficio Tecnico comunale.",
-    image: practiceUrbanistica,
+    image: caseUrbanisticaCostiera,
     detail: {
       metric: { value: "14 mesi", label: "Dall'istanza alla sanatoria definitiva" },
       challenge:
