@@ -23,6 +23,7 @@ import {
   Procedure,
   getRelatedProcedures,
 } from "@/data/procedures";
+import { blogArticles } from "@/data/blog";
 
 interface Props {
   procedure: Procedure;
@@ -55,6 +56,16 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
   );
   const active = useActiveSection(sectionIds);
   const related = getRelatedProcedures(procedure, 3);
+
+  // Pick up to 3 blog articles that share the procedure's practice area;
+  // fall back to the most recent if none match.
+  const relatedArticles = (() => {
+    const area = procedure.practiceArea.toLowerCase();
+    const matched = blogArticles.filter((a) =>
+      a.category.toLowerCase().includes(area.split(" ")[0])
+    );
+    return (matched.length ? matched : blogArticles).slice(0, 3);
+  })();
 
   return (
     <ProceduresLayout>
