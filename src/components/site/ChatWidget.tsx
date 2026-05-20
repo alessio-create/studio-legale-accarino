@@ -29,8 +29,7 @@ export const ChatWidget = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content:
-        "Buongiorno. Sono l'assistente dello Studio. Posso aiutarti a orientarti tra le aree di pratica, le procedure e i contatti. Come posso esserti utile?",
+      content: "Scrivi un messaggio",
     },
   ]);
   const [input, setInput] = useState("");
