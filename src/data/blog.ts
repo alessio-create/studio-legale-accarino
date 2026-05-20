@@ -37,7 +37,7 @@ export const blogArticles: BlogArticle[] = [
     title: "Indennità di esproprio per aree edificabili: i criteri aggiornati al 2025",
     excerpt:
       "Una guida operativa al valore venale di mercato, alla riduzione del 25% per finalità di riforma economico-sociale e ai più recenti orientamenti della Corte di Cassazione.",
-    image: practiceEspropriazioni,
+    image: blogIndennitaEsproprio,
     date: "12 Marzo 2025",
     readingTime: "9 min",
     author: "Avv. Francesco Accarino",
@@ -96,7 +96,7 @@ export const blogArticles: BlogArticle[] = [
     title: "Soccorso istruttorio nel nuovo Codice Appalti: cosa è davvero sanabile",
     excerpt:
       "Il D.Lgs. 36/2023 ridefinisce l'istituto del soccorso istruttorio: i confini fra integrazione formale, sostanziale e i casi di esclusione automatica.",
-    image: practiceAppalti,
+    image: blogSoccorsoIstruttorio,
     date: "28 Febbraio 2025",
     readingTime: "7 min",
     author: "Avv. Paolo Accarino",
@@ -139,7 +139,7 @@ export const blogArticles: BlogArticle[] = [
     title: "Ricorso contro la graduatoria di un concorso pubblico: termini e strategia",
     excerpt:
       "Sessanta giorni per impugnare, una preparazione documentale che inizia molto prima. Le tappe concrete per costruire un ricorso efficace.",
-    image: practiceConcorsi,
+    image: blogRicorsoGraduatoria,
     date: "14 Febbraio 2025",
     readingTime: "6 min",
     author: "Avv. Paolo Accarino",
@@ -181,7 +181,7 @@ export const blogArticles: BlogArticle[] = [
     title: "Permesso di costruire e silenzio-assenso: quando vale e quando no",
     excerpt:
       "L'art. 20 del Testo Unico Edilizia regola il silenzio-assenso, ma vincoli paesaggistici e tutele speciali ne escludono l'operatività in molti casi pratici.",
-    image: practiceUrbanistica,
+    image: blogPermessoCostruire,
     date: "30 Gennaio 2025",
     readingTime: "5 min",
     author: "Avv. Francesco Accarino",
@@ -213,7 +213,7 @@ export const blogArticles: BlogArticle[] = [
     title: "Occupazione senza titolo della P.A.: come ottenere il risarcimento",
     excerpt:
       "Dall'art. 42-bis del T.U. Espropri alla giurisprudenza CEDU, il percorso per recuperare il valore del bene illegittimamente acquisito.",
-    image: lawBooks,
+    image: blogOccupazioneAcquisitiva,
     date: "10 Gennaio 2025",
     readingTime: "8 min",
     author: "Avv. Francesco Accarino",
@@ -249,7 +249,7 @@ export const blogArticles: BlogArticle[] = [
     title: "Anomalia dell'offerta: il sindacato del giudice amministrativo",
     excerpt:
       "I confini del controllo giurisdizionale sulla valutazione di anomalia nelle gare d'appalto, fra discrezionalità tecnica e vizi macroscopici.",
-    image: heroColumns,
+    image: blogAnomaliaOfferta,
     date: "18 Dicembre 2024",
     readingTime: "7 min",
     author: "Avv. Paolo Accarino",
