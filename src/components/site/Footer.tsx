@@ -107,7 +107,7 @@ export const Footer = () => (
         <div className="md:col-span-2">
           <h4 className="text-[11px] uppercase tracking-[0.2em] text-gold mb-6">Studio</h4>
           <ul className="space-y-2 text-sm text-background/80">
-            <li><Link to="/chi-siamo" className="hover:text-gold transition-colors">Chi Sono</Link></li>
+            <li><Link to="/chi-siamo" className="hover:text-gold transition-colors">Lo Studio</Link></li>
             <li><Link to="/blog" className="hover:text-gold transition-colors">Blog</Link></li>
             <li><Link to="/contatti" className="hover:text-gold transition-colors">Contatti</Link></li>
             <li><Link to="/privacy-policy" className="hover:text-gold transition-colors">Privacy Policy</Link></li>
