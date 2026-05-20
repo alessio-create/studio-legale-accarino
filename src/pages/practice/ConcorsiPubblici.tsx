@@ -25,6 +25,11 @@ export default function ConcorsiPubblici() {
             path: "/concorsi-pubblici",
           }),
           faqJsonLd(faq),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Aree di pratica", path: "/procedure" },
+            { name: "Concorsi Pubblici", path: "/concorsi-pubblici" },
+          ]),
         ]}
       />
       <PracticePageTemplate

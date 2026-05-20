@@ -25,6 +25,11 @@ export default function UrbanisticaEdilizia() {
             path: "/urbanistica-edilizia",
           }),
           faqJsonLd(faq),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Aree di pratica", path: "/procedure" },
+            { name: "Urbanistica ed Edilizia", path: "/urbanistica-edilizia" },
+          ]),
         ]}
       />
       <PracticePageTemplate

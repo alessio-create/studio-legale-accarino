@@ -25,6 +25,11 @@ export default function Espropriazioni() {
             path: "/espropriazioni",
           }),
           faqJsonLd(faq),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Aree di pratica", path: "/procedure" },
+            { name: "Espropriazioni", path: "/espropriazioni" },
+          ]),
         ]}
       />
       <PracticePageTemplate
