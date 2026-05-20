@@ -55,14 +55,20 @@ export const Footer = () => (
               <Mail className="w-4 h-4 text-gold flex-shrink-0" strokeWidth={2} />
               studioassociato@accarino.it
             </a>
-            <div className="flex items-center gap-3 text-sm text-background/70">
-              <Clock className="w-4 h-4 text-gold flex-shrink-0" strokeWidth={2} />
-              Lun–Ven · 9:00–18:30
+            <div className="flex items-start gap-3 text-sm text-background/70">
+              <Clock className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" strokeWidth={2} />
+              <div className="leading-relaxed">
+                <p>Cava · Lun–Ven 10:00–17:00</p>
+                <p>Salerno · Mar–Gio 15:00–18:00</p>
+              </div>
             </div>
           </div>
           <div className="mt-8 h-px bg-gold/30" />
           <p className="mt-6 text-[11px] uppercase tracking-[0.2em] text-gold">
             Iscritto Ordine Avvocati di Salerno
+          </p>
+          <p className="mt-2 text-[11px] uppercase tracking-[0.2em] text-gold">
+            Patrocinanti Giurisdizioni Superiori
           </p>
         </div>
 
@@ -117,7 +123,7 @@ export const Footer = () => (
               <div>
                 <p className="text-background font-serif text-base">Salerno</p>
                 <p className="text-background/60 text-xs mt-1 leading-relaxed">
-                  Via Roma, 41<br />84121 Salerno (SA)
+                  C.so Vittorio Emanuele 58<br />84121 Salerno (SA)
                 </p>
               </div>
             </li>
@@ -126,7 +132,7 @@ export const Footer = () => (
               <div>
                 <p className="text-background font-serif text-base">Cava de' Tirreni</p>
                 <p className="text-background/60 text-xs mt-1 leading-relaxed">
-                  Corso Umberto I, 132<br />84013 Cava de' Tirreni (SA)
+                  Via G. Accarino, 5<br />84013 Cava de' Tirreni (SA)
                 </p>
               </div>
             </li>
