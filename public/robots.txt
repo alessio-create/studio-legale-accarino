@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://www.accarino.it/sitemap.xml
+Sitemap: https://studio-legale-accarino.lovable.app/sitemap.xml
