@@ -41,6 +41,7 @@ const App = () => (
             <Route path="/appalti-pubblici" element={<AppaltiPubblici />} />
             <Route path="/concorsi-pubblici" element={<ConcorsiPubblici />} />
             <Route path="/urbanistica-edilizia" element={<UrbanisticaEdilizia />} />
+            <Route path="/studio" element={<ChiSiamo />} />
             <Route path="/chi-siamo" element={<ChiSiamo />} />
             <Route path="/contatti" element={<Contatti />} />
             <Route path="/blog" element={<Blog />} />
