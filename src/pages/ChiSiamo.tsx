@@ -331,7 +331,7 @@ function PartnersOrbit({
           />
           <span aria-hidden className="block mx-auto mt-3 h-px w-10 bg-gold" />
           <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
-            Salerno · 1974
+            Salerno · 1975
           </p>
         </div>
 
