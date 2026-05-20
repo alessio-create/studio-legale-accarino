@@ -489,19 +489,12 @@ export default function Index() {
               >
                 {/* Portrait */}
                 <div className="relative aspect-[3/4] bg-primary text-primary-foreground overflow-hidden">
-                  {/* Animated reveal mask on first appearance */}
-                  <Reveal
-                    variant="hairline"
-                    delay={550 + i * 180}
-                    className="absolute inset-0"
-                  >
-                    <img
-                      src={m.photo}
-                      alt={`Ritratto di ${m.name}`}
-                      className="absolute inset-0 w-full h-full object-cover object-[center_15%] grayscale transition-all duration-[1200ms] ease-out group-hover:grayscale-0 group-hover:scale-[1.04]"
-                      loading="lazy"
-                    />
-                  </Reveal>
+                  <img
+                    src={m.photo}
+                    alt={`Ritratto di ${m.name}`}
+                    className="absolute inset-0 w-full h-full object-cover object-[center_15%] grayscale transition-all duration-[1200ms] ease-out group-hover:grayscale-0 group-hover:scale-[1.04]"
+                    loading="lazy"
+                  />
                   <span
                     aria-hidden
                     className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-primary/40"
