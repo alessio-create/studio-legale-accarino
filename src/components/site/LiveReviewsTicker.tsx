@@ -58,7 +58,7 @@ const REVIEWS: LocalReview[] = [
     quote:
       "Sanatoria edilizia ottenuta nonostante il vincolo. Gestione impeccabile.",
     minutesAgo: 44,
-    practice: "Urbanistica",
+    practice: "Urbanistica ed Edilizia",
   },
   {
     initial: "C.E.",

@@ -80,19 +80,19 @@ export const Footer = () => (
             <li>
               <Link to="/espropriazioni" className="hover:text-gold transition-colors inline-flex items-center gap-2 group">
                 <span className="w-1 h-1 bg-gold/50 group-hover:bg-gold transition-colors" />
-                Espropriazioni
+                Espropriazioni e Occupazioni Illegittime
               </Link>
             </li>
             <li>
               <Link to="/appalti-pubblici" className="hover:text-gold transition-colors inline-flex items-center gap-2 group">
                 <span className="w-1 h-1 bg-gold/50 group-hover:bg-gold transition-colors" />
-                Appalti Pubblici
+                Appalti Pubblici e Contenzioso Gare
               </Link>
             </li>
             <li>
               <Link to="/concorsi-pubblici" className="hover:text-gold transition-colors inline-flex items-center gap-2 group">
                 <span className="w-1 h-1 bg-gold/50 group-hover:bg-gold transition-colors" />
-                Concorsi Pubblici
+                Concorsi Pubblici e Pubblico Impiego
               </Link>
             </li>
             <li>
