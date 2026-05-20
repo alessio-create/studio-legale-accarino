@@ -86,7 +86,6 @@ export const RouteTransition = () => {
     document.addEventListener("click", onClick, true);
     return () => {
       document.removeEventListener("click", onClick, true);
-      clearTimers();
     };
   }, [navigate, pathname]);
 
