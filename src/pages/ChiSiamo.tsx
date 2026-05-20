@@ -56,9 +56,9 @@ export default function ChiSiamo() {
   return (
     <Layout>
       <Seo
-        title="Lo Studio Accarino · Salerno dal 1975"
+        title="Studio Accarino · Salerno dal 1975"
         description="Studio Legale Accarino: cinquant'anni di diritto amministrativo a Salerno. Due sedi, nove professionisti, una rete di partner di caratura nazionale."
-        path="/chi-siamo"
+        path="/studio"
         includeBrand={false}
         jsonLd={orgJsonLd}
       />
@@ -69,7 +69,7 @@ export default function ChiSiamo() {
             <Reveal>
               <p className="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
                 <span aria-hidden className="w-8 h-px bg-gold" />
-                <span>Lo Studio</span>
+                <span>Studio</span>
                 <span aria-hidden className="w-3 h-px bg-gold/50" />
                 <span className="text-primary/70">Dal 1975</span>
               </p>

@@ -66,7 +66,7 @@ const serviceGroups = [
 const allServiceRoutes = serviceGroups.flatMap((g) => g.items.map((i) => i.to));
 
 const mainLinks = [
-  { to: "/chi-siamo", label: "Studio" },
+  { to: "/studio", label: "Studio" },
   { to: "/procedure", label: "Procedure" },
   { to: "/blog", label: "Blog" },
   { to: "/contatti", label: "Contatti" },
@@ -358,7 +358,7 @@ export const Navbar = () => {
 
                   {/* Featured review */}
                   <li>
-                    <Link to="/chi-siamo#recensioni" className="group block">
+                    <Link to="/studio#recensioni" className="group block">
                       <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
                         Recensione cliente
                       </span>

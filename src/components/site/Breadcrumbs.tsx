@@ -10,7 +10,8 @@ import { blogArticles } from "@/data/blog";
  * registries so the breadcrumb always shows the human title.
  */
 const STATIC_LABELS: Record<string, string> = {
-  "chi-siamo": "Lo Studio",
+  studio: "Studio",
+  "chi-siamo": "Studio",
   contatti: "Contatti",
   blog: "Blog",
   procedure: "Procedure",
