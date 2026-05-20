@@ -2,7 +2,7 @@ import { Building2 } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { PracticePageTemplate } from "@/components/site/PracticePageTemplate";
 import { Seo, serviceJsonLd, faqJsonLd } from "@/components/site/Seo";
-import office from "@/assets/office.jpg";
+import appaltiHero from "@/assets/appalti-pubblici.jpg";
 
 export default function AppaltiPubblici() {
   const faq = [
@@ -32,7 +32,7 @@ export default function AppaltiPubblici() {
         title="Appalti Pubblici e Contenzioso Gare"
         practiceArea="Appalti Pubblici"
         lead="Esclusa o non aggiudicataria di una gara? Difendiamo le imprese nei ricorsi al TAR per esclusioni illegittime, vizi procedurali e violazioni del Codice degli Appalti."
-        heroImage={office}
+        heroImage={appaltiHero}
         icon={Building2}
         intro={
           <>
