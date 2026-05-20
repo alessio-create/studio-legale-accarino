@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { PanelLeft } from "lucide-react";
 import { Layout } from "./Layout";
+import { Footer } from "./Footer";
 import { ProceduresSidebar } from "./ProceduresSidebar";
 import {
   SidebarInset,
@@ -19,7 +20,7 @@ import {
  */
 export const ProceduresLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <Layout>
+    <Layout hideFooter>
       <SidebarProvider defaultOpen>
         <div className="flex w-full min-h-[calc(100vh-200px)]">
           <ProceduresSidebar />
@@ -36,6 +37,10 @@ export const ProceduresLayout = ({ children }: { children: ReactNode }) => {
               </span>
             </div>
             <div>{children}</div>
+            {/* Footer rendered inside the sidebar inset so its editorial
+                container aligns with the content column when the sidebar
+                is open, instead of spanning the full viewport behind it. */}
+            <Footer />
           </SidebarInset>
         </div>
       </SidebarProvider>

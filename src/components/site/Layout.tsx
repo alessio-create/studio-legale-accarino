@@ -6,7 +6,14 @@ import { CookieBanner } from "./CookieBanner";
 import { ChatWidget } from "./ChatWidget";
 import { Breadcrumbs } from "./Breadcrumbs";
 
-export const Layout = ({ children }: { children: ReactNode }) => {
+export const Layout = ({
+  children,
+  hideFooter = false,
+}: {
+  children: ReactNode;
+  /** When true, the global Footer is not rendered (the wrapping layout will provide its own). */
+  hideFooter?: boolean;
+}) => {
   const { pathname } = useLocation();
   useEffect(() => window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }), [pathname]);
   // Home page hero is full-bleed under the transparent navbar; other pages
@@ -22,7 +29,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
         {!isHome && <Breadcrumbs />}
         {children}
       </main>
-      <Footer />
+      {!hideFooter && <Footer />}
       <CookieBanner />
       <ChatWidget />
     </div>
