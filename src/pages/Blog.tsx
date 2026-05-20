@@ -38,7 +38,7 @@ const Blog = () => {
       />
       <PageHero
         eyebrow="Insights & Aggiornamenti"
-        eyebrowSuffix="Aggiornato 2025"
+        eyebrowSuffix="AGGIORNATO 2026"
         title="Approfondimenti dallo Studio."
         lead="Sentenze commentate, guide operative e analisi di novità normative su espropriazioni, appalti pubblici, concorsi e urbanistica edilizia. Firmate dai professionisti dello Studio."
       />
