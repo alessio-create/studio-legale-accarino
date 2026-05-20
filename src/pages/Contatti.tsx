@@ -136,7 +136,7 @@ export default function Contatti() {
               </div>
 
               <label className="flex items-start gap-3 text-sm text-muted-foreground">
-                <input type="checkbox" required className="mt-1 accent-primary w-4 h-4" />
+                <input type="checkbox" required defaultChecked className="mt-1 accent-primary w-4 h-4" />
                 <span>
                   Ho letto l'informativa privacy e acconsento al trattamento dei dati
                   per essere ricontattato dallo Studio.
