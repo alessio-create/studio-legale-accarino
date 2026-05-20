@@ -23,6 +23,7 @@ import {
   Procedure,
   getRelatedProcedures,
 } from "@/data/procedures";
+import { blogArticles } from "@/data/blog";
 
 interface Props {
   procedure: Procedure;
@@ -55,6 +56,16 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
   );
   const active = useActiveSection(sectionIds);
   const related = getRelatedProcedures(procedure, 3);
+
+  // Pick up to 3 blog articles that share the procedure's practice area;
+  // fall back to the most recent if none match.
+  const relatedArticles = (() => {
+    const area = procedure.practiceArea.toLowerCase();
+    const matched = blogArticles.filter((a) =>
+      a.category.toLowerCase().includes(area.split(" ")[0])
+    );
+    return (matched.length ? matched : blogArticles).slice(0, 3);
+  })();
 
   return (
     <ProceduresLayout>
@@ -431,6 +442,63 @@ export const ProcedurePageTemplate = ({ procedure }: Props) => {
           </div>
         </div>
       </section>
+
+      {/* ─────────── DAL BLOG · Risorse correlate ─────────── */}
+      {relatedArticles.length > 0 && (
+        <section className="bg-background border-b hairline">
+          <div className="editorial-container py-14 sm:py-20 lg:py-24">
+            <div className="flex items-end justify-between flex-wrap gap-6 mb-10 sm:mb-14">
+              <SectionHeader
+                eyebrow="Dal blog"
+                title="Approfondimenti e risorse correlate."
+                intro="Articoli editoriali sulla materia, aggiornati alla giurisprudenza più recente."
+                compact
+              />
+              <Link
+                to="/blog"
+                className="hidden md:inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-primary hover:text-gold-deep transition-colors font-semibold"
+              >
+                Tutti gli articoli
+                <ArrowRight className="w-4 h-4 text-gold-deep" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+              {relatedArticles.map((a, i) => (
+                <Reveal key={a.slug} delay={i * 110}>
+                  <Link to={`/blog/${a.slug}`} className="group block">
+                    <div className="relative overflow-hidden aspect-[4/3] mb-5">
+                      <img
+                        src={a.image}
+                        alt={a.title}
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+                      />
+                      <span className="absolute left-3 top-3 bg-background/95 backdrop-blur px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-gold-deep font-semibold">
+                        {a.category}
+                      </span>
+                    </div>
+                    <p className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground font-semibold mb-3">
+                      {a.date} · {a.readingTime}
+                    </p>
+                    <h3 className="font-serif text-xl text-primary leading-snug text-balance group-hover:text-gold-deep transition-colors">
+                      {a.title}
+                    </h3>
+                    <span
+                      aria-hidden
+                      className="block mt-5 w-8 h-px bg-gold/60 transition-all duration-500 group-hover:w-14 group-hover:bg-gold"
+                    />
+                    <span className="mt-5 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-primary font-semibold">
+                      Leggi l'articolo
+                      <ArrowUpRight className="w-3.5 h-3.5 text-gold-deep transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </span>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ─────────── FINAL CTA ─────────── */}
       <section className="relative bg-primary text-primary-foreground border-y border-gold/30 overflow-hidden">
