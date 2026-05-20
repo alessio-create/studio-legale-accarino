@@ -62,12 +62,12 @@ const specializations = [
   },
   {
     number: "04",
-    title: "Concorsi Pubblici",
+    title: "Attività della Pubblica Amministrazione",
     description:
-      "Tutela dei candidati nelle selezioni pubbliche: impugnazione di graduatorie, prove e criteri di valutazione.",
+      "Consulenza e difesa di Enti e Amministrazioni: pareri di legittimità, procedimenti amministrativi, contenzioso e compliance.",
     icon: Users,
     href: "/concorsi-pubblici",
-    topics: ["Graduatorie", "Ricorsi collettivi", "Prove e valutazioni"],
+    topics: ["Pareri di legittimità", "Procedimenti amministrativi", "Formazione e compliance"],
     image: practiceConcorsi,
     imageAlt: "Aula d'esame classica con file di banchi in legno e luce naturale",
   },
