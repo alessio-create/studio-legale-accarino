@@ -34,7 +34,7 @@ export const Footer = () => (
           <Logo inverted />
           <p className="mt-6 text-sm text-background/70 leading-relaxed max-w-xs">
             Studio legale specializzato in diritto amministrativo. Difesa di privati,
-            imprese e Pubbliche Amministrazioni dal 1974.
+            imprese e Pubbliche Amministrazioni dal 1975.
           </p>
           <div className="mt-8 space-y-3">
             <a
