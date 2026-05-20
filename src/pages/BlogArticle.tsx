@@ -14,12 +14,30 @@ const BlogArticle = () => {
 
   const related = getRelatedArticles(article.slug, 3);
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.excerpt,
+    image: article.image,
+    datePublished: article.date,
+    author: { "@type": "Person", name: article.author },
+    publisher: {
+      "@type": "Organization",
+      name: "Studio Legale Accarino",
+    },
+    mainEntityOfPage: `https://studio-legale-accarino.lovable.app/blog/${article.slug}`,
+  };
+
   return (
     <Layout>
       <Seo
-        title={`${article.title} · Blog Studio Legale Accarino`}
+        title={article.seoTitle ?? article.title}
         description={article.excerpt}
         path={`/blog/${article.slug}`}
+        includeBrand={false}
+        type="article"
+        jsonLd={articleJsonLd}
       />
 
       {/* Article hero — title + image */}
