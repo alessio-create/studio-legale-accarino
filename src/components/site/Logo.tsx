@@ -27,12 +27,12 @@ export const Logo = ({ inverted = false }: { inverted?: boolean }) => {
         <span
           className={`text-[18px] sm:text-[20px] font-medium tracking-[-0.015em] transition-colors ${nameColor}`}
         >
-          Accarino
+          Studio Legale Accarino
         </span>
         <span
           className={`mt-1.5 text-[11px] font-normal tracking-[-0.005em] transition-colors ${subColor}`}
         >
-          Avvocati · Salerno
+          Avvocati — Salerno
         </span>
       </span>
     </Link>
