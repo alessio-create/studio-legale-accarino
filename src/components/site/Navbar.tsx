@@ -253,21 +253,15 @@ export const Navbar = () => {
                                 className="absolute left-0 top-2 bottom-2 w-px bg-gold scale-y-0 group-hover:scale-y-100 origin-center transition-transform duration-500"
                               />
                               <div className="flex items-start gap-4">
-                                <span className="relative w-14 h-14 flex-shrink-0 flex items-center justify-center">
-                                  <span
-                                    aria-hidden
-                                    className="absolute inset-0 rounded-sm bg-primary/[0.04] group-hover:bg-gold-soft/60 transition-colors duration-500"
-                                  />
-                                  <img
-                                    src={item.illustration}
-                                    alt=""
-                                    aria-hidden="true"
-                                    width={56}
-                                    height={56}
-                                    loading="lazy"
-                                    className="relative w-12 h-12 object-contain transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-[2deg]"
-                                  />
-                                </span>
+                                <img
+                                  src={item.illustration}
+                                  alt=""
+                                  aria-hidden="true"
+                                  width={56}
+                                  height={56}
+                                  loading="lazy"
+                                  className="w-14 h-14 object-contain flex-shrink-0 transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-[2deg]"
+                                />
                                 <div className="flex-1">
                                   <div className="flex items-center gap-2">
                                     <span className="font-serif text-lg text-primary group-hover:text-gold-deep transition-colors">
