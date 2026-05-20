@@ -17,9 +17,9 @@ import { Reveal } from "./Reveal";
 const sedi = [
   {
     city: "Salerno",
-    address: "[PLACEHOLDER via e numero civico] · 84121 Salerno (SA)",
-    phone: "+39 [PLACEHOLDER]",
-    hours: "Lun–Ven · 9:00–18:30 · su appuntamento",
+    address: "C.so Vittorio Emanuele 58 · 84121 Salerno (SA)",
+    phone: "+39 089 343140",
+    hours: "Mar–Gio · 15:00–18:00 · su appuntamento",
     parking: "[PLACEHOLDER es. parcheggio convenzionato a 80m, sosta libera in Via …]",
     transit: "[PLACEHOLDER es. Stazione Salerno a 10 min a piedi · bus 1, 4, 9]",
     a11y: "[PLACEHOLDER conferma accessibilità: ingresso a livello strada / ascensore / bagno accessibile]",
@@ -28,9 +28,9 @@ const sedi = [
   },
   {
     city: "Cava de' Tirreni",
-    address: "[PLACEHOLDER via e numero civico] · 84013 Cava de' Tirreni (SA)",
-    phone: "+39 [PLACEHOLDER]",
-    hours: "Lun–Ven · 9:00–17:00 · su appuntamento",
+    address: "Via G. Accarino, 5 · 84013 Cava de' Tirreni (SA)",
+    phone: "+39 089 343140",
+    hours: "Lun–Ven · 10:00–17:00 · su appuntamento",
     parking: "[PLACEHOLDER es. parcheggio Trezza a 5 min]",
     transit: "[PLACEHOLDER es. Stazione Cava de' Tirreni a 7 min a piedi]",
     a11y: "[PLACEHOLDER]",
