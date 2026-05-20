@@ -11,18 +11,15 @@ import logoFullSquare from "@/assets/logo-full-square.svg";
  */
 type Phase = "idle" | "covering" | "held" | "revealing";
 
-const COVER_MS = 850;   // curtain slides in from bottom
-const HOLD_MS = 650;    // logo on screen while page swaps
-const REVEAL_MS = 700;  // curtain slides up
-const REVEAL_MS_HOME = 1100; // gentler, longer exit when arriving on Home
-const HOLD_MS_HOME = 800;
+const COVER_MS = 850;    // curtain slides in from bottom
+const HOLD_MS = 800;     // logo on screen while page swaps
+const REVEAL_MS = 1100;  // gentle, longer curtain exit
 
 export const RouteTransition = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [phase, setPhase] = useState<Phase>("idle");
   const timers = useRef<number[]>([]);
-  const [toHome, setToHome] = useState(false);
 
   const clearTimers = () => {
     timers.current.forEach((t) => window.clearTimeout(t));
@@ -65,12 +62,7 @@ export const RouteTransition = () => {
       }
 
       clearTimers();
-      const goingHome = url.pathname === "/";
-      setToHome(goingHome);
       setPhase("covering");
-
-      const holdMs = goingHome ? HOLD_MS_HOME : HOLD_MS;
-      const revealMs = goingHome ? REVEAL_MS_HOME : REVEAL_MS;
 
       // After cover completes, swap the route, then hold, then reveal.
       timers.current.push(
@@ -81,12 +73,12 @@ export const RouteTransition = () => {
         }, COVER_MS)
       );
       timers.current.push(
-        window.setTimeout(() => setPhase("revealing"), COVER_MS + holdMs)
+        window.setTimeout(() => setPhase("revealing"), COVER_MS + HOLD_MS)
       );
       timers.current.push(
         window.setTimeout(
           () => setPhase("idle"),
-          COVER_MS + holdMs + revealMs
+          COVER_MS + HOLD_MS + REVEAL_MS
         )
       );
     };
@@ -122,9 +114,7 @@ export const RouteTransition = () => {
             phase === "covering"
               ? `rt-cover ${COVER_MS}ms cubic-bezier(0.65, 0, 0.35, 1) forwards`
               : undefined,
-          transition: toHome
-            ? `transform ${REVEAL_MS_HOME}ms cubic-bezier(0.22, 1, 0.36, 1)`
-            : `transform ${REVEAL_MS}ms cubic-bezier(0.76, 0, 0.24, 1)`,
+          transition: `transform ${REVEAL_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`,
         }}
       >
         <div aria-hidden className="absolute inset-0 bg-noise opacity-25" />
