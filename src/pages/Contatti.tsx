@@ -9,24 +9,24 @@ import { useToast } from "@/hooks/use-toast";
 const sedi = [
   {
     city: "Salerno",
-    address: "Via Roma, 41 — 84121 Salerno (SA)",
-    phone: "+39 089 123 4567",
+    address: "C.so Vittorio Emanuele 58 — 84121 Salerno (SA)",
+    phone: "+39 089 343140",
     email: "salerno@accarino.it",
-    hours: "Lun–Ven · 9:00–18:30",
+    hours: "Mar–Gio · 15:00–18:00",
   },
   {
     city: "Cava de' Tirreni",
-    address: "Corso Umberto I, 132 — 84013 Cava de' Tirreni (SA)",
-    phone: "+39 089 765 4321",
+    address: "Via G. Accarino, 5 — 84013 Cava de' Tirreni (SA)",
+    phone: "+39 089 343140",
     email: "cava@accarino.it",
-    hours: "Lun–Ven · 9:00–17:00",
+    hours: "Lun–Ven · 10:00–17:00",
   },
 ];
 
 const aree = [
   "Espropriazioni",
   "Appalti Pubblici",
-  "Concorsi Pubblici",
+  "Attività della Pubblica Amministrazione",
   "Urbanistica ed Edilizia",
   "Corte dei Conti",
   "Altro / Non so",
