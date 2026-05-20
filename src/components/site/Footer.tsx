@@ -123,7 +123,7 @@ export const Footer = () => (
               <MapPin className="w-4 h-4 text-gold mt-0.5 flex-shrink-0" strokeWidth={1.75} />
               <div>
                 <p className="text-background font-serif text-base">Salerno</p>
-                <p className="text-background/60 text-xs mt-1 leading-relaxed">
+                <p className="text-background/80 text-xs mt-1 leading-relaxed">
                   C.so Vittorio Emanuele 58<br />84121 Salerno (SA)
                 </p>
               </div>
@@ -132,7 +132,7 @@ export const Footer = () => (
               <MapPin className="w-4 h-4 text-gold mt-0.5 flex-shrink-0" strokeWidth={1.75} />
               <div>
                 <p className="text-background font-serif text-base">Cava de' Tirreni</p>
-                <p className="text-background/60 text-xs mt-1 leading-relaxed">
+                <p className="text-background/80 text-xs mt-1 leading-relaxed">
                   Via G. Accarino, 5<br />84013 Cava de' Tirreni (SA)
                 </p>
               </div>
@@ -142,10 +142,10 @@ export const Footer = () => (
       </div>
 
       <div className="mt-16 pt-8 border-t border-background/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <p className="text-xs text-background/50">
+        <p className="text-xs text-background/75">
           © {new Date().getFullYear()} Studio Legale Accarino · R.d.T. 3929066994
         </p>
-        <div className="flex items-center gap-5 text-[10px] uppercase tracking-[0.2em] text-background/50">
+        <div className="flex items-center gap-5 text-[10px] uppercase tracking-[0.2em] text-background/75">
           <Link to="/privacy-policy" className="hover:text-gold transition-colors">
             Privacy Policy
           </Link>

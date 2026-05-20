@@ -65,7 +65,7 @@ export default function Procedures() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Cerca una procedura, un'area, un termine…"
-            className="w-full bg-transparent border-0 border-b border-primary/20 focus:border-gold focus:outline-none pl-7 pr-2 py-3 font-serif text-lg text-primary placeholder:text-muted-foreground/60 transition-colors"
+            className="w-full bg-transparent border-0 border-b border-primary/20 focus:border-gold focus:outline-none pl-7 pr-2 py-3 font-serif text-lg text-primary placeholder:text-muted-foreground transition-colors"
             aria-label="Filtra le procedure"
           />
         </div>
