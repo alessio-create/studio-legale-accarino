@@ -2,7 +2,7 @@ import { Users } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { PracticePageTemplate } from "@/components/site/PracticePageTemplate";
 import { Seo, serviceJsonLd, faqJsonLd } from "@/components/site/Seo";
-import lawBooks from "@/assets/law-books.jpg";
+import lawBooks from "@/assets/concorsi-pubblici.jpg";
 
 export default function ConcorsiPubblici() {
   const faq = [
