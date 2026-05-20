@@ -105,13 +105,16 @@ export const RouteTransition = () => {
       <div
         className="absolute inset-0 bg-primary will-change-transform"
         style={{
-          transform: covered ? "translate3d(0, 0, 0)" : undefined,
+          transform: fading
+            ? "translate3d(0, -100%, 0)"
+            : covered
+            ? "translate3d(0, 0, 0)"
+            : undefined,
           animation:
             phase === "covering"
               ? `rt-cover ${COVER_MS}ms cubic-bezier(0.65, 0, 0.35, 1) forwards`
               : undefined,
-          opacity: fading ? 0 : 1,
-          transition: `opacity ${REVEAL_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`,
+          transition: `transform ${REVEAL_MS}ms cubic-bezier(0.76, 0, 0.24, 1)`,
         }}
       >
         <div aria-hidden className="absolute inset-0 bg-noise opacity-25" />
