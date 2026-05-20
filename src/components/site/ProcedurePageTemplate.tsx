@@ -1,4 +1,4 @@
-import { MouseEvent, useMemo } from "react";
+import { useMemo, type MouseEvent } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,

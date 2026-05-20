@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import { ChevronDown, List } from "lucide-react";
 import { useActiveSection } from "@/hooks/use-active-section";
 
@@ -24,7 +24,7 @@ export const MobileTOC = ({ sections }: Props) => {
   );
   const activeSection = sections[activeIndex];
 
-  const scrollToSection = (event: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+  const scrollToSection = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
     event.preventDefault();
     event.stopPropagation();
     setOpen(false);
