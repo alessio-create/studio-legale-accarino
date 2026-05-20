@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown, Phone, Landmark, Building2, Users, Scale, ArrowUpRight, ArrowRight } from "lucide-react";
 import { Logo } from "./Logo";
+import illoEspropriazioni from "@/assets/practice-espropriazioni.png";
+import illoUrbanistica from "@/assets/practice-urbanistica.png";
+import illoAppalti from "@/assets/practice-appalti.png";
+import illoConcorsi from "@/assets/practice-concorsi.png";
 
 const serviceGroups = [
   {
@@ -12,12 +16,14 @@ const serviceGroups = [
         label: "Espropriazioni",
         desc: "Indennità, opposizione alla stima, occupazioni illegittime.",
         icon: Landmark,
+        illustration: illoEspropriazioni,
       },
       {
         to: "/urbanistica-edilizia",
         label: "Urbanistica ed Edilizia",
         desc: "Permessi a costruire, varianti, vincoli, abusi e sanatorie.",
         icon: Scale,
+        illustration: illoUrbanistica,
       },
     ],
   },
@@ -30,12 +36,14 @@ const serviceGroups = [
         desc: "Ricorsi TAR, sospensive cautelari, contenzioso esecutivo.",
         icon: Building2,
         featured: true,
+        illustration: illoAppalti,
       },
       {
         to: "/concorsi-pubblici",
         label: "Concorsi Pubblici",
         desc: "Ricorsi su graduatorie, esclusioni, prove e bandi. Anche ricorsi collettivi.",
         icon: Users,
+        illustration: illoConcorsi,
       },
     ],
   },
@@ -223,7 +231,6 @@ export const Navbar = () => {
                     </p>
                     <ul className="space-y-0">
                       {group.items.map((item, ii) => {
-                        const Icon = item.icon;
                         return (
                           <li
                             key={item.to}
@@ -246,10 +253,21 @@ export const Navbar = () => {
                                 className="absolute left-0 top-2 bottom-2 w-px bg-gold scale-y-0 group-hover:scale-y-100 origin-center transition-transform duration-500"
                               />
                               <div className="flex items-start gap-4">
-                                <Icon
-                                  className="w-5 h-5 text-gold-deep mt-0.5 flex-shrink-0 transition-transform duration-500 group-hover:rotate-[-4deg] group-hover:scale-110"
-                                  strokeWidth={1.5}
-                                />
+                                <span className="relative w-14 h-14 flex-shrink-0 flex items-center justify-center">
+                                  <span
+                                    aria-hidden
+                                    className="absolute inset-0 rounded-sm bg-primary/[0.04] group-hover:bg-gold-soft/60 transition-colors duration-500"
+                                  />
+                                  <img
+                                    src={item.illustration}
+                                    alt=""
+                                    aria-hidden="true"
+                                    width={56}
+                                    height={56}
+                                    loading="lazy"
+                                    className="relative w-12 h-12 object-contain transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-[2deg]"
+                                  />
+                                </span>
                                 <div className="flex-1">
                                   <div className="flex items-center gap-2">
                                     <span className="font-serif text-lg text-primary group-hover:text-gold-deep transition-colors">
