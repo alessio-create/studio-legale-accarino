@@ -418,4 +418,21 @@
     60%      { opacity: 0.5; }
     100%     { opacity: 0;   transform: translateX(130%); }
   }
+
+  /* Legal pages (Privacy / Cookie) — editorial long-form prose */
+  .prose-legal {
+    @apply text-[15px] leading-relaxed text-foreground/85;
+  }
+  .prose-legal h2 {
+    @apply font-serif text-2xl text-primary mt-12 mb-4 leading-snug;
+  }
+  .prose-legal h3 {
+    @apply font-serif text-lg text-primary mt-8 mb-3 leading-snug;
+  }
+  .prose-legal p { @apply mb-4; }
+  .prose-legal ul { @apply list-disc pl-6 mb-4 space-y-1.5; }
+  .prose-legal a {
+    @apply text-gold-deep underline underline-offset-2 hover:text-primary transition-colors;
+  }
+  .prose-legal strong { @apply text-primary font-semibold; }
 }
