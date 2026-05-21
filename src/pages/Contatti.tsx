@@ -32,21 +32,53 @@ const aree = [
   "Altro / Non so",
 ];
 
+const WEBHOOK_URL = "https://hook.eu2.make.com/myqqmp8cvm7emd88qpdineoxeani709b";
+
 export default function Contatti() {
   const { toast } = useToast();
   const [submitting, setSubmitting] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload = {
+      name: String(fd.get("name") || "").trim(),
+      phone: String(fd.get("phone") || "").trim(),
+      email: String(fd.get("email") || "").trim(),
+      area: String(fd.get("area") || "").trim(),
+      message: String(fd.get("message") || "").trim(),
+      consent: fd.get("consent") === "on",
+      source: "studiolegaleaccarino.it /contatti",
+      submittedAt: new Date().toISOString(),
+      pageUrl: typeof window !== "undefined" ? window.location.href : "",
+      userAgent: typeof navigator !== "undefined" ? navigator.userAgent : "",
+    };
+
     setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`Webhook responded ${res.status}`);
       toast({
         title: "Richiesta ricevuta",
         description: "La contatteremo entro 48 ore lavorative.",
       });
-      (e.target as HTMLFormElement).reset();
-    }, 700);
+      form.reset();
+    } catch (err) {
+      console.error("Contact webhook failed:", err);
+      toast({
+        title: "Invio non riuscito",
+        description:
+          "Si è verificato un problema. Riprova o chiama la sede di Salerno al +39 089 343140.",
+        variant: "destructive",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -95,13 +127,13 @@ export default function Contatti() {
                   <label className="text-[11px] uppercase tracking-[0.2em] text-primary font-semibold">
                     Nome e Cognome *
                   </label>
-                  <input required className="input-underline mt-3" placeholder="Mario Rossi" />
+                  <input name="name" required className="input-underline mt-3" placeholder="Mario Rossi" />
                 </div>
                 <div>
                   <label className="text-[11px] uppercase tracking-[0.2em] text-primary font-semibold">
                     Telefono *
                   </label>
-                  <input required type="tel" className="input-underline mt-3" placeholder="+39 ..." />
+                  <input name="phone" required type="tel" className="input-underline mt-3" placeholder="+39 ..." />
                 </div>
               </div>
 
@@ -109,14 +141,14 @@ export default function Contatti() {
                 <label className="text-[11px] uppercase tracking-[0.2em] text-primary font-semibold">
                   Email *
                 </label>
-                <input required type="email" className="input-underline mt-3" placeholder="nome@esempio.it" />
+                <input name="email" required type="email" className="input-underline mt-3" placeholder="nome@esempio.it" />
               </div>
 
               <div>
                 <label className="text-[11px] uppercase tracking-[0.2em] text-primary font-semibold">
                   Area di interesse *
                 </label>
-                <select required className="input-underline mt-3 appearance-none cursor-pointer bg-transparent">
+                <select name="area" required className="input-underline mt-3 appearance-none cursor-pointer bg-transparent">
                   <option value="">Seleziona un'area</option>
                   {aree.map((a) => (
                     <option key={a} value={a}>{a}</option>
@@ -129,6 +161,7 @@ export default function Contatti() {
                   Descrivi brevemente la tua situazione *
                 </label>
                 <textarea
+                  name="message"
                   required
                   rows={5}
                   className="input-underline mt-3 resize-none"
@@ -137,7 +170,7 @@ export default function Contatti() {
               </div>
 
               <label className="flex items-start gap-3 text-sm text-muted-foreground">
-                <input type="checkbox" required defaultChecked className="mt-1 accent-primary w-4 h-4" />
+                <input name="consent" type="checkbox" required defaultChecked className="mt-1 accent-primary w-4 h-4" />
                 <span>
                   Ho letto l'informativa privacy e acconsento al trattamento dei dati
                   per essere ricontattato dallo Studio.
