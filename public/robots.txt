@@ -38,14 +38,15 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
+# Opt out of AI model training (search/indexing remain allowed above)
 User-agent: Google-Extended
-Allow: /
+Disallow: /
 
 User-agent: Applebot
 Allow: /
 
 User-agent: Applebot-Extended
-Allow: /
+Disallow: /
 
 User-agent: Bytespider
 Allow: /

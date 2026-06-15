@@ -149,6 +149,10 @@ export const Footer = () => (
           <Link to="/cookie-policy" className="hover:text-gold transition-colors">
             Cookie Policy
           </Link>
+          <span aria-hidden="true">·</span>
+          <a href="/llm.html" className="hover:text-gold transition-colors">
+            AI Overview
+          </a>
         </div>
       </div>
     </div>
