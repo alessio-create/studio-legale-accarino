@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Mail, MapPin, Phone, Clock, Printer } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone, Clock } from "lucide-react";
 import { Logo } from "./Logo";
 
 export const Footer = () => (
@@ -44,16 +44,12 @@ export const Footer = () => (
               <Phone className="w-4 h-4 text-gold flex-shrink-0" strokeWidth={2} />
               +39 089 343140
             </a>
-            <div className="flex items-center gap-3 text-sm text-background/70">
-              <Printer className="w-4 h-4 text-gold flex-shrink-0" strokeWidth={2} />
-              Fax +39 089 343140
-            </div>
             <a
-              href="mailto:studioassociato@accarino.it"
+              href="mailto:studio@accarino.it"
               className="flex items-center gap-3 text-sm text-background hover:text-gold transition-colors"
             >
               <Mail className="w-4 h-4 text-gold flex-shrink-0" strokeWidth={2} />
-              studioassociato@accarino.it
+              studio@accarino.it
             </a>
             <div className="flex items-start gap-3 text-sm text-background/70">
               <Clock className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" strokeWidth={2} />

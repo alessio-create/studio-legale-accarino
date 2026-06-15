@@ -59,7 +59,7 @@ export const ProceduresSidebar = () => {
 
   return (
     <Sidebar collapsible="icon" className="border-r hairline">
-      <SidebarHeader className="border-b hairline">
+      <SidebarHeader className="border-b hairline mt-20 lg:mt-[116px]">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
