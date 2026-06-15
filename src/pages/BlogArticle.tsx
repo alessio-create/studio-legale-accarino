@@ -6,6 +6,21 @@ import { Reveal } from "@/components/site/Reveal";
 import { Seo, breadcrumbJsonLd } from "@/components/site/Seo";
 import { getArticleBySlug, getRelatedArticles } from "@/data/blog";
 
+const SITE_URL = "https://studiolegaleaccarino.it";
+const IT_MONTHS: Record<string, string> = {
+  gennaio: "01", febbraio: "02", marzo: "03", aprile: "04",
+  maggio: "05", giugno: "06", luglio: "07", agosto: "08",
+  settembre: "09", ottobre: "10", novembre: "11", dicembre: "12",
+};
+/** Converts "12 Marzo 2025" -> "2025-03-12". Falls back to original string. */
+function toIsoDate(it: string): string {
+  const m = it.trim().toLowerCase().match(/^(\d{1,2})\s+([a-zà-ú]+)\s+(\d{4})$/);
+  if (!m) return it;
+  const month = IT_MONTHS[m[2]];
+  if (!month) return it;
+  return `${m[3]}-${month}-${m[1].padStart(2, "0")}`;
+}
+
 const BlogArticle = () => {
   const { slug } = useParams<{ slug: string }>();
   const article = slug ? getArticleBySlug(slug) : undefined;
@@ -14,19 +29,33 @@ const BlogArticle = () => {
 
   const related = getRelatedArticles(article.slug, 3);
 
+  const isoDate = toIsoDate(article.date);
+  const canonicalUrl = `${SITE_URL}/blog/${article.slug}`;
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: article.title,
     description: article.excerpt,
-    image: article.image,
-    datePublished: article.date,
-    author: { "@type": "Person", name: article.author },
+    image: [`${SITE_URL}${article.image}`],
+    datePublished: isoDate,
+    dateModified: isoDate,
+    inLanguage: "it-IT",
+    author: {
+      "@type": "Person",
+      name: article.author,
+      jobTitle: "Avvocato",
+      affiliation: { "@type": "LegalService", name: "Studio Legale Accarino" },
+    },
     publisher: {
       "@type": "Organization",
       name: "Studio Legale Accarino",
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/favicon.ico`,
+      },
     },
-    mainEntityOfPage: `https://studio-legale-accarino.lovable.app/blog/${article.slug}`,
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
+    articleSection: article.category,
   };
 
   return (

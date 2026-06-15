@@ -7,7 +7,8 @@ import { Helmet } from "react-helmet-async";
  */
 const SITE_NAME = "Studio Legale Accarino";
 const SITE_URL = "https://studiolegaleaccarino.it";
-const DEFAULT_OG = `${SITE_URL}/og-default.jpg`; // [PLACEHOLDER] caricare immagine OG reale 1200x630
+const DEFAULT_OG =
+  "https://storage.googleapis.com/gpt-engineer-file-uploads/PcJDLCXPA1eSmvzpXh1vTthLkkf2/social-images/social-1778225746771-Copertina-facebook.webp";
 
 export type JsonLd = Record<string, unknown>;
 
