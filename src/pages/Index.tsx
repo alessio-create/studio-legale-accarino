@@ -223,7 +223,7 @@ const results: ResultDetail[] = [
 /** CASE STUDIES — three editorial long-form anonymised proceedings. */
 const caseStudies: CaseStudy[] = [
   {
-    year: "2024",
+    year: "2026",
     area: "Inquinamento acustico · Cava de' Tirreni",
     title: "Annullato il silenzio del Comune sulle segnalazioni di rumore",
     outcome: "Commissario ad acta nominato",
@@ -241,7 +241,7 @@ const caseStudies: CaseStudy[] = [
     },
   },
   {
-    year: "2024",
+    year: "2026",
     area: "Concessioni · Campania",
     title: "Annullato l'atto di risoluzione e intimazione di rilascio",
     outcome: "Risoluzione neutralizzata, posizione della società tutelata",
@@ -259,7 +259,7 @@ const caseStudies: CaseStudy[] = [
     },
   },
   {
-    year: "2024",
+    year: "2026",
     area: "Beni culturali e paesaggio · Gaeta",
     title: "Accolto ricorso contro diniego paesaggistico su immobile non vincolato",
     outcome: "Diniego della Soprintendenza annullato",
@@ -277,7 +277,7 @@ const caseStudies: CaseStudy[] = [
     },
   },
   {
-    year: "2024",
+    year: "2026",
     area: "Espropri e accesso agli atti · Campania",
     title: "Silenzio illegittimo: ordine di provvedere e accesso agli atti accolto",
     outcome: "Retrocessione e accesso ai titoli edilizi riconosciuti",

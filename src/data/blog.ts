@@ -41,7 +41,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt:
       "Una guida operativa al valore venale di mercato, alla riduzione del 25% per finalità di riforma economico-sociale e ai più recenti orientamenti della Corte di Cassazione.",
     image: blogIndennitaEsproprio,
-    date: "12 Marzo 2025",
+    date: "12 Marzo 2026",
     readingTime: "9 min",
     author: "Avv. Francesco Accarino",
     bullets: [
@@ -101,7 +101,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt:
       "Il D.Lgs. 36/2023 ridefinisce l'istituto del soccorso istruttorio: i confini fra integrazione formale, sostanziale e i casi di esclusione automatica.",
     image: blogSoccorsoIstruttorio,
-    date: "28 Febbraio 2025",
+    date: "28 Febbraio 2026",
     readingTime: "7 min",
     author: "Avv. Paolo Accarino",
     bullets: [
@@ -145,7 +145,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt:
       "Sessanta giorni per impugnare, una preparazione documentale che inizia molto prima. Le tappe concrete per costruire un ricorso efficace.",
     image: blogRicorsoGraduatoria,
-    date: "14 Febbraio 2025",
+    date: "14 Febbraio 2026",
     readingTime: "6 min",
     author: "Avv. Paolo Accarino",
     bullets: [
@@ -188,7 +188,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt:
       "L'art. 20 del Testo Unico Edilizia regola il silenzio-assenso, ma vincoli paesaggistici e tutele speciali ne escludono l'operatività in molti casi pratici.",
     image: blogPermessoCostruire,
-    date: "30 Gennaio 2025",
+    date: "30 Gennaio 2026",
     readingTime: "5 min",
     author: "Avv. Francesco Accarino",
     bullets: [
@@ -221,7 +221,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt:
       "Dall'art. 42-bis del T.U. Espropri alla giurisprudenza CEDU, il percorso per recuperare il valore del bene illegittimamente acquisito.",
     image: blogOccupazioneAcquisitiva,
-    date: "10 Gennaio 2025",
+    date: "10 Gennaio 2026",
     readingTime: "8 min",
     author: "Avv. Francesco Accarino",
     bullets: [
@@ -258,7 +258,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt:
       "I confini del controllo giurisdizionale sulla valutazione di anomalia nelle gare d'appalto, fra discrezionalità tecnica e vizi macroscopici.",
     image: blogAnomaliaOfferta,
-    date: "18 Dicembre 2024",
+    date: "18 Dicembre 2026",
     readingTime: "7 min",
     author: "Avv. Paolo Accarino",
     bullets: [
