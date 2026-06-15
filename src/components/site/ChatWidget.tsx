@@ -293,12 +293,13 @@ export const ChatWidget = () => {
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Scrivi un messaggio…"
+              placeholder={sending ? "Sto rispondendo…" : "Scrivi un messaggio…"}
+              disabled={sending}
               className="flex-1 bg-transparent px-3 py-2.5 text-sm text-primary placeholder:text-muted-foreground focus:outline-none"
             />
             <button
               type="submit"
-              disabled={!input.trim()}
+              disabled={!input.trim() || sending}
               aria-label="Invia"
               className="w-9 h-9 flex items-center justify-center bg-primary text-gold hover:bg-primary-glow disabled:opacity-40 transition-colors"
             >
