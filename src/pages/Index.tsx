@@ -705,7 +705,7 @@ export default function Index() {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-primary/10 border hairline">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-primary/10 border hairline">
             {caseStudies.map((c, i) => (
               <CaseStudyCard key={c.title} caseStudy={c} index={i} />
             ))}
