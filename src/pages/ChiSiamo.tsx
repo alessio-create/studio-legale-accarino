@@ -40,6 +40,7 @@ const team = [
     focus: "Diritto amministrativo, contenzioso, consulenza.",
     initials: "AB",
     photo: antoniaPhoto,
+    photoClass: "object-[center_top] scale-[1.35]",
   },
 ];
 
