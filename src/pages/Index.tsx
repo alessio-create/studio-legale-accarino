@@ -158,8 +158,8 @@ const team = [
     focus: "Diritto amministrativo, contenzioso, consulenza.",
     photo: antoniaPhoto,
     objectPosition: "center 20%",
-    imageScale: "scale-[1.12]",
-    hoverScale: "group-hover:scale-[1.22]",
+    imageScale: "scale-[1.06]",
+    hoverScale: "group-hover:scale-[1.10]",
   },
 ];
 
