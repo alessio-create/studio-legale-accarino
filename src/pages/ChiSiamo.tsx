@@ -40,6 +40,8 @@ const team = [
     focus: "Diritto amministrativo, contenzioso, consulenza.",
     initials: "AB",
     photo: antoniaPhoto,
+    objectPosition: "center 20%",
+    imageScale: "scale-[1.15]",
   },
 ];
 
@@ -201,7 +203,7 @@ export default function ChiSiamo() {
             />
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12 max-w-5xl mx-auto">
+          <div className="grid sm:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 max-w-3xl mx-auto">
             {team.map((m, i) => (
               <Reveal key={i} delay={i * 100}>
                 <article className="group bg-background border hairline overflow-hidden transition-all duration-500 hover:shadow-[0_24px_60px_-30px_hsl(217_50%_12%/0.25)]">
@@ -210,7 +212,8 @@ export default function ChiSiamo() {
                     <img
                       src={m.photo}
                       alt={`Ritratto di ${m.name}`}
-                      className="absolute inset-0 w-full h-full object-cover object-[center_15%] grayscale transition-all duration-[1200ms] ease-out group-hover:grayscale-0 group-hover:scale-[1.04]"
+                      className={`absolute inset-0 w-full h-full object-cover grayscale transition-all duration-[1200ms] ease-out group-hover:grayscale-0 group-hover:scale-[1.04] ${(m as any).imageScale ?? ""}`}
+                      style={{ objectPosition: (m as any).objectPosition ?? "center 15%" }}
                       loading="lazy"
                     />
                     {/* Subtle gradient for legibility of corner marks over light backgrounds */}
