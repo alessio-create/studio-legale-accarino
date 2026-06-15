@@ -276,6 +276,78 @@ const caseStudies: CaseStudy[] = [
         "Diniego e parere negativo annullati in sede giurisdizionale. Rilascio del titolo in sanatoria, revoca dell'ordinanza di demolizione e archiviazione del procedimento sanzionatorio.",
     },
   },
+  {
+    year: "2024",
+    area: "Inquinamento acustico · Cava de' Tirreni",
+    title: "Annullato il silenzio del Comune sulle segnalazioni di rumore",
+    outcome: "Commissario ad acta nominato",
+    excerpt:
+      "Cittadino del centro di Cava de' Tirreni esposto a gravi immissioni rumorose notturne da un esercizio commerciale, con il Comune rimasto inerte nonostante numerose istanze formali.",
+    image: caseUrbanisticaCostiera,
+    detail: {
+      metric: { value: "117 c.p.a.", label: "Azione contro il silenzio inadempimento" },
+      challenge:
+        "Nonostante le istanze volte a sollecitare i poteri di vigilanza, controllo e repressione in materia di inquinamento acustico, il Comune non adotta alcun provvedimento espresso entro i termini di legge, violando l'obbligo di provvedere ex art. 2 l. 241/1990 e la normativa speciale (l. 447/1995).",
+      strategy:
+        "Ricorso ex art. 117 c.p.a. impostato come azione contro il silenzio, finalizzato a una pronuncia che accerti l'obbligo del Comune di definire in modo espresso e motivato le istanze del cittadino, valorizzando elementi tecnici già disponibili e l'obbligo dell'ente di attivarsi d'ufficio.",
+      result:
+        "Il TAR Campania, Salerno, Sez. III, accoglie il ricorso e ordina al Comune di pronunciarsi in modo espresso, motivato e definitivo. Per garantire l'effettività della tutela, viene nominato un Commissario ad acta chiamato a sostituirsi all'ente in caso di ulteriore inerzia.",
+    },
+  },
+  {
+    year: "2024",
+    area: "Concessioni · Campania",
+    title: "Annullato l'atto di risoluzione e intimazione di rilascio",
+    outcome: "Risoluzione neutralizzata, posizione della società tutelata",
+    excerpt:
+      "Concessione comunale di un compendio immobiliare mai formalmente consegnato: il Comune dichiara risolto il contratto con intimazione di rilascio e preannuncio di escussione fideiussoria.",
+    image: caseAppaltiCampania,
+    detail: {
+      metric: { value: "Atto annullato", label: "Risoluzione e intimazione di rilascio" },
+      challenge:
+        "Atto immediatamente lesivo che presuppone la consegna del bene mai avvenuta e fa discendere obblighi e conseguenze patrimoniali per la società concessionaria, con il rischio dell'escussione della fideiussione.",
+      strategy:
+        "Ricorso al TAR contro l'atto comunale, facendo leva sul vizio di presupposto (mancata consegna) e sulla distinzione tra i diversi piani di giurisdizione, per depotenziare l'efficacia della risoluzione e delle iniziative collegate.",
+      result:
+        "Il TAR annulla l'atto nella parte in cui presuppone la consegna del bene. Viene così neutralizzato il tentativo dell'ente di far valere risoluzione e decadenza della concessione in assenza del presupposto essenziale, con piena tutela della posizione contrattuale e patrimoniale della società.",
+    },
+  },
+  {
+    year: "2024",
+    area: "Beni culturali e paesaggio · Gaeta",
+    title: "Accolto ricorso contro diniego paesaggistico su immobile non vincolato",
+    outcome: "Diniego della Soprintendenza annullato",
+    excerpt:
+      "La Soprintendenza aveva negato l'autorizzazione paesaggistica ritenendo applicabile un vincolo culturale e paesaggistico anche ai manufatti oggetto di sanatoria, in realtà esterni al perimetro tutelato.",
+    image: caseUrbanisticaCostiera,
+    detail: {
+      metric: { value: "Vincolo ridefinito", label: "Distinzione tra vincolo diretto e indiretto" },
+      challenge:
+        "Procedimento di sanatoria bloccato da un diniego paesaggistico fondato su un'estensione impropria del vincolo culturale a porzioni del compendio immobiliare in realtà non assoggettate a tutela formale.",
+      strategy:
+        "Contestazione selettiva del diniego, puntando sulla corretta delimitazione del perimetro del vincolo e sui titoli contrattuali che legittimano la prosecuzione dei procedimenti, così da ridurre il raggio d'azione dell'autorità tutoria.",
+      result:
+        "Il TAR offre un chiarimento importante sulla distinzione tra vincolo diretto e vincolo indiretto: annulla il diniego chiarendo che il vincolo culturale riguardava esclusivamente specifiche porzioni del complesso immobiliare e che nessun vincolo indiretto era stato formalmente imposto.",
+    },
+  },
+  {
+    year: "2024",
+    area: "Espropri e accesso agli atti · Campania",
+    title: "Silenzio illegittimo: ordine di provvedere e accesso agli atti accolto",
+    outcome: "Retrocessione e accesso ai titoli edilizi riconosciuti",
+    excerpt:
+      "Lotto ceduto al Comune nell'ambito di un esproprio e rimasto parzialmente inutilizzato: istanza di retrocessione ex artt. 46-48 T.U. Espropri e richiesta di accesso ai permessi di costruire dei fondi limitrofi rimasta senza decisione.",
+    image: caseEspropriazioniCilento,
+    detail: {
+      metric: { value: "Artt. 46-48", label: "T.U. Espropri · retrocessione riconosciuta" },
+      challenge:
+        "Doppia inerzia del Comune: nessuna decisione sull'istanza di retrocessione di un'area espropriata e non utilizzata, e nessun riscontro alla richiesta di accesso ai titoli edilizi dei fondi limitrofi, incidenti sulla sfera giuridica del proprietario.",
+      strategy:
+        "Ricorso al TAR avverso il silenzio dell'amministrazione, azionando gli strumenti di tutela previsti dalla legge per trasformare l'inerzia in un obbligo giurisdizionalmente presidiato, qualificando l'istanza come richiesta che impone una decisione espressa e collegandola a un interesse proprietario ben definito.",
+      result:
+        "Il TAR dichiara illegittimo il silenzio, ordina al Comune di decidere sull'istanza di retrocessione e riconosce il diritto di accesso ai titoli edilizi e agli elaborati progettuali richiesti, rafforzando la tutela del proprietario espropriato sulle aree non utilizzate.",
+    },
+  },
 ];
 
 /** Hero stats kept as part of the hero introduction. */
@@ -666,8 +738,7 @@ export default function Index() {
       </section>
 
       {/* ───────────────── EVIDENCES ───────────────── */}
-      {/* ───────────────── CASE STUDIES (hidden) ───────────────── */}
-      {false && (
+      {/* ───────────────── CASE STUDIES ───────────────── */}
       <section className="section-y bg-surface-container-low border-b hairline">
         <div className="editorial-container">
           <div className="flex items-end justify-between flex-wrap gap-6 sm:gap-8 mb-10 sm:mb-14 lg:mb-16">
@@ -695,7 +766,6 @@ export default function Index() {
           </div>
         </div>
       </section>
-      )}
 
       {/* ───────────────── BLOG ───────────────── */}
       <section className="section-y bg-background">
