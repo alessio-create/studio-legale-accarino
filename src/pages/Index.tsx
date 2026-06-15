@@ -152,6 +152,13 @@ const team = [
     focus: "Diritto amministrativo, concorsi pubblici, sanità.",
     photo: danielePhoto,
   },
+  {
+    name: "Antonia Bacco",
+    role: "Avvocato",
+    focus: "Diritto amministrativo, contenzioso, consulenza.",
+    photo: antoniaPhoto,
+    objectPosition: "center 20%",
+  },
 ];
 
 /** EVIDENCES — anonymised representative outcomes. */
