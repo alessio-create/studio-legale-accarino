@@ -452,7 +452,7 @@ export default function Index() {
       </section>
 
       {/* ───── LO STUDIO — team & reviews unified into one authoritative band ───── */}
-      <section className="relative bg-surface-container-low border-b hairline overflow-hidden">
+      <section className="relative bg-surface-container-low border-b hairline overflow-hidden hidden md:block">
         {/* Subtle gold ambient wash spanning the entire band */}
         <div
           aria-hidden
@@ -666,7 +666,8 @@ export default function Index() {
       </section>
 
       {/* ───────────────── EVIDENCES ───────────────── */}
-      {/* ───────────────── CASE STUDIES ───────────────── */}
+      {/* ───────────────── CASE STUDIES (hidden) ───────────────── */}
+      {false && (
       <section className="section-y bg-surface-container-low border-b hairline">
         <div className="editorial-container">
           <div className="flex items-end justify-between flex-wrap gap-6 sm:gap-8 mb-10 sm:mb-14 lg:mb-16">
@@ -694,6 +695,7 @@ export default function Index() {
           </div>
         </div>
       </section>
+      )}
 
       {/* ───────────────── BLOG ───────────────── */}
       <section className="section-y bg-background">
