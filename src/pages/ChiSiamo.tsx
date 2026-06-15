@@ -41,7 +41,6 @@ const team = [
     initials: "AB",
     photo: antoniaPhoto,
     objectPosition: "center 20%",
-    imageScale: "scale-[1.15]",
   },
 ];
 
