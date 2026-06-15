@@ -116,7 +116,7 @@ const procedureGroups = [
     ],
   },
   {
-    audience: "Per le Persone",
+    audience: "Per i Privati",
     intro:
       "Tutela di privati cittadini, professionisti e imprese nei rapporti conflittuali con la Pubblica Amministrazione.",
     items: [
@@ -137,25 +137,25 @@ const team = [
   {
     name: "Francesco Accarino",
     role: "Founding Partner",
-    focus: "Diritto amministrativo, espropriazioni, contenzioso.",
+    focus: "Diritto amministrativo, Giurisdizioni contabili, Formazione.",
     photo: francescoPhoto,
   },
   {
     name: "Paolo Accarino",
     role: "Senior Partner",
-    focus: "Diritto amministrativo, appalti pubblici, urbanistica.",
+    focus: "Diritto amministrativo, Espropriazione, Urbanistica.",
     photo: paoloPhoto,
   },
   {
     name: "Daniele Accarino",
     role: "Partner",
-    focus: "Diritto amministrativo, concorsi pubblici, sanità.",
+    focus: "Organizzazione interna e processi, Controllo di gestione.",
     photo: danielePhoto,
   },
   {
     name: "Antonia Bacco",
     role: "Avvocato",
-    focus: "Diritto amministrativo, contenzioso, consulenza.",
+    focus: "Rapporti con i clienti e supporto amministrativo.",
     photo: antoniaPhoto,
     objectPosition: "center 20%",
     imageScale: "scale-[1.06]",
