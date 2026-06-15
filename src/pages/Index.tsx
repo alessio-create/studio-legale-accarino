@@ -13,6 +13,7 @@ import caseUrbanisticaCostiera from "@/assets/case-urbanistica-costiera.jpg";
 import francescoPhoto from "@/assets/team-francesco-accarino.png";
 import paoloPhoto from "@/assets/team-paolo-accarino.png";
 import danielePhoto from "@/assets/team-daniele-accarino.png";
+import antoniaPhoto from "@/assets/team-antonia-bacco.png";
 import { Layout } from "@/components/site/Layout";
 import { Eyebrow } from "@/components/site/Eyebrow";
 import { CTAButton } from "@/components/site/CTAButton";
