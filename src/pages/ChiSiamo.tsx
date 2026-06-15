@@ -10,6 +10,7 @@ import monogramCircle from "@/assets/monogram-circle.png";
 import francescoPhoto from "@/assets/team-francesco-accarino.png";
 import paoloPhoto from "@/assets/team-paolo-accarino.png";
 import danielePhoto from "@/assets/team-daniele-accarino.png";
+import antoniaPhoto from "@/assets/team-antonia-bacco.png";
 
 const team = [
   {
@@ -32,6 +33,13 @@ const team = [
     focus: "Diritto amministrativo, concorsi pubblici, sanità.",
     initials: "DA",
     photo: danielePhoto,
+  },
+  {
+    name: "Antonia Bacco",
+    role: "Avvocato",
+    focus: "Diritto amministrativo, contenzioso, consulenza.",
+    initials: "AB",
+    photo: antoniaPhoto,
   },
 ];
 
