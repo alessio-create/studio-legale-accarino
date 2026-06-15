@@ -49,7 +49,7 @@ const REVIEWS: LocalReview[] = [
     quote:
       "Ricorso TAR vinto al primo grado. Professionalità e risposta puntuale.",
     minutesAgo: 27,
-    practice: "Concorsi Pubblici",
+    practice: "Attività della Pubblica Amministrazione",
   },
   {
     initial: "F.L.",

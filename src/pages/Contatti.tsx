@@ -26,7 +26,7 @@ const sedi = [
 const aree = [
   "Espropriazioni e Occupazioni Illegittime",
   "Appalti Pubblici e Contenzioso Gare",
-  "Concorsi Pubblici e Pubblico Impiego",
+  "Attività della Pubblica Amministrazione",
   "Urbanistica ed Edilizia",
   "Corte dei Conti",
   "Altro / Non so",

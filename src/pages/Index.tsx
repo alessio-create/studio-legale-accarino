@@ -82,7 +82,7 @@ const specializations = [
   },
   {
     number: "04",
-    title: "Concorsi Pubblici e Pubblico Impiego",
+    title: "Attività della Pubblica Amministrazione",
     description:
       "Tutela dei candidati nelle selezioni pubbliche: impugnazione di graduatorie, prove e criteri di valutazione, ricorsi collettivi.",
     icon: Users,
@@ -281,7 +281,7 @@ const caseStudies: CaseStudy[] = [
 /** Hero stats kept as part of the hero introduction. */
 const heroStats = [
   { to: 50, suffix: "+", thousands: false, label: "Anni di esperienza", caption: "Dal 1975 al servizio del diritto pubblico" },
-  { to: 4, suffix: "", pad: 2, label: "Aree di specializzazione", caption: "Espropri · Urbanistica · Appalti · Concorsi" },
+  { to: 4, suffix: "", pad: 2, label: "Aree di specializzazione", caption: "Espropri · Urbanistica · Appalti · P.A." },
   { to: 1700, suffix: "+", thousands: true, label: "Cause patrocinate", caption: "TAR, Consiglio di Stato, Cassazione" },
   { to: 9, suffix: "", label: "Professionisti dedicati", caption: "Team multidisciplinare su due sedi" },
 ];

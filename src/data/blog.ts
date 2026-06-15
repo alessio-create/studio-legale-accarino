@@ -139,7 +139,7 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: "ricorso-graduatoria-concorso-pubblico",
-    category: "Concorsi Pubblici",
+    category: "Attività della Pubblica Amministrazione",
     title: "Ricorso contro la graduatoria di un concorso pubblico: termini e strategia",
     seoTitle: "Ricorso graduatoria concorso pubblico · Accarino",
     excerpt:
