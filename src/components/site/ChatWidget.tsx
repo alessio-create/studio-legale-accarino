@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MessageCircle, Send, Sparkles, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 
 /**
  * Floating concierge chatbot — bottom-right.
@@ -24,11 +25,19 @@ type Message = {
   cta?: { label: string; to: string };
 };
 
-const CONTACT_REPLY: Message = {
-  role: "assistant",
-  content:
-    "Grazie per il tuo messaggio. Per una risposta puntuale ti invitiamo a contattarci direttamente: un avvocato del team ti risponderà al più presto.",
-  cta: { label: "Vai alla pagina Contatti", to: "/contatti" },
+const CONTACT_CTA = { label: "Vai alla pagina Contatti", to: "/contatti" };
+
+const shouldAttachContactCta = (text: string) => {
+  const t = text.toLowerCase();
+  return (
+    t.includes("contatt") ||
+    t.includes("/contatti") ||
+    t.includes("appuntament") ||
+    t.includes("consulenz") ||
+    t.includes("preventiv") ||
+    t.includes("avvocato del team") ||
+    t.includes("risponder")
+  );
 };
 
 export const ChatWidget = () => {
@@ -47,6 +56,7 @@ export const ChatWidget = () => {
     },
   ]);
   const [input, setInput] = useState("");
+  const [sending, setSending] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   // Reveal: 3s timer OR 15% scroll, whichever first.
@@ -97,14 +107,59 @@ export const ChatWidget = () => {
     sessionStorage.setItem("studio.chat-hint-shown", "1");
   };
 
-  const send = () => {
+  const send = async () => {
     const text = input.trim();
-    if (!text) return;
-    setMessages((m) => [...m, { role: "user", content: text }]);
+    if (!text || sending) return;
+    const nextMessages: Message[] = [
+      ...messages,
+      { role: "user", content: text },
+    ];
+    setMessages(nextMessages);
     setInput("");
-    window.setTimeout(() => {
-      setMessages((m) => [...m, CONTACT_REPLY]);
-    }, 600);
+    setSending(true);
+    try {
+      const history = nextMessages
+        .filter((m) => m.content && m.content !== "Scrivi un messaggio")
+        .map((m) => ({ role: m.role, content: m.content }));
+      const { data, error } = await supabase.functions.invoke("chat-assistant", {
+        body: { messages: history },
+      });
+      if (error) throw error;
+      const reply: string = data?.reply ?? "";
+      if (!reply) {
+        setMessages((m) => [
+          ...m,
+          {
+            role: "assistant",
+            content:
+              "Mi scuso, al momento non riesco a risponderti. Per assistenza immediata visita la pagina Contatti.",
+            cta: CONTACT_CTA,
+          },
+        ]);
+      } else {
+        setMessages((m) => [
+          ...m,
+          {
+            role: "assistant",
+            content: reply,
+            cta: shouldAttachContactCta(reply) ? CONTACT_CTA : undefined,
+          },
+        ]);
+      }
+    } catch (err) {
+      console.error("chat error", err);
+      setMessages((m) => [
+        ...m,
+        {
+          role: "assistant",
+          content:
+            "Si è verificato un errore. Per una risposta rapida ti invitiamo a contattarci direttamente.",
+          cta: CONTACT_CTA,
+        },
+      ]);
+    } finally {
+      setSending(false);
+    }
   };
 
   if (!revealed) return null;
