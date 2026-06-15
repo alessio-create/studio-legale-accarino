@@ -41,6 +41,8 @@ const team = [
     initials: "AB",
     photo: antoniaPhoto,
     objectPosition: "center 20%",
+    imageScale: "scale-[1.12]",
+    hoverScale: "group-hover:scale-[1.22]",
   },
 ];
 
@@ -211,7 +213,7 @@ export default function ChiSiamo() {
                     <img
                       src={m.photo}
                       alt={`Ritratto di ${m.name}`}
-                      className={`absolute inset-0 w-full h-full object-cover grayscale transition-all duration-[1200ms] ease-out group-hover:grayscale-0 group-hover:scale-[1.04] ${(m as any).imageScale ?? ""}`}
+                      className={`absolute inset-0 w-full h-full object-cover grayscale transition-all duration-[1200ms] ease-out group-hover:grayscale-0 ${(m as any).imageScale ?? ""} ${(m as any).hoverScale ?? "group-hover:scale-[1.04]"}`}
                       style={{ objectPosition: (m as any).objectPosition ?? "center 15%" }}
                       loading="lazy"
                     />
