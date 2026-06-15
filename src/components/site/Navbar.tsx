@@ -54,7 +54,7 @@ const serviceGroups = [
       },
       {
         to: "/concorsi-pubblici",
-        label: "Concorsi Pubblici",
+        label: "Attività della Pubblica Amministrazione",
         desc: "Ricorsi su graduatorie, esclusioni, prove e bandi. Anche ricorsi collettivi.",
         icon: Users,
         illustration: illoConcorsi,

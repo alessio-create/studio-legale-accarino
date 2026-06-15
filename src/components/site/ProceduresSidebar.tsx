@@ -37,7 +37,7 @@ const practiceAreaIcon: Record<Procedure["practiceArea"], LucideIcon> = {
   Espropriazioni: Landmark,
   "Urbanistica ed Edilizia": Scale,
   "Appalti Pubblici": Building2,
-  "Concorsi Pubblici": Users,
+  "Attività della Pubblica Amministrazione": Users,
   "Diritto amministrativo": LayoutGrid,
 };
 

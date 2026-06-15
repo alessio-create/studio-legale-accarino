@@ -45,7 +45,7 @@ export interface Procedure {
     | "Espropriazioni"
     | "Urbanistica ed Edilizia"
     | "Appalti Pubblici"
-    | "Concorsi Pubblici"
+    | "Attività della Pubblica Amministrazione"
     | "Diritto amministrativo";
   /** Hero image (top of the page). */
   heroImage: string;
@@ -356,7 +356,7 @@ export const procedures: Procedure[] = [
     slug: "concorsi-pubblici-selezioni-personale",
     title: "Concorsi pubblici e selezioni del personale",
     audience: "Per gli Enti",
-    practiceArea: "Concorsi Pubblici",
+    practiceArea: "Attività della Pubblica Amministrazione",
     heroImage: practiceConcorsi,
     metaDescription:
       "Consulenza agli Enti per concorsi pubblici e selezioni: bandi, prove, graduatorie, gestione del contenzioso TAR e impugnazioni delle commissioni.",
@@ -891,7 +891,7 @@ export const procedures: Procedure[] = [
     slug: "impugnazione-graduatorie-prove-concorsuali",
     title: "Impugnazione graduatorie e prove concorsuali",
     audience: "Per i Privati",
-    practiceArea: "Concorsi Pubblici",
+    practiceArea: "Attività della Pubblica Amministrazione",
     heroImage: practiceConcorsi,
     metaDescription:
       "Esclusione da concorso pubblico o errata valutazione? Ricorso TAR contro graduatorie, prove e criteri di valutazione. Termini e procedura.",
@@ -934,7 +934,7 @@ export const procedures: Procedure[] = [
     slug: "ricorsi-collettivi-pubblico-impiego",
     title: "Ricorsi collettivi nel pubblico impiego",
     audience: "Per i Privati",
-    practiceArea: "Concorsi Pubblici",
+    practiceArea: "Attività della Pubblica Amministrazione",
     heroImage: practiceConcorsi,
     metaDescription:
       "Ricorsi collettivi nel pubblico impiego: tutela di gruppi di candidati o dipendenti contro graduatorie, mobilità, assunzioni e procedure selettive.",

@@ -20,7 +20,7 @@ export default function ConcorsiPubblici() {
         path="/concorsi-pubblici"
         jsonLd={[
           serviceJsonLd({
-            name: "Concorsi Pubblici e Pubblico Impiego",
+            name: "Attività della Pubblica Amministrazione",
             description: "Tutela dei candidati nelle selezioni pubbliche: impugnazione di graduatorie, prove e criteri di valutazione, ricorsi collettivi.",
             path: "/concorsi-pubblici",
           }),
@@ -28,14 +28,14 @@ export default function ConcorsiPubblici() {
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
             { name: "Aree di pratica", path: "/procedure" },
-            { name: "Concorsi Pubblici", path: "/concorsi-pubblici" },
+            { name: "Attività della Pubblica Amministrazione", path: "/concorsi-pubblici" },
           ]),
         ]}
       />
       <PracticePageTemplate
         number="03"
         eyebrow="Area di pratica"
-        title="Concorsi Pubblici e Pubblico Impiego"
+        title="Attività della Pubblica Amministrazione"
         lead="Sei stato escluso da un concorso o collocato fuori dalla graduatoria utile? Tuteliamo i candidati nelle procedure concorsuali della Pubblica Amministrazione."
         heroImage={lawBooks}
         icon={Users}
