@@ -355,7 +355,7 @@ export default function Index() {
               <span className="text-background/80">Studio Legale · Salerno &amp; Cava de&apos; Tirreni</span>
             </p>
             <h1 className="serif-display text-[clamp(2.25rem,6.5vw,5.5rem)] text-background text-balance leading-[1.06] animate-fade-up">
-              Tuteliamo i tuoi diritti con <span className="text-gold">competenza</span>.
+              Studio Legale Accarino: <span className="text-gold">Diritto Amministrativo</span> a Salerno
             </h1>
             <div className="mt-8 sm:mt-12 flex flex-col md:flex-row md:items-center gap-6 sm:gap-8 animate-fade-up">
               <CTAButton to="/contatti" variant="gold">Parla con un avvocato</CTAButton>
