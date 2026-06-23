@@ -12,7 +12,9 @@
     <!-- Google Search Console verification (studiolegaleaccarino.it) -->
     <meta name="google-site-verification" content="Epbk2W9n8fS8AVHb-c61UsMETLHG0OZp4OorptqOos8" />
 
-    <link rel="canonical" href="https://studiolegaleaccarino.it/" />
+    <!-- Canonical is set per-route via react-helmet-async (src/components/site/Seo.tsx).
+         Do not add a static <link rel="canonical"> here: <link> tags don't dedupe,
+         so a static one would ship alongside the per-route one and confuse Google. -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
